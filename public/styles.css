@@ -1,0 +1,90 @@
+/* CSS RESETS */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+ol, ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* CSS STYLES */
+body {
+  background-color: #140D1F;
+  color: white;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 1.5rem;
+  -webkit-font-smoothing: antialiased;
+}
+@media (min-width: 680px) {
+  body {
+    padding: 3rem;
+  }
+}
+h1, h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: .01em;
+  line-height: 1.25;
+}
+p, ul, ol {
+  line-height: 1.5;
+}
+a {
+  color: ;
+  text-decoration: none;
+}
+a:link { color: #82F3FF; }
+a:visited { color: #82F3FF; }
+a:hover, a:focus {
+  color: #b3f7ff;
+  text-decoration: underline;
+}
+a:active { color: #00B8CC; }
+
+.container {
+  margin: 0 auto;
+}
+.divider {
+  font-size: inherit;
+  color: #B3B3B3;
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.title__profile-pic {
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem;
+}
+.bio-list {
+  margin: 0;
+  display: inline-block;
+  padding-left: 3rem;
+  padding-top: 1rem;
+  border-top: 2px solid #FF4AC6;
+  position: relative;
+}
+.bio-list li::before {
+  content: '#';
+  color: #B3B3B3;
+  position: absolute;
+  left: .5rem;
+}
+.bio-list li + li {
+  margin-top: .5rem;
+}
