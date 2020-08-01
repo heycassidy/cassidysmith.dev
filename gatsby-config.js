@@ -22,5 +22,18 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {},
     },
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "IBM Plex Sans",
+              variants: ["400", "400i", "600", "700"],
+            },
+          ],
+        },
+      },
+    },
   ],
 }
