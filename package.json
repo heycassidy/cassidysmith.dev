@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "casswevb",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Cassidy’s Web Presence",
   "version": "0.1.0",
-  "license": "0BSD",
+  "author": "Cassidy Smith <cassidysmith319@gmail.com>",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -14,18 +14,26 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^2.23.12",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "gatsby": "^2.24.4",
+    "gatsby-plugin-emotion": "^4.3.10",
+    "gatsby-plugin-sass": "^2.3.12",
+    "node-sass": "^4.14.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "sanitize.css": "^11.0.1"
   },
   "devDependencies": {
+    "babel-plugin-emotion": "^10.0.33",
+    "babel-preset-gatsby": "^0.5.4",
     "prettier": "2.0.5"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/heycassidy/cassweb"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/heycassidy/cassweb/issues"
   }
 }
