@@ -4,7 +4,7 @@ import { jsx } from "theme-ui"
 const styles = {
   display: "grid",
   gridTemplateColumns: "1fr 1.5fr",
-  gridColumnGap: "5rem",
+  gridColumnGap: 4,
 }
 
 const SplitLayout = (props) => (

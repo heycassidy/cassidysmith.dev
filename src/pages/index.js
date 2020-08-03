@@ -15,6 +15,11 @@ const Home = () => (
       left={
         <>
           <h1>Hi, I'm Cassidy</h1>
+          <h2>Hi, I'm Cassidy</h2>
+          <h3>Hi, I'm Cassidy</h3>
+          <h4>Hi, I'm Cassidy</h4>
+          <h5>Hi, I'm Cassidy</h5>
+          <h6>Hi, I'm Cassidy</h6>
           <p>
             I’m a front-end engineer and web designer at{" "}
             <a href="https://nobledesktop.com">Noble Desktop</a>, where we help
