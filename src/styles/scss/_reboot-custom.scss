@@ -15,7 +15,6 @@ body {
   margin: 0;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: white;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -110,15 +109,6 @@ sub {
 
 sup {
   top: -.5em;
-}
-
-a {
-  color: #0d6efd;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #024dbc;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
