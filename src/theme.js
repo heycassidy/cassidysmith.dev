@@ -18,14 +18,7 @@ const SPACES = ((customSpaces) => {
 
 
 const theme = {
-  breakpoints: [
-    "480px",
-    "768px",
-    "960px",
-    "1024px",
-    "1280px",
-    "1680px",
-  ],
+  breakpoints: ["480px", "768px", "960px", "1024px", "1280px", "1680px"],
 
   fonts: {
     body:
@@ -51,6 +44,8 @@ const theme = {
   colors: {
     background: "#140D1F",
     text: "#FFF",
+    pink: "#FF4AC6",
+    cyan: "#82F3FF",
   },
 
   baseline: BASELINE,

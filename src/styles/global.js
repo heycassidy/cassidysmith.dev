@@ -1,3 +1,4 @@
+import { alpha } from "@theme-ui/color"
 import "./scss/main.scss"
 
 export default theme => ({
@@ -42,11 +43,23 @@ export default theme => ({
     lineHeight: 0,
   },
   p: {
+    color: alpha(theme.colors.text, .8),
     marginTop: 0,
     marginBottom: "paragraph",
     "&:not(:first-child)": {
       marginTop: "paragraph",
     },
+  },
+
+  a: {
+    textDecoration: 'underline',
+    transition: 'color .15s ease-out',
+
+    '&:link': { color: theme.colors.text },
+    '&:visited': { color: theme.colors.text },
+    '&:hover': { color: alpha(theme.colors.text, .6) },
+    '&:focus': { color: theme.colors.cyan },
+    '&:active': { color: theme.colors.pink },
   },
 
   "ol, ul": {
