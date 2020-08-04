@@ -12,10 +12,10 @@ export default theme => ({
   "h1, h2, h3, h4, h5, h6": {
     fontWeight: "bold",
     marginTop: 0,
-    marginBottom: 1,
-    '&:not(:first-child)': {
-      marginTop: 2
-    }
+    marginBottom: ".675em",
+    "&:not(:first-child)": {
+      marginTop: "1.125em",
+    },
   },
   h1: {
     fontSize: `clamp(${theme.fontSizes[3]}, 7.8125vw, ${theme.fontSizes[5]})`,
@@ -43,31 +43,31 @@ export default theme => ({
   },
   p: {
     marginTop: 0,
-    marginBottom: 'paragraph',
-    '&:not(:first-child)': {
-      marginTop: 'paragraph'
-    }
+    marginBottom: "paragraph",
+    "&:not(:first-child)": {
+      marginTop: "paragraph",
+    },
   },
 
-  'ol, ul': {
-    paddingLeft: '2rem'
+  "ol, ul": {
+    paddingLeft: "2rem",
   },
 
-  'li:not([class]) + li:not([class])': {
-    marginTop: '.5rem'
+  "li:not([class]) + li:not([class])": {
+    marginTop: ".5rem",
   },
 
-  'ol, ul, dl': {
-    '&:not([class])': {
+  "ol, ul, dl": {
+    "&:not([class])": {
       marginTop: 1,
-      marginBottom: 1
-    }
+      marginBottom: 1,
+    },
   },
-  
-  'ol ol, ul ul, ol ul, ul ol': {
-    '&:not([class])': {
+
+  "ol ol, ul ul, ol ul, ul ol": {
+    "&:not([class])": {
       marginTop: 0,
-      marginBottom: 0
-    }
-  }
+      marginBottom: 0,
+    },
+  },
 })

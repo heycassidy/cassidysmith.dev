@@ -4,18 +4,27 @@ const BASELINE = BASE_FONT_SIZE * BASE_LINE_HEIGHT;
 const RATIO = 1.301;
 const FONT_SIZES = [0, 1, 2, 3, 4, 5].map(n => Math.round(BASE_FONT_SIZE * RATIO ** n));
 const LINE_HEIGHTS = FONT_SIZES.map(f => (Math.ceil(f / (BASELINE)) * BASELINE) / f);
+const SPACES = ((customSpaces) => {
+  let spaces = {};
+  [0, 1, 2, 4, 6, 8].map((e) => `${e * BASE_LINE_HEIGHT}rem`).forEach((e, i) => { spaces[i] = e })
+  Object.assign(spaces, customSpaces)
+  return spaces;
+})({
+  small: "2px",
+  medium: "4px",
+  large: "8px",
+  paragraph: `${BASE_LINE_HEIGHT / 2}rem`,
+})
 
 
 const theme = {
   breakpoints: [
-    "320px",
     "480px",
-    "620px",
     "768px",
+    "960px",
     "1024px",
     "1280px",
-    "1920px",
-    "2560px",
+    "1680px",
   ],
 
   fonts: {
@@ -46,9 +55,7 @@ const theme = {
 
   baseline: BASELINE,
 
-  space: Object.assign(Object.fromEntries(Object.entries(
-    { 0: 0, 1: 1, 2: 2, 4: 4, 6: 6, 8: 8 }).map(([k, v]) => [k, `${v * BASE_LINE_HEIGHT}rem`])
-  ), { small: '2px', medium: '4px', large: '8px', paragraph: `${BASE_LINE_HEIGHT / 2}rem` }),
+  space: SPACES,
 }
 
 export default theme;
