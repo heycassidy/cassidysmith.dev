@@ -16,7 +16,7 @@ const styles = theme => ({
   // TEMP, to be moved
   "> div:last-of-type": {
     backgroundColor: alpha("#fff", 0.04),
-    height: "150vh",
+    minHeight: "100vh",
   },
 })
 
