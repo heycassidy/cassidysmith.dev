@@ -10,12 +10,11 @@ const styles = theme => ({
   "> div": {
     position: [null, null, null, "sticky"],
     top: 0,
-    padding: `clamp(${theme.space[1]}, 7.5vw, ${theme.space[3]})`,
+    padding: `clamp(${theme.space[1]}, 7.5vw, ${theme.space[4]})`,
   },
 
   // TEMP, to be moved
   "> div:last-of-type": {
-    backgroundColor: alpha("#fff", 0.04),
     minHeight: "100vh",
   },
 })

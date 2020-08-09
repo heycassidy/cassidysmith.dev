@@ -21,7 +21,7 @@ const Home = ({ data: { allMdx: { edges }} }) => {
       <SplitLayout
         left={
           <>
-            <h1>Hi, I'm Cassidy.</h1>
+            <h1 className="mega-heading">Hi, I'm Cassidy.</h1>
             <p>
               I’m a front-end engineer and web designer at{" "}
               <a href="https://nobledesktop.com">Noble Desktop</a>, where we help
@@ -54,6 +54,7 @@ export const projects = graphql`
             title
             tag
             published
+            ctaText
           }
         }
       }

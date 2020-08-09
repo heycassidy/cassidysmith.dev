@@ -3,7 +3,7 @@ import "./scss/main.scss"
 
 export default theme => ({
   ":root": {
-    fontSize: "base",
+    fontSize: 'base',
   },
   body: {
     fontWeight: "regular",
@@ -18,25 +18,29 @@ export default theme => ({
       marginTop: "1.125em",
     },
   },
-  h1: {
-    fontSize: `clamp(${theme.fontSizes[3]}, 7.8125vw, ${theme.fontSizes[5]})`,
+  '.mega-heading': {
+    fontSize: `clamp(${theme.fontSizes[4]}, 7.8125vw, ${theme.fontSizes[5]})`,
     lineHeight: 5,
   },
-  h2: {
-    fontSize: `clamp(${theme.fontSizes[2]}, 5.989583333vw, ${theme.fontSizes[4]})`,
+  h1: {
+    fontSize: `clamp(${theme.fontSizes[3]}, 5.989583333vw, ${theme.fontSizes[4]})`,
     lineHeight: 4,
   },
-  h3: {
-    fontSize: `clamp(${theme.fontSizes[1]}, 4.557291667vw, ${theme.fontSizes[3]})`,
+  h2: {
+    fontSize: `clamp(${theme.fontSizes[2]}, 4.557291667vw, ${theme.fontSizes[3]})`,
     lineHeight: 3,
   },
-  h4: {
-    fontSize: `clamp(${theme.fontSizes[0]}, 3.515625vw, ${theme.fontSizes[2]})`,
+  h3: {
+    fontSize: `clamp(${theme.fontSizes[1]}, 3.515625vw, ${theme.fontSizes[2]})`,
     lineHeight: 2,
   },
-  h5: {
+  h4: {
     fontSize: `clamp(${theme.fontSizes[0]}, 2.734375vw, ${theme.fontSizes[1]})`,
     lineHeight: 1,
+  },
+  h5: {
+    fontSize: `clamp(${theme.fontSizes[0]}, 2.083333333vw, ${theme.fontSizes[0]})`,
+    lineHeight: 0,
   },
   h6: {
     fontSize: `clamp(${theme.fontSizes[0]}, 2.083333333vw, ${theme.fontSizes[0]})`,
@@ -45,7 +49,7 @@ export default theme => ({
   p: {
     color: alpha(theme.colors.text, .8),
     marginTop: 0,
-    marginBottom: "paragraph",
+    marginBottom: 1,
     "&:not(:first-child)": {
       marginTop: "paragraph",
     },

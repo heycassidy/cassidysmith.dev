@@ -6,8 +6,8 @@ const FONT_SIZES = [0, 1, 2, 3, 4, 5].map(n => Math.round(BASE_FONT_SIZE * RATIO
 const LINE_HEIGHTS = FONT_SIZES.map(f => (Math.ceil(f / (BASELINE)) * BASELINE) / f);
 const SPACES = ((customSpaces) => {
   let spaces = {};
-  [0, 1, 2, 4, 6, 8].map((e) => `${e * BASE_LINE_HEIGHT}rem`).forEach((e, i) => { spaces[i] = e })
-  Object.assign(spaces, customSpaces)
+  [0, 1, 1.5, 2, 4, 6, 8].map((e) => `${e * BASE_LINE_HEIGHT}rem`).forEach((e, i) => { spaces[i] = e });
+  Object.assign(spaces, customSpaces);
   return spaces;
 })({
   small: "2px",
@@ -27,6 +27,7 @@ const theme = {
 
   fontSizes: {
     base: BASE_FONT_SIZE,
+    small: '0.875rem',
     ...FONT_SIZES.map(n => `${n / BASE_FONT_SIZE}rem`),
   },
 
@@ -52,5 +53,7 @@ const theme = {
 
   space: SPACES,
 }
+
+console.log(theme.fontSizes)
 
 export default theme;
