@@ -10,10 +10,8 @@ import ProjectCard from "../components/projectCard"
 
 
 const Home = ({ data: { allMdx: { edges }} }) => {
-  const projects = edges.map(edge => (
-    <ProjectCard key={edge.node.id} project={edge.node}>{edge.node.body}</ProjectCard>
-  ))
-  
+  const projects = edges.map(edge => (<ProjectCard key={edge.node.id} project={edge.node}>{edge.node.body}</ProjectCard>));
+
   return (
     <ThemeProvider theme={theme}>
       <Global styles={css(globalStyles)(theme)} />
@@ -43,9 +41,9 @@ const Home = ({ data: { allMdx: { edges }} }) => {
   )
 }
 
-export const projects = graphql`
+export const publishedProjects = graphql`
   query {
-    allMdx {
+    allMdx(filter: { frontmatter: { published: { eq: true } } }) {
       edges {
         node {
           id
