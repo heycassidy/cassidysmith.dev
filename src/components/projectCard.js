@@ -51,7 +51,7 @@ const ActionLink = props => (
 
 const projectCard = ({ project }) => {
   return (
-    <div sx={styles}>
+    <li sx={styles}>
       <span className="tag">{project.frontmatter.tag}</span>
       <h3 className="heading">{project.frontmatter.title}</h3>
       <div className="description">
@@ -63,7 +63,7 @@ const projectCard = ({ project }) => {
         icon={<LinkExternalIcon className="icon" aria-label="external link" />}
         ctaText={project.frontmatter.ctaText}
       />
-    </div>
+    </li>
   )
 }
 

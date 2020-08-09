@@ -19,10 +19,16 @@ const styles = theme => ({
   },
 })
 
-const SplitLayout = (props) => (
+const SplitLayout = props => (
   <div sx={styles}>
     <div>{props.left}</div>
-    <div>{props.right}</div>
+    <div>
+      <ul sx={{
+        margin: 0,
+        padding: 0,
+        listStyle: 'none'
+      }}>{props.right}</ul>
+    </div>
   </div>
 )
 
