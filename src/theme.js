@@ -52,8 +52,15 @@ const theme = {
   baseline: BASELINE,
 
   space: SPACES,
-}
 
-console.log(theme.fontSizes)
+  utils: {
+
+    // strips unit, multiplies by -1 and reattaches unit
+    negativeSpace: (space) => {
+      const parts = space.split(/(\d?.?\d+)/).filter(e => !!e);
+      return (-1 * parts[0]) + parts[1];
+    }
+  }
+}
 
 export default theme;

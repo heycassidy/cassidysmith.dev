@@ -39,9 +39,10 @@ const ActionLink = props => (
       "&:hover": {
         textDecoration: "underline",
       },
-      ".icon": {
+      ".octicon": {
         marginLeft: "medium",
-        color: "currentColor",
+        width: '.9em',
+        height: '.9em',
       },
     }}
   >
@@ -49,7 +50,10 @@ const ActionLink = props => (
   </a>
 )
 
-const projectCard = ({ project }) => {
+const projectCard = (props) => {
+
+  const project = props.project;
+
   return (
     <li sx={styles}>
       <span className="tag">{project.frontmatter.tag}</span>
@@ -59,8 +63,8 @@ const projectCard = ({ project }) => {
       </div>
       <ActionLink
         className="cta"
-        href="https://nobledesktop.com"
-        icon={<LinkExternalIcon className="icon" aria-label="external link" />}
+        href={project.frontmatter.ctaURL}
+        icon={<LinkExternalIcon verticalAlign="middle" />}
         ctaText={project.frontmatter.ctaText}
       />
     </li>

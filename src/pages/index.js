@@ -7,10 +7,11 @@ import { ThemeProvider } from "theme-ui"
 import theme from "../theme"
 import SplitLayout from "../components/splitLayout"
 import ProjectCard from "../components/projectCard"
+import BioLinks from "../components/bioLinks"
 
 
-const Home = ({ data: { allMdx: { edges }} }) => {
-  const projects = edges.map(edge => (<ProjectCard key={edge.node.id} project={edge.node}>{edge.node.body}</ProjectCard>));
+const Home = ({ data }) => {
+  const projects = data.projects.edges.map(edge => (<ProjectCard data={data} key={edge.node.id} project={edge.node}>{edge.node.body}</ProjectCard>));
 
   return (
     <ThemeProvider theme={theme}>
@@ -22,17 +23,18 @@ const Home = ({ data: { allMdx: { edges }} }) => {
             <h1 className="mega-heading">Hi, I'm Cassidy.</h1>
             <p>
               I’m a front-end engineer and web designer at{" "}
-              <a href="https://nobledesktop.com">Noble Desktop</a>, where we help
-              people learn essential tech skills. I mostly do front-end
+              <a href="https://nobledesktop.com">Noble Desktop</a>, where we
+              help people learn essential tech skills. I mostly do front-end
               development and design, but also work up and down the Rails stack.
             </p>
             <p>
-              Call me <strong>Cass</strong>-cading Style Sheets (ba-dum-tss), but
-              CSS is more than a bad joke to me. I’ve been writing the stuff for
-              5+ years and I love how enjoyable and powerful modern CSS can be. I
-              also love to write JavaScript, Ruby and whatever else I can get my
-              hands on.
+              Call me <strong>Cass</strong>-cading Style Sheets (ba-dum-tss),
+              but CSS is more than a bad joke to me. I’ve been writing the stuff
+              for 5+ years and I love how enjoyable and powerful modern CSS can
+              be. I also love to write JavaScript, Ruby and whatever else I can
+              get my hands on.
             </p>
+            <BioLinks fluidImage={data.profilePhoto.childImageSharp.fluid} />
           </>
         }
         right={<>{projects}</>}
@@ -41,9 +43,9 @@ const Home = ({ data: { allMdx: { edges }} }) => {
   )
 }
 
-export const publishedProjects = graphql`
+export const query = graphql`
   query {
-    allMdx(filter: { frontmatter: { published: { eq: true } } }) {
+    projects: allMdx(sort: {fields: fields___modifiedTime, order: DESC}, filter: {frontmatter: {published: {eq: true}}}) {
       edges {
         node {
           id
@@ -53,7 +55,19 @@ export const publishedProjects = graphql`
             tag
             published
             ctaText
+            ctaURL
           }
+        }
+      }
+    }
+    profilePhoto: file(relativePath: { eq: "cassidy.jpg" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 54,
+          maxHeight: 54,
+          quality: 60,
+        ) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }

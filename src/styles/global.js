@@ -49,7 +49,7 @@ export default theme => ({
   p: {
     color: alpha(theme.colors.text, .8),
     marginTop: 0,
-    marginBottom: 1,
+    marginBottom: "paragraph",
     "&:not(:first-child)": {
       marginTop: "paragraph",
     },
