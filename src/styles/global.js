@@ -20,6 +20,7 @@ export default theme => ({
   },
   '.mega-heading': {
     fontSize: `clamp(${theme.fontSizes[4]}, 7.8125vw, ${theme.fontSizes[5]})`,
+    fontWeight: 'semibold',
     lineHeight: 5,
   },
   h1: {
@@ -53,15 +54,22 @@ export default theme => ({
     "&:not(:first-child)": {
       marginTop: "paragraph",
     },
+
+    a: {
+      textDecoration: 'underline'
+    }
   },
 
   a: {
-    textDecoration: 'underline',
+    textDecoration: "none",
     transition: 'color .15s ease-out',
 
     '&:link': { color: theme.colors.text },
     '&:visited': { color: theme.colors.text },
-    '&:hover': { color: alpha(theme.colors.text, .6) },
+    '&:hover': {
+      textDecoration: 'underline',
+      color: alpha(theme.colors.text, .6)
+    },
     '&:focus': { color: theme.colors.cyan },
     '&:active': { color: theme.colors.pink },
   },

@@ -12,11 +12,6 @@ const styles = theme => ({
     top: 0,
     padding: `clamp(${theme.space[1]}, 7.5vw, ${theme.space[4]})`,
   },
-
-  // TEMP, to be moved
-  "> div:last-of-type": {
-    minHeight: "100vh",
-  },
 })
 
 const SplitLayout = props => (

@@ -7,7 +7,8 @@ import { ThemeProvider } from "theme-ui"
 import theme from "../theme"
 import SplitLayout from "../components/splitLayout"
 import ProjectCard from "../components/projectCard"
-import BioLinks from "../components/bioLinks"
+import CassidyLinks from "../components/cassidy-links"
+import ProfilePhoto from "../components/profile-photo"
 
 
 const Home = ({ data }) => {
@@ -20,7 +21,10 @@ const Home = ({ data }) => {
       <SplitLayout
         left={
           <>
-            <h1 className="mega-heading">Hi, I'm Cassidy.</h1>
+            <h1 className="mega-heading">
+              Hi, I'm Cassidy.
+            </h1>
+
             <p>
               I’m a front-end engineer and web designer at{" "}
               <a href="https://nobledesktop.com">Noble Desktop</a>, where we
@@ -34,7 +38,10 @@ const Home = ({ data }) => {
               be. I also love to write JavaScript, Ruby and whatever else I can
               get my hands on.
             </p>
-            <BioLinks fluidImage={data.profilePhoto.childImageSharp.fluid} />
+
+            {/* <ProfilePhoto image={data.profilePhoto.childImageSharp.fluid} /> */}
+
+            <CassidyLinks />
           </>
         }
         right={<>{projects}</>}

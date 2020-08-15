@@ -5,16 +5,18 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { LinkExternalIcon } from "@primer/octicons-react"
 
 const styles = theme => ({
-  "& + &": { marginTop: 1 },
+  "& + &": { marginTop: 'paragraph' },
   backgroundColor: alpha("white", 0.04),
   padding: `clamp(${theme.space[1]}, 6.66vw, ${theme.space[2]})`,
-  borderRadius: "8px",
+  borderRadius: '8px',
+  boxShadow: '0 0 4px -2px black',
 
   '.heading': {
     fontWeight: "semibold",
     marginTop: "large",
     marginBottom: 1,
     letterSpacing: ".01ch",
+    color: alpha(theme.colors['text'], .8),
   },
   '.description': {
     marginBottom: 1,
@@ -25,7 +27,8 @@ const styles = theme => ({
   ".tag": {
     fontSize: "small",
     textTransform: "uppercase",
-    letterSpacing: ".1ch",
+    letterSpacing: ".2ch",
+    color: alpha(theme.colors['text'], .7),
   },
 })
 
@@ -34,11 +37,7 @@ const ActionLink = props => (
     className={props.className}
     href={props.href}
     sx={{
-      textDecoration: "none",
       display: 'inline-block',
-      "&:hover": {
-        textDecoration: "underline",
-      },
       ".octicon": {
         marginLeft: "medium",
         width: '.9em',
