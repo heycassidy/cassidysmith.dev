@@ -60,7 +60,7 @@ export const query = graphql`
         description
       }
     }
-    projects: allMdx(sort: {fields: fields___modifiedTime, order: DESC}, filter: {frontmatter: {published: {eq: true}}}) {
+    projects: allMdx(sort: {fields: frontmatter___order, order: ASC}, filter: {frontmatter: {published: {eq: true}}}) {
       edges {
         node {
           id
@@ -71,6 +71,7 @@ export const query = graphql`
             published
             ctaText
             ctaURL
+            order
           }
         }
       }
