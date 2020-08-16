@@ -4,22 +4,23 @@ import Img from "gatsby-image"
 
 const styles = theme => {
   return {
-    width: theme.space[3],
-    height: theme.space[3],
-    borderRadius: '500px',
+    width: theme.space[1],
+    height: theme.space[1],
+    borderRadius: 9999,
+    overflow: 'hidden',
     boxShadow: '0 0 4px -1px black',
-    marginBottom: 'paragraph',
   }
 }
 
-export default (data) => {
+export default (props) => {
 
   return (
-    <Img
-      sx={styles}
-      draggable={false}
-      fluid={data.image}
-      alt="a small photo of Cassidy"
-    />
+    <div className={props.className} sx={styles}>
+      <Img
+        draggable={false}
+        fluid={props.image}
+        alt="a small photo of Cassidy"
+      />
+    </div>
   )
 }

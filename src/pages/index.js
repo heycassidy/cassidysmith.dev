@@ -7,8 +7,7 @@ import { ThemeProvider } from "theme-ui"
 import theme from "../theme"
 import SplitLayout from "../components/splitLayout"
 import ProjectCard from "../components/projectCard"
-import CassidyLinks from "../components/cassidy-links"
-import ProfilePhoto from "../components/profile-photo"
+import StickyBar from "../components/stickyBar"
 
 
 const Home = ({ data }) => {
@@ -38,14 +37,12 @@ const Home = ({ data }) => {
               be. I also love to write JavaScript, Ruby and whatever else I can
               get my hands on.
             </p>
-
-            {/* <ProfilePhoto image={data.profilePhoto.childImageSharp.fluid} /> */}
-
-            <CassidyLinks />
           </>
         }
         right={<>{projects}</>}
       />
+
+      <StickyBar data={data} />
     </ThemeProvider>
   )
 }
