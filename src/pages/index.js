@@ -21,6 +21,7 @@ const Home = ({ data }) => {
       <Helmet>
         <title>{data.site.siteMetadata.title}</title>
         <meta name="description" content={data.site.siteMetadata.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
       </Helmet>
 
       <SplitLayout
