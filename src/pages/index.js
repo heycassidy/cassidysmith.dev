@@ -27,7 +27,7 @@ const Home = ({ data }) => {
       <SplitLayout
         left={
           <>
-            <h1 className="mega-heading">Hi, I'm Cassidy.</h1>
+            <h1 className="mega-heading">Hi, I’m Cassidy.</h1>
 
             <p>
               I’m a front-end engineer and web designer at{" "}
