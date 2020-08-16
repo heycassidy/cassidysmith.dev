@@ -7,11 +7,12 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `cassweb`,
+    title: `Cassidy Smith | Front-End Engineer and Web Designer`,
     description: `Cassidy’s Web Presence`,
     author: `@heycassidy`,
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

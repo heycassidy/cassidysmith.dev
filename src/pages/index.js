@@ -5,6 +5,7 @@ import { Global } from "@emotion/core"
 import globalStyles from "../styles/global"
 import { ThemeProvider } from "theme-ui"
 import theme from "../theme"
+import { Helmet } from "react-helmet"
 import SplitLayout from "../components/splitLayout"
 import ProjectCard from "../components/projectCard"
 import StickyBar from "../components/stickyBar"
@@ -17,12 +18,15 @@ const Home = ({ data }) => {
     <ThemeProvider theme={theme}>
       <Global styles={css(globalStyles)(theme)} />
 
+      <Helmet>
+        <title>{data.site.siteMetadata.title}</title>
+        <meta name="description" content={data.site.siteMetadata.description} />
+      </Helmet>
+
       <SplitLayout
         left={
           <>
-            <h1 className="mega-heading">
-              Hi, I'm Cassidy.
-            </h1>
+            <h1 className="mega-heading">Hi, I'm Cassidy.</h1>
 
             <p>
               I’m a front-end engineer and web designer at{" "}
@@ -49,6 +53,12 @@ const Home = ({ data }) => {
 
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
     projects: allMdx(sort: {fields: fields___modifiedTime, order: DESC}, filter: {frontmatter: {published: {eq: true}}}) {
       edges {
         node {
