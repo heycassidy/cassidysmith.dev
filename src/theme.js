@@ -73,7 +73,7 @@ const theme = {
         dark: {
           background: colors.purple[100],
           text: colors.neutral[0],
-          mutedText: colors.neutral[20],
+          mutedText: colors.neutral[50],
           projectCardBackground: alpha(colors.neutral[0], .02)(),
           projectCardShadow: colors.neutral[100],
           bgGradientA: colors.neutral[100],
