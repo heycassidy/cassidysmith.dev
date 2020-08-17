@@ -1,27 +1,40 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { css } from 'theme-ui'
+import { css, ThemeProvider, useThemeUI } from "theme-ui"
 import { Global } from "@emotion/core"
 import globalStyles from "../styles/global"
-import { ThemeProvider } from "theme-ui"
-import theme from "../theme"
 import { Helmet } from "react-helmet"
 import SplitLayout from "../components/splitLayout"
 import ProjectCard from "../components/projectCard"
 import StickyBar from "../components/stickyBar"
 
 
-const Home = ({ data }) => {
-  const projects = data.projects.edges.map(edge => (<ProjectCard data={data} key={edge.node.id} project={edge.node}>{edge.node.body}</ProjectCard>));
+const Home = (props) => {
+  const projects = props.data.projects.edges.map(edge => (<ProjectCard data={props.data} key={edge.node.id} project={edge.node}>{edge.node.body}</ProjectCard>));
+  
+  // const context = ;
+  const { theme, colorMode } = useThemeUI();
+
+
+  theme.colors =
+    colorMode === "dark"
+      ? { ...theme.colors, ...theme.colors.modes.dark }
+      : theme.colors
 
   return (
     <ThemeProvider theme={theme}>
       <Global styles={css(globalStyles)(theme)} />
 
       <Helmet>
-        <title>{data.site.siteMetadata.title}</title>
-        <meta name="description" content={data.site.siteMetadata.description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+        <title>{props.data.site.siteMetadata.title}</title>
+        <meta
+          name="description"
+          content={props.data.site.siteMetadata.description}
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+        />
       </Helmet>
 
       <SplitLayout
@@ -47,7 +60,7 @@ const Home = ({ data }) => {
         right={<>{projects}</>}
       />
 
-      <StickyBar data={data} />
+      <StickyBar data={props.data} />
     </ThemeProvider>
   )
 }

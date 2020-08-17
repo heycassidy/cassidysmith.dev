@@ -15,6 +15,9 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-mdx`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-theme-ui`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -28,8 +31,6 @@ module.exports = {
         path: `${__dirname}/src/projects`,
       },
     },
-    `gatsby-plugin-mdx`,
-    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {},

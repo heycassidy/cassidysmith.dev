@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { darken } from "@theme-ui/color"
-import CassidyLinks from "./cassidy-links"
-import ProfilePhoto from "./profile-photo"
+import CassidyLinks from "./cassidyLinks"
+import ProfilePhoto from "./profilePhoto"
+import ColorModeToggle from "./colorModeToggle"
 
 const styles = theme => {
   return {
@@ -11,7 +11,8 @@ const styles = theme => {
     zIndex: 1,
     width: '100%',
     padding: 'paragraph',
-    backgroundColor: darken(theme.colors['background'], .03),
+    backgroundColor: 'barBackground',
+    borderTop: `1px solid ${theme.colors.barBorder}`,
     display: 'flex',
   }
 }
@@ -19,8 +20,12 @@ const styles = theme => {
 export default (props) => {
   return (
     <div sx={styles}>
-      <ProfilePhoto image={props.data.profilePhoto.childImageSharp.fluid} sx={{ marginRight: 2 }}/>
+      <ProfilePhoto
+        image={props.data.profilePhoto.childImageSharp.fluid}
+        sx={{ marginRight: 2 }}
+      />
       <CassidyLinks />
+      {/* <ColorModeToggle /> */}
     </div>
   )
 }

@@ -6,10 +6,10 @@ import { LinkExternalIcon } from "@primer/octicons-react"
 
 const styles = theme => ({
   "& + &": { marginTop: 'paragraph' },
-  backgroundColor: alpha("white", 0.04),
+  backgroundColor: 'projectCardBackground',
   padding: `clamp(${theme.space[1]}, 6.66vw, ${theme.space[2]})`,
   borderRadius: '8px',
-  boxShadow: '0 0 4px -2px black',
+  boxShadow: `0 4px 10px -4px ${theme.colors.projectCardShadow}`,
 
   '.heading': {
     fontWeight: "semibold",

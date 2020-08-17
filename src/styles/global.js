@@ -48,7 +48,7 @@ export default theme => ({
     lineHeight: 0,
   },
   p: {
-    color: alpha(theme.colors.text, .8),
+    color: theme.colors.mutedText,
     marginTop: 0,
     marginBottom: "paragraph",
     "&:not(:first-child)": {
@@ -70,8 +70,8 @@ export default theme => ({
       textDecoration: 'underline',
       color: alpha(theme.colors.text, .6)
     },
-    '&:focus': { color: theme.colors.cyan },
-    '&:active': { color: theme.colors.pink },
+    '&:focus': { color: theme.colors.blue[20] },
+    '&:active': { color: theme.colors.pink[30] },
   },
 
   "ol, ul": {
