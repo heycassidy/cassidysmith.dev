@@ -1,5 +1,3 @@
-import { alpha, darken, lighten } from "@theme-ui/color"
-
 const BASE_FONT_SIZE = 16
 const BASE_LINE_HEIGHT = 1.6875
 const BASELINE = BASE_FONT_SIZE * BASE_LINE_HEIGHT
@@ -26,10 +24,66 @@ const SPACES = (customSpaces => {
   paragraph: `${BASE_LINE_HEIGHT / 2}rem`,
 })
 
-const theme = {
-  useColorSchemeMediaQuery: true,
-  initialColorModeName: "light",
+const PALETTE = {
+  neutral: {
+    0: "#ffffff",
+    10: "#fafafb",
+    20: "#f3f3f4",
+    25: "#ededee",
+    30: "#e7e7e9",
+    40: "#d7d7d9",
+    50: "#c1c1c5",
+    60: "#a5a5aa",
+    70: "#828287",
+    80: "#58575e",
+    90: "#2a2930",
+    100: "#000000",
+  },
+  blue: {
+    0: "#f3feff",
+    5: "#d5fcff",
+    10: "#b7faff",
+    20: "#82f3ff",
+    30: "#5be8fa",
+    40: "#3bdaf3",
+    50: "#23c6e7",
+    60: "#12aed7",
+    70: "#078fbe",
+    80: "#016b9b",
+    90: "#00446c",
+    100: "#001e33",
+  },
+  pink: {
+    0: "#fff2fc",
+    5: "#ffd5f6",
+    10: "#ffb8ee",
+    20: "#ff7eda",
+    30: "#ff4ac6",
+    40: "#f024b8",
+    50: "#dd09ad",
+    60: "#c500a3",
+    70: "#a70096",
+    80: "#830080",
+    90: "#58005c",
+    100: "#2d0033",
+  },
+  purple: {
+    0: "#f6ecff",
+    5: "#eddbfd",
+    10: "#e4cbfb",
+    20: "#cca1f5",
+    30: "#b57cec",
+    40: "#9e5fde",
+    50: "#8849cc",
+    60: "#7238b4",
+    70: "#5d2e96",
+    80: "#472772",
+    90: "#2e1c49",
+    100: "#140d1f",
+  },
+}
 
+const theme = {
   breakpoints: ["480px", "768px", "960px", "1024px", "1280px", "1680px"],
 
   fonts: {
@@ -55,91 +109,11 @@ const theme = {
   },
 
   colors: {
-    get background() { return this.neutral[10] }, 
-    get text() { return this.neutral[100] },
-    get mutedText() { return this.neutral[80] },
-    get projectCardBackground() { return this.neutral[0] },
-    get projectCardShadow() { return this.neutral[30] },
-    get bgGradientA() { return this.neutral[10] },
-    get bgGradientB() { return this.neutral[30] },
-    get barBackground() { return this.neutral[0] },
-    get barBorder() { return this.neutral[30] },
-    
-    get modes() {
-      const colors = this
+    ...PALETTE,
 
-      return {
-
-        dark: {
-          background: colors.purple[100],
-          text: colors.neutral[0],
-          mutedText: colors.neutral[50],
-          projectCardBackground: alpha(colors.neutral[0], .02)(),
-          projectCardShadow: colors.neutral[100],
-          bgGradientA: colors.neutral[100],
-          bgGradientB: colors.purple[100],
-          barBackground: colors.neutral[100],
-          barBorder: colors.neutral[90],
-        },
-      }
-    },
-
-    neutral: {
-      0: "#ffffff",
-      10: "#fafafb",
-      20: "#f3f3f4",
-      25: "#ededee",
-      30: "#e7e7e9",
-      40: "#d7d7d9",
-      50: "#c1c1c5",
-      60: "#a5a5aa",
-      70: "#828287",
-      80: "#58575e",
-      90: "#2a2930",
-      100: "#000000",
-    },
-    blue: {
-      0: "#f3feff",
-      5: "#d5fcff",
-      10: "#b7faff",
-      20: "#82f3ff",
-      30: "#5be8fa",
-      40: "#3bdaf3",
-      50: "#23c6e7",
-      60: "#12aed7",
-      70: "#078fbe",
-      80: "#016b9b",
-      90: "#00446c",
-      100: "#001e33",
-    },
-    pink: {
-      0: "#fff2fc",
-      5: "#ffd5f6",
-      10: "#ffb8ee",
-      20: "#ff7eda",
-      30: "#ff4ac6",
-      40: "#f024b8",
-      50: "#dd09ad",
-      60: "#c500a3",
-      70: "#a70096",
-      80: "#830080",
-      90: "#58005c",
-      100: "#2d0033",
-    },
-    purple: {
-      0: "#f6ecff",
-      5: "#eddbfd",
-      10: "#e4cbfb",
-      20: "#cca1f5",
-      30: "#b57cec",
-      40: "#9e5fde",
-      50: "#8849cc",
-      60: "#7238b4",
-      70: "#5d2e96",
-      80: "#472772",
-      90: "#2e1c49",
-      100: "#140d1f",
-    },
+    background: PALETTE.neutral[10],
+    text: PALETTE.neutral[100],
+    mutedText: PALETTE.neutral[80],
   },
 
   baseline: BASELINE,

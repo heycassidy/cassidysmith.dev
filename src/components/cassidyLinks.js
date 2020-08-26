@@ -1,37 +1,37 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { darken } from '@theme-ui/color'
 import { MarkGithubIcon } from "@primer/octicons-react"
 
 const styles = theme => {
 
   return {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    margin: `0 ${theme.utils.negativeSpace(theme.space[1])}`,
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: ["space-evenly", "flex-start"],
+    flex: "1",
+    margin: t => `0 ${t.utils.negativeSpace(t.space['paragraph'])}`,
 
-    '.link': {
-      marginLeft: ['paragraph', 1],
-      marginRight: ['paragraph', 1],
-      flex: '0 1 auto'
+    ".link": {
+      marginLeft: "paragraph",
+      marginRight: "paragraph",
+      flex: "0 1 auto",
     },
 
-    '.email-full-address': {
-      display: ['none', 'inline']
+    ".email-full-address": {
+      display: ["none", "inline"],
     },
 
-    '.email-short': {
-      display: ['inline', 'none']
+    ".email-short": {
+      display: ["inline", "none"],
     },
-  
-    '.icon': {
-      marginRight: ['large', 'paragraph'],
-      width: '1.25em',
-      height: '1.25em',
-      fill: 'currentColor',
-      verticalAlign: '-.2em !important',
-    }
+
+    ".icon": {
+      marginRight: ["large", "paragraph"],
+      width: "1.25em",
+      height: "1.25em",
+      fill: "currentColor",
+      verticalAlign: "-.3em",
+    },
   }
 }
 

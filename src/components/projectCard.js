@@ -5,30 +5,30 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { LinkExternalIcon } from "@primer/octicons-react"
 
 const styles = theme => ({
-  "& + &": { marginTop: 'paragraph' },
-  backgroundColor: 'projectCardBackground',
-  padding: `clamp(${theme.space[1]}, 6.66vw, ${theme.space[2]})`,
-  borderRadius: '8px',
-  boxShadow: `0 4px 10px -4px ${theme.colors.projectCardShadow}`,
+  "& + &": { marginTop: "paragraph" },
+  backgroundColor: "neutral.0",
+  padding: t => `clamp(${t.space[1]}, 6.66vw, ${t.space[2]})`,
+  borderRadius: "8px",
+  boxShadow: t => `0 4px 10px -4px ${t.colors.neutral[30]}`,
 
-  '.heading': {
+  ".heading": {
     fontWeight: "semibold",
     marginTop: "large",
     marginBottom: 1,
     letterSpacing: ".01ch",
-    color: alpha(theme.colors['text'], .8),
+    color: alpha("text", 0.8),
   },
-  '.description': {
+  ".description": {
     marginBottom: 1,
-    '*:last-child': {
+    "*:last-child": {
       marginBottom: 0,
-    }
+    },
   },
   ".tag": {
     fontSize: "small",
     textTransform: "uppercase",
     letterSpacing: ".2ch",
-    color: alpha(theme.colors['text'], .7),
+    color: alpha("text", 0.7),
   },
 })
 
@@ -49,7 +49,7 @@ const ActionLink = props => (
   </a>
 )
 
-const projectCard = (props) => {
+export default (props) => {
 
   const project = props.project;
 
@@ -58,7 +58,7 @@ const projectCard = (props) => {
       <span className="tag">{project.frontmatter.tag}</span>
       <h3 className="heading">{project.frontmatter.title}</h3>
       <div className="description">
-        <MDXRenderer>{project.body}</MDXRenderer>
+        <MDXRenderer>{props.body}</MDXRenderer>
       </div>
       <ActionLink
         className="cta"
@@ -69,5 +69,3 @@ const projectCard = (props) => {
     </li>
   )
 }
-
-export default projectCard

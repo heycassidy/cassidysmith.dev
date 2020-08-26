@@ -48,7 +48,7 @@ export default theme => ({
     lineHeight: 0,
   },
   p: {
-    color: theme.colors.mutedText,
+    color: 'mutedText',
     marginTop: 0,
     marginBottom: "paragraph",
     "&:not(:first-child)": {
@@ -64,14 +64,14 @@ export default theme => ({
     textDecoration: "none",
     transition: 'color .15s ease-out',
 
-    '&:link': { color: theme.colors.text },
-    '&:visited': { color: theme.colors.text },
+    '&:link': { color: 'text' },
+    '&:visited': { color: 'text' },
     '&:hover': {
       textDecoration: 'underline',
-      color: alpha(theme.colors.text, .6)
+      color: alpha('text', .6)
     },
-    '&:focus': { color: theme.colors.blue[20] },
-    '&:active': { color: theme.colors.pink[30] },
+    '&:focus': { color: 'blue.70' },
+    '&:active': { color: 'pink.60' },
   },
 
   "ol, ul": {

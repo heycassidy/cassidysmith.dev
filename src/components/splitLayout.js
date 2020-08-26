@@ -20,7 +20,7 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
     zIndex: -1,
-    backgroundImage: `linear-gradient(${theme.colors.bgGradientA}, ${theme.colors.bgGradientB})`,
+    backgroundImage: t => `linear-gradient(${t.colors.neutral[10]}, ${t.colors.neutral[30]})`,
   }
 })
 
