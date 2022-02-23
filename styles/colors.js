@@ -1,0 +1,73 @@
+export const palettes = {
+  // Neutral
+  neutral950: '#1d1520',
+  neutral825: '#221b25',
+  neutral725: '#27212a',
+  neutral625: '#3d3841',
+  neutral525: '#5b575e',
+  neutral425: '#a29fa4',
+  neutral325: '#d7d5d9',
+  neutral225: '#eeedef',
+  neutral125: '#f7f6f8',
+  neutral0: '#fbfbfb',
+
+  // Primary
+  primary950: '#1f1323',
+  primary825: '#2f2336',
+  primary725: '#3c2c4b',
+  primary625: '#4c3869',
+  primary525: '#604b92',
+  primary425: '#8570bf',
+  primary325: '#bcaae9',
+  primary225: '#e3dbfa',
+  primary125: '#f0e9fb',
+  primary0: '#fefbff',
+  
+  // Secondary
+  secondary950: '#0f1a16',
+  secondary825: '#112b22',
+  secondary725: '#13392a',
+  secondary625: '#1e4d37',
+  secondary525: '#36623f',
+  secondary425: '#5f8b5a',
+  secondary325: '#93c38d',
+  secondary225: '#b9e6c0',
+  secondary125: '#d9f7e9',
+  secondary0: '#f9fdfd',
+  
+  // Tertiary
+  tertiary950: '#1f160a',
+  tertiary825: '#2a2118',
+  tertiary725: '#392d20',
+  tertiary625: '#50402f',
+  tertiary525: '#6a553f',
+  tertiary425: '#977e64',
+  tertiary325: '#d4b495',
+  tertiary225: '#f3d8bf',
+  tertiary125: '#ffe9d4',
+  tertiary0: '#fdfcfb',
+  
+  // Quaternary
+  quaternary950: '#201508',
+  quaternary825: '#251b09',
+  quaternary725: '#342c15',
+  quaternary625: '#443d1f',
+  quaternary525: '#5e5a2f',
+  quaternary425: '#8f8f58',
+  quaternary325: '#b6bd8e',
+  quaternary225: '#d2dcb8',
+  quaternary125: '#e6efda',
+  quaternary0: '#fcfcfb',
+  
+  // Quinary
+  quinary950: '#610027',
+  quinary825: '#6f001f',
+  quinary725: '#8d0a1d',
+  quinary625: '#ac2f0d',
+  quinary525: '#c34900',
+  quinary425: '#db5e00',
+  quinary325: '#e77a13',
+  quinary225: '#ec9928',
+  quinary125: '#e7aa42',
+  quinary0: '#e0b459',
+}
