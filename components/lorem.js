@@ -4,8 +4,6 @@ export default function Lorem() {
 
   return (
     <>
-      <h1>Tum Piso: Quoniam igitur aliquid omnes, quid Lucius noster?</h1>
-
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quod ea non occurrentia fingunt, vincunt Aristonem; Similiter sensus, cum accessit ad naturam, tuetur illam quidem, sed etiam se tuetur; Philosophi autem in suis lectulis plerumque moriuntur. <b>Certe, nisi voluptatem tanti aestimaretis.</b> Duo Reges: constructio interrete. <a href="http://loripsum.net/" target="_blank">Non semper, inquam;</a> </p>
 
       <h6>Nondum autem explanatum satis, erat, quid maxime natura vellet.</h6>

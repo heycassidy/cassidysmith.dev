@@ -5,6 +5,7 @@ import { globalStyles } from '../styles/globals'
 import { textLink } from '../styles/mixins'
 import { css } from '../stitches.config'
 
+
 export default function Home() {
   globalStyles()
 
@@ -18,16 +19,15 @@ export default function Home() {
 
       <main className={css({
         a: textLink,
-        maxWidth: '60ch'
       })()}>
         <h1>Hello!</h1>
-      
-        <p>
-        Hi, I’m Cassidy. I’m a front-end engineer and web designer at <a href="https://nobledesktop.com" rel='noopener noreferrer'>Noble Desktop</a>. I mostly do front-end development and design, but also work up and down the Rails stack.
-        </p>
-        <p>
-        Call me Cass-cading Style Sheets (ba-dum-tss), but CSS is more than a bad joke to me. I’ve been writing the stuff for 5+ years and I love how enjoyable and powerful modern CSS can be. I also love to write JavaScript, Ruby and whatever else I can get my hands on.
-        </p>
+        <p>Welcome to my home page =) I’m Cassidy as you probably guessed. This site is under construction 🚧 I’m a front-end engineer and UI designer full-time at <a href="https://nobledesktop.com" target='_blank' rel='noopener noreferrer'>Noble Desktop</a>. I enjoy creative and intentional problem solving with code. Day-to-day I work in Ruby on Rails, JavaScript/ES6, Next.js, React, CSS, and HTML, but I love to explore new frameworks, languages, and tools.</p>
+        <p>Other than work stuff, I hope to make this website a place for digital art. My current obsession is <a href="https://en.wikipedia.org/wiki/Creative_coding" target="_blank" rel="noopener noreferrer">Generative Art / Creative Coding</a> and I’m working on series of randomly-generated, single-edition, cactus-inspired art prints with <a href="http://paperjs.org/" target="_blank" rel="noopener noreferrer">Paper.js</a>. Stay tuned for more!</p>
+
+        
+
+        
+        
         {/* <Lorem /> */}
 
 

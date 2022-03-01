@@ -4,7 +4,8 @@ const BASE_FONT_SIZE = 20
 const BASE_LINE_HEIGHT = 1.5
 const BASELINE = BASE_FONT_SIZE * BASE_LINE_HEIGHT
 
-const FONT_SIZES = [1, 1.25, 1.75, 2.5, 3.5, 4.75, 6.25].map(n => n * BASE_FONT_SIZE)
+// https://www.layoutgridcalculator.com/typographic-scale/
+const FONT_SIZES = [1, 1.0625, 1.1458, 1.2292, 1.4167, 1.7292, 2.4375].map(n => n * BASE_FONT_SIZE)
 
 const LINE_HEIGHTS = FONT_SIZES.map((fontSize) => {
   let subdivision = 0.5
@@ -30,14 +31,14 @@ export const defaultTheme = {
   colors: {
     ...palettes,
     text: '$primary625',
-    heading: '$primary625',
+    heading: '$primary525',
     background: '$primary0',
-    decorativeBorder: '$primary425'
+    decorativeBorder: '$primary525'
   },
 
   fonts: {
     body: '"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-    headings: '"SyneVariable", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    heading: '"SyneVariable", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
   },
 
 
