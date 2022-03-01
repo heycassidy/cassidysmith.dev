@@ -6,6 +6,7 @@ import { css } from '../stitches.config'
 const styles = css({
   marginTop: '$medium',
   display: 'flex',
+  flexWrap: 'wrap',
   gap: '$medium',
 
   a: {
