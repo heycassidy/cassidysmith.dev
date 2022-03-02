@@ -1,6 +1,7 @@
 import { MailIcon, MarkGithubIcon } from '@primer/octicons-react'
 import Link from 'next/link'
 import { css } from '../stitches.config'
+import { focusOutline } from '../styles/mixins'
 
 
 const styles = css({
@@ -26,15 +27,13 @@ const styles = css({
     },
     '&:hover': {
       textDecorationColor: '$primary425',
+      backgroundColor: '$primary125',
     },
     '&:active, &:hover:active': {
-      color: '$quinary525',
-      textDecorationColor: '$quinary525',
+      color: '$quaternary525',
+      textDecorationColor: '$quaternary525',
     },
-    '&:focus': {
-      outline: '2px dashed $colors$secondary325',
-      outlineOffset: '1px'
-    },
+    '&:focus': focusOutline,
   }
 
 })

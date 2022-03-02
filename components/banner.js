@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { css } from '../stitches.config'
+import { focusOutline } from '../styles/mixins'
 
 const bannerStyles = css({
   marginBottom: '$medium'
@@ -31,10 +32,7 @@ const logoStyles = css({
     '&:active, &:hover:active': {
       color: '$primary325',
     },
-    '&:focus': {
-      outline: '3px dashed $colors$secondary325',
-      outlineOffset: '1px'
-    },
+    '&:focus': focusOutline,
   }
 })
 

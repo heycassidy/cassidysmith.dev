@@ -1,28 +1,27 @@
+export const focusOutline = {
+  outline: '2px dashed $colors$secondary425',
+  outlineOffset: '1px',
+  '&:hover': { outline: 'none' }
+}
+
 export const textLink = {
-  textDecorationColor: '$quaternary325',
+  textDecorationColor: '$secondary425',
   textUnderlinePosition: 'under',
   transition: 'color 0.2s, text-decoration-color 0.2s',
   
   '&:link': {
-    color: '$quaternary625',
+    color: '$secondary625',
   },
   '&:visited': {
-    color: '$quaternary625',
+    color: '$secondary625',
   },
   '&:hover': {
+    color: '$secondary425',
+    textDecorationColor: '$secondary325',
+  },
+  '&:active, &:hover:active': {
     color: '$quaternary425',
     textDecorationColor: '$quaternary325',
   },
-  '&:active, &:hover:active': {
-    color: '$quinary425',
-    textDecorationColor: '$quinary325',
-  },
-  '&:focus': {
-    // textDecoration: 'none',
-    outline: '2px dashed $colors$secondary325',
-    outlineOffset: '2px',
-    ":hover": {
-      outline: 'none'
-    }
-  },
+  '&:focus': focusOutline,
 }
