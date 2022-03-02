@@ -11,5 +11,5 @@ export const {
   createTheme,
   config,
 } = createStitches({
-  theme: defaultTheme
+  theme: defaultTheme,
 })

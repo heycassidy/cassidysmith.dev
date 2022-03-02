@@ -12,6 +12,7 @@
     "@fontsource/syne": "^4.5.3",
     "@stitches/react": "^1.2.6",
     "chroma-js": "^2.4.2",
+    "mini-svg-data-uri": "^1.4.3",
     "next": "^12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

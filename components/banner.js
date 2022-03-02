@@ -1,9 +1,16 @@
 import Link from 'next/link'
-import { css } from '../stitches.config'
-import { focusOutline } from '../styles/mixins'
+import { css, theme } from '../stitches.config'
+import { focusOutline, dotPatternBackground } from '../styles/mixins'
 
 const bannerStyles = css({
-  marginBottom: '$medium'
+  marginBottom: '$medium',
+  gap: '$medium',
+  display: 'flex',
+  
+  '.dot-filler': {
+    flex: '1 1 auto',
+    ...dotPatternBackground(theme.colors.primary425.value, '6px')
+  }
 })
 
 const logoStyles = css({
@@ -46,7 +53,9 @@ export default function Banner({ children }) {
             <a>Cassidy Smith</a>
           </Link>
         </span>
+
       </nav>
+      <span className="dot-filler"></span>
     </header>
   )
 }
