@@ -17,20 +17,20 @@ const logoStyles = css({
   
   a: {
     padding: '$medium clamp($medium, 3vw, $large)',
-    backgroundColor: '$primary525',
     display: 'block',
+    textDecoration: 'none',
     
-    textDecorationColor: 'transparent',
     transition: 'background-color 0.2s, color 0.2s, text-decoration-color 0.2s',
-  
+    
     '&:link, &:visited': {
       color: 'white',
+      backgroundColor: '$primary525',
     },
     '&:hover': {
-      textDecorationColor: '$primary325',
+      backgroundColor: '$primary425',
     },
     '&:active, &:hover:active': {
-      color: '$primary325',
+      backgroundColor: '$quaternary425',
     },
     '&:focus': focusOutline,
   }
