@@ -1,4 +1,4 @@
-import { RiMailFill, RiGithubFill, RiLinkedinBoxFill, RiLink } from "react-icons/ri"
+import { SendAltFilled20, LogoGithub20, LogoLinkedin20 } from '@carbon/icons-react'
 import Link from 'next/link'
 import { css } from '../stitches.config'
 import { focusOutline } from '../styles/mixins'
@@ -41,9 +41,9 @@ export default function ContactLinks() {
 
   return (
     <div className={styles()}>
-      <Link href='mailto:mailto:hey@cassidysmith.dev'><a><RiMailFill />hey@cassidysmith.dev</a></Link>
-      <Link href='https://github.com/heycassidy'><a target='_blank' rel='noopener noreferrer'><RiGithubFill />Github</a></Link>
-      <Link href='https://www.linkedin.com/in/csdev'><a target='_blank' rel='noopener noreferrer'><RiLinkedinBoxFill />LinkedIn</a></Link>
+      <Link href='mailto:mailto:hey@cassidysmith.dev'><a><SendAltFilled20 />hey@cassidysmith.dev</a></Link>
+      <Link href='https://github.com/heycassidy'><a target='_blank' rel='noopener noreferrer'><LogoGithub20 />Github</a></Link>
+      <Link href='https://www.linkedin.com/in/csdev'><a target='_blank' rel='noopener noreferrer'><LogoLinkedin20 />LinkedIn</a></Link>
     </div>
   )
 }
