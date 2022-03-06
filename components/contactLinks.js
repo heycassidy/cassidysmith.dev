@@ -21,15 +21,15 @@ const styles = css({
     transition: 'background-color 0.2s, color 0.2s, text-decoration-color 0.2s',
     
     '&:link, &:visited': {
-      color: '$primary625',
-      backgroundColor: '$primary225',
+      color: '$primary950',
+      backgroundColor: '$primary275',
     },
     '&:hover': {
-      color: '$primary525',
-      backgroundColor: '$primary125',
+      color: '$primary600',
+      backgroundColor: '$primary175',
     },
     '&:active, &:hover:active': {
-      color: '$quaternary525',
+      color: '$accentOne525',
     },
     '&:focus': focusOutline,
   }

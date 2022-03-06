@@ -30,10 +30,10 @@ export const defaultTheme = {
   
   colors: {
     ...palettes,
-    text: '$primary625',
-    heading: '$primary525',
-    background: '$primary0',
-    decorativeBorder: '$primary525'
+    text: '$primary775',
+    heading: '$primary600',
+    background: '$primary100',
+    decorativeBorder: '$primary600'
   },
 
   fonts: {

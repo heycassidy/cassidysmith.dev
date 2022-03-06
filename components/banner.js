@@ -31,13 +31,13 @@ const logoStyles = css({
     
     '&:link, &:visited': {
       color: 'white',
-      backgroundColor: '$primary525',
+      backgroundColor: '$primary600',
     },
     '&:hover': {
-      backgroundColor: '$primary425',
+      backgroundColor: '$primary525',
     },
     '&:active, &:hover:active': {
-      backgroundColor: '$quaternary425',
+      backgroundColor: '$accentOne525',
     },
     '&:focus': focusOutline,
   }

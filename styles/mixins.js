@@ -11,29 +11,30 @@ export const dotPatternBackground = (color, size) => {
 }
 
 export const focusOutline = {
-  outline: '2px dashed $colors$secondary425',
+  outline: '2px dashed $colors$secondary525',
   outlineOffset: '1px',
   '&:hover': { outline: 'none' }
 }
 
 export const textLink = {
-  textDecorationColor: '$secondary425',
   textUnderlinePosition: 'under',
   transition: 'color 0.2s, text-decoration-color 0.2s',
-  
+
+  textDecorationColor: '$info275',
+
   '&:link': {
-    color: '$secondary625',
+    color: '$info600',
   },
   '&:visited': {
-    color: '$secondary625',
+    color: '$info525',
   },
   '&:hover': {
-    color: '$secondary425',
-    textDecorationColor: '$secondary325',
+    color: '$info700',
+    textDecorationColor: '$info625',
   },
   '&:active, &:hover:active': {
-    color: '$quaternary425',
-    textDecorationColor: '$quaternary325',
+    color: '$accentOne600',
+    textDecorationColor: '$accentOne275',
   },
   '&:focus': focusOutline,
 }
