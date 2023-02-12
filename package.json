@@ -8,7 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@carbon/icons-react": "^10.47.0",
+    "@carbon/icons-react": "^10.49.0",
     "@fontsource/atkinson-hyperlegible": "^4.5.3",
     "@fontsource/syne": "^4.5.3",
     "@stitches/react": "^1.2.6",
