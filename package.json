@@ -1,15 +1,28 @@
 {
-  "name": "",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "cassweb",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "astro": "^2.0.11"
+    "@carbon/icons-react": "^10.47.0",
+    "@fontsource/atkinson-hyperlegible": "^4.5.3",
+    "@fontsource/syne": "^4.5.3",
+    "@stitches/react": "^1.2.6",
+    "chroma-js": "^2.4.2",
+    "mini-svg-data-uri": "^1.4.3",
+    "next": "^12.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
+    "typography": "^0.16.21"
+  },
+  "devDependencies": {
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.10",
+    "eslint-config-prettier": "^8.3.0"
   }
 }
