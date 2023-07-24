@@ -1,0 +1,27 @@
+---
+import BannerLogo from "./BannerLogo.astro";
+---
+
+
+<header role="banner">
+  <nav>
+    <BannerLogo/>
+  </nav>
+  <span class="dot-filler"></span>
+</header>
+
+
+<style lang="scss"> 
+  @import '../styles/mixins.scss';
+
+  header[role=banner] {
+    margin-bottom: var(--space-2);
+    gap: var(--space-2);
+    display: flex;
+  }
+
+  .dot-filler {
+    flex: 1 1 auto;
+    @include dot-pattern-background(var(--color-primary-425), 6px);
+  }
+</style>

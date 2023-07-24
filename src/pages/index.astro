@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout>
+  <main>
+    <h1>Hello!</h1><p>
+      Welcome to my home page =) I’m Cassidy as you probably guessed. This site
+      is under construction 🚧 I’m a front-end engineer and UI designer
+      full-time at <a
+        href="https://nobledesktop.com"
+        target="_blank"
+        rel="noopener noreferrer">Noble Desktop</a
+      >. I enjoy creative and intentional problem solving with code. Day-to-day
+      I work in Ruby on Rails, JavaScript/ES6, Next.js, React, CSS, and HTML,
+      but I love to explore new frameworks, languages, and tools.
+    </p>
+  </main>
+</Layout>
+
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  a {
+    @include text-link;
+  }
+</style>

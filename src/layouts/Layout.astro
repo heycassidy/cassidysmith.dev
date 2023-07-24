@@ -1,0 +1,58 @@
+---
+import '@fontsource/atkinson-hyperlegible/400.css'
+import '@fontsource/atkinson-hyperlegible/400-italic.css'
+import '@fontsource/atkinson-hyperlegible/700.css'
+import '@fontsource-variable/syne'
+import '../styles/global.css'
+
+
+import Banner from '../components/Banner.astro'
+import ContactLink from '../components/ContactLink.astro'
+
+const {
+  title = 'Cassidy Smith | Front-End Engineer',
+  description = 'Cassidy Smith is a front-end engineer and UI designer in Chicago, IL.',
+} = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" property="og:description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <Banner />
+    <slot />
+  </body>
+
+  <footer>
+    <ContactLink href="mailto:cassidy@cassidysmith.dev" icon="carbon:send-alt-filled">cassidy@cassidysmith.dev</ContactLink>
+    <ContactLink href="https://github.com/heycassidy" external icon="carbon:logo-github">Github</ContactLink>
+  </footer>
+</html>
+
+
+<style>
+  body {
+    margin: clamp(0rem, 3vw, var(--space-3));
+    max-width: var(--space-content-4);
+  }
+  :global(main) {
+    border: 2px solid var(--color-primary-600);
+    padding: clamp(var(--space-1), 3vw, var(--space-3));
+  }
+  footer {
+    margin: var(--space-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+</style>

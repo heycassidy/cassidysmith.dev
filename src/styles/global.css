@@ -1,0 +1,17 @@
+@import 'reset.css';
+@import 'tokens.css';
+@import 'typography.scss';
+
+body {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-775);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+}
