@@ -1,0 +1,41 @@
+@use "sass-svg-uri";
+
+@mixin focus-outline {
+  outline: 2px dashed var(--color-accent-one-525);
+  outline-offset: 1px;
+  &:hover {
+    outline: none;
+  }
+}
+
+
+@mixin text-link {
+  text-underline-position: under;
+  transition: color 0.2s, text-decoration-color 0.2s;
+
+  text-decoration-color: var(--color-info-275);
+
+  &:link {
+    color: var(--color-info-600);
+  }
+  &:visited {
+    color: var(--color-info-525);
+  }
+  &:hover {
+    color: var(--color-info-700);
+    text-decoration-color: var(--color-info-625);
+  }
+  &:active, &:hover:active {
+    color: var(--color-accent-one-600);
+    text-decoration-color: var(--color-accent-one-275);
+  }
+  &:focus {
+    @include focus-outline()
+  }
+}
+
+@mixin dot-pattern-background($color, $size) {
+  background-color: $color;
+  mask: sass-svg-uri.encode("<svg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><g fill='#000' fill-rule='evenodd'><circle cx='2' cy='2' r='2'/><circle cx='10' cy='10' r='2'/></g></svg>");
+  mask-size: $size;
+}

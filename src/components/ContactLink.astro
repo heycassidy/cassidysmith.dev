@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon'
+
+const {href, external = false, icon = false} = Astro.props;
+---
+
+<a class="contact-link" href={href} target={external && '_blank'} rel={external && 'noopener noreferrer'}>
+  {icon && <Icon name={icon}/>}
+  <slot />
+</a>
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+    flex-wrap: wrap;
+    padding: 0 var(--space-2);
+    text-decoration: none;
+  
+    transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;
+  
+    &:link, &:visited {
+      color: var(--color-primary-950);
+      background-color: var(--color-primary-275);
+    }
+    &:hover {
+      color: var(--color-primary-600);
+      background-color: var(--color-primary-175);
+    }
+    &:active, &:hover:active {
+      color: var(--color-accent-one-525);
+    }
+    &:focus {
+      @include focus-outline;
+    }
+
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+</style>

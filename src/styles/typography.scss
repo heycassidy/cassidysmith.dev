@@ -1,0 +1,81 @@
+html {
+  font-size: 1.25em;
+}
+body {
+  font-family: var(--font-body);
+  font-size: clamp(calc(1rem * 0.875), 3vw, 1rem);
+  line-height: var(--line-height-1);
+}
+h1 {
+  font-size: var(--font-size-6);
+  line-height: var(--line-height-6);
+}
+h2 {
+  font-size: var(--font-size-5);
+  line-height: var(--line-height-5);
+}
+h3 {
+  font-size: var(--font-size-4);
+  line-height: var(--line-height-4);
+}
+h4 {
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-3);
+}
+h5 {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+}
+h6 {
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 740;
+  margin-top: var(--space-6);
+  margin-bottom: calc(var(--space-5) / 2);
+}
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-top: var(--space-5);
+  margin-bottom: calc(var(--space-5) / 2);
+
+  & + p {
+    margin-top: 0;
+  }
+}
+
+ul,
+ol,
+p,
+blockquote {
+  margin-top: calc(var(--space-5) / 2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+blockquote {
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+p + p {
+  margin-top: 0;
+  text-indent: var(--space-5);
+}
