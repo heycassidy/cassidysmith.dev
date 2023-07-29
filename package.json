@@ -8,21 +8,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@carbon/icons-react": "^10.47.0",
-    "@fontsource/atkinson-hyperlegible": "^4.5.3",
-    "@fontsource/syne": "^4.5.3",
-    "@stitches/react": "^1.2.6",
-    "chroma-js": "^2.4.2",
-    "mini-svg-data-uri": "^1.4.3",
-    "next": "^12.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-icons": "^4.3.1",
-    "typography": "^0.16.21"
+    "@fontsource-variable/syne": "^5.0.5",
+    "@fontsource/atkinson-hyperlegible": "^5.0.5",
+    "astro": "^2.8.4",
+    "astro-icon": "^0.8.1",
+    "chroma-js": "^2.4.2"
   },
   "devDependencies": {
-    "eslint": "8.8.0",
-    "eslint-config-next": "12.0.10",
-    "eslint-config-prettier": "^8.3.0"
+    "@typescript-eslint/parser": "^6.1.0",
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-astro": "^0.27.2",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.11.0",
+    "sass": "^1.63.6",
+    "sass-svg-uri": "^2.0.0"
   }
 }
