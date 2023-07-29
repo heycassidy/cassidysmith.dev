@@ -4,8 +4,8 @@
 @import 'util.scss';
 
 body {
-  background-color: var(--color-primary-100);
-  color: var(--color-primary-775);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 h1,
