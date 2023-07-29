@@ -1,21 +1,21 @@
 <span class="banner-logo" role="img" aria-label="Logo">
-  <a href="/">Cassidy Smith</a>
+  <a class="bento-container" href="/">Cassidy Smith</a>
 </span>
 
 <style lang="scss"> 
   @import '../styles/mixins.scss';
 
   .banner-logo {
-    display: inline-block;
+    display: block;
     font-family: var(--font-heading);
     font-weight: 750;
-    font-size: var(--font-size-2);
+    font-size: clamp(var(--font-size-5), 3% ,var(--font-size-7));
     line-height: var(--line-height-compressed);
     text-transform: uppercase;
     letter-spacing: 0.01ch;
 
     a {
-      padding: var(--space-2) clamp(var(--space-2), 3vw, var(--space-3));
+      
       display: block;
       text-decoration: none;
       transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;

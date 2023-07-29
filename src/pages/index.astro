@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout>
-  <main>
+  <main class="bento-container">
     <h1>Hello!</h1><p>
       Welcome to my home page =) I’m Cassidy as you probably guessed. This site
       is under construction 🚧 I’m a front-end engineer and UI designer
@@ -24,5 +24,9 @@ import Layout from '../layouts/Layout.astro'
 
   a {
     @include text-link;
+  }
+
+  main {
+    background-color: var(--color-primary-175);
   }
 </style>
