@@ -1,0 +1,69 @@
+@import 'colors.css';
+
+:root {
+  --font-body: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-heading: 'Syne Variable', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-text: var(--color-primary-775);
+  --color-heading: var(--color-primary-600);
+  --color-background: var(--color-primary-100);
+  --color-decorativeBorder: var(--color-primary-600);
+
+  --font-size-00: 0.5rem;
+  --font-size-0: 0.75rem;
+  --font-size-1: 1rem;
+  --font-size-2: 1.0625rem;
+  --font-size-3: 1.1458rem;
+  --font-size-4: 1.2292rem;
+  --font-size-5: 1.4167rem;
+  --font-size-6: 1.7292rem;
+  --font-size-7: 2.4375rem;
+
+  --line-height-1: 1.5;
+  --line-height-2: 1.412;
+  --line-height-3: 1.309;
+  --line-height-4: 1.22;
+  --line-height-5: 1.059;
+  --line-height-6: 1.301;
+  --line-height-7: 1.231;
+  --line-height-compressed: 1.2;
+  --line-height-body: var(--line-height-1);
+
+  --space-000: -0.5rem;
+  --space-00: -0.25rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.25rem;
+  --space-5: 1.5rem;
+  --space-6: 1.75rem;
+  --space-7: 2rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 7.5rem;
+  --space-12: 10rem;
+  --space-13: 15rem;
+  --space-14: 20rem;
+  --space-15: 30rem;
+
+  --space-fluid-1: clamp(0.5rem, 1vw, 1rem);
+  --space-fluid-2: clamp(1rem, 2vw, 1.5rem);
+  --space-fluid-3: clamp(1.5rem, 3vw, 2rem);
+  --space-fluid-4: clamp(2rem, 4vw, 3rem);
+  --space-fluid-5: clamp(4rem, 5vw, 5rem);
+  --space-fluid-6: clamp(5rem, 7vw, 7.5rem);
+  --space-fluid-7: clamp(7.5rem, 10vw, 10rem);
+  --space-fluid-8: clamp(10rem, 20vw, 15rem);
+  --space-fluid-9: clamp(15rem, 30vw, 20rem);
+  --space-fluid-10: clamp(20rem, 40vw, 30rem);
+
+  --space-content-1: 20ch;
+  --space-content-2: 45ch;
+  --space-content-3: 60ch;
+  --space-content-4: 75ch;
+}
