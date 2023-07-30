@@ -54,6 +54,7 @@
 
   --fluid-bento-gap: clamp(var(--space-1), 3cqw, var(--space-3));
   --fluid-bento-padding: clamp(var(--space-3), 3cqw, var(--space-5));
+  --fluid-bento-radius: clamp(var(--space-1), 2cqw, var(--space-4));
 
   --space-content-1: 20ch;
   --space-content-2: 45ch;
@@ -61,6 +62,5 @@
   --space-content-4: 75ch;
 
   --radius-0: 0;
-  --radius-1: 1rem;
   --radius-full: 50rem;
 }
