@@ -1,5 +1,5 @@
 <span class="banner-logo" role="img" aria-label="Logo">
-  <a class="bento-container" href="/">Cassidy Smith</a>
+  <a href="/">Cassidy Smith</a>
 </span>
 
 <style lang="scss"> 
@@ -8,14 +8,18 @@
   .banner-logo {
     display: block;
     font-family: var(--font-heading);
-    font-weight: 750;
-    font-size: clamp(var(--font-size-5), 3% ,var(--font-size-7));
+    font-weight: 720;
+    font-size: var(--font-size-1);
     line-height: var(--line-height-compressed);
     text-transform: uppercase;
-    letter-spacing: 0.01ch;
+    letter-spacing: 0.05ch;
 
     a {
-      
+      border-radius: var(--radius-1);
+      padding-left: var(--fluid-bento-padding);
+      padding-right: var(--fluid-bento-padding);
+      padding-top: calc(var(--fluid-bento-padding) / 2);
+      padding-bottom: calc(var(--fluid-bento-padding) / 2);
       display: block;
       text-decoration: none;
       transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;

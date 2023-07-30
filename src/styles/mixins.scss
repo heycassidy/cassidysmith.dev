@@ -1,4 +1,4 @@
-@use "sass-svg-uri";
+@use 'sass-svg-uri';
 
 @mixin focus-outline {
   outline: 2px dashed var(--color-accent-one-525);
@@ -8,34 +8,65 @@
   }
 }
 
-
 @mixin text-link {
-  text-underline-position: under;
-  transition: color 0.2s, text-decoration-color 0.2s;
+  transition:
+    color 0.2s,
+    text-decoration-color 0.2s;
 
-  text-decoration-color: var(--color-info-275);
+  text-decoration-color: var(--color-info-350);
 
   &:link {
     color: var(--color-info-600);
   }
   &:visited {
-    color: var(--color-info-525);
+    color: inherit;
+    // text-decoration-color: currentColor;
+    // color: var(--color-info-525);
   }
   &:hover {
-    color: var(--color-info-700);
+    color: var(--color-info-625);
     text-decoration-color: var(--color-info-625);
   }
-  &:active, &:hover:active {
+  &:active,
+  &:hover:active {
     color: var(--color-accent-one-600);
-    text-decoration-color: var(--color-accent-one-275);
+    text-decoration-color: var(--color-accent-one-525);
   }
   &:focus {
-    @include focus-outline()
+    @include focus-outline();
   }
 }
 
 @mixin dot-pattern-background($color, $size) {
   background-color: $color;
-  mask: sass-svg-uri.encode("<svg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><g fill='#000' fill-rule='evenodd'><circle cx='2' cy='2' r='2'/><circle cx='10' cy='10' r='2'/></g></svg>");
+  mask: sass-svg-uri.encode(
+    "<svg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><g fill='#000' fill-rule='evenodd'><circle cx='2' cy='2' r='2'/><circle cx='10' cy='10' r='2'/></g></svg>"
+  );
   mask-size: $size;
+}
+
+@mixin breakpoint-x-small {
+  @media (min-width: 20rem) {
+    @content;
+  }
+}
+@mixin breakpoint-small {
+  @media (min-width: 37.5rem) {
+    @content;
+  }
+}
+@mixin breakpoint-medium {
+  @media (min-width: 56.25rem) {
+    @content;
+  }
+}
+@mixin breakpoint-large {
+  @media (min-width: 75rem) {
+    @content;
+  }
+}
+@mixin breakpoint-x-large {
+  @media (min-width: 112.5rem) {
+    @content;
+  }
 }

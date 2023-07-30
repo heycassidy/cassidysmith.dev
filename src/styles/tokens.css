@@ -9,8 +9,8 @@
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --color-text: var(--color-primary-775);
-  --color-heading: var(--color-primary-600);
-  --color-background: var(--color-primary-100);
+  --color-heading: var(--color-primary-700);
+  --color-background: var(--color-primary-0);
   --color-decorativeBorder: var(--color-primary-600);
 
   --font-size-00: 0.5rem;
@@ -52,16 +52,8 @@
   --space-14: 20rem;
   --space-15: 30rem;
 
-  --space-fluid-1: clamp(0.5rem, 1vw, 1rem);
-  --space-fluid-2: clamp(1rem, 2vw, 1.5rem);
-  --space-fluid-3: clamp(1.5rem, 3vw, 2rem);
-  --space-fluid-4: clamp(2rem, 4vw, 3rem);
-  --space-fluid-5: clamp(4rem, 5vw, 5rem);
-  --space-fluid-6: clamp(5rem, 7vw, 7.5rem);
-  --space-fluid-7: clamp(7.5rem, 10vw, 10rem);
-  --space-fluid-8: clamp(10rem, 20vw, 15rem);
-  --space-fluid-9: clamp(15rem, 30vw, 20rem);
-  --space-fluid-10: clamp(20rem, 40vw, 30rem);
+  --fluid-bento-gap: clamp(var(--space-1), 3cqw, var(--space-3));
+  --fluid-bento-padding: clamp(var(--space-3), 3cqw, var(--space-5));
 
   --space-content-1: 20ch;
   --space-content-2: 45ch;
@@ -69,6 +61,6 @@
   --space-content-4: 75ch;
 
   --radius-0: 0;
-  --radius-1: 0.5rem;
+  --radius-1: 1rem;
   --radius-full: 50rem;
 }

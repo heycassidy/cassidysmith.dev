@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import SocialLinks from '../components/SocialLinks.astro'
 ---
 
 <Layout>
-  <main class="bento-container">
-    <h1>Hello!</h1><p>
-      Welcome to my home page =) I’m Cassidy as you probably guessed. This site
-      is under construction 🚧 I’m a front-end engineer and UI designer
-      full-time at <a
+  <main>
+    <h1>Hi, I’m Cassidy!</h1>
+    <p>Welcome to ~ my space ~ on the internet.</p>
+    <p>I’m a front-end engineer and UI designer at <a
         href="https://nobledesktop.com"
         target="_blank"
         rel="noopener noreferrer">Noble Desktop</a
@@ -16,6 +16,8 @@ import Layout from '../layouts/Layout.astro'
       but I love to explore new frameworks, languages, and tools.
     </p>
   </main>
+  <SocialLinks />
+
 </Layout>
 
 
@@ -27,6 +29,9 @@ import Layout from '../layouts/Layout.astro'
   }
 
   main {
+    grid-area: intro;
+    border-radius: var(--radius-1);
+    padding: var(--fluid-bento-padding);
     background-color: var(--color-primary-175);
   }
 </style>
