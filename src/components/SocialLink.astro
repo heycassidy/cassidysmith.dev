@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon'
 const {href, external = false, icon = false} = Astro.props;
 ---
 
-<a class="contact-link" href={href} target={external && '_blank'} rel={external && 'noopener noreferrer'} {...Astro.props}>
+<a class="social-link" href={href} target={external && '_blank'} rel={external && 'noopener noreferrer'} {...Astro.props}>
   {icon && <Icon name={icon}/>}
   <span class="screen-reader-only"><slot /></span>
 </a>
@@ -12,7 +12,7 @@ const {href, external = false, icon = false} = Astro.props;
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  .contact-link {
+  .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,10 +24,11 @@ const {href, external = false, icon = false} = Astro.props;
   
     &:link, &:visited {
       color: var(--color-secondary-600);
+      background-color: var(--color-secondary-175);
     }
     &:hover {
       color: var(--color-secondary-700);
-      background-color: var(--color-secondary-175);
+      background-color: var(--color-secondary-275);
     }
     &:active, &:hover:active {
       color: white;
