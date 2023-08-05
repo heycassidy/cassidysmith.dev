@@ -35,7 +35,6 @@ import SocialLink from './SocialLink.astro'
   }
   
   .bento-container {
-    max-width: fit-content;
     flex: 1 0 0;
     color: var(--color-secondary-600);
     border-radius: var(--fluid-bento-radius);
@@ -59,7 +58,11 @@ import SocialLink from './SocialLink.astro'
 
   .dot-filler {
     border-radius: var(--fluid-bento-radius);
-    flex: 1 1 5rem;
+    flex: 0 1 0;
     @include dot-pattern-background(var(--color-primary-425), 6px);
+    
+    @include breakpoint-small {
+      flex: 1 1 5rem;
+    }
   }
 </style>
