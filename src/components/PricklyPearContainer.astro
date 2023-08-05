@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import PricklyPearController from '../components/PricklyPearController.svelte'
+import placeholderCactus from '../assets/prickly-pear.png'
+---
+<div class="prickly-pear-container">
+  <PricklyPearController client:idle>
+    <Image src={placeholderCactus} alt="" class="placeholder-cactus" quality={90} slot="placeholder-cactus" />
+  </PricklyPearController>
+
+</div>
+
+<style lang="scss">
+  .prickly-pear-container {
+    grid-area: cactus;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: var(--fluid-bento-radius);
+    background-color: var(--color-primary-275);
+    aspect-ratio: 1/1;
+  }
+
+  .placeholder-cactus {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+  }
+</style>

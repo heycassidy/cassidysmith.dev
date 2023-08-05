@@ -17,6 +17,7 @@
     "astro-icon": "^0.8.1",
     "chroma-js": "^2.4.2",
     "prickly-pear": "github:heycassidy/prickly-pear",
+    "sharp": "^0.32.4",
     "svelte": "^4.1.2"
   },
   "devDependencies": {
