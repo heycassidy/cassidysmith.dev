@@ -10,7 +10,7 @@
 
 </script>
 
-<canvas class="prickly-pear" bind:this={canvasElement} />
+<canvas class="prickly-pear" bind:this={canvasElement} role="img" aria-label="Randomly generated illustration of a prickly pear cactus" />
 
 <div class="image-placeholder-wrapper" bind:this={imagePlaceholderWrapper}>
   <slot name="placeholder-cactus"/>
