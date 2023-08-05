@@ -16,7 +16,6 @@ import SocialLink from './SocialLink.astro'
   </div>
 
 
-  <span class="dot-filler"></span>
 </section>
 
 
@@ -25,9 +24,6 @@ import SocialLink from './SocialLink.astro'
   
   .social-links {
     grid-area: social;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--fluid-bento-gap);
     
     @include breakpoint-medium {
       flex-direction: column;
@@ -35,8 +31,6 @@ import SocialLink from './SocialLink.astro'
   }
   
   .bento-container {
-    max-width: fit-content;
-    flex: 1 0 0;
     color: var(--color-secondary-600);
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
@@ -55,11 +49,5 @@ import SocialLink from './SocialLink.astro'
 
   h3 {
     color: var(--color-secondary-600);
-  }
-
-  .dot-filler {
-    border-radius: var(--fluid-bento-radius);
-    flex: 1 1 5rem;
-    @include dot-pattern-background(var(--color-primary-425), 6px);
   }
 </style>

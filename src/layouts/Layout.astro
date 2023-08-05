@@ -41,7 +41,7 @@ const {
   @import '../styles/mixins.scss';
   
   .bento-box {
-    max-width: var(--space-content-4);
+    max-width: 82ch;
     margin: 0 auto;
     padding: var(--fluid-bento-gap);
     display: grid;
@@ -52,12 +52,26 @@ const {
     grid-template-areas: 
       "banner"
       "intro"
-      "social";
+      "social"
+      "cactus";
 
-    @include breakpoint-medium {
+    @include breakpoint-small {
+      grid-template-columns: 13fr 8fr;
+      grid-template-rows: auto auto auto 1fr;
       grid-template-areas: 
         "banner banner"
-        "intro social";
+        "intro social"
+        "intro cactus"
+        ".     cactus";
+    }
+    @include breakpoint-medium {
+      grid-template-columns: 13fr 4fr 4fr 2fr;
+      grid-template-rows: auto auto auto 1fr;
+      grid-template-areas: 
+        "banner banner . ."
+        "intro social social  ."
+        "intro cactus cactus cactus"
+        ".     cactus cactus cactus";
     }
 
   }
