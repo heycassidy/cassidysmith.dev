@@ -1,4 +1,5 @@
 ---
+import PricklyPear from 'prickly-pear'
 import Layout from '../layouts/Layout.astro'
 import SocialLinks from '../components/SocialLinks.astro'
 ---
@@ -16,10 +17,14 @@ import SocialLinks from '../components/SocialLinks.astro'
       but I love to explore new frameworks, languages, and tools.
     </p>
   </main>
+  
   <SocialLinks />
 
-</Layout>
+  <div class="prickly-pear-container">
+    <PricklyPear client:visible class="prickly-pear" color="#31977b"/>
+  </div>
 
+</Layout>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
@@ -33,5 +38,18 @@ import SocialLinks from '../components/SocialLinks.astro'
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
     background-color: var(--color-primary-175);
+  }
+
+  .prickly-pear-container {
+    grid-area: cactus;
+    overflow: hidden;
+    border-radius: var(--fluid-bento-radius);
+    background-color: var(--color-primary-275);
+    aspect-ratio: 1/1;
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
   }
 </style>
