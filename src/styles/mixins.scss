@@ -1,7 +1,7 @@
 @use 'sass-svg-uri';
 
-@mixin focus-outline {
-  outline: 2px dashed var(--color-accent-one-525);
+@mixin focus-outline($color: var(--color-accent-one-525)) {
+  outline: 2px dashed $color;
   outline-offset: 1px;
   &:hover {
     outline: none;

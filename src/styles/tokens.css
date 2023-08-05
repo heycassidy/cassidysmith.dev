@@ -1,12 +1,15 @@
 @import 'colors.css';
 
 :root {
-  --font-body: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI',
+  --font-atkinson: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-heading: 'Syne Variable', system-ui, -apple-system, 'Segoe UI', Roboto,
+  --font-syne: 'Syne Variable', system-ui, -apple-system, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-body: var(--font-atkinson);
+  --font-heading: var(--font-syne);
 
   --color-text: var(--color-primary-775);
   --color-heading: var(--color-primary-700);
