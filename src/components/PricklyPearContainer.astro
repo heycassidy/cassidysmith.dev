@@ -18,8 +18,18 @@ import placeholderCactus from '../assets/prickly-pear.png'
     align-items: flex-end;
     overflow: hidden;
     border-radius: var(--fluid-bento-radius);
-    background-color: var(--color-primary-275);
+    background-color: var(--color-accent-three-100);
     aspect-ratio: 1/1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 25%;
+      background-color: var(--color-accent-three-425);
+    }
   }
 
   .placeholder-cactus {
