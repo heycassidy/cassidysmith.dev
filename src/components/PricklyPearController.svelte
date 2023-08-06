@@ -1,9 +1,10 @@
 <script>
-  import { generateCactus } from 'prickly-pear'
+  import { generateCactus, clearCactus } from 'prickly-pear'
   let canvasElement
   let imagePlaceholderWrapper
 
   async function click() {
+    clearCactus()
     generateCactus(canvasElement, { color: '#31977b' })
     imagePlaceholderWrapper.setAttribute('hidden', '')
   }
