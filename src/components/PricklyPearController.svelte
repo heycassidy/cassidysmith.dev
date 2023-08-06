@@ -1,12 +1,19 @@
 <script>
+  import AnimatedDiceRoll from './AnimatedDiceRoll.svelte';
   import { generateCactus, clearCactus } from 'prickly-pear'
   let canvasElement
   let imagePlaceholderWrapper
+
+  let animateDieRoll = false;
 
   async function click() {
     clearCactus()
     generateCactus(canvasElement, { color: '#31977b' })
     imagePlaceholderWrapper.setAttribute('hidden', '')
+  }
+
+  function setAnimateDieRoll(value) {
+    animateDieRoll = value
   }
 
 </script>
@@ -18,9 +25,17 @@
 </div>
 
 <div class="controls-row">
-  <button class="regenerate-button" on:click={click}>Randomize Cactus</button>
+  <button
+    class="regenerate-button"
+    on:click={click}
+    on:mouseover={() => setAnimateDieRoll(true)}
+    on:mouseout={() => setAnimateDieRoll(false)}
+    on:focus={() => setAnimateDieRoll(true)}
+    on:blur={() => setAnimateDieRoll(false)}
+  >
+    <AnimatedDiceRoll animated={animateDieRoll} /> Randomize Cactus
+  </button>
 </div>
-
 
 <style lang="scss">
   @import '../styles/mixins.scss';
@@ -48,6 +63,9 @@
   }
 
   .regenerate-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     line-height: 1;
     cursor: pointer;
     border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 4);
