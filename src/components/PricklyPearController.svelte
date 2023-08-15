@@ -4,8 +4,6 @@
   let canvasElement
   let imagePlaceholderWrapper
 
-  let animateDieRoll = false;
-
   async function click() {
     clearCactus()
     generateCactus(canvasElement, { color: '#31977b' })
