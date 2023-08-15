@@ -1,5 +1,5 @@
 <script>
-  import AnimatedDiceRoll from './AnimatedDiceRoll.svelte';
+  import DiceIcon from './DiceIcon.svelte';
   import { generateCactus, clearCactus } from 'prickly-pear'
   let canvasElement
   let imagePlaceholderWrapper
@@ -10,10 +10,6 @@
     clearCactus()
     generateCactus(canvasElement, { color: '#31977b' })
     imagePlaceholderWrapper.setAttribute('hidden', '')
-  }
-
-  function setAnimateDieRoll(value) {
-    animateDieRoll = value
   }
 
 </script>
@@ -28,12 +24,8 @@
   <button
     class="regenerate-button"
     on:click={click}
-    on:mouseover={() => setAnimateDieRoll(true)}
-    on:mouseout={() => setAnimateDieRoll(false)}
-    on:focus={() => setAnimateDieRoll(true)}
-    on:blur={() => setAnimateDieRoll(false)}
   >
-    <AnimatedDiceRoll animated={animateDieRoll} /> Randomize Cactus
+    <DiceIcon /> Randomize Cactus
   </button>
 </div>
 
@@ -89,6 +81,21 @@
     }
     &:focus {
       @include focus-outline(black);
+    }
+
+    @media (hover) {
+      &:global(:hover .dice) {
+        animation: dice-spin infinite 0.4s linear;
+      }
+    }
+  }
+
+  @keyframes dice-spin {
+    0% {
+      transform: rotate3d(1, 1, 1, 0deg);
+    }
+    100%  {
+      transform: rotate3d(5, 10, 0, 360deg);
     }
   }
 </style>
