@@ -1,18 +1,46 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon'
 import PricklyPearController from '../components/PricklyPearController.svelte'
 import placeholderCactus from '../assets/prickly-pear.png'
 ---
 <div class="prickly-pear-container">
-  <PricklyPearController client:idle>
-    <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} slot="placeholder-cactus" loading="eager" />
-  </PricklyPearController>
 
+  <div class="aspect-ratio-box">
+    <PricklyPearController client:idle>
+      <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} slot="placeholder-cactus" loading="eager" />
+    </PricklyPearController>
+  </div>
+
+  <a href="https://en.wikipedia.org/wiki/L-system" target="_blank" rel="noopener noreferrer">Learn about L-systems <Icon name="clarity:pop-out-line" /></a>
+  
 </div>
 
 <style lang="scss">
+  @import '../styles/mixins.scss';
+  
   .prickly-pear-container {
     grid-area: cactus;
+    display: grid;
+    align-content: start;
+    gap: var(--space-1);
+
+    a {
+      justify-self: center;
+      @include text-link;
+      text-align: center;
+      font-size: var(--font-size-0);
+      display: inline-flex;
+      gap: 0.5ch;
+
+      :global(svg) {
+        width: 0.9em;
+        height: auto;
+      }
+    }
+  }
+  
+  .aspect-ratio-box {
     position: relative;
     display: flex;
     align-items: flex-end;
