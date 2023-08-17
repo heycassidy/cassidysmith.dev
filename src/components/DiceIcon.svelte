@@ -61,6 +61,4 @@
   .left   { transform: rotateY(-90deg) translateZ(0.5em); }
   .bottom { transform: rotateX(-90deg) translateZ(0.5em); }
   .back   { transform: rotateY(-180deg) translateZ(0.5em); }
-
-
 </style>

@@ -5,7 +5,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
 ---
 <div class="prickly-pear-container">
   <PricklyPearController client:idle>
-    <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} slot="placeholder-cactus" />
+    <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} slot="placeholder-cactus" loading="eager" />
   </PricklyPearController>
 
 </div>
@@ -18,7 +18,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
     align-items: flex-end;
     overflow: hidden;
     border-radius: var(--fluid-bento-radius);
-    background-color: var(--color-accent-three-100);
+    background-color: var(--color-neutral-175);
     aspect-ratio: 1/1;
 
     &::before {
@@ -28,7 +28,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
       left: 0;
       right: 0;
       height: 25%;
-      background-color: var(--color-accent-three-425);
+      background-color: var(--color-accent-three-525);
     }
   }
 

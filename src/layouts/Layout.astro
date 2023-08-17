@@ -52,6 +52,7 @@ const {
     grid-template-areas: 
       "banner"
       "intro"
+      "email"
       "cactus"
       "social";
 
@@ -62,16 +63,16 @@ const {
         "banner banner"
         "intro social"
         "intro cactus"
-        ".     cactus";
+        "email cactus";
     }
     @include breakpoint-medium {
-      grid-template-columns: 13fr 4fr 4fr 2fr;
+      grid-template-columns: 15fr 4fr 5fr 1fr;
       grid-template-rows: auto auto auto 1fr;
       grid-template-areas: 
         "banner banner . ."
         "intro social social  ."
         "intro cactus cactus cactus"
-        ".     cactus cactus cactus";
+        "email cactus cactus cactus";
     }
 
   }

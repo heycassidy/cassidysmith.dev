@@ -1,0 +1,79 @@
+---
+  import CopyToClipboard from './CopyToClipboard.svelte';
+
+  const {
+    emailAddress = 'cassidy@cassidysmith.dev',
+  } = Astro.props
+---
+
+
+<section class="copy-email">
+  <h2>Send an E-mail</h2>
+  
+  <div class="layout">
+    <span>{emailAddress}</span>
+    <CopyToClipboard
+      client:idle
+      class="cs-button"
+      textToCopy={emailAddress}
+    />
+  </div>
+</section>
+
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  .copy-email {
+    grid-area: email;
+    align-self: start;
+    border-radius: var(--fluid-bento-radius);
+    padding: var(--fluid-bento-padding);
+    border: 2px solid;
+    border-color: var(--color-primary-350);
+
+    .layout {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: calc(var(--fluid-bento-gap) / 2);
+      justify-content: space-between;
+    }
+
+
+    span {
+      border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
+      padding: var(--space-2) var(--space-3);
+      background-color: var(--color-primary-100);
+      box-shadow: 0 0 0 1px var(--color-primary-175);
+      color: var(--color-primary-700);
+      line-height: 1;
+      flex-grow: 1;
+    }
+
+    :global(button) {
+      border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
+
+      color: var(--color-primary-600);
+      background-color: var(--color-primary-175);
+      transition: background-color 0.2s, color 0.2s;
+      &:hover {
+        color: var(--color-primary-700);
+        background-color: var(--color-primary-275);
+      }
+      &:active, &:hover:active {
+        color: white;
+        background-color: var(--color-accent-one-525);
+      }
+      &:focus-visible {
+        @include focus-outline;
+      }
+
+      :global(svg) {
+        width: 0.9em;
+        height: auto;
+      }
+    }
+  }
+  
+</style>
