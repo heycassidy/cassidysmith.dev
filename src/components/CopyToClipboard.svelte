@@ -1,6 +1,7 @@
 <script>
   import { onDestroy } from 'svelte'
-  import Icon from '@iconify/svelte'
+  import { ClipboardDocument, Check } from '@steeze-ui/heroicons'
+  import { Icon } from '@steeze-ui/svelte-icon'
 
   export let textToCopy = ''
   export let labelText = 'Copy'
@@ -29,10 +30,10 @@
 
 <button class={`${className}`} on:click={copy}>
   {#if !copied}
-    <Icon icon="clarity:copy-to-clipboard-line" />
+    <Icon src={ClipboardDocument} theme="mini" />
     {labelText}
   {:else}
-    <Icon icon="clarity:check-line" />
+    <Icon src={Check} theme="mini" />
     {successText}
   {/if}
 </button>
