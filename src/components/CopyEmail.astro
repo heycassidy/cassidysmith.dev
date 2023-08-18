@@ -1,4 +1,5 @@
 ---
+  import { Icon } from 'astro-icon/components'
   import CopyToClipboard from './CopyToClipboard.svelte';
 
   const {
@@ -8,15 +9,20 @@
 
 
 <section class="copy-email">
-  <h2>Send an E-mail</h2>
+  <h2>Send an Email</h2>
   
   <div class="layout">
-    <span>{emailAddress}</span>
+    <div class="email-address">
+      <a href=`mailto:${emailAddress}`><Icon name="ion:mail-open-sharp" /><span>{emailAddress}</span></a>
+    </div>
     <CopyToClipboard
       client:idle
       class="cs-button"
       textToCopy={emailAddress}
-    />
+    >
+      <Icon slot="initial" name="ion:clipboard-sharp" /><span slot="initial">Copy</span>
+      <Icon slot="success" name="ion:checkmark-sharp" /><span slot="success">Copied!</span>
+    </CopyToClipboard>
   </div>
 </section>
 
@@ -34,25 +40,32 @@
 
     .layout {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
       gap: calc(var(--fluid-bento-gap) / 2);
       justify-content: space-between;
     }
 
-
-    span {
+    .email-address {
+      display: flex;
       border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
-      padding: var(--space-2) var(--space-3);
+      padding: var(--space-2) var(--fluid-bento-padding);
       background-color: var(--color-primary-100);
       box-shadow: 0 0 0 1px var(--color-primary-175);
       color: var(--color-primary-700);
-      line-height: 1;
       flex-grow: 1;
+      line-height: 1;
+
+      a[href^=mailto] {
+        @include text-link;
+        display: inline-flex;
+        gap: 0.5ch;
+      }
     }
 
     :global(button) {
       flex-grow: 1;
+      min-width: 7.5rem;
+      flex-basis: 10%;
       justify-content: center;
       border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
 
@@ -74,6 +87,7 @@
       :global(svg) {
         width: 0.9em;
         height: auto;
+        flex-shrink: 0;
       }
     }
   }
