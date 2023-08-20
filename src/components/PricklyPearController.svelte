@@ -23,7 +23,7 @@
 
 <div class="controls-row">
   <button class="cs-button regenerate-button" on:click={click}>
-    <DiceIcon /> Randomize Cactus
+    <DiceIcon /> Grow random cactus
   </button>
 </div>
 
