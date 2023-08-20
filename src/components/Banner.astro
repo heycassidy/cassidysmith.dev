@@ -7,7 +7,6 @@ import BannerLogo from "./BannerLogo.astro";
   <nav>
     <BannerLogo class="test"/>
   </nav>
-  <span class="dot-filler"></span>
 </header>
 
 
@@ -17,17 +16,5 @@ import BannerLogo from "./BannerLogo.astro";
   header[role=banner] {
     grid-area: banner;
     display: flex;
-    flex-wrap: wrap;
-    column-gap: var(--fluid-bento-gap);
-  }
-
-  nav {
-    flex: 0 1 auto;
-  }
-
-  .dot-filler {
-    border-radius: var(--fluid-bento-radius);
-    flex: 1 1 8rem;
-    @include dot-pattern-background(var(--color-secondary-425), 6px);
   }
 </style>
