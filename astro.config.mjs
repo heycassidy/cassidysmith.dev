@@ -8,7 +8,7 @@ export default defineConfig({
     svelte(),
     icon({
       include: {
-        ion: ["mail-open-sharp", "open-sharp", "checkmark-sharp", "clipboard-sharp", "logo-github", "logo-linkedin", "logo-instagram"],
+        ion: ["open-sharp", "send-sharp", "checkmark-sharp", "clipboard-sharp", "logo-github", "logo-linkedin", "logo-instagram"],
       }
     })
   ],

@@ -9,11 +9,16 @@
 
 
 <section class="copy-email">
-  <h2>Send an Email</h2>
+  <h2 class="heading">
+    <Icon name="ion:send-sharp" />
+    Send an Email
+  </h2>
   
   <div class="layout">
     <div class="email-address">
-      <a href=`mailto:${emailAddress}`><Icon name="ion:mail-open-sharp" /><span>{emailAddress}</span></a>
+      <a href=`mailto:${emailAddress}`>
+        <span>{emailAddress}</span>
+      </a>
     </div>
     <CopyToClipboard
       client:idle
@@ -35,8 +40,14 @@
     align-self: start;
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
-    border: 2px solid;
-    border-color: var(--color-primary-350);
+    color: var(--color-secondary-0);
+    background-color: var(--color-secondary-600);
+
+    .heading {
+      color: inherit;
+      display: flex;
+      gap: 0.5ch;
+    }
 
     .layout {
       display: flex;
@@ -49,16 +60,35 @@
       display: flex;
       border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
       padding: var(--space-2) var(--fluid-bento-padding);
-      background-color: var(--color-primary-100);
-      box-shadow: 0 0 0 1px var(--color-primary-175);
-      color: var(--color-primary-700);
+      background-color: var(--color-secondary-775);
       flex-grow: 1;
       line-height: 1;
-
+      
       a[href^=mailto] {
-        @include text-link;
         display: inline-flex;
         gap: 0.5ch;
+
+        transition:
+          color 0.2s,
+          text-decoration-color 0.2s;
+
+        text-decoration-color: var(--color-secondary-275);
+          
+        &:link, &:visited {
+          color: var(--color-secondary-0);
+        }
+        &:hover {
+          color: var(--color-secondary-275);
+          text-decoration-color: var(--color-secondary-275);
+        }
+        &:active,
+        &:hover:active {
+          color: var(--color-accent-one-350);
+          text-decoration-color: var(--color-accent-one-350);
+        }
+        &:focus {
+          @include focus-outline();
+        }
       }
     }
 
@@ -69,19 +99,19 @@
       justify-content: center;
       border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
 
-      color: var(--color-primary-600);
-      background-color: var(--color-primary-175);
+      color: var(--color-secondary-775);
+      background-color: var(--color-neutral-275);
       transition: background-color 0.2s, color 0.2s;
       &:hover {
-        color: var(--color-primary-700);
-        background-color: var(--color-primary-275);
+        color: var(--color-secondary-600);
+        background-color: var(--color-neutral-100);
       }
       &:active, &:hover:active {
         color: white;
         background-color: var(--color-accent-one-525);
       }
       &:focus-visible {
-        @include focus-outline;
+        @include focus-outline();
       }
 
       :global(svg) {
