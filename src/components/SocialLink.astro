@@ -16,18 +16,17 @@ const {href, external = false, icon = false} = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(var(--space-1), 2cqw, var(--space-3));
+    padding: clamp(var(--space-1), 2cqw, var(--space-2));
     border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
-  
     transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;
-  
+
     &:link, &:visited {
-      color: var(--color-secondary-600);
-      background-color: var(--color-secondary-175);
-    }
-    &:hover {
       color: var(--color-secondary-700);
       background-color: var(--color-secondary-275);
+    }
+    &:hover {
+      color: var(--color-secondary-600);
+      background-color: var(--color-secondary-100);
     }
     &:active, &:hover:active {
       color: white;
@@ -38,7 +37,7 @@ const {href, external = false, icon = false} = Astro.props;
     }
 
     svg {
-      width: var(--space-6);
+      width: var(--space-5);
       height: auto;
     }
   }

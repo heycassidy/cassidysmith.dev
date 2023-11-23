@@ -55,7 +55,11 @@ ul,
 ol,
 p,
 blockquote {
-  margin-top: var(--fluid-bento-gap);
+  margin-bottom: var(--fluid-bento-gap);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 h1,
@@ -80,4 +84,3 @@ blockquote {
     margin-bottom: 0;
   }
 }
-

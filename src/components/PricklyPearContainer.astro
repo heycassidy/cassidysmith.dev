@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components'
 import PricklyPearController from '../components/PricklyPearController.svelte'
 import placeholderCactus from '../assets/prickly-pear.png'
 ---
@@ -8,12 +7,9 @@ import placeholderCactus from '../assets/prickly-pear.png'
 
   <div class="aspect-ratio-box">
     <PricklyPearController client:idle>
-      <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} slot="placeholder-cactus" loading="eager" />
+      <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} width="800" height="800" slot="placeholder-cactus" loading="eager" />
     </PricklyPearController>
   </div>
-
-  <a href="https://en.wikipedia.org/wiki/L-system" target="_blank" rel="noopener noreferrer">Learn about L-systems <Icon name="ion:open-sharp" /></a>
-  
 </div>
 
 <style lang="scss">
@@ -24,6 +20,10 @@ import placeholderCactus from '../assets/prickly-pear.png'
     display: grid;
     align-content: start;
     gap: var(--space-1);
+    
+    @include breakpoint-medium {
+      align-self: end;
+    }
 
     a {
       justify-self: center;
@@ -46,7 +46,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
     align-items: flex-end;
     overflow: hidden;
     border-radius: var(--fluid-bento-radius);
-    background-color: var(--color-neutral-175);
+    background-color: var(--color-neutral-275);
     aspect-ratio: 1/1;
 
     &::before {

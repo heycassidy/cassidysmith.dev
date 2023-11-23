@@ -20,14 +20,13 @@ import SocialLink from './SocialLink.astro'
   
   .social-links {
     grid-area: social;
-    color: var(--color-secondary-600);
+    color: var(--color-secondary-700);
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
-    border: 2px solid;
-    border-color: var(--color-secondary-350);
-
+    background-color: var(--color-secondary-175);
+    
     @include breakpoint-medium {
-      flex-direction: column;
+      justify-self: end;
     }
   }
 
@@ -39,6 +38,6 @@ import SocialLink from './SocialLink.astro'
   }
 
   h2 {
-    color: var(--color-secondary-600);
+    color: var(--color-secondary-700);
   }
 </style>
