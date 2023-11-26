@@ -24,9 +24,10 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <div class="bento-box">
+    <div class="site-container">
       <Banner />
       <slot />
+      <!-- Footer here -->
     </div>
   </body>
 
@@ -35,41 +36,19 @@ const {
 
 <style lang="scss">
   @import '../styles/mixins.scss';
-  
-  .bento-box {
-    max-width: 60rem;
+
+  .site-container {
+    --max-container-width: 60rem;
     margin: 0 auto;
-    padding: var(--fluid-bento-gap);
     display: grid;
+    padding: var(--fluid-bento-gap) 0;
     gap: var(--fluid-bento-gap);
+    min-height: 100%;
+    align-content: start;
+    grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--max-container-width)) [centered-end] 1fr [full-width-end];
 
-    container: bento;
-
-    grid-template-areas: 
-      "banner"
-      "intro"
-      "email"
-      "social"
-      "cactus";
-
-    @include breakpoint-small {
-      grid-template-columns: 5fr 4fr;
-      grid-template-rows: auto auto auto 1fr;
-      grid-template-areas: 
-        "banner banner"
-        "intro social"
-        "intro cactus"
-        "email cactus";
+    :global(> *) {
+      grid-column: centered;
     }
-    @include breakpoint-medium {
-      grid-template-columns: 1fr 8fr 5fr;
-      grid-template-areas: 
-        "banner banner banner"
-        "intro intro cactus"
-        "intro intro cactus"
-        ". email cactus"
-        ". social cactus";
-    }
-
   }
 </style>
