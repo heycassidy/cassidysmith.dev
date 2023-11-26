@@ -5,8 +5,8 @@ import '@fontsource/atkinson-hyperlegible/700.css'
 import '@fontsource-variable/syne'
 import '../styles/global.css'
 
-
 import Banner from '../components/Banner.astro'
+import Footer from '../components/Footer.astro'
 
 const {
   title = 'Cassidy Smith - Front-End Engineer',
@@ -24,10 +24,10 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <div class="site-container">
+    <div class="global-layout">
       <Banner />
       <slot />
-      <!-- Footer here -->
+      <Footer />
     </div>
   </body>
 
@@ -37,18 +37,21 @@ const {
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  .site-container {
-    --max-container-width: 60rem;
-    margin: 0 auto;
-    display: grid;
-    padding: var(--fluid-bento-gap) 0;
-    gap: var(--fluid-bento-gap);
-    min-height: 100%;
-    align-content: start;
-    grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--max-container-width)) [centered-end] 1fr [full-width-end];
+  @layer layout {
+    .global-layout {
+      --max-container-width: 60rem;
+      margin: 0 auto;
+      min-height: 100%;
+      display: grid;
+      gap: var(--fluid-bento-gap);
+      align-items: start;
+      grid-template-rows: max-content;
+      grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--max-container-width)) [centered-end] 1fr [full-width-end];
 
-    :global(> *) {
-      grid-column: centered;
-    }
+      :global(> *) {
+        grid-column: centered;
+      }
+  }
+
   }
 </style>

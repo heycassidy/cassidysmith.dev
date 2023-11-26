@@ -1,31 +1,30 @@
 @import './mixins.scss';
 
-.cs-button {
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.5ch;
-  border: none;
-  cursor: pointer;
-  padding: var(--space-2) var(--space-3);
-  font-family: var(--font-syne);
-  font-weight: 700;
-  font-size: var(--font-size-1);
-}
+@layer base {
+  .cs-button {
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-syne);
+    font-weight: 700;
+    font-size: var(--font-size-1);
+  }
 
-
-
-
-.screen-reader-only {
-  border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
-  overflow: hidden !important;
-  margin: -1px !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
+  .screen-reader-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+  }
 }

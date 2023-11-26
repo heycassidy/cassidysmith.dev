@@ -1,0 +1,38 @@
+---
+
+---
+
+
+<footer>
+  <span>
+    This site is powered by <a href="https://astro.build/">Astro</a>. View the source code on <a href="https://github.com/heycassidy/cassidysmith.dev">GitHub</a>. The fonts I’ve chosen are <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a> and <a href="https://gitlab.com/bonjour-monde/fonderie/syne-typeface">Syne</a>.
+  </span>
+</footer>
+
+
+<style lang="scss"> 
+  @import '../styles/mixins.scss';
+
+  footer {
+    grid-column: full-width;
+
+    display: flex;
+    justify-content: center;
+    align-self: end;
+    column-gap: var(--space-2);
+    row-gap: var(--space-1);
+
+    padding: var(--space-2) var(--fluid-bento-gap);
+    border-top: 1px solid var(--color-neutral-275);
+    color: var(--color-neutral-700);
+    font-size: var(--font-size-0);
+    line-height: var(--line-height-compressed);
+  }
+
+
+  a {
+    @include text-link;
+  }
+
+
+</style>
