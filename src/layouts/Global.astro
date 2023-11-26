@@ -5,8 +5,8 @@ import '@fontsource/atkinson-hyperlegible/700.css'
 import '@fontsource-variable/syne'
 import '../styles/global.css'
 
-
 import Banner from '../components/Banner.astro'
+import Footer from '../components/Footer.astro'
 
 const {
   title = 'Cassidy Smith - Front-End Engineer',
@@ -24,9 +24,10 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <div class="bento-box">
+    <div class="global-layout">
       <Banner />
       <slot />
+      <Footer />
     </div>
   </body>
 
@@ -35,41 +36,22 @@ const {
 
 <style lang="scss">
   @import '../styles/mixins.scss';
-  
-  .bento-box {
-    max-width: 60rem;
-    margin: 0 auto;
-    padding: var(--fluid-bento-gap);
-    display: grid;
-    gap: var(--fluid-bento-gap);
 
-    container: bento;
+  @layer layout {
+    .global-layout {
+      --max-container-width: 60rem;
+      margin: 0 auto;
+      min-height: 100%;
+      display: grid;
+      gap: var(--fluid-bento-gap);
+      align-items: start;
+      grid-template-rows: max-content;
+      grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--max-container-width)) [centered-end] 1fr [full-width-end];
 
-    grid-template-areas: 
-      "banner"
-      "intro"
-      "email"
-      "social"
-      "cactus";
-
-    @include breakpoint-small {
-      grid-template-columns: 5fr 4fr;
-      grid-template-rows: auto auto auto 1fr;
-      grid-template-areas: 
-        "banner banner"
-        "intro social"
-        "intro cactus"
-        "email cactus";
-    }
-    @include breakpoint-medium {
-      grid-template-columns: 1fr 8fr 5fr;
-      grid-template-areas: 
-        "banner banner banner"
-        "intro intro cactus"
-        "intro intro cactus"
-        ". email cactus"
-        ". social cactus";
-    }
+      :global(> *) {
+        grid-column: centered;
+      }
+  }
 
   }
 </style>

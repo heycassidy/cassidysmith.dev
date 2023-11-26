@@ -1,18 +1,22 @@
+@layer reset, base, layout, component;
+
 @import 'reset.css';
 @import 'tokens.css';
 @import 'typography.scss';
 @import 'util.scss';
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-}
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-heading);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-heading);
+  }
 }
