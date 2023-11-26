@@ -1,6 +1,6 @@
-import { defineConfig, sharpImageService } from 'astro/config';
-import icon from "astro-icon";
-import svelte from "@astrojs/svelte";
+import { defineConfig, sharpImageService } from 'astro/config'
+import icon from 'astro-icon'
+import svelte from '@astrojs/svelte'
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,14 +8,16 @@ export default defineConfig({
     svelte(),
     icon({
       include: {
-        ion: ["open-sharp", "send-sharp", "checkmark-sharp", "clipboard-sharp", "logo-github", "logo-linkedin", "logo-instagram"],
-      }
-    })
+        ion: [
+          'open-sharp',
+          'send-sharp',
+          'checkmark-sharp',
+          'clipboard-sharp',
+          'logo-github',
+          'logo-linkedin',
+          'logo-instagram',
+        ],
+      },
+    }),
   ],
-  experimental: {
-    assets: true
-  },
-  image: {
-    service: sharpImageService(),
-  },
-});
+})

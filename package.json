@@ -10,10 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^3.1.0",
+    "@astrojs/svelte": "^4.0.4",
     "@fontsource-variable/syne": "^5.0.5",
     "@fontsource/atkinson-hyperlegible": "^5.0.5",
-    "astro": "^2.8.4",
+    "astro": "^3.6.0",
     "chroma-js": "^2.4.2",
     "prickly-pear": "github:heycassidy/prickly-pear",
     "sharp": "^0.32.6",
@@ -33,6 +33,7 @@
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.11.0",
     "sass": "^1.63.6",
-    "sass-svg-uri": "^2.0.0"
+    "sass-svg-uri": "^2.0.0",
+    "typescript": "^5.3.2"
   }
 }
