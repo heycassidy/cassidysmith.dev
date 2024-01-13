@@ -1,0 +1,85 @@
+---
+import PhotoImagePreview from './PhotoImagePreview.astro';
+
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  photos: CollectionEntry<'photos'>[];
+}
+
+const { photos } = Astro.props;
+
+---
+
+<ul class="photo-list">
+  {photos.map((photo) => (
+    <PhotoImagePreview photo={photo} />
+  ))}
+</ul>
+
+<script>
+  import { TRANSITION_AFTER_SWAP, TRANSITION_BEFORE_PREPARATION, isTransitionBeforePreparationEvent } from 'astro:transitions/client';
+  
+  const listScrollKey = `photo-gallery-scrollX`;
+  let direction = '';
+
+  if (history.scrollRestoration) {
+    history.scrollRestoration = "manual";
+  }
+
+  document.addEventListener(TRANSITION_BEFORE_PREPARATION, (event: Event)  => {
+    const list = document.querySelector('.photo-list');
+    
+    if (isTransitionBeforePreparationEvent(event)) {
+      direction = event.direction;
+    }
+
+    if (list && direction === 'forward') {
+      sessionStorage.setItem(listScrollKey, list.scrollLeft.toString());
+    }
+  });
+
+  document.addEventListener(TRANSITION_AFTER_SWAP, () => {
+    const list = document.querySelector('.photo-list');
+
+    if (list && direction === 'back') {
+      const storedPos = Number(sessionStorage.getItem(listScrollKey));
+      list.scrollTo({ left: storedPos });
+      sessionStorage.removeItem(listScrollKey);
+    }
+  });
+</script>
+
+
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+  
+  .photo-list {
+    grid-column-start: full-width-start;
+    grid-column-end: full-width-end;
+    list-style: none;
+    
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    padding: 0 var(--space-5);
+    scroll-padding: var(--space-5);
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    
+    @include breakpoint-small {
+      overflow: visible;
+      padding: 0;
+      display: grid;
+      grid-column-start: centered-start;
+      grid-column-end: centered-end;
+      
+      gap: var(--space-5);
+      grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    }
+  }
+
+</style>

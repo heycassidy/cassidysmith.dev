@@ -1,11 +1,11 @@
 ---
-import Global from '../layouts/Global.astro'
+import PrimaryLayout from '../layouts/PrimaryLayout.astro'
 import SocialLinks from '../components/SocialLinks.astro'
 import PricklyPearContainer from '../components/PricklyPearContainer.astro'
 import CopyEmail from '../components/CopyEmail.astro';
 ---
 
-<Global>
+<PrimaryLayout>
   <div class="page-layout">
     <main>
       <h1>Hi, I’m Cassidy</h1>
@@ -23,7 +23,7 @@ import CopyEmail from '../components/CopyEmail.astro';
   
     <PricklyPearContainer />
   </div>
-</Global>
+</PrimaryLayout>
 
 <style lang="scss">
   @import '../styles/mixins.scss';

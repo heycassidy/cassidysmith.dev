@@ -4,12 +4,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:host": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^2.0.3",
     "@astrojs/svelte": "^5.0.3",
     "@fontsource-variable/syne": "^5.0.5",
     "@fontsource/atkinson-hyperlegible": "^5.0.5",

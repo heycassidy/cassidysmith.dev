@@ -1,0 +1,37 @@
+---
+import AppLayout from './AppLayout.astro'
+import Footer from '../components/Footer.astro';
+import Banner from '../components/Banner.astro'
+
+---
+
+<AppLayout>
+  <div class="primary-layout">
+    <Banner />
+    <slot />
+    <Footer />
+  </div>
+</AppLayout>
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  @layer layout {
+    .primary-layout {
+      margin: 0 auto;
+      min-height: 100%;
+      display: grid;
+      gap: var(--fluid-bento-gap);
+      align-items: start;
+      grid-template-rows: max-content;
+      grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--layout-size-3)) [centered-end] 1fr [full-width-end];
+
+      :global(> *) {
+        grid-column: centered;
+      }
+      :global(footer) {
+        grid-column: full-width;
+      }
+    }
+  }
+</style>

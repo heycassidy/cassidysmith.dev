@@ -1,0 +1,17 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+const {
+  title = 'Cassidy Smith - Front-End Engineer',
+  description = 'Cassidy Smith is a front-end engineer and UI designer in Chicago, IL.',
+} = Astro.props
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" property="og:description" content={description} />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+  <ViewTransitions fallback="none" />
+</head>
