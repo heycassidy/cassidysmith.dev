@@ -9,4 +9,4 @@
   }
 ---
 
-Golden hour hit hard while hanging out in the alley driveway of my partner’s former apartment. Some very relaxed hangs were had together in this spot.
+Golden hour hit hard while hanging out in the alley driveway of my partner’s former apartment. Some very relaxed hangs were enjoyed together in this spot.
