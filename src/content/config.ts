@@ -2,7 +2,7 @@ import { z, defineCollection } from 'astro:content'
 import { photoSchema } from '../schemas'
 
 const photos = defineCollection({
-  type: 'data',
+  type: 'content',
   schema: photoSchema,
 })
 

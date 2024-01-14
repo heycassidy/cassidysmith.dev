@@ -7,17 +7,19 @@ export async function getStaticPaths() {
   const entries = await getCollection('photos', (entry) => !entry.data.draft);
 
   return entries.map(entry => ({
-    params: { slug: entry.id }, props: { photo: entry },
+    params: { slug: entry.slug }, props: { photo: entry },
   }));
 }
 
 const photos = await getCollection('photos', (entry) => !entry.data.draft);
-let sortedPhotosIds = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).map((photo) => photo.id);
+let sortedPhotoSlugs = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).map((photo) => photo.slug);
 
 const { photo } = Astro.props;
 
-const previousPhotoId = sortedPhotosIds[(sortedPhotosIds.indexOf(photo.id) - 1 + sortedPhotosIds.length) % sortedPhotosIds.length];
-const nextPhotoId = sortedPhotosIds[(sortedPhotosIds.indexOf(photo.id) + 1) % sortedPhotosIds.length];
+const { Content } = await photo.render();
+
+const previousPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) - 1 + sortedPhotoSlugs.length) % sortedPhotoSlugs.length];
+const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1) % sortedPhotoSlugs.length];
 
 const orientation = photo.data.image.src.width > photo.data.image.src.height ? 'landscape' : 'portrait';
 
@@ -40,15 +42,15 @@ const orientation = photo.data.image.src.width > photo.data.image.src.height ? '
       <div class="photo-view-controls-container">
         <a href="/photos" class="photo-controls-button cs-button"><Icon name="ion:grid-sharp" /> All photos</a>
         <div class="photo-view-controls-nav">
-          {previousPhotoId && <a href={`/photos/${previousPhotoId}`} class="photo-controls-button cs-button"><Icon name="ion:arrow-back-sharp" /> Previous</a>}
-          {nextPhotoId && <a href={`/photos/${nextPhotoId}`} class="photo-controls-button cs-button">Next <Icon name="ion:arrow-forward-sharp" /></a>}
+          {previousPhotoSlug && <a href={`/photos/${previousPhotoSlug}`} class="photo-controls-button cs-button"><Icon name="ion:arrow-back-sharp" /> Previous</a>}
+          {nextPhotoSlug && <a href={`/photos/${nextPhotoSlug}`} class="photo-controls-button cs-button">Next <Icon name="ion:arrow-forward-sharp" /></a>}
         </div>
       </div>
     </div>
 
     <div class="photo-description">
       <h1>{photo.data.title}</h1>
-      <p>{photo.data.caption}</p>
+      <Content class="photo-content" />
     </div>
   </div>
 </AppLayout>
@@ -117,7 +119,11 @@ const orientation = photo.data.image.src.width > photo.data.image.src.height ? '
     min-width: 0;
     width: 100cqw;
     @media (min-aspect-ratio: 1) {
-      width: clamp(0px, 60cqw, var(--space-content-2));
+      width: clamp(0px, 60cqw, var(--space-content-3));
+    }
+
+    :global(a) {
+      @include text-link;
     }
   }
 

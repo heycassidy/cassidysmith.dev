@@ -11,6 +11,6 @@ const { linkText, content, ...attributes } = Astro.props;
 
 ---
 
-<a href={`/${content.collection}/${content.id}`} {...attributes}>
+<a href={`/${content.collection}/${content.slug}`} {...attributes}>
   {linkText || <slot />}
 </a>
