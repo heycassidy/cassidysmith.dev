@@ -24,10 +24,10 @@ import SocialLink from './SocialLink.astro'
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
     background-color: var(--color-secondary-175);
-    
-    @include breakpoint-medium {
-      justify-self: end;
-    }
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: var(--fluid-bento-gap);
   }
 
   .links-layout {
@@ -36,8 +36,9 @@ import SocialLink from './SocialLink.astro'
     grid-template-columns: 1fr 1fr 1fr;
     container: social-links-layout;
   }
-
+  
   h2 {
     color: var(--color-secondary-700);
+    margin: 0;
   }
 </style>

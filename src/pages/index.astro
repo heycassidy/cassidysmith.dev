@@ -3,6 +3,7 @@ import PrimaryLayout from '../layouts/PrimaryLayout.astro'
 import SocialLinks from '../components/SocialLinks.astro'
 import PricklyPearContainer from '../components/PricklyPearContainer.astro'
 import CopyEmail from '../components/CopyEmail.astro';
+import PhotosCard from '../components/PhotosCard.astro';
 ---
 
 <PrimaryLayout>
@@ -17,10 +18,9 @@ import CopyEmail from '../components/CopyEmail.astro';
       </p>
     </main>
   
-    <CopyEmail />
-  
+    <PhotosCard />
     <SocialLinks />
-  
+    <CopyEmail />
     <PricklyPearContainer />
   </div>
 </PrimaryLayout>
@@ -37,11 +37,6 @@ import CopyEmail from '../components/CopyEmail.astro';
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
     background-color: var(--color-primary-275);
-
-    h1 {
-      font-size: var(--font-size-5);
-      margin-bottom: var(--space-2);
-    }
   }
 
   .page-layout {
@@ -51,25 +46,27 @@ import CopyEmail from '../components/CopyEmail.astro';
 
     grid-template-areas: 
       "intro"
-      "email"
+      "photos"
       "social"
+      "email"
       "cactus";
 
     @include breakpoint-small {
       grid-template-columns: 5fr 4fr;
       grid-template-rows: auto auto 1fr;
       grid-template-areas: 
-        "intro social"
+        "intro email"
         "intro cactus"
-        "email cactus";
+        "photos cactus"
+        "social cactus";
     }
     @include breakpoint-medium {
-      grid-template-columns: 1fr 8fr 5fr;
+      grid-template-columns: 6fr 6fr 10fr 11fr;
       grid-template-areas: 
-        "intro intro cactus"
-        "intro intro cactus"
-        ". email cactus"
-        ". social cactus";
+        "intro intro intro cactus"
+        "intro intro intro cactus"
+        "photos photos social cactus"
+        ". email email cactus";
     }
   }
 </style>

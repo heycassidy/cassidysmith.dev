@@ -20,6 +20,7 @@ export default defineConfig({
           'grid-sharp',
           'arrow-forward-sharp',
           'arrow-back-sharp',
+          'caret-forward-sharp',
           'logo-github',
           'logo-linkedin',
           'logo-instagram',
