@@ -1,0 +1,107 @@
+---
+import { getCollection } from 'astro:content';
+import PhotosCardItem from '../components/PhotosCardItem.astro'
+import { Icon } from 'astro-icon/components'
+
+const photos = await getCollection('photos', (entry) => !entry.data.draft);
+
+let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).slice(0, 6);
+
+---
+<section class="photos-card">
+  <a href="/photos" class="photo-card__link">
+    <h2>Check Out My Photos <Icon name="ion:caret-forward-sharp" /></h2>
+  </a>
+  
+  <div class="photos-preview-list">
+    {sortedPhotos.map((photo) => (
+      <PhotosCardItem photo={photo} />
+    ))}
+  </div>
+</section>
+
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+  
+  .photos-card {
+    grid-area: photos;
+    color: var(--color-neutral-775);
+    background-color: var(--color-neutral-275);
+    border-radius: var(--fluid-bento-radius);
+    padding: var(--fluid-bento-padding) 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--fluid-bento-gap);
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+      color: var(--color-neutral-950);
+      background-color: var(--color-neutral-350);
+    }
+    &:active, &:hover:active {
+      color: white;
+      background-color: var(--color-accent-one-525);
+    }
+    &:focus-within {
+      @include focus-outline;
+    }
+  }
+
+  .photo-card__link {
+    padding: 0 var(--fluid-bento-padding);
+    text-decoration: none;
+
+    &:link, &:visited {
+      color: currentColor;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    svg {
+      color: currentColor
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
+
+    h2 {
+      color: currentColor;
+      margin: 0;
+      display: flex;
+      gap: var(--space-2);
+      // align-items: center;
+      justify-content: space-between;
+
+      svg {
+        flex-shrink: 0;
+      }
+
+    }
+  }
+
+  .photos-preview-list {
+    list-style: none;
+    max-width: var(--layout-size-3);
+    margin: 0;
+    // padding: 0 var(--space-1);
+    // background-color: white;
+    padding: 0 var(--fluid-bento-padding);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2);
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>

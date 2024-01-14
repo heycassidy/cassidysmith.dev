@@ -1,0 +1,84 @@
+---
+import PhotoGalleryItem from './PhotoGalleryItem.astro';
+
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  photos: CollectionEntry<'photos'>[];
+}
+
+const { photos } = Astro.props;
+
+---
+
+<div class="photo-list-outer">
+  <ul class="photo-list">
+    {photos.map((photo) => (
+      <PhotoGalleryItem photo={photo} />
+    ))}
+  </ul>
+</div>
+
+<script>
+  import { TRANSITION_AFTER_SWAP, TRANSITION_BEFORE_PREPARATION, isTransitionBeforePreparationEvent } from 'astro:transitions/client';
+  
+  const listScrollKey = `photo-gallery-scrollX`;
+  let direction = '';
+
+  if (history.scrollRestoration) {
+    history.scrollRestoration = "manual";
+  }
+
+  document.addEventListener(TRANSITION_BEFORE_PREPARATION, (event: Event)  => {
+    const list = document.querySelector('.photo-list');
+    
+    if (isTransitionBeforePreparationEvent(event)) {
+      direction = event.direction;
+    }
+
+    if (list && direction === 'forward') {
+      sessionStorage.setItem(listScrollKey, list.scrollLeft.toString());
+    }
+  });
+
+  document.addEventListener(TRANSITION_AFTER_SWAP, () => {
+    const list = document.querySelector('.photo-list');
+
+    if (list && direction === 'back') {
+      const storedPos = Number(sessionStorage.getItem(listScrollKey));
+      list.scrollTo({ left: storedPos });
+      sessionStorage.removeItem(listScrollKey);
+    }
+  });
+</script>
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+  
+  .photo-list-outer {
+    grid-column-start: full-width-start;
+    grid-column-end: full-width-end;
+    background-color: white;
+  }
+
+  .photo-list {
+    list-style: none;
+    max-width: var(--layout-size-3);
+    margin: 0 auto;
+    padding: var(--fluid-bento-padding);
+    display: flex;
+    gap: var(--fluid-bento-gap);
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    @include breakpoint-small {
+      overflow: visible;
+      display: grid;
+      padding: var(--fluid-bento-padding) 0;
+      grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    }
+    
+  }
+
+</style>

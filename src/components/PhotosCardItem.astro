@@ -1,0 +1,41 @@
+---
+
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  photo: CollectionEntry<'photos'>;
+}
+
+const { photo } = Astro.props;
+---
+
+<Image
+  transition:name={`photo-${photo.id}`}
+  src={photo.data.image.src}
+  alt={photo.data.image.description}
+  quality={60}
+  height="80"
+  densities={[1.5, 2]}
+  loading="lazy" />
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  .photo-container {
+    padding: 0.125rem;
+    background-color: white;
+  }
+
+  img {
+    background-color: var(--color-neutral-275);
+    display: block;
+    height: var(--space-9);
+    width: auto;
+    padding: var(--space-1);
+    background-color: white;
+  }
+
+
+</style>
+

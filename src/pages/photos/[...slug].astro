@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content';
+import AppLayout from '../../layouts/AppLayout.astro';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components'
+export async function getStaticPaths() {
+  const entries = await getCollection('photos', (entry) => !entry.data.draft);
+
+  return entries.map(entry => ({
+    params: { slug: entry.slug }, props: { photo: entry },
+  }));
+}
+
+const photos = await getCollection('photos', (entry) => !entry.data.draft);
+let sortedPhotoSlugs = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).map((photo) => photo.slug);
+
+const { photo } = Astro.props;
+
+const { Content } = await photo.render();
+
+const previousPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) - 1 + sortedPhotoSlugs.length) % sortedPhotoSlugs.length];
+const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1) % sortedPhotoSlugs.length];
+
+const orientation = photo.data.image.src.width > photo.data.image.src.height ? 'landscape' : 'portrait';
+
+---
+
+<AppLayout>
+  <div class="photo-view-layout">
+
+    <div class="photo-container" >
+      <Image
+        transition:name={`photo-${photo.id}`}
+        src={photo.data.image.src}
+        alt={photo.data.image.description}
+        width="700"
+        quality={70}
+        widths={[400, 800, (orientation === "landscape" ? 2200 : 1200)]} />
+    </div>
+
+    <div class="photo-view-controls">
+      <div class="photo-view-controls-container">
+        <a href="/photos" class="photo-controls-button cs-button"><Icon name="ion:grid-sharp" /> All photos</a>
+        <div class="photo-view-controls-nav">
+          {previousPhotoSlug && <a href={`/photos/${previousPhotoSlug}`} class="photo-controls-button cs-button"><Icon name="ion:arrow-back-sharp" /> Previous</a>}
+          {nextPhotoSlug && <a href={`/photos/${nextPhotoSlug}`} class="photo-controls-button cs-button">Next <Icon name="ion:arrow-forward-sharp" /></a>}
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-description">
+      <h1>{photo.data.title}</h1>
+      <Content class="photo-content" />
+    </div>
+  </div>
+</AppLayout>
+
+
+<style lang="scss">
+  @import '../../styles/mixins.scss';
+
+  .photo-view-layout {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    grid-template-rows: auto 1fr;
+    max-width: var(--layout-size-5);
+    
+    
+    grid-template-areas: 
+      "photo"
+      "controls"
+      "description";
+    
+    @media (min-aspect-ratio: 1) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+      justify-items: center;
+      grid-template-areas: 
+        "photo controls"
+        "photo description";
+      height: 100%;
+      max-height: 100dvh;
+    }
+  }
+
+  .photo-view-controls {
+    grid-area: controls;
+    padding: var(--space-2);
+    width: 100%;
+  }
+  .photo-view-controls-container {
+    max-width: var(--layout-size-3);
+    margin: 0 auto;
+    display: flex;
+    gap: var(--space-2);
+  }
+  .photo-view-controls-nav {
+    display: flex;
+    gap: var(--space-2);
+    margin-left: auto;
+  }
+
+  .photo-container {
+    grid-area: photo;
+    padding: var(--fluid-bento-padding);
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 0 0 1px var(--color-neutral-175);
+    
+  }
+
+  .photo-description {
+    grid-area: description;
+    padding: var(--fluid-bento-padding);
+    min-width: 0;
+    width: 100cqw;
+    @media (min-aspect-ratio: 1) {
+      width: clamp(0px, 60cqw, var(--space-content-3));
+    }
+
+    :global(a) {
+      @include text-link;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .photo-controls-button {
+    text-decoration: none;
+    font-size: var(--font-size-0);
+    padding: var(--space-2) var(--space-3);
+    border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
+    transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;
+    text-wrap: nowrap;
+
+    &:link, &:visited {
+      color: var(--color-neutral-875);
+    }
+    &:hover {
+      color: var(--color-neutral-950);
+      background-color: var(--color-neutral-275);
+    }
+    &:active, &:hover:active {
+      color: white;
+      background-color: var(--color-accent-one-525);
+    }
+    &:focus-visible {
+      @include focus-outline;
+    }
+  }
+</style>
