@@ -15,124 +15,128 @@ const photos = await getCollection('photos', (entry) => !entry.data.draft);
 let sortedPhotoSlugs = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).map((photo) => photo.slug);
 
 const { photo } = Astro.props;
-
 const { Content } = await photo.render();
 
+const aspectRatio = photo.data.image.src.width / photo.data.image.src.height;
+const orientation = aspectRatio > 1 ? 'landscape' : 'portrait';
 const previousPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) - 1 + sortedPhotoSlugs.length) % sortedPhotoSlugs.length];
 const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1) % sortedPhotoSlugs.length];
-
-const orientation = photo.data.image.src.width > photo.data.image.src.height ? 'landscape' : 'portrait';
 
 ---
 
 <AppLayout>
-  <div class="photo-view-layout">
-
-    <div class="photo-container" >
-      <Image
-        transition:name={`photo-${photo.id}`}
-        src={photo.data.image.src}
-        alt={photo.data.image.description}
-        width="700"
-        quality={70}
-        widths={[400, 800, (orientation === "landscape" ? 2200 : 1200)]} />
+  <div class="photo-page-layout">
+    <div class="photo-page-layout__image">
+      <div class=`image-container image-container--${orientation}` style={`aspect-ratio: ${aspectRatio};`} >
+        <Image
+          transition:name={`photo-${photo.id}`}
+          src={photo.data.image.src}
+          alt={photo.data.image.description}
+          width="700"
+          quality={70}
+          widths={[400, 800, (orientation === "landscape" ? 920 * 2 : 800 * 2)]} />
+      </div>
     </div>
-
-    <div class="photo-view-controls">
-      <div class="photo-view-controls-container">
+    <div class="photo-page-layout__description-and-controls">
+      <div class="photo-controls">
         <a href="/photos" class="photo-controls-button cs-button"><Icon name="ion:grid-sharp" /> All photos</a>
-        <div class="photo-view-controls-nav">
+        <div class="photo-controls-nav">
           {previousPhotoSlug && <a href={`/photos/${previousPhotoSlug}`} class="photo-controls-button cs-button"><Icon name="ion:arrow-back-sharp" /> Previous</a>}
           {nextPhotoSlug && <a href={`/photos/${nextPhotoSlug}`} class="photo-controls-button cs-button">Next <Icon name="ion:arrow-forward-sharp" /></a>}
         </div>
       </div>
-    </div>
-
-    <div class="photo-description">
-      <h1>{photo.data.title}</h1>
-      <Content class="photo-content" />
+  
+      <div class="photo-description">
+        <h1>{photo.data.title}</h1>
+        <Content class="photo-content" />
+      </div>
     </div>
   </div>
 </AppLayout>
 
 
-<style lang="scss">
+<style lang="scss" define:vars={{ aspectRatio }}>
   @import '../../styles/mixins.scss';
 
-  .photo-view-layout {
+
+  .photo-page-layout {
     display: grid;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    height: 100%;
     grid-template-rows: auto 1fr;
-    max-width: var(--layout-size-5);
-    
-    
-    grid-template-areas: 
-      "photo"
-      "controls"
-      "description";
     
     @media (min-aspect-ratio: 1) {
-      grid-template-columns: auto 1fr;
-      grid-template-rows: auto 1fr;
-      justify-items: center;
-      grid-template-areas: 
-        "photo controls"
-        "photo description";
-      height: 100%;
+      align-items: stretch;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .photo-page-layout__image {
+    background: white;
+    padding: var(--fluid-bento-padding);
+    display: flex;
+    align-items: center;
+    @media (min-aspect-ratio: 1) {
       max-height: 100dvh;
+      justify-content: flex-end;
+    }
+  }
+  .photo-page-layout__description-and-controls {
+    padding: var(--fluid-bento-padding);
+    display: grid;
+    gap: var(--fluid-bento-gap);
+    grid-template-rows: auto 1fr;
+    @media (min-aspect-ratio: 1) {
+      align-items: center;
     }
   }
 
-  .photo-view-controls {
-    grid-area: controls;
-    padding: var(--space-2);
+  .photo-controls {
     width: 100%;
-  }
-  .photo-view-controls-container {
-    max-width: var(--layout-size-3);
-    margin: 0 auto;
     display: flex;
     gap: var(--space-2);
   }
-  .photo-view-controls-nav {
+  .photo-controls-nav {
     display: flex;
     gap: var(--space-2);
     margin-left: auto;
   }
 
-  .photo-container {
-    grid-area: photo;
-    padding: var(--fluid-bento-padding);
-    width: 100%;
-    height: 100%;
-    min-height: 0;
+  .image-container {
     position: relative;
-    background-color: white;
-    box-shadow: 0 0 0 1px var(--color-neutral-175);
+    background-color: var(--color-neutral-175);
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-tiny);
+    overflow: hidden;
     
+    // Screen aspect ratio
+    @media (min-aspect-ratio: 1) {
+
+      // Image aspect ratio
+      &--portrait {
+        height: 100%;
+        width: auto;
+      }
+    }
+    
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
   }
 
   .photo-description {
-    grid-area: description;
-    padding: var(--fluid-bento-padding);
-    min-width: 0;
-    width: 100cqw;
+    width: 100%;
     @media (min-aspect-ratio: 1) {
-      width: clamp(0px, 60cqw, var(--space-content-3));
+      max-width: var(--space-content-3);
+      justify-self: center;
     }
 
     :global(a) {
       @include text-link;
     }
-  }
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 
   .photo-controls-button {
@@ -145,6 +149,7 @@ const orientation = photo.data.image.src.width > photo.data.image.src.height ? '
 
     &:link, &:visited {
       color: var(--color-neutral-875);
+      background-color: var(--color-neutral-175);
     }
     &:hover {
       color: var(--color-neutral-950);
