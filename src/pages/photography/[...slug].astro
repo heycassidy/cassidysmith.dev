@@ -4,14 +4,14 @@ import AppLayout from '../../layouts/AppLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components'
 export async function getStaticPaths() {
-  const entries = await getCollection('photos', (entry) => !entry.data.draft);
+  const entries = await getCollection('photography', (entry) => !entry.data.draft);
 
   return entries.map(entry => ({
     params: { slug: entry.slug }, props: { photo: entry },
   }));
 }
 
-const photos = await getCollection('photos', (entry) => !entry.data.draft);
+const photos = await getCollection('photography', (entry) => !entry.data.draft);
 let sortedPhotoSlugs = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).map((photo) => photo.slug);
 
 const { photo } = Astro.props;
@@ -39,10 +39,10 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
     </div>
     <div class="photo-page-layout__description-and-controls">
       <div class="photo-controls">
-        <a href="/photos" class="photo-controls-button cs-button"><Icon name="ion:grid-sharp" /> All photos</a>
+        <a href="/photography" class="photo-controls-button cs-button"><Icon name="ion:grid-sharp" /> All photos</a>
         <div class="photo-controls-nav">
-          {previousPhotoSlug && <a href={`/photos/${previousPhotoSlug}`} class="photo-controls-button cs-button"><Icon name="ion:arrow-back-sharp" /> Previous</a>}
-          {nextPhotoSlug && <a href={`/photos/${nextPhotoSlug}`} class="photo-controls-button cs-button">Next <Icon name="ion:arrow-forward-sharp" /></a>}
+          {previousPhotoSlug && <a href={`/photography/${previousPhotoSlug}`} class="photo-controls-button cs-button"><Icon name="ion:arrow-back-sharp" /> Previous</a>}
+          {nextPhotoSlug && <a href={`/photography/${nextPhotoSlug}`} class="photo-controls-button cs-button">Next <Icon name="ion:arrow-forward-sharp" /></a>}
         </div>
       </div>
   

@@ -1,6 +1,6 @@
-import { z } from 'astro:content'
+import { z, type SchemaContext } from 'astro:content'
 
-export const photoSchema = ({ image }) =>
+export const photoSchema = ({ image }: SchemaContext) =>
   z.object({
     title: z.string(),
     draft: z.boolean().default(true),
