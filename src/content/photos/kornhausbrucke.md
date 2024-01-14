@@ -4,7 +4,7 @@
   draft: false
   sortOrder: 3
   image: {
-    src: ./images/kornhausbrücke.jpg,
+    src: ./images/kornhausbrucke.jpg,
     description: a pedestrian tunnel with an arched roof through a large bridge that spans a river on the right. There's a fence on the right between the sidewalk and the river.
   }
 ---
