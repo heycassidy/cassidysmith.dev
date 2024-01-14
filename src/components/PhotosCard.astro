@@ -9,11 +9,11 @@ let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).s
 
 ---
 <section class="photos-card">
-  <a href="/photos" class="photo-card__link">
+  <a href="/photos" class="photo-cards__link">
     <h2>Check Out My Photos <Icon name="ion:caret-forward-sharp" /></h2>
   </a>
   
-  <div class="photos-preview-list">
+  <div class="photos-card__preview">
     {sortedPhotos.map((photo) => (
       <PhotosCardItem photo={photo} />
     ))}
@@ -49,7 +49,7 @@ let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).s
     }
   }
 
-  .photo-card__link {
+  .photo-cards__link {
     padding: 0 var(--fluid-bento-padding);
     text-decoration: none;
 
@@ -80,7 +80,6 @@ let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).s
       margin: 0;
       display: flex;
       gap: var(--space-2);
-      // align-items: center;
       justify-content: space-between;
 
       svg {
@@ -90,18 +89,15 @@ let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).s
     }
   }
 
-  .photos-preview-list {
+  .photos-card__preview {
     list-style: none;
     max-width: var(--layout-size-3);
     margin: 0;
-    // padding: 0 var(--space-1);
-    // background-color: white;
     padding: 0 var(--fluid-bento-padding);
     display: flex;
     justify-content: space-between;
     gap: var(--space-2);
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
   }
 </style>
