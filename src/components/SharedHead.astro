@@ -1,10 +1,9 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 
-const {
-  title = 'Cassidy Smith - Front-End Engineer',
-  description = 'Cassidy Smith is a front-end engineer and UI designer in Chicago, IL.',
-} = Astro.props
+let { title, description } = Astro.props;
+
+title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`;
 ---
 
 <head>

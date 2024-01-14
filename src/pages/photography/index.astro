@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import AppLayout from '../../layouts/AppLayout.astro';
 import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
 import PhotoGallery from '../../components/PhotoGallery.astro';
 const photos = await getCollection('photography', (entry) => !entry.data.draft);
@@ -8,14 +9,18 @@ let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder )
 
 ---
 
-
-<PrimaryLayout>
-  <main>
-    <h1>Photography</h1>
-    <p>Sometimes you gotta step away from the keyboard, go outside, and look at something further away than your nearest screen. My photography practice is spontaneous, amateur, and casual. I shoot whatever happens to catch my attention and I intentionally avoid planning photos. My photos are an expression of my experience navigating my environment as a pedestrian.</p>
-  </main>
-  <PhotoGallery photos={sortedPhotos} />
-</PrimaryLayout>
+<AppLayout
+  title="Photography"
+  description="A curated collection of photos taken by me, Cassidy Smith."
+>
+  <PrimaryLayout>
+    <main>
+      <h1>Photography</h1>
+      <p>Sometimes you gotta step away from the keyboard, go outside, and look at something further away than your nearest screen. My photography practice is spontaneous, amateur, and casual. I shoot whatever happens to catch my attention and I intentionally avoid planning photos. My photos are an expression of my experience navigating my environment as a pedestrian.</p>
+    </main>
+    <PhotoGallery photos={sortedPhotos} />
+  </PrimaryLayout>
+</AppLayout>
 
 <style lang="scss">
   @import '../../styles/mixins.scss';
