@@ -10,8 +10,8 @@ const { photos } = Astro.props;
 
 ---
 
-<div class="photo-list-outer">
-  <ul class="photo-list">
+<div class="gallery-outer">
+  <ul class="gallery">
     {photos.map((photo) => (
       <PhotoGalleryItem photo={photo} />
     ))}
@@ -21,7 +21,7 @@ const { photos } = Astro.props;
 <script>
   import { TRANSITION_AFTER_SWAP, TRANSITION_BEFORE_PREPARATION, isTransitionBeforePreparationEvent } from 'astro:transitions/client';
   
-  const listScrollKey = `photo-gallery-scrollX`;
+  const scrollSessionKey = `photo-gallery-scroll`;
   let direction = '';
 
   if (history.scrollRestoration) {
@@ -29,24 +29,28 @@ const { photos } = Astro.props;
   }
 
   document.addEventListener(TRANSITION_BEFORE_PREPARATION, (event: Event)  => {
-    const list = document.querySelector('.photo-list');
-    
+    const gallery = document.querySelector('.gallery');
+    const documentScrollingElement = document.scrollingElement;
+
     if (isTransitionBeforePreparationEvent(event)) {
       direction = event.direction;
     }
 
-    if (list && direction === 'forward') {
-      sessionStorage.setItem(listScrollKey, list.scrollLeft.toString());
+    if (documentScrollingElement && gallery && direction === 'forward') {
+      sessionStorage.setItem(scrollSessionKey, JSON.stringify({ left: gallery.scrollLeft , top: documentScrollingElement.scrollTop }));
     }
   });
 
   document.addEventListener(TRANSITION_AFTER_SWAP, () => {
-    const list = document.querySelector('.photo-list');
+    const gallery = document.querySelector('.gallery');
+    const documentScrollingElement = document.scrollingElement;
 
-    if (list && direction === 'back') {
-      const storedPos = Number(sessionStorage.getItem(listScrollKey));
-      list.scrollTo({ left: storedPos });
-      sessionStorage.removeItem(listScrollKey);
+    if (documentScrollingElement && gallery && direction === 'back') {
+      const scrollPosition = JSON.parse(sessionStorage.getItem(scrollSessionKey) || "");
+
+      gallery.scrollTo({ left: scrollPosition });
+      documentScrollingElement.scrollTop = scrollPosition.top;
+      sessionStorage.removeItem(scrollSessionKey);
     }
   });
 </script>
@@ -54,13 +58,13 @@ const { photos } = Astro.props;
 <style lang="scss">
   @import '../styles/mixins.scss';
   
-  .photo-list-outer {
+  .gallery-outer {
     grid-column-start: full-width-start;
     grid-column-end: full-width-end;
     background-color: white;
   }
 
-  .photo-list {
+  .gallery {
     list-style: none;
     max-width: var(--layout-size-3);
     margin: 0 auto;
