@@ -30,7 +30,7 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
 >
   <div class="photo-page-layout">
     <div class="photo-page-layout__image">
-      <div class=`image-container image-container--${orientation}` style={`aspect-ratio: ${aspectRatio};`} >
+      <div class=`image-container image-container--${orientation}` >
         <Image
           transition:name={`photo-${photo.id}`}
           src={photo.data.image.src}
@@ -58,7 +58,7 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
 </AppLayout>
 
 
-<style lang="scss" define:vars={{ aspectRatio }}>
+<style lang="scss" define:vars={{ 'aspect-ratio': aspectRatio }}>
   @import '../../styles/mixins.scss';
 
 
@@ -112,13 +112,15 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
     height: auto;
     border-radius: var(--radius-tiny);
     overflow: hidden;
+
+    aspect-ratio: var(--aspect-ratio);
     
     // Screen aspect ratio
     @media (min-aspect-ratio: 1) {
 
       // Image aspect ratio
       &--portrait {
-        height: 100%;
+        max-height: 100%;
         width: auto;
       }
     }
