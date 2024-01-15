@@ -1,9 +1,10 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { AstroFont } from 'astro-font'
+import { ViewTransitions } from 'astro:transitions'
 
-let { title, description } = Astro.props;
+let { title, description } = Astro.props
 
-title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`;
+title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`
 ---
 
 <head>
@@ -13,4 +14,28 @@ title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`;
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <ViewTransitions fallback="none" />
+  <AstroFont
+    config={[
+      {
+        src: [],
+        preload: false,
+        display: 'swap',
+        fallback: 'sans-serif',
+        cssVariable: 'font-atkinson',
+        name: 'Atkinson Hyperlegible',
+        googleFontsURL:
+          'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap',
+      },
+      {
+        src: [],
+        preload: true,
+        display: 'swap',
+        name: 'Syne Variable',
+        fallback: 'sans-serif',
+        cssVariable: 'font-syne',
+        googleFontsURL:
+          'https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap',
+      },
+    ]}
+  />
 </head>

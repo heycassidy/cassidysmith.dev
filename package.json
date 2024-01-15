@@ -13,16 +13,14 @@
   "dependencies": {
     "@astrojs/mdx": "^2.0.3",
     "@astrojs/svelte": "^5.0.3",
-    "@fontsource-variable/syne": "^5.0.5",
-    "@fontsource/atkinson-hyperlegible": "^5.0.5",
     "astro": "^4.1.1",
+    "astro-font": "^0.0.72",
     "chroma-js": "^2.4.2",
     "prickly-pear": "github:heycassidy/prickly-pear",
     "sharp": "^0.32.6",
     "svelte": "^4.1.2"
   },
   "//prickly-pear-options": {
-    "prickly-pear": "file:~/projects/prickly-pear",
     "prickly-pear": "github:heycassidy/prickly-pear"
   },
   "devDependencies": {
