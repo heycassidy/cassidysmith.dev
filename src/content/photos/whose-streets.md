@@ -9,4 +9,4 @@
   }
 ---
 
-While living above this intersection, I frequently saw drivers zipping past people who were standing in the middle of the crosswalk, clearly trying to cross. Walking has been the main mode of transportation for all of human history, save for the last 70 or so years. These streets are dangerous for pedestrians because we decided that they should be dangerous in order to facilitate the wickedly high speeds of privately owned vehicles.
+While living above this intersection, I frequently witnessed drivers speeding past people who were standing in the middle of the crosswalk attempting to cross the street. Walking has been the primary mode of transportation for all of human history, save for the last 70 years or so. These streets are dangerous for pedestrians because we decided that it’s okay for them to be dangerous in order to facilitate the wickedly high speeds of privately owned vehicles. What do we lose when it’s no longer safe to walk around in our environments for fear of getting crushed?

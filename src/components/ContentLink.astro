@@ -9,6 +9,8 @@ interface Props extends HTMLAttributes<'a'> {
 
 const { linkText, content, ...attributes } = Astro.props;
 
+console.log(content);
+
 ---
 
 <a href={`/${content.collection}/${content.slug}`} {...attributes}>

@@ -1,17 +1,14 @@
 ---
-import AppLayout from './AppLayout.astro'
 import Footer from '../components/Footer.astro';
 import Banner from '../components/Banner.astro'
 
 ---
 
-<AppLayout>
-  <div class="primary-layout">
-    <Banner />
-    <slot />
-    <Footer />
-  </div>
-</AppLayout>
+<div class="primary-layout">
+  <Banner />
+  <slot />
+  <Footer />
+</div>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
