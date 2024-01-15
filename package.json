@@ -21,6 +21,7 @@
     "svelte": "^4.1.2"
   },
   "//prickly-pear-options": {
+    "prickly-pear": "file:~/projects/prickly-pear",
     "prickly-pear": "github:heycassidy/prickly-pear"
   },
   "devDependencies": {
