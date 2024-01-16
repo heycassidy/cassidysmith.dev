@@ -1,9 +1,11 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { join } from "node:path";
+import { AstroFont } from 'astro-font'
+import { ViewTransitions } from 'astro:transitions'
 
-let { title, description } = Astro.props;
+let { title, description } = Astro.props
 
-title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`;
+title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`
 ---
 
 <head>
@@ -13,4 +15,39 @@ title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`;
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <ViewTransitions fallback="none" />
+  <AstroFont
+    config={[
+      {
+        src: [{
+          style: 'normal',
+          weight: '400',
+          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-400-normal.woff2'),
+        }, {
+          style: 'normal',
+          weight: '700',
+          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-700-normal.woff2'),
+        }, {
+          style: 'italic',
+          weight: '400',
+          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-400-italic.woff2'),
+        }],
+        preload: false,
+        display: 'swap',
+        fallback: 'sans-serif',
+        cssVariable: 'font-atkinson',
+        name: 'Atkinson Hyperlegible',
+      },
+      {
+        src: [{
+          style: 'normal',
+          path: join(process.cwd(), 'public', 'fonts', 'syne_5.0.18_latin-wght-normal.woff2'),
+        }],
+        preload: true,
+        display: 'swap',
+        name: 'Syne Variable',
+        fallback: 'sans-serif',
+        cssVariable: 'font-syne',
+      },
+    ]}
+  />
 </head>
