@@ -21,8 +21,8 @@
     "svelte": "^4.1.2"
   },
   "//prickly-pear-options": {
-    "prickly-pear": "file:~/projects/prickly-pear",
-    "prickly-pear": "github:heycassidy/prickly-pear"
+    "prickly-pear-local": "file:~/projects/prickly-pear",
+    "prickly-pear-hosted": "github:heycassidy/prickly-pear"
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.1.12",
