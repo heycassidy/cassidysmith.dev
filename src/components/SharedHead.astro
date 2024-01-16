@@ -1,4 +1,5 @@
 ---
+import { join } from "node:path";
 import { AstroFont } from 'astro-font'
 import { ViewTransitions } from 'astro:transitions'
 
@@ -17,24 +18,36 @@ title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`
   <AstroFont
     config={[
       {
-        src: [],
+        src: [{
+          style: 'normal',
+          weight: '400',
+          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-400-normal.woff2'),
+        }, {
+          style: 'normal',
+          weight: '700',
+          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-700-normal.woff2'),
+        }, {
+          style: 'italic',
+          weight: '400',
+          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-400-italic.woff2'),
+        }],
         preload: false,
         display: 'swap',
         fallback: 'sans-serif',
         cssVariable: 'font-atkinson',
         name: 'Atkinson Hyperlegible',
-        googleFontsURL:
-          'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap',
       },
       {
-        src: [],
+        src: [{
+          style: 'normal',
+          weight: '400 800',
+          path: join(process.cwd(), 'public', 'fonts', 'syne_5.0.18_latin-wght-normal.woff2'),
+        }],
         preload: true,
         display: 'swap',
         name: 'Syne Variable',
         fallback: 'sans-serif',
         cssVariable: 'font-syne',
-        googleFontsURL:
-          'https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap',
       },
     ]}
   />
