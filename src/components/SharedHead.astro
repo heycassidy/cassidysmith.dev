@@ -1,5 +1,4 @@
 ---
-import { join } from "node:path";
 import { AstroFont } from 'astro-font'
 import { ViewTransitions } from 'astro:transitions'
 
@@ -21,17 +20,19 @@ title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`
         src: [{
           style: 'normal',
           weight: '400',
-          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-400-normal.woff2'),
+          path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-normal.woff2',
         }, {
           style: 'normal',
           weight: '700',
-          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-700-normal.woff2'),
+          path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-700-normal.woff2',
         }, {
           style: 'italic',
           weight: '400',
-          path: join(process.cwd(), 'public', 'fonts', 'atkinson-hyperlegible_5.0.18_latin-400-italic.woff2'),
+          path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-italic.woff2',
         }],
-        preload: false,
+        fetch: import.meta.env.PROD,
+        basePath: './dist',
+        preload: true,
         display: 'swap',
         fallback: 'sans-serif',
         cssVariable: 'font-atkinson',
@@ -41,8 +42,10 @@ title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`
         src: [{
           style: 'normal',
           weight: '400 800',
-          path: join(process.cwd(), 'public', 'fonts', 'syne_5.0.18_latin-wght-normal.woff2'),
+          path: 'https://cdn.jsdelivr.net/fontsource/fonts/syne:vf@latest/latin-wght-normal.woff2',
         }],
+        fetch: import.meta.env.PROD,
+        basePath: './dist',
         preload: true,
         display: 'swap',
         name: 'Syne Variable',
