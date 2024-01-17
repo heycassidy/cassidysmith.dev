@@ -1,6 +1,6 @@
 ---
   title: Zollhaus Rooftop
-  slug: edit-this
+  slug: zollhaus-rooftop
   draft: false
   sortOrder: 8
   image: {
