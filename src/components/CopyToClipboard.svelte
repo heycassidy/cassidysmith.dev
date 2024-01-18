@@ -21,7 +21,7 @@
   })
 </script>
 
-<button class="button" on:click={copy}>
+<button class="copy-button" on:click={copy}>
   {#if !copied}
     <slot name="initial">Copy</slot>
   {:else}
@@ -32,20 +32,18 @@
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  .button {
+  :global(:root[data-theme='light']) {
+    .copy-button {
+      --color-button-text: var(--color-tertiary-775);
+      --color-button-background: var(--color-tertiary-275);
+      --color-button-hover-text: var(--color-tertiary-950);
+      --color-button-hover-background: var(--color-tertiary-350);
+    }
+  }
+
+  .copy-button {
     @include button;
 
-    color: var(--color-secondary-775);
-    background-color: var(--color-neutral-275);
-    &:hover {
-      color: var(--color-secondary-600);
-      background-color: var(--color-neutral-100);
-    }
-    &:active,
-    &:hover:active {
-      color: white;
-      background-color: var(--color-accent-one-525);
-    }
     :global(svg) {
       width: 0.9em;
       height: auto;

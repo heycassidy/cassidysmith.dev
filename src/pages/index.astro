@@ -31,15 +31,26 @@ import PhotosCard from '../components/PhotosCard.astro';
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  a {
-    @include text-link;
+  :global(:root[data-theme='light']) {
+    main {
+      --background-color: var(--color-primary-275);
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    main {
+      --background-color: var(--color-primary-875);
+    }
   }
 
   main {
     grid-area: intro;
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
-    background-color: var(--color-primary-275);
+    background-color: var(--background-color);
+
+    a {
+      @include text-link;
+    }
   }
 
   .page-layout {

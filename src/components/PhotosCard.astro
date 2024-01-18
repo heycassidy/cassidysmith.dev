@@ -23,11 +23,36 @@ let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).s
 
 <style lang="scss">
   @import '../styles/mixins.scss';
-  
+
+  :global(:root[data-theme='light']) {
+    .photos-card {
+      --color: var(--color-neutral-700);
+      --background-color: var(--color-neutral-275);
+
+      --hover-color: var(--color-neutral-950);
+      --hover-background-color: var(--color-neutral-350);
+
+      --active-color: var(--color-neutral-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    .photos-card {
+      --color: var(--color-neutral-275);
+      --background-color: var(--color-neutral-775);
+
+      --hover-color: var(--color-neutral-0);
+      --hover-background-color: var(--color-neutral-700);
+
+      --active-color: var(--color-neutral-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+
   .photos-card {
     grid-area: photos;
-    color: var(--color-neutral-775);
-    background-color: var(--color-neutral-275);
+    color: var(--color);
+    background-color: var(--background-color);
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding) 0;
     position: relative;
@@ -37,12 +62,12 @@ let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).s
     transition: background-color 0.2s, color 0.2s;
 
     &:hover {
-      color: var(--color-neutral-950);
-      background-color: var(--color-neutral-350);
+      color: var(--hover-color);
+      background-color: var(--hover-background-color);
     }
     &:active, &:hover:active {
-      color: white;
-      background-color: var(--color-accent-one-525);
+      color: var(--active-color);
+      background-color: var(--active-background-color);
     }
     &:focus-within {
       @include focus-outline;

@@ -23,8 +23,8 @@
     --color-button-background: var(--color-neutral-175);
     --color-button-hover-text: var(--color-neutral-950);
     --color-button-hover-background: var(--color-neutral-275);
-    --color-button-active-text: var(--color-neutral-0);
-    --color-button-active-background: var(--color-accent-one-600);
+    --color-button-active-text: var(--color-neutral-100);
+    --color-button-active-background: var(--color-accent-one-525);
   }
 
   :root[data-theme='dark'] {
@@ -51,7 +51,7 @@
     --color-button-background: var(--color-neutral-775);
     --color-button-hover-text: var(--color-neutral-0);
     --color-button-hover-background: var(--color-neutral-700);
-    --color-button-active-text: var(--color-accent-one-425);
-    --color-button-active-background: var(--color-neutral-950);
+    --color-button-active-text: var(--color-neutral-100);
+    --color-button-active-background: var(--color-accent-one-525);
   }
 }
