@@ -5,7 +5,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
 ---
 <div class="prickly-pear-container">
 
-  <div class="aspect-ratio-box">
+  <div class="scene-box">
     <PricklyPearController client:idle>
       <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} width="800" height="800" slot="placeholder-cactus" loading="eager" />
     </PricklyPearController>
@@ -39,14 +39,31 @@ import placeholderCactus from '../assets/prickly-pear.png'
       }
     }
   }
+
+  :global(:root[data-theme='light']) {
+    .scene-box {
+      --color-sky: var(--color-neutral-275);
+      --color-ground: var(--color-tertiary-525);
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    .scene-box {
+      --color-sky: var(--color-primary-950);
+      --color-ground: var(--color-stark-background);
+      box-shadow: 0 0 0 2px var(--color-stark-background);
+    }
+    img {
+      filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
+    }
+  }
   
-  .aspect-ratio-box {
+  .scene-box {
     position: relative;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
     border-radius: var(--fluid-bento-radius);
-    background-color: var(--color-neutral-275);
+    background-color: var(--color-sky);
     aspect-ratio: 1/1;
 
     &::before {
@@ -56,7 +73,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
       left: 0;
       right: 0;
       height: 25%;
-      background-color: var(--color-tertiary-525);
+      background-color: var(--color-ground);
     }
   }
 

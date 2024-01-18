@@ -56,6 +56,7 @@
     @include button;
     gap: var(--space-2);
     backdrop-filter: blur(8px);
+    transition: all 0.2s ease-in-out;
 
     @media (hover) {
       &:global(:hover .dice) {
@@ -72,10 +73,30 @@
       --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
       --color-button-active-text: white;
       --color-button-active-background: #{transparentize(black, $amount: 0.2)};
+      --color-focus-outline: white;
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    .regenerate-button {
+      --color-button-text: #{transparentize(white, 0.2)};
+      --color-button-background: #{transparentize(black, $amount: 0.4)};
+      --color-button-hover-text: #{transparentize(white, 0)};
+      --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
+      --color-button-active-text: #{transparentize(white, 0.6)};
+      --color-button-active-background: #{transparentize(black, $amount: 0.2)};
+      --color-focus-outline: black;
+      box-shadow: 0 0 0 2px #{transparentize(white, 0.9)};
 
-      &:focus-visible {
-        @include focus-outline(black);
+      &:hover {
+        box-shadow: 0 0 0 2px #{transparentize(white, 0.8)};
       }
+      &:active,
+      &:hover:active {
+        box-shadow: 0 0 0 2px #{transparentize(white, 0.9)};
+      }
+    }
+    canvas {
+      filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
     }
   }
 
