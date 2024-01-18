@@ -35,6 +35,33 @@
   }
 }
 
+@mixin button {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-syne);
+  font-weight: 700;
+  font-size: var(--font-size-1);
+  border-radius: calc(
+    var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
+  );
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+
+  &:link {
+    text-decoration: none;
+  }
+
+  &--small {
+    font-size: var(--font-size-0);
+  }
+}
+
 @mixin dot-pattern-background($color, $size) {
   background-color: $color;
   mask: sass-svg-uri.encode(

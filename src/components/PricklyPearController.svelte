@@ -22,7 +22,7 @@
 </div>
 
 <div class="controls-row">
-  <button class="cs-button regenerate-button" on:click={click}>
+  <button class="regenerate-button" on:click={click}>
     <DiceIcon /> Grow a random cactus
   </button>
 </div>
@@ -53,15 +53,13 @@
   }
 
   .regenerate-button {
+    @include button;
+
     gap: var(--space-2);
-    border-radius: calc(
-      var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
-    );
     backdrop-filter: blur(8px);
 
     color: white;
     background-color: transparentize(black, $amount: 0.4);
-    transition: color 0.2s, background-color 0.2s;
 
     &:hover {
       background-color: transparentize(black, $amount: 0.6);

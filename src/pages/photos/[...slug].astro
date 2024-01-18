@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import AppLayout from '../../layouts/AppLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components'
+import Button from '../../components/Button.astro';
+
 export async function getStaticPaths() {
   const entries = await getCollection('photos', (entry) => !entry.data.draft);
 
@@ -42,10 +44,12 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
     </div>
     <div class="photo-page-layout__description-and-controls">
       <div class="photo-controls">
-        <a href="/photos" class="photo-controls-button cs-button"><Icon name="ion:grid-sharp" /> All photos</a>
+        <Button class="photo-controls-button" as="a" size="small" href="/photos">
+          <Icon name="ion:grid-sharp" /> All photos
+        </Button>
         <div class="photo-controls-nav">
-          {previousPhotoSlug && <a href={`/photos/${previousPhotoSlug}`} class="photo-controls-button cs-button"><Icon name="ion:arrow-back-sharp" /> Previous</a>}
-          {nextPhotoSlug && <a href={`/photos/${nextPhotoSlug}`} class="photo-controls-button cs-button">Next <Icon name="ion:arrow-forward-sharp" /></a>}
+          {previousPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${previousPhotoSlug}`}><Icon name="ion:arrow-back-sharp" /> Previous</Button>}
+          {nextPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${nextPhotoSlug}`}><Icon name="ion:arrow-forward-sharp" /> Next</Button>}
         </div>
       </div>
   
@@ -145,17 +149,11 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
   }
 
   .photo-controls-button {
-    text-decoration: none;
-    font-size: var(--font-size-0);
-    padding: var(--space-2) var(--space-3);
-    border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
-    transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;
     text-wrap: nowrap;
 
-    &:link, &:visited {
-      color: var(--color-neutral-875);
-      background-color: var(--color-neutral-175);
-    }
+    color: var(--color-neutral-875);
+    background-color: var(--color-neutral-175);
+
     &:hover {
       color: var(--color-neutral-950);
       background-color: var(--color-neutral-275);

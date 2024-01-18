@@ -1,0 +1,21 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag, size?: 'small' }>;
+
+const { as: Tag = 'button', class: className, size, ...props } = Astro.props;
+
+---
+
+<Tag class:list={["button", size ? `button--${size}`: '', className]} {...props}>
+  <slot/>
+</Tag>
+
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  .button {
+    @include button;
+  }
+</style>
