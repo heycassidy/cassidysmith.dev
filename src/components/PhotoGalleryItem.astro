@@ -47,6 +47,7 @@ const { photo } = Astro.props;
     cursor: zoom-in;
     display: block;
     border-radius: var(--radius-tiny);
+    background-color: var(--color-base-background);
     height: 100vw;
     
     @include breakpoint-small {
@@ -74,12 +75,11 @@ const { photo } = Astro.props;
       }
     }
     &:focus-visible {
-      @include focus-outline(black);
+      @include focus-outline(var(--color-stark-foreground));
     }
   }
 
   img {
-    background-color: var(--color-neutral-275);
     display: block;
     width: 100%;
     height: auto;

@@ -1,6 +1,6 @@
 @use 'sass-svg-uri';
 
-@mixin focus-outline($color: var(--color-accent-one-525)) {
+@mixin focus-outline($color: var(--color-focus-outline)) {
   outline: 2px dashed $color;
   outline-offset: 1px;
   &:hover {
@@ -13,25 +13,69 @@
     color 0.2s,
     text-decoration-color 0.2s;
 
-  text-decoration-color: var(--color-info-350);
-
   &:link {
-    color: var(--color-info-600);
+    color: var(--color-link);
+    text-decoration-color: var(--color-link-decoration);
   }
   &:visited {
-    color: inherit;
+    color: var(--color-link-visited);
+    text-decoration-color: var(--color-link-visited-decoration);
   }
   &:hover {
-    color: var(--color-info-625);
-    text-decoration-color: var(--color-info-625);
+    color: var(--color-link-hover);
+    text-decoration-color: var(--color-link-hover-decoration);
+    text-decoration-style: dashed;
   }
   &:active,
   &:hover:active {
-    color: var(--color-accent-one-600);
-    text-decoration-color: var(--color-accent-one-525);
+    color: var(--color-link-active);
+    text-decoration-color: var(--color-link-active-decoration);
   }
   &:focus {
     @include focus-outline();
+  }
+}
+
+@mixin button {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-syne);
+  font-weight: 700;
+  font-size: var(--font-size-1);
+  border-radius: calc(
+    var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
+  );
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+
+  &:link {
+    text-decoration: none;
+  }
+
+  color: var(--color-button-text);
+  background-color: var(--color-button-background);
+
+  &:hover {
+    color: var(--color-button-hover-text);
+    background-color: var(--color-button-hover-background);
+  }
+  &:active,
+  &:hover:active {
+    color: var(--color-button-active-text);
+    background-color: var(--color-button-active-background);
+  }
+  &:focus-visible {
+    @include focus-outline;
+  }
+
+  &--small {
+    font-size: var(--font-size-0);
   }
 }
 

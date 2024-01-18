@@ -2,13 +2,14 @@
 
 @import 'reset.css';
 @import 'tokens.css';
+@import 'themes.css';
 @import 'typography.scss';
 @import 'util.scss';
 
 @layer base {
   body {
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--color-base-background);
+    color: var(--color-base-text);
   }
 
   h1,
@@ -17,6 +18,6 @@
   h4,
   h5,
   h6 {
-    color: var(--color-heading);
+    color: var(--color-base-heading);
   }
 }

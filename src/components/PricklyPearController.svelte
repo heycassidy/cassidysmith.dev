@@ -22,7 +22,7 @@
 </div>
 
 <div class="controls-row">
-  <button class="cs-button regenerate-button" on:click={click}>
+  <button class="regenerate-button" on:click={click}>
     <DiceIcon /> Grow a random cactus
   </button>
 </div>
@@ -53,31 +53,50 @@
   }
 
   .regenerate-button {
+    @include button;
     gap: var(--space-2);
-    border-radius: calc(
-      var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
-    );
     backdrop-filter: blur(8px);
-
-    color: white;
-    background-color: transparentize(black, $amount: 0.4);
-    transition: color 0.2s, background-color 0.2s;
-
-    &:hover {
-      background-color: transparentize(black, $amount: 0.6);
-    }
-    &:active,
-    &:hover:active {
-      background-color: transparentize(black, $amount: 0.2);
-    }
-    &:focus-visible {
-      @include focus-outline(black);
-    }
+    transition: all 0.2s ease-in-out;
 
     @media (hover) {
       &:global(:hover .dice) {
         animation: dice-spin infinite 0.4s linear;
       }
+    }
+  }
+
+  :global(:root[data-theme='light']) {
+    .regenerate-button {
+      --color-button-text: white;
+      --color-button-background: #{transparentize(black, $amount: 0.4)};
+      --color-button-hover-text: white;
+      --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
+      --color-button-active-text: white;
+      --color-button-active-background: #{transparentize(black, $amount: 0.2)};
+      --color-focus-outline: white;
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    .regenerate-button {
+      --color-button-text: #{transparentize(white, 0.2)};
+      --color-button-background: #{transparentize(black, $amount: 0.4)};
+      --color-button-hover-text: #{transparentize(white, 0)};
+      --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
+      --color-button-active-text: #{transparentize(white, 0.6)};
+      --color-button-active-background: #{transparentize(black, $amount: 0.2)};
+      --color-focus-outline: black;
+      box-shadow: 0 0 0 2px #{transparentize(white, 0.9)};
+
+      &:hover {
+        box-shadow: 0 0 0 2px #{transparentize(white, 0.8)};
+      }
+      &:active,
+      &:hover:active {
+        box-shadow: 0 0 0 2px #{transparentize(white, 0.9)};
+      }
+    }
+    canvas {
+      filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
     }
   }
 

@@ -12,6 +12,32 @@ const {href, external = false, icon = false} = Astro.props;
 <style lang="scss">
   @import '../styles/mixins.scss';
 
+  :global(:root[data-theme='light']) {
+    .social-link {
+      --color: var(--color-secondary-700);
+      --background-color: var(--color-secondary-275);
+
+      --hover-color: var(--color-secondary-600);
+      --hover-background-color: var(--color-secondary-100);
+
+      --active-color: var(--color-neutral-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    .social-link {
+      --color: var(--color-secondary-275);
+      --background-color: var(--color-secondary-775);
+
+      --hover-color: var(--color-secondary-0);
+      --hover-background-color: var(--color-secondary-700);
+
+      --active-color: var(--color-neutral-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+  
+
   .social-link {
     display: flex;
     align-items: center;
@@ -21,16 +47,16 @@ const {href, external = false, icon = false} = Astro.props;
     transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;
 
     &:link, &:visited {
-      color: var(--color-secondary-700);
-      background-color: var(--color-secondary-275);
+      color: var(--color);
+      background-color: var(--background-color);
     }
     &:hover {
-      color: var(--color-secondary-600);
-      background-color: var(--color-secondary-100);
+      color: var(--hover-color);
+      background-color: var(--hover-background-color);
     }
     &:active, &:hover:active {
-      color: white;
-      background-color: var(--color-accent-one-525);
+      color: var(--active-color);
+      background-color: var(--active-background-color);
     }
     &:focus-visible {
       @include focus-outline;

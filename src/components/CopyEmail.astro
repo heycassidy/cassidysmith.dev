@@ -11,18 +11,16 @@
 <section class="copy-email">
   <h2 class="heading">
     Send an Email
-    <Icon name="ion:send-sharp" />
   </h2>
   
   <div class="layout">
     <div class="email-address">
       <a href=`mailto:${emailAddress}`>
-        <span>{emailAddress}</span>
+        <span>{emailAddress}</span><Icon name="ion:send-sharp" /> 
       </a>
     </div>
     <CopyToClipboard
       client:idle
-      class="cs-button"
       textToCopy={emailAddress}
     >
       <Icon slot="initial" name="ion:clipboard-sharp" /><span slot="initial">Copy</span>
@@ -35,18 +33,58 @@
 <style lang="scss">
   @import '../styles/mixins.scss';
 
+  :global(:root[data-theme='light']) {
+    .copy-email {
+      --color: var(--color-tertiary-700);
+      --background-color: var(--color-tertiary-175);
+    }
+    .email-address {
+      --border-color: var(--color-tertiary-275);
+    }
+    a[href^=mailto] {
+      --color-link: var(--color-tertiary-700);
+      --color-link-decoration: var(--color-tertiary-350);
+      
+      --color-link-hover: var(--color-tertiary-600);
+      --color-link-hover-decoration: var(--color-tertiary-275);
+
+      --color-link-active: var(--color-accent-one-425);
+      --color-link-active-decoration: var(--color-accent-one-525);
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    .copy-email {
+      --color: var(--color-tertiary-275);
+      --background-color: var(--color-tertiary-875);
+    }
+    .email-address {
+      --border-color: var(--color-tertiary-775);
+    }
+    a[href^=mailto] {
+      --color-link: var(--color-tertiary-275);
+      --color-link-decoration: var(--color-tertiary-525);
+      
+      --color-link-hover: var(--color-tertiary-175);
+      --color-link-hover-decoration: var(--color-tertiary-350);
+
+      --color-link-active: var(--color-accent-one-425);
+      --color-link-active-decoration: var(--color-accent-one-525);
+    }
+  }
+
   .copy-email {
     grid-area: email;
     align-self: start;
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
-    color: var(--color-secondary-0);
-    background-color: var(--color-secondary-600);
+    color: var(--color);
+    background-color: var(--background-color);
 
     .heading {
       color: inherit;
       display: flex;
       gap: 0.5ch;
+      color: currentColor;
     }
 
     .layout {
@@ -60,7 +98,7 @@
       display: flex;
       border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
       padding: var(--space-2) var(--fluid-bento-padding);
-      background-color: var(--color-secondary-775);
+      box-shadow: inset 0 0 0 2px var(--border-color);
       flex-grow: 1;
       line-height: 1;
       
@@ -68,27 +106,8 @@
         display: inline-flex;
         gap: 0.5ch;
 
-        transition:
-          color 0.2s,
-          text-decoration-color 0.2s;
+        @include text-link;
 
-        text-decoration-color: var(--color-secondary-525);
-          
-        &:link, &:visited {
-          color: var(--color-secondary-0);
-        }
-        &:hover {
-          color: var(--color-secondary-275);
-          text-decoration-color: var(--color-secondary-275);
-        }
-        &:active,
-        &:hover:active {
-          color: var(--color-accent-one-350);
-          text-decoration-color: var(--color-accent-one-350);
-        }
-        &:focus {
-          @include focus-outline();
-        }
       }
     }
 
@@ -97,28 +116,6 @@
       min-width: 7.5rem;
       flex-basis: 10%;
       justify-content: center;
-      border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
-
-      color: var(--color-secondary-775);
-      background-color: var(--color-neutral-275);
-      transition: background-color 0.2s, color 0.2s;
-      &:hover {
-        color: var(--color-secondary-600);
-        background-color: var(--color-neutral-100);
-      }
-      &:active, &:hover:active {
-        color: white;
-        background-color: var(--color-accent-one-525);
-      }
-      &:focus-visible {
-        @include focus-outline();
-      }
-
-      :global(svg) {
-        width: 0.9em;
-        height: auto;
-        flex-shrink: 0;
-      }
     }
   }
   
