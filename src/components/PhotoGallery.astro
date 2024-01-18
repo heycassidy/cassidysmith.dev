@@ -61,7 +61,7 @@ const { photos } = Astro.props;
   .gallery-outer {
     grid-column-start: full-width-start;
     grid-column-end: full-width-end;
-    background-color: white;
+    background-color: var(--color-stark-background);
   }
 
   .gallery {
@@ -79,7 +79,7 @@ const { photos } = Astro.props;
     @include breakpoint-small {
       overflow: visible;
       display: grid;
-      padding: var(--fluid-bento-padding) 0;
+      padding: calc(var(--fluid-bento-padding) + var(--fluid-bento-gap)) 0;
       grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     }
     

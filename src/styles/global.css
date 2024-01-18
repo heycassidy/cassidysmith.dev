@@ -8,8 +8,8 @@
 
 @layer base {
   body {
-    background-color: var(--color-site-background);
-    color: var(--color-primary-text);
+    background-color: var(--color-base-background);
+    color: var(--color-base-text);
   }
 
   h1,
@@ -18,6 +18,6 @@
   h4,
   h5,
   h6 {
-    color: var(--color-primary-heading);
+    color: var(--color-base-heading);
   }
 }

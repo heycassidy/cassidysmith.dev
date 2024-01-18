@@ -26,6 +26,19 @@
     --color-secondary-875: #0b281f;
     --color-secondary-950: #04140f;
 
+    --color-tertiary-0: #fdfcfc;
+    --color-tertiary-100: #fcf4f6;
+    --color-tertiary-175: #f8e6eb;
+    --color-tertiary-275: #eed2da;
+    --color-tertiary-350: #d0aab6;
+    --color-tertiary-425: #a87a89;
+    --color-tertiary-525: #8e6673;
+    --color-tertiary-600: #6f4d58;
+    --color-tertiary-700: #5b4049;
+    --color-tertiary-775: #442f36;
+    --color-tertiary-875: #2d1f23;
+    --color-tertiary-950: #170e11;
+
     --color-info-0: #fcfcfd;
     --color-info-100: #f6f6f9;
     --color-info-175: #eae9ff;
@@ -64,19 +77,6 @@
     --color-accent-two-775: #353709;
     --color-accent-two-875: #232409;
     --color-accent-two-950: #121106;
-
-    --color-accent-three-0: #fdfcfc;
-    --color-accent-three-100: #fcf4f6;
-    --color-accent-three-175: #f8e6eb;
-    --color-accent-three-275: #eed2da;
-    --color-accent-three-350: #d0aab6;
-    --color-accent-three-425: #a87a89;
-    --color-accent-three-525: #8e6673;
-    --color-accent-three-600: #6f4d58;
-    --color-accent-three-700: #5b4049;
-    --color-accent-three-775: #442f36;
-    --color-accent-three-875: #2d1f23;
-    --color-accent-three-950: #170e11;
 
     --color-success-0: #f7fef9;
     --color-success-100: #d4ffe3;

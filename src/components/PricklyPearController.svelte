@@ -54,27 +54,27 @@
 
   .regenerate-button {
     @include button;
-
     gap: var(--space-2);
     backdrop-filter: blur(8px);
-
-    color: white;
-    background-color: transparentize(black, $amount: 0.4);
-
-    &:hover {
-      background-color: transparentize(black, $amount: 0.6);
-    }
-    &:active,
-    &:hover:active {
-      background-color: transparentize(black, $amount: 0.2);
-    }
-    &:focus-visible {
-      @include focus-outline(black);
-    }
 
     @media (hover) {
       &:global(:hover .dice) {
         animation: dice-spin infinite 0.4s linear;
+      }
+    }
+  }
+
+  :global(:root[data-theme='light']) {
+    .regenerate-button {
+      --color-button-text: white;
+      --color-button-background: #{transparentize(black, $amount: 0.4)};
+      --color-button-hover-text: white;
+      --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
+      --color-button-active-text: white;
+      --color-button-active-background: #{transparentize(black, $amount: 0.2)};
+
+      &:focus-visible {
+        @include focus-outline(black);
       }
     }
   }
