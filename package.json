@@ -18,6 +18,7 @@
     "chroma-js": "^2.4.2",
     "prickly-pear": "github:heycassidy/prickly-pear",
     "sharp": "^0.32.6",
+    "svelte": "^4.1.2",
     "svelte-portal": "^2.2.1"
   },
   "//prickly-pear-options": {
