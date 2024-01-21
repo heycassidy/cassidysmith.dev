@@ -2,9 +2,11 @@ import { defineConfig } from 'astro/config'
 import icon from 'astro-icon'
 import svelte from '@astrojs/svelte'
 import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://cassidysmith.dev',
   prefetch: {
     prefetchAll: true,
   },
@@ -28,5 +30,6 @@ export default defineConfig({
       },
     }),
     mdx(),
+    sitemap(),
   ],
 })
