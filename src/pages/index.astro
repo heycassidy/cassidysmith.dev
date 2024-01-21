@@ -40,6 +40,11 @@ import PhotosCard from '../components/PhotosCard.astro';
     main {
       --background-color: var(--color-primary-875);
     }
+    :global(.page-layout > *) {
+      box-shadow:
+        0 0 var(--fluid-bento-gap) 0 var(--color-stark-background),
+        0 0 0 2px var(--color-stark-background);
+    }
   }
 
   main {
