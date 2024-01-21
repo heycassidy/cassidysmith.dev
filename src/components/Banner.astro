@@ -3,7 +3,7 @@ import BannerLogo from "./BannerLogo.astro";
 ---
 
 
-<header role="banner">
+<header role="banner" id="theme-switcher-portal">
   <nav>
     <BannerLogo class="test"/>
   </nav>
@@ -16,5 +16,10 @@ import BannerLogo from "./BannerLogo.astro";
   header[role=banner] {
     margin-top: var(--fluid-bento-gap);
     display: flex;
+  }
+
+  :global(.theme-toggle) {
+    margin-left: auto;
+    align-self: center;
   }
 </style>

@@ -56,7 +56,6 @@
     @include button;
     gap: var(--space-2);
     backdrop-filter: blur(8px);
-    transition: all 0.2s ease-in-out;
 
     @media (hover) {
       &:global(:hover .dice) {
@@ -73,7 +72,7 @@
       --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
       --color-button-active-text: white;
       --color-button-active-background: #{transparentize(black, $amount: 0.2)};
-      --color-focus-outline: white;
+      --color-focus-outline: black;
     }
   }
   :global(:root[data-theme='dark']) {
@@ -84,7 +83,7 @@
       --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
       --color-button-active-text: #{transparentize(white, 0.6)};
       --color-button-active-background: #{transparentize(black, $amount: 0.2)};
-      --color-focus-outline: black;
+      --color-focus-outline: white;
       box-shadow: 0 0 0 2px #{transparentize(white, 0.9)};
 
       &:hover {

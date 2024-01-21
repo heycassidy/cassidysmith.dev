@@ -20,6 +20,8 @@ import placeholderCactus from '../assets/prickly-pear.png'
     display: grid;
     align-content: start;
     gap: var(--space-1);
+    overflow: hidden;
+    border-radius: var(--fluid-bento-radius);
     
     @include breakpoint-medium {
       align-self: end;
@@ -48,9 +50,11 @@ import placeholderCactus from '../assets/prickly-pear.png'
   }
   :global(:root[data-theme='dark']) {
     .scene-box {
-      --color-sky: var(--color-primary-950);
-      --color-ground: var(--color-stark-background);
-      box-shadow: 0 0 0 2px var(--color-stark-background);
+      --color-sky: var(--color-primary-875);
+      --color-ground: var(--color-primary-950);
+      // box-shadow:
+      //   0 0 var(--fluid-bento-gap) 0 var(--color-stark-background),
+      //   0 0 0 2px var(--color-stark-background);
     }
     img {
       filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
@@ -61,8 +65,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
     position: relative;
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
-    border-radius: var(--fluid-bento-radius);
+
     background-color: var(--color-sky);
     aspect-ratio: 1/1;
 

@@ -1,6 +1,7 @@
 ---
 import { AstroFont } from 'astro-font'
 import { ViewTransitions } from 'astro:transitions'
+import Theme from '../components/Theme.astro'
 
 let { title, description } = Astro.props
 
@@ -13,6 +14,7 @@ title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
+  <Theme />
   <ViewTransitions fallback="none" />
   <AstroFont
     config={[
