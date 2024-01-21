@@ -1,5 +1,6 @@
 ---
 import BannerLogo from "./BannerLogo.astro";
+import ThemeSwitcher from "./ThemeSwitcher.svelte";
 ---
 
 
@@ -7,6 +8,7 @@ import BannerLogo from "./BannerLogo.astro";
   <nav>
     <BannerLogo class="test"/>
   </nav>
+  <ThemeSwitcher client:only="svelte" />
 </header>
 
 
@@ -16,5 +18,10 @@ import BannerLogo from "./BannerLogo.astro";
   header[role=banner] {
     margin-top: var(--fluid-bento-gap);
     display: flex;
+  }
+
+  :global(.theme-toggle) {
+    margin-left: auto;
+    align-self: center;
   }
 </style>

@@ -16,7 +16,10 @@ const { title, description } = Astro.props
   document.addEventListener("astro:after-swap", setColorMode);
 
   function setColorMode() {
-    document.documentElement.setAttribute('data-theme', getPreference())
+    const theme = getPreference()
+    
+    document.documentElement.setAttribute('data-theme', theme)
+    document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme)
   }
 
   function getPreference() {
