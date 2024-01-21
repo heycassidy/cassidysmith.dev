@@ -3,37 +3,9 @@ import '../styles/global.css'
 
 import SharedHead from '../components/SharedHead.astro'
 
+
 const { title, description } = Astro.props
 ---
-
-<!-- This script has to be high up to prevent FOUC -->
-<script is:inline>
-  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-  setColorMode();
-
-  darkModeMediaQuery.addEventListener('change', setColorMode);
-  document.addEventListener("astro:after-swap", setColorMode);
-
-  function setColorMode() {
-    const theme = getPreference()
-    
-    document.documentElement.setAttribute('data-theme', theme)
-    document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme)
-  }
-
-  function getPreference() {
-    // First check if user manually set the theme on this site
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
-    }
-
-    // Next, check if user has a system-wide preference
-    return darkModeMediaQuery.matches ? 'dark' : 'light'
-  }
-
-</script>
-
 
 <!DOCTYPE html>
 <html lang="en" data-theme="light">

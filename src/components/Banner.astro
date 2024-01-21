@@ -1,14 +1,12 @@
 ---
 import BannerLogo from "./BannerLogo.astro";
-import ThemeSwitcher from "./ThemeSwitcher.svelte";
 ---
 
 
-<header role="banner">
+<header role="banner" id="theme-switcher-portal">
   <nav>
     <BannerLogo class="test"/>
   </nav>
-  <ThemeSwitcher client:only="svelte" />
 </header>
 
 

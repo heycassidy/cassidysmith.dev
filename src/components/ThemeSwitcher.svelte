@@ -1,6 +1,7 @@
 <!-- Thanks Adam Argyle!! https://web.dev/articles/building/a-theme-switch-component -->
 
 <script>
+  import { portal } from 'svelte-portal'
   let theme = document.documentElement.getAttribute('data-theme')
 
   function toggle(event) {
@@ -20,6 +21,7 @@
   aria-label={theme}
   aria-live="polite"
   on:click={toggle}
+  use:portal={'#theme-switcher-portal'}
 >
   <svg
     class="sun-and-moon"
