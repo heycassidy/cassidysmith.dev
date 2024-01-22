@@ -1,8 +1,8 @@
 ---
 title: Glass Houses
 slug: glass-houses
-draft: false
-sortOrder: 100
+published: true
+position: 100
 image:
   {
     src: ./images/glass-houses.jpg,

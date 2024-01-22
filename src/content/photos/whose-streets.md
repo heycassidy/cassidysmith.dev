@@ -1,8 +1,8 @@
 ---
   title: Whose Streets?
   slug: whose-streets
-  draft: false
-  sortOrder: 1
+  published: true
+  position: 1
   image: {
     src: ./images/whose-streets.jpg,
     description: a person stands in the middle of a crosswalk, back to the camera, feet firmly planted, patiently waiting for a safe opportunity to cross the street as an SUV speeds through the crosswalk a few feet in front of the person

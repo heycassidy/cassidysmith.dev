@@ -5,16 +5,18 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components'
 import Button from '../../components/Button.astro';
 
+import { publishedEntries, sortByPosition } from '../../utils';
+
 export async function getStaticPaths() {
-  const entries = await getCollection('photos', (entry) => !entry.data.draft);
+  const entries = await getCollection('photos', publishedEntries);
 
   return entries.map(entry => ({
     params: { slug: entry.slug }, props: { photo: entry },
   }));
 }
 
-const photos = await getCollection('photos', (entry) => !entry.data.draft);
-let sortedPhotoSlugs = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).map((photo) => photo.slug);
+const photos = await getCollection('photos', publishedEntries);
+let sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.slug);
 
 const { photo } = Astro.props;
 const { Content } = await photo.render();

@@ -3,9 +3,10 @@ import { getCollection } from 'astro:content';
 import AppLayout from '../../layouts/AppLayout.astro';
 import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
 import PhotoGallery from '../../components/PhotoGallery.astro';
-const photos = await getCollection('photos', (entry) => !entry.data.draft);
+import { publishedEntries, sortByPosition } from '../../utils';
+const photos = await getCollection('photos', publishedEntries);
 
-let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder )
+let sortedPhotos = photos.sort(sortByPosition)
 
 ---
 

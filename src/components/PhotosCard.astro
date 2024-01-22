@@ -2,10 +2,11 @@
 import { getCollection } from 'astro:content';
 import PhotosCardItem from '../components/PhotosCardItem.astro'
 import { Icon } from 'astro-icon/components'
+import { publishedEntries, sortByPosition } from '../utils';
 
-const photos = await getCollection('photos', (entry) => !entry.data.draft);
+const photos = await getCollection('photos', publishedEntries);
 
-let sortedPhotos = photos.sort((a, b) => a.data.sortOrder - b.data.sortOrder ).slice(0, 6);
+let sortedPhotos = photos.sort(sortByPosition).slice(0, 6);
 
 ---
 <section class="photos-card">

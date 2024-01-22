@@ -1,8 +1,8 @@
 ---
 title: Big Number Five
 slug: big-number-five
-draft: false
-sortOrder: 6
+published: true
+position: 6
 image:
   {
     src: ./images/big-number-five.jpg,

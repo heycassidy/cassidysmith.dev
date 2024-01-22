@@ -1,8 +1,8 @@
 ---
   title: N. Richmond St. Alley
   slug: n-richmond-st-alley
-  draft: false
-  sortOrder: 100
+  published: true
+  position: 100
   image: {
     src: ./images/n-richmond-st-alley.jpg,
     description: a snow-covered Chicago alley with slushy tire tracks. The alley is lined on one side by a wooden fence, and a garage on the other side
