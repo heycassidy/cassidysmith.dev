@@ -7,4 +7,9 @@ export const publishedEntries = (
 export const sortByPosition = (
   entryA: CollectionEntry<CollectionKey>,
   entryB: CollectionEntry<CollectionKey>
-): number => entryA.data.position - entryB.data.position
+): number => {
+  if ('position' in entryA.data && 'position' in entryB.data) {
+    return entryA.data.position - entryB.data.position
+  }
+  return 0
+}

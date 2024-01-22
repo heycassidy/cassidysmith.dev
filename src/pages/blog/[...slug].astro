@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import AppLayout from '../../layouts/AppLayout.astro';
+import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
+
+import { publishedEntries, sortByPosition } from '../../utils';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog', publishedEntries);
+
+  return entries.map(entry => ({
+    params: { slug: entry.slug }, props: { post: entry },
+  }));
+}
+
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+
+---
+
+<AppLayout>
+  <PrimaryLayout>
+    <div>
+      <h1>{post.data.title}</h1>
+      <Content />
+    </div>
+
+  </PrimaryLayout>
+</AppLayout>
+
+
+<style lang="scss">
+  @import '../../styles/mixins.scss';
+
+
+</style>

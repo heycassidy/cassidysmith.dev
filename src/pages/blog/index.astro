@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import AppLayout from '../../layouts/AppLayout.astro';
+import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
+import { publishedEntries } from '../../utils';
+
+const posts = await getCollection('blog', publishedEntries);
+
+// let sortedPosts = posts.sort(sortByPosition)
+
+---
+
+<AppLayout
+  title="Blog"
+>
+  <PrimaryLayout>
+    <div>
+
+      <h1>Blog</h1>
+    </div>
+  </PrimaryLayout>
+</AppLayout>
+
+<style lang="scss">
+  @import '../../styles/mixins.scss';
+
+</style>
