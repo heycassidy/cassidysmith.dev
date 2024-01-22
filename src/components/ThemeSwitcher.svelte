@@ -4,6 +4,8 @@
   import { portal } from 'svelte-portal'
   let theme = document.documentElement.getAttribute('data-theme')
 
+  let portalElement = document.querySelector('#theme-switcher-portal')
+
   function toggle(event) {
     const prevTheme = theme
 
@@ -14,48 +16,50 @@
   }
 </script>
 
-<button
-  class="theme-toggle"
-  id="theme-toggle"
-  title="Toggles light & dark"
-  aria-label={theme}
-  aria-live="polite"
-  on:click={toggle}
-  use:portal={'#theme-switcher-portal'}
->
-  <svg
-    class="sun-and-moon"
-    aria-hidden="true"
-    width="24"
-    height="24"
-    viewBox="0 0 512 512"
+{#if portalElement}
+  <button
+    class="theme-toggle"
+    id="theme-toggle"
+    title="Toggles light & dark"
+    aria-label={theme}
+    aria-live="polite"
+    on:click={toggle}
+    use:portal={'#theme-switcher-portal'}
   >
-    <circle
-      class="sun"
-      cx="256"
-      cy="256"
-      r="100"
-      mask="url(#moon-mask)"
-      fill="currentColor"
-    />
+    <svg
+      class="sun-and-moon"
+      aria-hidden="true"
+      width="24"
+      height="24"
+      viewBox="0 0 512 512"
+    >
+      <circle
+        class="sun"
+        cx="256"
+        cy="256"
+        r="100"
+        mask="url(#moon-mask)"
+        fill="currentColor"
+      />
 
-    <g class="sun-beams" fill="currentColor">
-      <path d="M234 26h44v92h-44z" />
-      <path d="M234 394h44v92h-44z" />
-      <path d="m338.025 142.857 65.054-65.054 31.113 31.113-65.054 65.054z" />
-      <path d="m77.815 403.074 65.054-65.054 31.113 31.113-65.054 65.054z" />
-      <path d="M394 234h92v44h-92z" />
-      <path d="M26 234h92v44H26z" />
-      <path d="m338.029 369.14 31.112-31.113 65.054 65.054-31.112 31.112z" />
-      <path d="m77.802 108.92 31.113-31.113 65.054 65.054-31.113 31.112z" />
-    </g>
+      <g class="sun-beams" fill="currentColor">
+        <path d="M234 26h44v92h-44z" />
+        <path d="M234 394h44v92h-44z" />
+        <path d="m338.025 142.857 65.054-65.054 31.113 31.113-65.054 65.054z" />
+        <path d="m77.815 403.074 65.054-65.054 31.113 31.113-65.054 65.054z" />
+        <path d="M394 234h92v44h-92z" />
+        <path d="M26 234h92v44H26z" />
+        <path d="m338.029 369.14 31.112-31.113 65.054 65.054-31.112 31.112z" />
+        <path d="m77.802 108.92 31.113-31.113 65.054 65.054-31.113 31.112z" />
+      </g>
 
-    <mask class="moon" id="moon-mask">
-      <rect x="0" y="0" width="100%" height="100%" fill="white" />
-      <circle cx="512" cy="212" r="128" fill="black" />
-    </mask>
-  </svg>
-</button>
+      <mask class="moon" id="moon-mask">
+        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+        <circle cx="512" cy="212" r="128" fill="black" />
+      </mask>
+    </svg>
+  </button>
+{/if}
 
 <style lang="scss">
   @import '../styles/mixins.scss';
