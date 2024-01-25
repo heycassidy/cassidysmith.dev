@@ -1,0 +1,41 @@
+---
+
+const { class: className, ...rest } = Astro.props;
+
+---
+
+<header class={className} {...rest}>
+  <slot />
+</header>
+
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+
+  :global(:root[data-theme='light']) {
+    header {
+      --background-color: var(--color-tertiary-275);
+      --color: var(--color-tertiary-775);
+    }
+  }
+  :global(:root[data-theme='dark']) {
+    header {
+      --background-color: var(--color-tertiary-875);
+      --color: var(--color-tertiary-350);
+    }
+  }
+
+  header {
+    padding-top: calc(var(--fluid-bento-padding) * 3);
+    padding-bottom: calc(var(--fluid-bento-padding) * 3);
+    border-radius: var(--fluid-bento-radius);
+    background-color: var(--background-color);
+    color: var(--color);
+
+    :global(h1) {
+      color: currentColor;
+    }
+  }
+
+</style>

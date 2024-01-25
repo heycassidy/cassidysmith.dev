@@ -2,7 +2,7 @@ import type { CollectionEntry, CollectionKey } from 'astro:content'
 
 export const publishedEntries = (
   entry: CollectionEntry<CollectionKey>
-): boolean => entry.data.published
+): boolean => import.meta.env.DEV || entry.data.published
 
 export const sortByPosition = (
   entryA: CollectionEntry<CollectionKey>,

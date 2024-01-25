@@ -1,0 +1,55 @@
+---
+import BlogPostHeader from "../components/BlogPostHeader.astro"
+---
+
+<article>
+  <BlogPostHeader class="blog-post-grid blog-post-grid--header" >
+    <slot name="header" />
+  </BlogPostHeader>
+  <main class="blog-post-grid blog-post-grid--main">
+    <slot />
+  </main>
+</article>
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  @layer layout {
+    article {
+      display: grid;
+      row-gap: var(--fluid-bento-gap);
+    }
+
+    .blog-post-grid {
+      display: grid;
+      align-items: start;
+      column-gap: var(--fluid-bento-padding);
+      --column: text;
+      
+      :global(> *) {
+        grid-column: var(--column, text);
+      }
+
+      
+      grid-template-columns: 
+        [full-width-start breakout-start]
+          1fr
+            [text-start aside-start breakout-aside-start]
+              minmax(0, var(--layout-size-2))
+            [text-end aside-end breakout-aside-end]
+          1fr
+        [breakout-end full-width-end];
+
+      @include breakpoint-medium {
+        grid-template-columns: 
+          [full-width-start breakout-start]
+            1fr
+              [text-start]
+                minmax(0, var(--layout-size-2))
+              [text-end aside-start]
+            1fr
+          [breakout-end breakout-aside-start] minmax(0, var(--space-content-1)) [aside-end breakout-aside-end full-width-end];
+      }
+    }
+  }
+</style>

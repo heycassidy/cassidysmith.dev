@@ -24,10 +24,10 @@ import Banner from '../components/Banner.astro'
       grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--layout-size-3)) [centered-end] 1fr [full-width-end];
 
       :global(> *) {
-        grid-column: centered;
+        grid-column: var(--column, centered);
       }
       :global(footer) {
-        grid-column: full-width;
+        grid-column: var(--column, full-width);
       }
     }
   }
