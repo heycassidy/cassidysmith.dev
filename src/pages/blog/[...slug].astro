@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content'
 import AppLayout from '../../layouts/AppLayout.astro';
 import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
-
+import Blockquote from '@components/mdx/Blockquote.astro'
 import { publishedEntries } from '../../utils';
 
 
@@ -15,6 +15,11 @@ export async function getStaticPaths() {
   }));
 }
 
+
+
+export const components = {
+  blockquote: Blockquote,
+}
 
 const { post } = Astro.props;
 const { Content } = await post.render();
@@ -31,7 +36,7 @@ const { Content } = await post.render();
         <!-- todo: last modified -->
         <!-- todo: topics -->
       </Fragment>
-      <Content />
+      <Content components={components} />
     </BlogPostLayout>
   </PrimaryLayout>
 </AppLayout>
