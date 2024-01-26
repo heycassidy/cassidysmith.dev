@@ -33,7 +33,7 @@
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  :global(:root[data-theme='light']) {
+  @include colorModeStyles(light) {
     .copy-email {
       --color: var(--color-tertiary-700);
       --background-color: var(--color-tertiary-175);
@@ -52,7 +52,7 @@
       --color-link-active-decoration: var(--color-accent-one-525);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include colorModeStyles(dark) {
     .copy-email {
       --color: var(--color-tertiary-275);
       --background-color: var(--color-tertiary-875);

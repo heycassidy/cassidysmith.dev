@@ -81,12 +81,12 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
     }
   }
 
-  :global(:root[data-theme='light']) {
+  @include colorModeStyles(light) {
     .photo-page-layout__image {
       --photo-padding: var(--fluid-bento-padding);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include colorModeStyles(dark) {
     .photo-page-layout__image {
       --photo-padding: calc(var(--fluid-bento-padding) * 2);
     }

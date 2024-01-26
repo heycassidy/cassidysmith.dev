@@ -25,7 +25,7 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 6);
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  :global(:root[data-theme='light']) {
+  @include colorModeStyles(light) {
     .photos-card {
       --color: var(--color-neutral-700);
       --background-color: var(--color-neutral-275);
@@ -37,7 +37,7 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 6);
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include colorModeStyles(dark) {
     .photos-card {
       --color: var(--color-neutral-275);
       --background-color: var(--color-neutral-775);
