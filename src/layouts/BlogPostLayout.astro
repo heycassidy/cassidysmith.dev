@@ -17,7 +17,7 @@ import BlogPostHeader from "../components/BlogPostHeader.astro"
   @layer layout {
     article {
       display: grid;
-      row-gap: var(--fluid-bento-gap);
+      row-gap: calc(var(--fluid-bento-gap) * 2);
     }
 
     .blog-post-grid {
