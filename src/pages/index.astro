@@ -31,12 +31,12 @@ import PhotosCard from '../components/PhotosCard.astro';
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  :global(:root[data-theme='light']) {
+  @include colorModeStyles(light) {
     main {
       --background-color: var(--color-primary-275);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include colorModeStyles(dark) {
     main {
       --background-color: var(--color-primary-875);
     }
