@@ -52,17 +52,6 @@
     }
   }
 
-  ul,
-  ol,
-  p,
-  blockquote {
-    margin-bottom: var(--fluid-bento-gap);
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   h1,
   h2,
   h3 {

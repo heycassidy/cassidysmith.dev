@@ -33,7 +33,13 @@ const {...props} = Astro.props;
     font-size: var(--font-size-4);
     position: relative;
     text-wrap: balance;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--fluid-bento-gap);
 
+    :global(> *) {
+      grid-column: 1;
+    }
 
     &::before, &::after {
       content: ' ';
@@ -42,12 +48,6 @@ const {...props} = Astro.props;
       width: min(100%, var(--space-8));
       height: 2px;
       background-color: var(--border-color);
-    }
-    &::before {
-      margin-bottom: var(--fluid-bento-padding);
-    }
-    &::after {
-      margin-top: var(--fluid-bento-padding);
     }
   }
 </style>
