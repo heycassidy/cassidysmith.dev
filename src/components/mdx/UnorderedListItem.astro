@@ -1,0 +1,54 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<li>
+  <Icon size={24} name="ion:return-down-forward-sharp" />
+  <span>
+    <slot />
+  </span>
+</li>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include colorModeStyles(light) {
+    li {
+      --marker-color: var(--color-primary-525);
+    }
+  }
+  
+  @include colorModeStyles(dark) {
+    li {
+      --marker-color: var(--color-primary-425);
+    }
+  }
+
+  li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2em auto;
+    column-gap: var(--space-2);
+  }
+  
+  [data-icon] {
+    color: var(--marker-color);
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: auto;
+    margin-top: 0.2em;
+  }
+
+  @at-root :global(ul) {
+    padding-left: var(--space-2);
+    
+    > li {
+      &::marker {
+        content: " ";
+      }
+    }
+    
+  }
+
+</style>

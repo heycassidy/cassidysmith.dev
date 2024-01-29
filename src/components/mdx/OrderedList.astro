@@ -1,0 +1,28 @@
+---
+import { parse } from 'node-html-parser'
+import OrderedListItem from '@components/mdx/OrderedListItem.astro'
+
+const html = await Astro.slots.render('default')
+const root = parse(html)
+const listItems = root.querySelectorAll('li')
+
+const {...props} = Astro.props;
+
+---
+
+<ol {...props}>
+  {
+    listItems.map(item => (
+      <OrderedListItem>
+        <Fragment set:html={item.innerHTML} />
+      </OrderedListItem>
+    ))
+  }
+</ol>
+
+
+<style lang="scss">
+  ol {
+    text-wrap: balance;
+  }
+</style>

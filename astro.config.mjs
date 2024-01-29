@@ -24,6 +24,7 @@ export default defineConfig({
           'arrow-forward-sharp',
           'arrow-back-sharp',
           'caret-forward-sharp',
+          'return-down-forward-sharp',
           'logo-github',
           'logo-linkedin',
           'logo-instagram',
