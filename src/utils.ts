@@ -1,4 +1,6 @@
 import type { CollectionEntry, CollectionKey } from 'astro:content'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 
 export const publishedEntries = (
   entry: CollectionEntry<CollectionKey>
@@ -12,4 +14,10 @@ export const sortByPosition = (
     return entryA.data.position - entryB.data.position
   }
   return 0
+}
+
+export const friendlyUTCDate = (date: Date): string => {
+  dayjs.extend(utc)
+
+  return dayjs(date).utc().format('MMMM D, YYYY')
 }

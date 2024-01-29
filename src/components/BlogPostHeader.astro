@@ -10,7 +10,7 @@ const { class: className, ...rest } = Astro.props;
 
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @import '@styles/mixins.scss';
 
 
   @include colorModeStyles(light) {
@@ -21,21 +21,17 @@ const { class: className, ...rest } = Astro.props;
   }
   @include colorModeStyles(dark) {
     header {
-      --background-color: var(--color-tertiary-875);
-      --color: var(--color-tertiary-350);
+      --background-color: var(--color-tertiary-775);
+      --color: var(--color-tertiary-275);
     }
   }
 
   header {
-    padding-top: calc(var(--fluid-bento-padding) * 3);
-    padding-bottom: calc(var(--fluid-bento-padding) * 3);
+    padding-top: calc(var(--fluid-bento-padding) * 2);
+    padding-bottom: calc(var(--fluid-bento-padding) * 2);
     border-radius: var(--fluid-bento-radius);
     background-color: var(--background-color);
     color: var(--color);
-
-    :global(h1) {
-      color: currentColor;
-    }
   }
 
 </style>

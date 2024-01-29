@@ -1,11 +1,12 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content'
-import AppLayout from '../../layouts/AppLayout.astro';
-import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
-import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
+import AppLayout from '@layouts/AppLayout.astro';
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import BlogPostLayout from '@layouts/BlogPostLayout.astro'
 import Blockquote from '@components/mdx/Blockquote.astro'
+import BlogPostHeaderContent from '@components/BlogPostHeaderContent.astro'
+import BlogPostMeta from '@components/BlogPostMeta.astro';
 import { publishedEntries } from '../../utils';
-
 
 export async function getStaticPaths() {
   const entries = await getCollection('blog', publishedEntries);
@@ -15,35 +16,21 @@ export async function getStaticPaths() {
   }));
 }
 
-
-
 export const components = {
   blockquote: Blockquote,
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
-
+const { Content, remarkPluginFrontmatter } = await post.render();
 
 ---
 
 <AppLayout>
   <PrimaryLayout>
     <BlogPostLayout>
-      <Fragment slot="header">
-        <!-- todo: Breadcrumbs -->
-        <h1>{post.data.title}</h1>
-        <!-- todo: last modified -->
-        <!-- todo: topics -->
-      </Fragment>
+      <BlogPostHeaderContent slot="header" post={post} />
+      <BlogPostMeta slot="meta" post={post} readingTime={remarkPluginFrontmatter.readingTime}  />
       <Content components={components} />
     </BlogPostLayout>
   </PrimaryLayout>
 </AppLayout>
-
-
-<style lang="scss">
-  @import '../../styles/mixins.scss';
-
-
-</style>

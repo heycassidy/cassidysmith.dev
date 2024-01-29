@@ -14,9 +14,11 @@ export const photoSchema = ({ image }: SchemaContext) =>
 export const blogSchema = () =>
   z.object({
     title: z.string(),
+    subtitle: z.string().optional(),
     published: z.boolean().default(false),
-    publishedDate: z.string().transform((str) => new Date(str)),
-    lastModified: z.string().transform((str) => new Date(str)),
+    publishedDate: z.date(),
+    lastModified: z.date(),
     author: z.string(),
     previewText: z.string(),
+    readingTime: z.string().optional(),
   })

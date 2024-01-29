@@ -3,10 +3,13 @@ import BlogPostHeader from "../components/BlogPostHeader.astro"
 ---
 
 <article>
-  <BlogPostHeader class="blog-post-grid blog-post-grid--header" >
+  <BlogPostHeader class="blog-post-grid" >
     <slot name="header" />
   </BlogPostHeader>
-  <main class="blog-post-grid blog-post-grid--main">
+  <div class="blog-post-grid">
+    <slot name="meta">
+  </div>
+  <main class="blog-post-grid">
     <slot />
   </main>
 </article>
@@ -34,9 +37,9 @@ import BlogPostHeader from "../components/BlogPostHeader.astro"
       grid-template-columns: 
         [full-width-start breakout-start]
           1fr
-            [text-start aside-start breakout-aside-start]
+            [text-start aside-start header-content-start]
               minmax(0, var(--layout-size-2))
-            [text-end aside-end breakout-aside-end]
+            [text-end aside-end header-content-end]
           1fr
         [breakout-end full-width-end];
 
@@ -44,11 +47,15 @@ import BlogPostHeader from "../components/BlogPostHeader.astro"
         grid-template-columns: 
           [full-width-start breakout-start]
             1fr
-              [text-start]
+              [text-start header-content-start]
                 minmax(0, var(--layout-size-2))
-              [text-end aside-start]
+              [text-end]
             1fr
-          [breakout-end breakout-aside-start] minmax(0, var(--space-content-1)) [aside-end breakout-aside-end full-width-end];
+          [breakout-end aside-start]
+            minmax(0, var(--space-content-1))
+          [header-content-end aside-end]
+            1fr
+          [full-width-end];
       }
     }
   }

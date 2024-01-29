@@ -1,0 +1,39 @@
+---
+import { friendlyUTCDate } from '../utils';
+const { post, readingTime } = Astro.props;
+
+---
+
+<p>
+  {readingTime && <span>{readingTime}</span>}
+  <span>Last updated on <time datetime={post.data.lastModified.toISOString()}>{friendlyUTCDate(post.data.lastModified)}</time></span>
+</p>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include colorModeStyles(light) {
+    p {
+      --color: var(--color-primary-700);
+    }
+  }
+  @include colorModeStyles(dark) {
+    p {
+      --color: var(--color-primary-425);
+    }
+  }
+
+  p {
+    font-size: var(--font-size-0);
+    color: var(--color);
+    display: flex;
+    flex-wrap: wrap;
+
+    > span + span {
+      &::before {
+        content: "|";
+        margin-inline: 1ch;
+      }
+    }
+  }
+</style>
