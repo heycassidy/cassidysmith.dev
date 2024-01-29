@@ -6,6 +6,7 @@ import BlogPostLayout from '@layouts/BlogPostLayout.astro'
 import Blockquote from '@components/mdx/Blockquote.astro'
 import UnorderedList from '@components/mdx/UnorderedList.astro'
 import OrderedList from '@components/mdx/OrderedList.astro'
+import Img from '@components/mdx/Img.astro'
 import BlogPostHeaderContent from '@components/BlogPostHeaderContent.astro'
 import BlogPostMeta from '@components/BlogPostMeta.astro';
 import { publishedEntries } from '../../utils';
@@ -22,6 +23,7 @@ export const components = {
   blockquote: Blockquote,
   ul: UnorderedList,
   ol: OrderedList,
+  img: Img,
 }
 
 const { post } = Astro.props;

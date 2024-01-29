@@ -1,0 +1,74 @@
+---
+
+import { Image } from 'astro:assets';
+
+
+const { alt, src } = Astro.props;
+
+let column: 'breakout' | 'text' | 'small' = 'small';
+let displayWidth = (src.width - 2) / 2;
+
+if (src.width > 1800) {
+  column = 'breakout';
+  displayWidth = 900;
+} else if (src.width > 1400 && src.width <= 1800) {
+  column = 'text';
+  displayWidth = 700;
+}
+
+
+---
+
+
+<Image
+  class={`blog-post-image blog-post-image--${column}`}
+  src={src}
+  alt={alt}
+  quality={60}
+  width={displayWidth}
+  height={(src.height / src.width) * displayWidth}
+  densities={[2]}
+  loading="lazy" />
+
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include colorModeStyles(light) {
+    .blog-post-image {
+      --background-color: var(--color-neutral-175);
+    }
+  }
+
+  @include colorModeStyles(dark) {
+    .blog-post-image {
+      --background-color: var(--color-neutral-875);
+    }
+  }
+
+  .blog-post-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: calc(var(--fluid-bento-radius) / 2);
+    background-color: var(--background-color);
+  }
+  .blog-post-image--breakout {
+    width: 100%;
+    --column: breakout;
+  }
+  .blog-post-image--text {
+    width: 100%;
+    --column: breakout;
+    @include breakpoint-medium {
+      --column: text;
+    }
+  }
+  .blog-post-image--small {
+    --column: text;
+    margin-inline: auto;
+  }
+
+
+</style>
+
