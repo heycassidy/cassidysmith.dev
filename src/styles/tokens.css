@@ -48,10 +48,10 @@
     --fluid-bento-padding: clamp(var(--space-2), 3cqw, var(--space-3));
     --fluid-bento-radius: clamp(var(--space-1), 3cqw, var(--space-3));
 
-    --space-content-1: 20ch;
-    --space-content-2: 45ch;
-    --space-content-3: 60ch;
-    --space-content-4: 75ch;
+    --space-content-1: 10rem;
+    --space-content-2: 28rem;
+    --space-content-3: 38rem;
+    --space-content-4: 48rem;
 
     --layout-size-1: 25rem;
     --layout-size-2: 35rem;
