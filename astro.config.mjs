@@ -11,6 +11,9 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  markdown: {
+    smartypants: true,
+  },
   integrations: [
     svelte(),
     icon({

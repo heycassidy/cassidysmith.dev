@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content'
-import AppLayout from '@layouts/AppLayout.astro';
+import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import BlogPostLayout from '@layouts/BlogPostLayout.astro'
 import Blockquote from '@components/mdx/Blockquote.astro'
@@ -8,34 +8,38 @@ import UnorderedList from '@components/mdx/UnorderedList.astro'
 import OrderedList from '@components/mdx/OrderedList.astro'
 import Img from '@components/mdx/Img.astro'
 import BlogPostHeaderContent from '@components/BlogPostHeaderContent.astro'
-import BlogPostMeta from '@components/BlogPostMeta.astro';
-import { publishedEntries } from '../../utils';
+import BlogPostMeta from '@components/BlogPostMeta.astro'
+import { publishedEntries } from '../../utils'
 
 export async function getStaticPaths() {
-  const entries = await getCollection('blog', publishedEntries);
+  const entries = await getCollection('blog', publishedEntries)
 
   return entries.map((entry: CollectionEntry<'blog'>) => ({
-    params: { slug: entry.slug }, props: { post: entry },
-  }));
+    params: { slug: entry.slug },
+    props: { post: entry },
+  }))
 }
 
 export const components = {
   blockquote: Blockquote,
   ul: UnorderedList,
   ol: OrderedList,
-  img: Img,
+  img: Img
 }
 
-const { post } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await post.render();
-
+const { post } = Astro.props
+const { Content, remarkPluginFrontmatter } = await post.render()
 ---
 
 <AppLayout>
   <PrimaryLayout>
     <BlogPostLayout>
       <BlogPostHeaderContent slot="header" post={post} />
-      <BlogPostMeta slot="meta" post={post} readingTime={remarkPluginFrontmatter.readingTime}  />
+      <BlogPostMeta
+        slot="meta"
+        post={post}
+        readingTime={remarkPluginFrontmatter.readingTime}
+      />
       <Content components={components} />
     </BlogPostLayout>
   </PrimaryLayout>
