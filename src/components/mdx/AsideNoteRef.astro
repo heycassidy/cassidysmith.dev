@@ -1,0 +1,21 @@
+---
+const { id, refLabel } = Astro.props
+---
+
+<sup id={`note-ref-${id}`}>
+  <a href={`#note-${id}`}>{refLabel}</a>
+</sup>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  sup {
+    display: inline-flex;
+  }
+
+  a {
+    @include text-link($visited: false);
+    line-height: 1;
+    font-size: var(--font-size-0);
+  }
+</style>

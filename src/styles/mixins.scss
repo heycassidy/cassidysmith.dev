@@ -8,7 +8,7 @@
   }
 }
 
-@mixin text-link {
+@mixin text-link($visited: true) {
   transition:
     color 0.2s,
     text-decoration-color 0.2s;
@@ -17,9 +17,16 @@
     color: var(--color-link);
     text-decoration-color: var(--color-link-decoration);
   }
-  &:visited {
-    color: var(--color-link-visited);
-    text-decoration-color: var(--color-link-visited-decoration);
+  @if $visited {
+    &:visited {
+      color: var(--color-link-visited);
+      text-decoration-color: var(--color-link-visited-decoration);
+    }
+  } @else {
+    &:visited {
+      color: var(--color-link);
+      text-decoration-color: var(--color-link-decoration);
+    }
   }
   &:hover {
     color: var(--color-link-hover);
