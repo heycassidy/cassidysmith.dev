@@ -76,19 +76,19 @@
     --color-accent-one-950: #1b0e04;
 
     /* AccentTwo */
-    --accent-two-0: #fefcfa;
-    --accent-two-100: #fcf5ed;
-    --accent-two-175: #fae8d2;
-    --accent-two-275: #f9d2a1;
-    --accent-two-350: #eda52b;
-    --accent-two-425: #b27b1e;
-    --accent-two-525: #966718;
-    --accent-two-600: #734e0f;
-    --accent-two-700: #61410b;
-    --accent-two-775: #473009;
-    --accent-two-850: #2e2009;
-    --accent-two-875: #211808;
-    --accent-two-950: #161005;
+    --color-accent-two-0: #fefcfa;
+    --color-accent-two-100: #fcf5ed;
+    --color-accent-two-175: #fae8d2;
+    --color-accent-two-275: #f9d2a1;
+    --color-accent-two-350: #eda52b;
+    --color-accent-two-425: #b27b1e;
+    --color-accent-two-525: #966718;
+    --color-accent-two-600: #734e0f;
+    --color-accent-two-700: #61410b;
+    --color-accent-two-775: #473009;
+    --color-accent-two-850: #2e2009;
+    --color-accent-two-875: #211808;
+    --color-accent-two-950: #161005;
 
     /* Success */
     --color-success-0: #f7fef9;
