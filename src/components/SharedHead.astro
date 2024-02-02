@@ -55,6 +55,20 @@ title = `Cassidy Smith ${title ? `- ${title}` : ' - Front-End Engineer'}`
         fallback: 'sans-serif',
         cssVariable: 'font-syne',
       },
+      {
+        src: [{
+          style: 'normal',
+          weight: '400',
+          path: 'https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.000/fonts/webfonts/MonaspaceNeon-Regular.woff',
+        }],
+        fetch: import.meta.env.PROD,
+        basePath: './dist',
+        preload: true,
+        display: 'swap',
+        name: 'Monaspace Neon',
+        fallback: 'sans-serif',
+        cssVariable: 'font-monaspace-neon',
+      },
     ]}
   />
 </head>

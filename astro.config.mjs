@@ -4,6 +4,7 @@ import svelte from '@astrojs/svelte'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/remark/remark-reading-time.mjs'
+import astroExpressiveCode from 'astro-expressive-code'
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
   },
   markdown: {
     smartypants: true,
+    remarkPlugins: [remarkReadingTime],
   },
   integrations: [
     svelte(),
@@ -34,9 +36,8 @@ export default defineConfig({
         ],
       },
     }),
-    mdx({
-      remarkPlugins: [remarkReadingTime],
-    }),
+    astroExpressiveCode(),
+    mdx({}),
     sitemap(),
   ],
 })
