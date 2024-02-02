@@ -76,19 +76,19 @@
     --color-accent-one-950: #1b0e04;
 
     /* AccentTwo */
-    --color-accent-two-0: #fdfdf4;
-    --color-accent-two-100: #f9f9bc;
-    --color-accent-two-175: #ebf16a;
-    --color-accent-two-275: #d8e148;
-    --color-accent-two-350: #b3bb38;
-    --color-accent-two-425: #868c20;
-    --color-accent-two-525: #707619;
-    --color-accent-two-600: #555910;
-    --color-accent-two-700: #474b0c;
-    --color-accent-two-775: #353709;
-    --color-accent-two-850: #232409;
-    --color-accent-two-875: #1a1a0a;
-    --color-accent-two-950: #121105;
+    --accent-two-0: #fefcfa;
+    --accent-two-100: #fcf5ed;
+    --accent-two-175: #fae8d2;
+    --accent-two-275: #f9d2a1;
+    --accent-two-350: #eda52b;
+    --accent-two-425: #b27b1e;
+    --accent-two-525: #966718;
+    --accent-two-600: #734e0f;
+    --accent-two-700: #61410b;
+    --accent-two-775: #473009;
+    --accent-two-850: #2e2009;
+    --accent-two-875: #211808;
+    --accent-two-950: #161005;
 
     /* Success */
     --color-success-0: #f7fef9;
