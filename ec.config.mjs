@@ -24,7 +24,10 @@ export default defineEcConfig({
     frames: {
       tooltipSuccessBackground: 'var(--color-neutral-950)',
       frameBoxShadowCssValue: 'none',
-      editorTabBarBackground: 'none',
+      editorTabBarBackground: ({ theme }) =>
+        theme.type === 'dark'
+          ? 'var(--color-neutral-850)'
+          : 'var(--color-neutral-175)',
       editorActiveTabIndicatorTopColor: 'none',
       editorActiveTabIndicatorBottomColor: 'none',
       editorActiveTabBackground: ({ theme }) =>
@@ -37,8 +40,8 @@ export default defineEcConfig({
           : 'var(--color-neutral-0)',
       terminalTitlebarBackground: ({ theme }) =>
         theme.type === 'dark'
-          ? 'var(--color-neutral-875)'
-          : 'var(--color-stark-background)',
+          ? 'var(--color-neutral-850)'
+          : 'var(--color-neutral-175)',
       terminalTitlebarBorderBottomColor: ({ theme }) =>
         theme.type === 'dark'
           ? 'var(--color-neutral-775)'
