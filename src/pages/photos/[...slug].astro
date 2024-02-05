@@ -1,9 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import AppLayout from '../../layouts/AppLayout.astro';
+import AppLayout from '@layouts/AppLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components'
-import Button from '../../components/Button.astro';
+import Button from '@components/Button.astro';
+import Prose from '@components/Prose.astro';
 
 import { publishedEntries, sortByPosition } from '../../utils';
 
@@ -55,10 +56,10 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
         </div>
       </div>
   
-      <div class="photo-description">
+      <Prose as="main" class="photo-description">
         <h1>{photo.data.title}</h1>
         <Content class="photo-content" />
-      </div>
+      </Prose>
     </div>
   </div>
 </AppLayout>

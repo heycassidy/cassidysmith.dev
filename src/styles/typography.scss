@@ -31,47 +31,17 @@
     font-size: var(--font-size-1);
     line-height: var(--line-height-1);
   }
-  h1,
-  h2,
-  h3 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+  h1, h2, h3 {
     font-weight: 710;
-    margin-top: var(--space-6);
-    margin-bottom: var(--fluid-bento-gap);
-  }
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    margin-top: var(--space-5);
-    margin-bottom: var(--fluid-bento-gap);
 
-    & + p {
-      margin-top: 0;
-    }
-  }
-
-  h1,
-  h2,
-  h3 {
     &:first-child {
       margin-top: -0.1em;
     }
   }
-
-  h4,
-  h5,
-  h6,
-  p,
-  ul,
-  ol,
-  blockquote {
-    &:first-child {
-      margin-top: 0;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
+  h4, h5, h6 {
+    font-weight: 680;
   }
 }

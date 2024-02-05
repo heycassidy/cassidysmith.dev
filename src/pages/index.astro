@@ -1,16 +1,17 @@
 ---
-import AppLayout from '../layouts/AppLayout.astro';
-import PrimaryLayout from '../layouts/PrimaryLayout.astro'
-import SocialLinks from '../components/SocialLinks.astro'
-import PricklyPearContainer from '../components/PricklyPearContainer.astro'
-import CopyEmail from '../components/CopyEmail.astro';
-import PhotosCard from '../components/PhotosCard.astro';
+import AppLayout from '@layouts/AppLayout.astro';
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import SocialLinks from '@components/SocialLinks.astro'
+import PricklyPearContainer from '@components/PricklyPearContainer.astro'
+import CopyEmail from '@components/CopyEmail.astro';
+import PhotosCard from '@components/PhotosCard.astro';
+import Prose from '@components/Prose.astro';
 ---
 
 <AppLayout>
   <PrimaryLayout>
     <div class="page-layout">
-      <main>
+      <Prose as="main">
         <h1>Hi, I’m Cassidy</h1>
         <p>I’m a front-end engineer and UI designer at <a
             href="https://nobledesktop.com"
@@ -18,7 +19,7 @@ import PhotosCard from '../components/PhotosCard.astro';
             rel="noopener noreferrer">Noble Desktop</a
           >. I enjoy creative and intentional problem solving with code. Day-to-day, I work in Ruby on Rails, JavaScript/ES6, Next.js, React, CSS, and HTML. I also love to explore new tools, languages, and frameworks.
         </p>
-      </main>
+      </Prose>
     
       <PhotosCard />
       <SocialLinks />

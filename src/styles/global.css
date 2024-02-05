@@ -4,6 +4,7 @@
 @import 'tokens.css';
 @import 'themes.css';
 @import 'typography.scss';
+@import 'prose.scss';
 @import 'util.scss';
 
 @layer base {

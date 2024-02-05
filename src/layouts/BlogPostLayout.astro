@@ -1,5 +1,6 @@
 ---
 import BlogPostHeader from "../components/BlogPostHeader.astro"
+import Prose from "@components/Prose.astro"
 ---
 
 <article>
@@ -9,13 +10,14 @@ import BlogPostHeader from "../components/BlogPostHeader.astro"
   <div class="blog-post-grid">
     <slot name="meta">
   </div>
-  <main class="blog-post-grid blog-post-grid--content-wrapper">
+  <Prose as="main" class="blog-post-grid blog-post-conent">
     <slot />
-  </main>
+  </Prose>
 </article>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @import '@styles/mixins.scss';
+  @import '@styles/blog-post-content';
 
   @layer layout {
     article {
@@ -36,19 +38,19 @@ import BlogPostHeader from "../components/BlogPostHeader.astro"
       grid-template-columns: 
         [full-width-start breakout-start]
           1fr
-            [text-start aside-start header-content-start]
+            [text-start aside-start header-content-start anchor-heading-start]
               minmax(0, var(--layout-size-2))
-            [text-end aside-end header-content-end]
+            [text-end aside-end header-content-end anchor-heading-end]
           1fr
         [breakout-end full-width-end];
 
       @include breakpoint-medium {
         grid-template-columns: 
-          [full-width-start breakout-start]
+          [full-width-start breakout-start anchor-heading-start]
             1fr
               [text-start header-content-start]
                 minmax(0, var(--layout-size-2))
-              [text-end]
+              [text-end anchor-heading]
             1fr
           [breakout-end aside-start]
             minmax(var(--space-content-1), 10fr)
@@ -56,10 +58,6 @@ import BlogPostHeader from "../components/BlogPostHeader.astro"
             1fr
           [full-width-end];
       }
-    }
-
-    .blog-post-grid--content-wrapper {
-      row-gap: calc(var(--fluid-bento-gap) * 2);
     }
   }
 </style>

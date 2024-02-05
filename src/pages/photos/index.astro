@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import AppLayout from '../../layouts/AppLayout.astro';
-import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
-import PhotoGallery from '../../components/PhotoGallery.astro';
+import AppLayout from '@layouts/AppLayout.astro';
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import PhotoGallery from '@components/PhotoGallery.astro';
+import Prose from '@components/Prose.astro';
 import { publishedEntries, sortByPosition } from '../../utils';
 const photos = await getCollection('photos', publishedEntries);
 
@@ -15,10 +16,10 @@ let sortedPhotos = photos.sort(sortByPosition)
   description="A curated collection of photos taken by me, Cassidy Smith."
 >
   <PrimaryLayout>
-    <main>
+    <Prose as="main">
       <h1>Photography</h1>
       <p>Sometimes you gotta step away from the keyboard, go outside, and look at something further away than your nearest screen. My photography practice is spontaneous, amateur, and casual. I shoot whatever happens to catch my attention and I intentionally avoid planning photos. My photos are an expression of my experience navigating my environment as a pedestrian.</p>
-    </main>
+    </Prose>
     <PhotoGallery photos={sortedPhotos} />
   </PrimaryLayout>
 </AppLayout>
