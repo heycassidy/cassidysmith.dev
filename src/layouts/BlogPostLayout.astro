@@ -8,9 +8,13 @@ import Prose from "@components/Prose.astro"
     <slot name="header" />
   </BlogPostHeader>
   <div class="blog-post-grid">
-    <slot name="meta">
+    <slot name="meta" />
   </div>
-  <Prose as="main" class="blog-post-grid blog-post-conent">
+
+  <Prose as="main" class="blog-post-grid">
+    <div class="blog-post-grid__sidebar">
+      <slot name="sidebar" />
+    </div>
     <slot />
   </Prose>
 </article>
@@ -57,6 +61,14 @@ import Prose from "@components/Prose.astro"
           [header-content-end aside-end]
             1fr
           [full-width-end];
+      }
+    }
+
+    .blog-post-grid__sidebar {
+      z-index: 1;
+      --column: aside;
+      @include breakpoint-medium {
+        height: 0;
       }
     }
   }

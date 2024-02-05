@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content'
+import { publishedEntries } from '@utils/index'
 import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import BlogPostLayout from '@layouts/BlogPostLayout.astro'
@@ -10,7 +11,7 @@ import Img from '@components/mdx/Img.astro'
 import Code from '@components/mdx/Code.astro'
 import BlogPostHeaderContent from '@components/BlogPostHeaderContent.astro'
 import BlogPostMeta from '@components/BlogPostMeta.astro'
-import { publishedEntries } from '../../utils'
+import BlogToC from '@components/BlogToC.astro'
 import H1 from '@components/mdx/H1.astro'
 import H2 from '@components/mdx/H2.astro'
 import H3 from '@components/mdx/H3.astro'
@@ -43,7 +44,7 @@ export const components = {
 }
 
 const { post } = Astro.props
-const { Content, remarkPluginFrontmatter } = await post.render()
+const { Content, remarkPluginFrontmatter, headings } = await post.render()
 
 ---
 
@@ -56,6 +57,7 @@ const { Content, remarkPluginFrontmatter } = await post.render()
         post={post}
         readingTime={remarkPluginFrontmatter.readingTime}
       />
+      <BlogToC slot="sidebar" headings={headings} />
       <Content components={components} />
     </BlogPostLayout>
   </PrimaryLayout>

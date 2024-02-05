@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import PhotosCardItem from '../components/PhotosCardItem.astro'
 import { Icon } from 'astro-icon/components'
-import { publishedEntries, sortByPosition } from '../utils';
+import { publishedEntries, sortByPosition } from '@utils/index';
 
 const photos = await getCollection('photos', publishedEntries);
 

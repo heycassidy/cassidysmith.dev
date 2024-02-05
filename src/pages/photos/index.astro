@@ -4,7 +4,7 @@ import AppLayout from '@layouts/AppLayout.astro';
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import PhotoGallery from '@components/PhotoGallery.astro';
 import Prose from '@components/Prose.astro';
-import { publishedEntries, sortByPosition } from '../../utils';
+import { publishedEntries, sortByPosition } from '@utils/index';
 const photos = await getCollection('photos', publishedEntries);
 
 let sortedPhotos = photos.sort(sortByPosition)

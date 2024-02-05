@@ -1,0 +1,43 @@
+---
+import BlogToCHeading from "@components/BlogToCHeading.astro";
+import generateToC from "@utils/generateToC";
+
+const { headings } = Astro.props;
+
+const toc = generateToC(headings, { 
+  minHeadingLevel: 1,
+  maxHeadingLevel: 4
+})
+
+---
+
+<aside>
+  <h2>Table of Contents</h2>
+  <nav class="toc">
+    <ol>
+      {toc.map((heading) => <BlogToCHeading heading={heading} />)}
+    </ol>
+  </nav>
+</aside>
+
+<style lang="scss">
+  @import '@styles/mixins';
+  
+  h2 {
+    font-weight: 720;
+    letter-spacing: 0.05ch;
+
+    text-transform: uppercase;
+    font-size: var(--font-size-0);
+    line-height: var(--line-height-1);
+    margin-bottom: var(--space-3);
+  }
+
+  ol {
+    padding: 0;
+  }
+
+  aside {
+    padding-bottom: calc(var(--fluid-bento-gap) * 2);
+  }
+</style>
