@@ -1,0 +1,6 @@
+---
+import AnchorHeading from "@components/AnchorHeading.astro"
+const { id } = Astro.props;
+---
+
+<AnchorHeading as="h5" slug={id}><slot /></AnchorHeading>

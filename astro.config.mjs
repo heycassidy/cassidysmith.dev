@@ -30,6 +30,7 @@ export default defineConfig({
           'arrow-back-sharp',
           'caret-forward-sharp',
           'return-down-forward-sharp',
+          'link-sharp',
           'logo-github',
           'logo-linkedin',
           'logo-instagram',
