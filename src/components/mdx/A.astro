@@ -1,0 +1,52 @@
+---
+import { Icon } from 'astro-icon/components'
+import { isExternalURL } from '@utils/index'
+const { href } = Astro.props;
+
+const external = isExternalURL(href, Astro.url.host);
+
+---
+
+<a href={href} class:list={[{ external }]}><slot />{external && <Icon name="ion:arrow-forward-sharp" size={16} />}</a>
+
+<style lang="scss">
+  @import '@styles/mixins';
+  
+  a {
+    display: inline-flex;
+    align-items: center;
+    @include text-link;
+
+    [data-icon] {
+      width: 0.8em;
+      height: 0.8em;
+      transform: rotate(-45deg);
+    }
+  }
+
+
+  @include colorModeStyles(light) {
+    a.external {
+      --color-link: var(--color-secondary-600);
+      --color-link-decoration: var(--color-secondary-350);
+      --color-link-hover: var(--color-secondary-425);
+      --color-link-hover-decoration: var(--color-secondary-350);
+      --color-link-active: var(--color-accent-one-600);
+      --color-link-active-decoration: var(--color-accent-one-525);
+      --color-link-visited: inherit;
+      --color-link-visited-decoration: var(--color-secondary-350);
+    }
+  }
+  @include colorModeStyles(dark) {
+    a.external {
+      --color-link: var(--color-secondary-350);
+      --color-link-decoration: var(--color-secondary-350);
+      --color-link-hover: var(--color-secondary-275);
+      --color-link-hover-decoration: var(--color-secondary-175);
+      --color-link-active: var(--color-accent-one-425);
+      --color-link-active-decoration: var(--color-accent-one-525);
+      --color-link-visited: inherit;
+      --color-link-visited-decoration: var(--color-secondary-350);
+    }
+  }
+</style>

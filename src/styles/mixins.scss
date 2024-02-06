@@ -11,11 +11,15 @@
 @mixin text-link($visited: true) {
   transition:
     color 0.2s,
+    text-decoration-thickness 0.2s,
+    text-underline-offset 0.2s,
     text-decoration-color 0.2s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
 
   &:link {
     color: var(--color-link);
     text-decoration-color: var(--color-link-decoration);
+    text-underline-offset: 0.1em;
   }
   @if $visited {
     &:visited {
@@ -32,6 +36,7 @@
     color: var(--color-link-hover);
     text-decoration-color: var(--color-link-hover-decoration);
     text-decoration-style: dashed;
+    text-underline-offset: 0.25em;
   }
   &:active,
   &:hover:active {
