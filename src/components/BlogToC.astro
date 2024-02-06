@@ -40,4 +40,10 @@ const toc = generateToC(headings, {
   aside {
     padding-bottom: calc(var(--fluid-bento-gap) * 2);
   }
+
+  @include breakpoint-medium {
+    aside {
+      padding-left: var(--space-5);
+    }
+  }
 </style>
