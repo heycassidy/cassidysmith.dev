@@ -1,28 +1,13 @@
 ---
-import { Icon } from 'astro-icon/components'
-import { isExternalURL } from '@utils/index'
+import TextLink from '@components/TextLink.astro';
+
 const { href } = Astro.props;
 
-const external = isExternalURL(href, Astro.url.host);
-
 ---
-
-<a href={href} class:list={[{ external }]}><slot />{external && <Icon name="ri:arrow-right-up-line" size={16} />}</a>
+<TextLink href={href}  ><slot /></TextLink>
 
 <style lang="scss">
   @import '@styles/mixins';
-  
-  a {
-    display: inline-flex;
-    align-items: center;
-    @include text-link;
-
-    [data-icon] {
-      width: 0.8em;
-      height: 0.8em;
-    }
-  }
-
 
   @include colorModeStyles(light) {
     a.external {
