@@ -10,21 +10,21 @@
 
 <section class="copy-email">
   <h2 class="heading">
-    Send an Email
+    Send an Email<Icon name="ri:mail-send-fill" /> 
   </h2>
   
   <div class="layout">
     <div class="email-address">
       <a href=`mailto:${emailAddress}`>
-        <span>{emailAddress}</span><Icon name="ion:send-sharp" /> 
+        <span>{emailAddress}</span>
       </a>
     </div>
     <CopyToClipboard
       client:idle
       textToCopy={emailAddress}
     >
-      <Icon slot="initial" name="ion:clipboard-sharp" /><span slot="initial">Copy</span>
-      <Icon slot="success" name="ion:checkmark-sharp" /><span slot="success">Copied!</span>
+      <Icon slot="initial" name="ri:clipboard-fill" /><span slot="initial">Copy</span>
+      <Icon slot="success" name="ri:check-line" /><span slot="success">Copied!</span>
     </CopyToClipboard>
   </div>
 </section>

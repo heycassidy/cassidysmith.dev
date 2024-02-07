@@ -48,11 +48,11 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
     <div class="photo-page-layout__description-and-controls">
       <div class="photo-controls">
         <Button class="photo-controls-button" as="a" size="small" href="/photos">
-          <Icon name="ion:grid-sharp" /> All photos
+          <Icon name="ri:grid-fill" /> All photos
         </Button>
         <div class="photo-controls-nav">
-          {previousPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${previousPhotoSlug}`}><Icon name="ion:arrow-back-sharp" /> Previous</Button>}
-          {nextPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${nextPhotoSlug}`}>Next <Icon name="ion:arrow-forward-sharp" /></Button>}
+          {previousPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${previousPhotoSlug}`}><Icon name="ri:skip-left-fill" /> Previous</Button>}
+          {nextPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${nextPhotoSlug}`}>Next <Icon name="ri:skip-right-fill" /></Button>}
         </div>
       </div>
   
