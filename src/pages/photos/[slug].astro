@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components'
 import Button from '@components/Button.astro';
 import Prose from '@components/Prose.astro';
+import { SEO } from "astro-seo";
 
 import { publishedEntries, sortByPosition } from '@utils/index';
 
@@ -29,10 +30,13 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
 
 ---
 
-<AppLayout
-  title=`Photo: ${photo.data.title}``
-  description=`A detailed view of a photo from my photography collection, this one titled ${photo.data.title}`
->
+<AppLayout>
+  <SEO
+    slot="head"
+    title={`${photo.data.title} | Photos`}
+    description={`A detailed view of a photo from my photography collection, this one titled ${photo.data.title}`}
+  />
+
   <div class="photo-page-layout">
     <div class="photo-page-layout__image">
       <div class=`image-container image-container--${orientation}` >

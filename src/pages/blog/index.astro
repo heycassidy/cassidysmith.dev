@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import AppLayout from '../../layouts/AppLayout.astro';
-import PrimaryLayout from '../../layouts/PrimaryLayout.astro'
+import AppLayout from '@layouts/AppLayout.astro';
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import { SEO } from "astro-seo";
 import { publishedEntries } from '@utils/index';
 
 const posts = await getCollection('blog', publishedEntries);
@@ -10,9 +11,11 @@ const posts = await getCollection('blog', publishedEntries);
 
 ---
 
-<AppLayout
-  title="Blog"
->
+<AppLayout>
+  <SEO
+    slot="head"
+    title="Blog"
+  />
   <PrimaryLayout>
     <div>
 

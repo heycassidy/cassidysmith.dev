@@ -6,10 +6,16 @@ import PricklyPearContainer from '@components/PricklyPearContainer.astro'
 import CopyEmail from '@components/CopyEmail.astro';
 import PhotosCard from '@components/PhotosCard.astro';
 import Prose from '@components/Prose.astro';
+import { SEO } from "astro-seo";
 import TextLink from '@components/TextLink.astro';
 ---
 
 <AppLayout>
+  <SEO
+    slot="head"
+    title="Cassidy Smith – Front-End Engineer"
+    description="Cassidy Smith is a front-end engineer and UI designer"
+  />
   <PrimaryLayout>
     <div class="page-layout">
       <Prose as="main">
