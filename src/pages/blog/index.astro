@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import AppLayout from '@layouts/AppLayout.astro';
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
-import { SEO } from "astro-seo";
+import SEOTags from '@components/SEOTags.astro';
 import { publishedEntries } from '@utils/index';
 
 const posts = await getCollection('blog', publishedEntries);
@@ -12,7 +12,7 @@ const posts = await getCollection('blog', publishedEntries);
 ---
 
 <AppLayout>
-  <SEO
+  <SEOTags
     slot="head"
     title="Blog"
   />

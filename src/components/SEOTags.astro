@@ -1,0 +1,19 @@
+---
+import { SEO } from "astro-seo";
+
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const { title, description, ...rest } = Astro.props;
+
+---
+
+
+<SEO
+  title={title}
+  description={description}
+  canonical={canonicalURL}
+  titleTemplate="%s — Cassidy Smith"
+  titleDefault="Cassidy Smith — Front-End Engineer"
+  {...rest}
+/>

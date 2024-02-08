@@ -3,7 +3,7 @@ import { AstroFont } from 'astro-font'
 import { ViewTransitions } from 'astro:transitions'
 import Theme from '../components/Theme.astro'
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
 ---
 
 <head>
@@ -11,7 +11,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <link rel="sitemap" href="/sitemap-index.xml">
-  <link rel="canonical" href={canonicalURL}>
   <slot />
   <Theme />
   <ViewTransitions fallback="none" />

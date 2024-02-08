@@ -4,7 +4,7 @@ import AppLayout from '@layouts/AppLayout.astro';
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import PhotoGallery from '@components/PhotoGallery.astro';
 import Prose from '@components/Prose.astro';
-import { SEO } from "astro-seo";
+import SEOTags from '@components/SEOTags.astro';
 import { publishedEntries, sortByPosition } from '@utils/index';
 const photos = await getCollection('photos', publishedEntries);
 
@@ -13,10 +13,10 @@ let sortedPhotos = photos.sort(sortByPosition)
 ---
 
 <AppLayout>
-  <SEO
+  <SEOTags
     slot="head"
-    title="Cassidy Smith – Photography"
-    description="A curated collection of photos shot by Cassidy Smith"
+    title="Photography"
+    description="A curated collection of photos by Cassidy Smith"
   />
   <PrimaryLayout>
     <Prose as="main">
