@@ -1,39 +1,45 @@
 ---
-import { friendlyUTCDate } from '@utils/index';
+import BlogPostMetaItem from './BlogPostMetaItem.astro';
+import { Icon } from 'astro-icon/components'
+import { friendlyUTCDate, relativeDateTime, isSameDay } from '@utils/index';
 const { post, readingTime } = Astro.props;
+
+const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
 
 ---
 
-<p>
-  {readingTime && <span>{readingTime}</span>}
-  <span>Last updated on <time datetime={post.data.lastModified.toISOString()}>{friendlyUTCDate(post.data.lastModified)}</time></span>
-</p>
+<div class="blog-post-meta">
+  {readingTime && <BlogPostMetaItem iconName="ri:hourglass-2-fill">{readingTime}</BlogPostMetaItem>}
+
+  <BlogPostMetaItem iconName="ri:pen-nib-fill">
+    Published <time datetime={post.data.publishedAt.toISOString()} title={friendlyUTCDate(post.data.publishedAt)}>{relativeDateTime(post.data.publishedAt)}</time>
+  </BlogPostMetaItem>
+  
+  {isModified && <BlogPostMetaItem iconName="ri:scissors-2-fill">
+    Modified <time datetime={post.data.modifiedAt.toISOString()} title={friendlyUTCDate(post.data.modifiedAt)}>{relativeDateTime(post.data.modifiedAt)}</time>
+  </BlogPostMetaItem>}
+</div>
 
 <style lang="scss">
   @import '@styles/mixins.scss';
 
   @include colorModeStyles(light) {
-    p {
+    .blog-post-meta {
       --color: var(--color-primary-700);
     }
   }
   @include colorModeStyles(dark) {
-    p {
+    .blog-post-meta {
       --color: var(--color-primary-425);
     }
   }
 
-  p {
-    font-size: var(--font-size-0);
-    color: var(--color);
+  .blog-post-meta {
     display: flex;
     flex-wrap: wrap;
-
-    > span + span {
-      &::before {
-        content: "—";
-        margin-inline: 1ch;
-      }
-    }
+    row-gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    color: var(--color)
   }
+
 </style>

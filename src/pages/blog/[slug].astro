@@ -49,8 +49,6 @@ export const components = {
 const { post } = Astro.props
 const { Content, remarkPluginFrontmatter, headings } = await post.render()
 
-console.log(post)
-
 ---
 
 <AppLayout>
@@ -64,7 +62,7 @@ console.log(post)
     <BlogPostLayout>
       <BlogPostHeaderContent slot="header" post={post} />
       <BlogPostMeta
-        slot="meta"
+        slot="sidebar"
         post={post}
         readingTime={remarkPluginFrontmatter.readingTime}
       />

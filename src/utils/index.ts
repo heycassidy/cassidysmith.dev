@@ -1,6 +1,7 @@
 import type { CollectionEntry, CollectionKey } from 'astro:content'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 export const publishedEntries = (
   entry: CollectionEntry<CollectionKey>
@@ -21,6 +22,19 @@ export const friendlyUTCDate = (date: Date): string => {
 
   return dayjs(date).utc().format('MMMM D, YYYY')
 }
+
+export const relativeDateTime = (date: Date): string => {
+  dayjs.extend(relativeTime)
+
+  return dayjs(date).fromNow()
+}
+
+export const isSameDay = (dateA: Date, dateB: Date): boolean => {
+  dayjs.extend(utc)
+
+  return dayjs(dateA).isSame(dayjs(dateB), 'day')
+}
+
 
 export const isRelativeURL = (url: string): boolean => {
   try {

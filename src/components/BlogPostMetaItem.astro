@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components'
+
+type Props = {
+  iconName: string
+}
+
+const { iconName } = Astro.props
+---
+
+<span class="blog-post-meta-item">
+  <Icon name={iconName} /><span><slot /></span>
+</span>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  .blog-post-meta-item {
+    margin: 0;
+    font-size: var(--font-size-0);
+    color: var(--color);
+    display: flex;
+    column-gap: var(--space-2);
+    align-items: center;
+  }
+</style>

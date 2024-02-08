@@ -25,25 +25,15 @@ const toc = generateToC(headings, {
   
   h2 {
     font-weight: 720;
-    letter-spacing: 0.05ch;
+    letter-spacing: 0.15ch;
 
     text-transform: uppercase;
     font-size: var(--font-size-0);
     line-height: var(--line-height-1);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
   }
 
   ol {
     padding: 0;
-  }
-
-  aside {
-    padding-bottom: calc(var(--fluid-bento-gap) * 2);
-  }
-
-  @include breakpoint-medium {
-    aside {
-      padding-left: var(--space-5);
-    }
   }
 </style>
