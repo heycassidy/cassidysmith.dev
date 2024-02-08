@@ -1,5 +1,5 @@
 ---
-import BlogToCHeading from "@components/BlogToCHeading.astro";
+import TableOfContentsHeading from "@components/blog/TaleOfContentsHeading.astro";
 import generateToC from "@utils/generateToC";
 
 const { headings } = Astro.props;
@@ -15,7 +15,7 @@ const toc = generateToC(headings, {
   <h2>Table of Contents</h2>
   <nav class="toc">
     <ol>
-      {toc.map((heading) => <BlogToCHeading heading={heading} />)}
+      {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
     </ol>
   </nav>
 </aside>

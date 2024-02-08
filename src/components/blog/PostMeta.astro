@@ -1,5 +1,5 @@
 ---
-import BlogPostMetaItem from './BlogPostMetaItem.astro';
+import PostMetaItem from './PostMetaItem.astro';
 import { Icon } from 'astro-icon/components'
 import { friendlyUTCDate, relativeDateTime, isSameDay } from '@utils/index';
 const { post, readingTime } = Astro.props;
@@ -9,15 +9,15 @@ const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
 ---
 
 <div class="blog-post-meta">
-  {readingTime && <BlogPostMetaItem iconName="ri:hourglass-2-fill">{readingTime}</BlogPostMetaItem>}
+  {readingTime && <PostMetaItem iconName="ri:hourglass-2-fill">{readingTime}</PostMetaItem>}
 
-  <BlogPostMetaItem iconName="ri:pen-nib-fill">
+  <PostMetaItem iconName="ri:pen-nib-fill">
     Published <time datetime={post.data.publishedAt.toISOString()} title={friendlyUTCDate(post.data.publishedAt)}>{relativeDateTime(post.data.publishedAt)}</time>
-  </BlogPostMetaItem>
+  </PostMetaItem>
   
-  {isModified && <BlogPostMetaItem iconName="ri:scissors-2-fill">
+  {isModified && <PostMetaItem iconName="ri:scissors-2-fill">
     Modified <time datetime={post.data.modifiedAt.toISOString()} title={friendlyUTCDate(post.data.modifiedAt)}>{relativeDateTime(post.data.modifiedAt)}</time>
-  </BlogPostMetaItem>}
+  </PostMetaItem>}
 </div>
 
 <style lang="scss">

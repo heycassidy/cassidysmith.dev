@@ -1,12 +1,12 @@
 ---
-import BlogPostHeader from "../components/BlogPostHeader.astro"
+import PostHeader from "../components/blog/PostHeader.astro"
 import Prose from "@components/Prose.astro"
 ---
 
 <article>
-  <BlogPostHeader class="blog-post-grid" >
+  <PostHeader class="blog-post-grid" >
     <slot name="header" />
-  </BlogPostHeader>
+  </PostHeader>
   <Prose as="main" class="blog-post-grid blog-post-content">
     <div class="blog-post-grid__sidebar">
       <slot name="sidebar" />

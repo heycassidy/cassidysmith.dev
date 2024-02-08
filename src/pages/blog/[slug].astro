@@ -10,9 +10,9 @@ import OrderedList from '@components/mdx/OrderedList.astro'
 import Img from '@components/mdx/Img.astro'
 import Code from '@components/mdx/Code.astro'
 import A from '@components/mdx/A.astro'
-import BlogPostHeaderContent from '@components/BlogPostHeaderContent.astro'
-import BlogPostMeta from '@components/BlogPostMeta.astro'
-import BlogToC from '@components/BlogToC.astro'
+import PostHeaderContent from '@components/blog/PostHeaderContent.astro'
+import PostMeta from '@components/blog/PostMeta.astro'
+import TableOfContents from '@components/blog/TableOfContents.astro'
 import H1 from '@components/mdx/H1.astro'
 import H2 from '@components/mdx/H2.astro'
 import H3 from '@components/mdx/H3.astro'
@@ -60,13 +60,13 @@ const { Content, remarkPluginFrontmatter, headings } = await post.render()
   
   <PrimaryLayout>
     <BlogPostLayout>
-      <BlogPostHeaderContent slot="header" post={post} />
-      <BlogPostMeta
+      <PostHeaderContent slot="header" post={post} />
+      <PostMeta
         slot="sidebar"
         post={post}
         readingTime={remarkPluginFrontmatter.readingTime}
       />
-      <BlogToC slot="sidebar" headings={headings} />
+      <TableOfContents slot="sidebar" headings={headings} />
       <Content components={components} />
     </BlogPostLayout>
   </PrimaryLayout>
