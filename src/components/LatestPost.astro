@@ -35,8 +35,8 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
   }
   @include colorModeStyles(dark) {
     .latest-post {
-      --color: var(--color-accent-two-175);
-      --background-color: var(--color-accent-two-775);
+      --color: var(--color-accent-two-275);
+      --background-color: var(--color-accent-two-850);
 
       --hover-color: var(--color-accent-two-0);
       --hover-background-color: var(--color-accent-two-700);
@@ -92,11 +92,6 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     [data-icon] {
       font-size: var(--font-size-5);
     }
-  }
-
-  .latest-post :global(.blog-post-meta-item) {
-    // align-self: end;
-
   }
 
   .preview-text {
