@@ -8,14 +8,19 @@ const posts = await getCollection('blog', publishedEntries);
 const latestPost = posts.sort(sortByPublishedAt)[0]
 ---
 
+{latestPost ? (
+  <ContentLink content={latestPost} class="latest-post">
+    <div class="kicker">
+      <span>Latest Post</span><Icon name="ri:arrow-right-fill" />
+    </div>
+    <h2>{latestPost.data.title}</h2>
+    <p class="preview-text">{latestPost.data.previewText}</p>
+  </ContentLink>
+) : (
+  <div class="placeholoder"></div>
+)}
 
-<ContentLink content={latestPost} class="latest-post">
-  <div class="kicker">
-    <span>Latest Post</span><Icon name="ri:arrow-right-fill" />
-  </div>
-  <h2>{latestPost.data.title}</h2>
-  <p class="preview-text">{latestPost.data.previewText}</p>
-</ContentLink>
+
 
 
 <style lang="scss">
@@ -46,6 +51,10 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     }
   }
 
+
+  .placeholder {
+    grid-area: blog;
+  }
 
   .latest-post {
     grid-area: blog;
