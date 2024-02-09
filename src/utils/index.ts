@@ -17,6 +17,22 @@ export const sortByPosition = (
   return 0
 }
 
+export const sortByPublishedAt = (
+  entryA: CollectionEntry<CollectionKey>,
+  entryB: CollectionEntry<CollectionKey>
+): number => {
+  dayjs.extend(utc)
+
+  if ('publishedAt' in entryA.data && 'publishedAt' in entryB.data) {
+    return (
+      dayjs(entryA.data.publishedAt).valueOf() -
+      dayjs(entryB.data.publishedAt).valueOf()
+    )
+  }
+
+  return 0
+}
+
 export const friendlyUTCDate = (date: Date): string => {
   dayjs.extend(utc)
 

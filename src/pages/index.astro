@@ -8,6 +8,7 @@ import PhotosCard from '@components/PhotosCard.astro';
 import Prose from '@components/Prose.astro';
 import SEOTags from '@components/SEOTags.astro';
 import TextLink from '@components/TextLink.astro';
+import LatestPost from '@components/LatestPost.astro'
 ---
 
 <AppLayout>
@@ -19,10 +20,10 @@ import TextLink from '@components/TextLink.astro';
     <div class="page-layout">
       <Prose as="main">
         <h1>Hi, I’m Cassidy</h1>
-        <p>I’m a front-end engineer and UI designer at <TextLink href="https://nobledesktop.com" target="_blank" rel="noreferrer noreferrer">Noble Desktop</TextLink>. I enjoy creative and intentional problem solving with code. On the day-to-day, I work in Ruby on Rails, JavaScript/ES6, Next.js, React, PHP, CSS, and HTML. I also love to explore new tools, languages, and frameworks. Currently, I’m obsessed with <TextLink href="https://astro.build">Astro</TextLink>, a wonderful static-first web framework, and I’m using it to build this website.
-        </p>
+        <p>I’m a front-end engineer and UI designer at <TextLink href="https://nobledesktop.com" target="_blank" rel="noreferrer noreferrer">Noble Desktop</TextLink>. I enjoy creative and intentional problem solving with code. On the day-to-day, I work in Ruby on Rails, JavaScript/ES6, Next.js, React, PHP, CSS, and HTML. I also love to explore new tools, languages, and frameworks. Currently, I’m obsessed with <TextLink href="https://astro.build">Astro</TextLink>, a wonderful static-first web framework, and I’m using it to build this website.</p>
       </Prose>
     
+      <LatestPost />
       <PhotosCard />
       <SocialLinks />
       <CopyEmail />
@@ -43,11 +44,6 @@ import TextLink from '@components/TextLink.astro';
     main {
       --background-color: var(--color-primary-850);
     }
-    :global(.page-layout > *) {
-      box-shadow:
-        0 0 var(--fluid-bento-gap) 0 var(--color-stark-background),
-        0 0 0 2px var(--color-stark-background);
-    }
   }
 
   main {
@@ -64,6 +60,7 @@ import TextLink from '@components/TextLink.astro';
 
     grid-template-areas: 
       "intro"
+      "blog"
       "photos"
       "social"
       "email"
@@ -73,6 +70,7 @@ import TextLink from '@components/TextLink.astro';
       grid-template-columns: 5fr 4fr;
       grid-template-rows: auto auto 1fr;
       grid-template-areas: 
+        "intro blog"
         "intro email"
         "intro cactus"
         "photos cactus"
@@ -80,8 +78,9 @@ import TextLink from '@components/TextLink.astro';
     }
     @include breakpoint-medium {
       grid-template-columns: 6fr 6fr 10fr 11fr;
+      grid-template-rows: 1fr auto auto auto;
       grid-template-areas: 
-        "intro intro intro cactus"
+        "intro intro intro blog"
         "intro intro intro cactus"
         "photos photos social cactus"
         ". email email cactus";

@@ -2,13 +2,14 @@
 import { Icon } from 'astro-icon/components'
 
 type Props = {
-  iconName: string
+  iconName: string,
+  class?: string
 }
 
-const { iconName } = Astro.props
+const { iconName, class: className } = Astro.props
 ---
 
-<span class="blog-post-meta-item">
+<span class:list={['blog-post-meta-item', className]} class={className}>
   <Icon name={iconName} /><span><slot /></span>
 </span>
 
@@ -18,7 +19,7 @@ const { iconName } = Astro.props
   .blog-post-meta-item {
     margin: 0;
     font-size: var(--font-size-0);
-    color: var(--color);
+    color: currentColor;
     display: flex;
     column-gap: var(--space-2);
     align-items: center;

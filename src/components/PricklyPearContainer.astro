@@ -23,10 +23,6 @@ import placeholderCactus from '../assets/prickly-pear.png'
     gap: var(--space-1);
     overflow: hidden;
     border-radius: var(--fluid-bento-radius);
-    
-    @include breakpoint-medium {
-      align-self: end;
-    }
 
     a {
       justify-self: center;
@@ -52,7 +48,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
   @include colorModeStyles(dark) {
     .scene-box {
       --color-sky: var(--color-primary-850);
-      --color-ground: var(--color-primary-950);
+      --color-ground: var(--color-primary-875);
     }
     img {
       filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
