@@ -8,6 +8,10 @@
 @import 'util.scss';
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     background-color: var(--color-base-background);
     color: var(--color-base-text);
