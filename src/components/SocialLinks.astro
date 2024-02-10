@@ -18,13 +18,13 @@ import SocialLink from './SocialLink.astro'
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     .social-links {
       --color: var(--color-secondary-700);
       --background-color: var(--color-secondary-175);
     }
   }
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     .social-links {
       --color: var(--color-secondary-350);
       --background-color: var(--color-secondary-850);

@@ -34,13 +34,13 @@ if (src.width > 1800) {
 <style lang="scss">
   @import '@styles/mixins.scss';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     .blog-post-image {
       --background-color: var(--color-neutral-175);
     }
   }
 
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     .blog-post-image {
       --background-color: var(--color-neutral-850);
     }

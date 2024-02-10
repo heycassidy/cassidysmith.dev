@@ -64,7 +64,7 @@
     }
   }
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     .regenerate-button {
       --color-button-text: white;
       --color-button-background: #{transparentize(black, $amount: 0.4)};
@@ -75,7 +75,7 @@
       --color-focus-outline: black;
     }
   }
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     .regenerate-button {
       --color-button-text: #{transparentize(white, 0.2)};
       --color-button-background: #{transparentize(black, $amount: 0.4)};

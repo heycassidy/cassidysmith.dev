@@ -13,13 +13,13 @@ const { class: className, ...rest } = Astro.props;
   @import '@styles/mixins.scss';
 
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     header {
       --background-color: var(--color-tertiary-275);
       --color: var(--color-tertiary-775);
     }
   }
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     header {
       --background-color: var(--color-tertiary-850);
       --color: var(--color-tertiary-275);

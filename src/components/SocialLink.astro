@@ -12,7 +12,7 @@ const {href, external = false, icon = false} = Astro.props;
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     .social-link {
       --color: var(--color-secondary-700);
       --background-color: var(--color-secondary-275);
@@ -24,7 +24,7 @@ const {href, external = false, icon = false} = Astro.props;
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     .social-link {
       --color: var(--color-secondary-275);
       --background-color: var(--color-secondary-775);

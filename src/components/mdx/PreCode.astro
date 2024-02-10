@@ -5,14 +5,14 @@
 <style lang="scss">
   @import '@styles/mixins.scss';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     .pre-code code {
       --color: var(--color-neutral-850);
       --background-color: var(--color-neutral-175);
       --border-color: var(--color-neutral-275);
     }
   }
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     .pre-code code {
       --color: var(--color-neutral-275);
       --background-color: var(--color-neutral-850);

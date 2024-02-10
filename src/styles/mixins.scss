@@ -125,7 +125,7 @@
   }
 }
 
-@mixin colorModeStyles($mode) {
+@mixin color-mode($mode) {
   :global(:root[data-theme='#{$mode}']) {
     @content;
   }

@@ -12,13 +12,13 @@ import { Icon } from 'astro-icon/components'
 <style lang="scss">
   @import '@styles/mixins.scss';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     li {
       --marker-color: var(--color-primary-525);
     }
   }
   
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     li {
       --marker-color: var(--color-primary-425);
     }

@@ -9,7 +9,7 @@ const { href } = Astro.props;
 <style lang="scss">
   @import '@styles/mixins';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     a.external {
       --color-link: var(--color-secondary-600);
       --color-link-decoration: var(--color-secondary-350);
@@ -21,7 +21,7 @@ const { href } = Astro.props;
       --color-link-visited-decoration: var(--color-secondary-350);
     }
   }
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     a.external {
       --color-link: var(--color-secondary-350);
       --color-link-decoration: var(--color-secondary-350);

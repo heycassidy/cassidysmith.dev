@@ -32,7 +32,7 @@
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     .copy-button {
       --color-button-text: var(--color-tertiary-775);
       --color-button-background: var(--color-tertiary-275);

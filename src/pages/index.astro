@@ -35,12 +35,12 @@ import LatestPost from '@components/LatestPost.astro'
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  @include colorModeStyles(light) {
+  @include color-mode(light) {
     main {
       --background-color: var(--color-primary-175);
     }
   }
-  @include colorModeStyles(dark) {
+  @include color-mode(dark) {
     main {
       --background-color: var(--color-primary-850);
     }
