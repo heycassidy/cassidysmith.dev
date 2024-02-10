@@ -42,6 +42,8 @@ export default defineConfig({
           'hourglass-2-fill',
           'pen-nib-fill',
           'scissors-2-fill',
+          'pencil-fill',
+          'eraser-fill',
         ],
       },
     }),

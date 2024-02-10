@@ -15,14 +15,14 @@ const { class: className, ...rest } = Astro.props;
 
   @include color-mode(light) {
     header {
-      --background-color: var(--color-tertiary-275);
-      --color: var(--color-tertiary-775);
+      --color: var(--color-accent-two-775);
+      --background-color: var(--color-accent-two-175);
     }
   }
   @include color-mode(dark) {
     header {
-      --background-color: var(--color-tertiary-850);
-      --color: var(--color-tertiary-275);
+      --color: var(--color-accent-two-275);
+      --background-color: var(--color-accent-two-850);
     }
   }
 
