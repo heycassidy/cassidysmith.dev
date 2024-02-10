@@ -19,8 +19,8 @@ import LatestPost from '@components/LatestPost.astro'
   <PrimaryLayout>
     <div class="page-layout">
       <Prose as="main">
-        <h1>Hi, I’m Cassidy</h1>
-        <p>I’m a front-end engineer and UI designer at <TextLink href="https://nobledesktop.com" target="_blank" rel="noreferrer noreferrer">Noble Desktop</TextLink>. I enjoy creative and intentional problem solving with code. On the day-to-day, I work in Ruby on Rails, JavaScript/ES6, Next.js, React, PHP, CSS, and HTML. I also love to explore new tools, languages, and frameworks. Currently, I’m obsessed with <TextLink href="https://astro.build">Astro</TextLink>, a wonderful static-first web framework, and I’m using it to build this website.</p>
+        <h1>Hello, I’m Cassidy</h1>
+        <p>Professional CSS Programmer, UI Builder, Web Weaver, Full-Stack Developer, Front-End Engineer, Failed Designer, and maybe a few other made-up titles! Perpetually and proudly a noob at web dev and life, I try to stay curious, but like most people, I often get stuck in the rut of what I think I know. Balance, I guess? Anyway! Thank you for reading my ramblings and welcome to my little <TextLink href="https://maggieappleton.com/garden-history">digital garden</TextLink> where I water my prickly projects and feed my creative brain worms.</p>
       </Prose>
     
       <LatestPost />
@@ -51,6 +51,10 @@ import LatestPost from '@components/LatestPost.astro'
     border-radius: var(--fluid-bento-radius);
     padding: var(--fluid-bento-padding);
     background-color: var(--background-color);
+
+    p {
+      text-wrap: pretty;
+    }
   }
 
   .page-layout {
@@ -68,7 +72,6 @@ import LatestPost from '@components/LatestPost.astro'
 
     @include breakpoint-small {
       grid-template-columns: 5fr 4fr;
-      grid-template-rows: auto auto 1fr;
       grid-template-areas: 
         "intro blog"
         "intro email"
@@ -78,12 +81,11 @@ import LatestPost from '@components/LatestPost.astro'
     }
     @include breakpoint-medium {
       grid-template-columns: 6fr 6fr 10fr 11fr;
-      grid-template-rows: 1fr auto auto auto;
       grid-template-areas: 
         "intro intro intro blog"
-        "intro intro intro cactus"
         "photos photos social cactus"
-        ". email email cactus";
+        ". email email cactus"
+        ". . .  cactus";
     }
   }
 </style>
