@@ -2,26 +2,27 @@
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components'
 import ContentLink from '@components/ContentLink.astro'
-import { publishedEntries, sortByPublishedAt } from '@utils/index';
+import { publishedEntries, sortByPublishedAt, friendlyUTCDate } from '@utils/index';
+import PostMetaItem from './blog/PostMetaItem.astro';
+import Prose from '@components/Prose.astro';
 
 const posts = await getCollection('blog', publishedEntries);
 const latestPost = posts.sort(sortByPublishedAt)[0]
 ---
 
-{latestPost ? (
-  <ContentLink content={latestPost} class="latest-post">
-    <div class="kicker">
-      <span>Latest Post</span><Icon name="ri:arrow-right-fill" />
-    </div>
+
+<article class="latest-post">
+  <ContentLink content={latestPost} class="kicker">
+    Read the Latest <Icon name="ri:arrow-right-fill" />
+  </ContentLink>
+  <Prose>
     <h2>{latestPost.data.title}</h2>
     <p class="preview-text">{latestPost.data.previewText}</p>
-  </ContentLink>
-) : (
-  <div class="placeholoder"></div>
-)}
-
-
-
+    <PostMetaItem iconName="ri:pen-nib-fill">
+      Published <time datetime={latestPost.data.publishedAt.toISOString()}>{friendlyUTCDate(latestPost.data.publishedAt)}</time>
+    </PostMetaItem>
+  </Prose>
+</article>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
@@ -51,11 +52,6 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     }
   }
 
-
-  .placeholder {
-    grid-area: blog;
-  }
-
   .latest-post {
     grid-area: blog;
 
@@ -71,6 +67,9 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     row-gap: var(--fluid-bento-gap);
     justify-content: space-between;
 
+    transition: background-color 0.2s, color 0.2s;
+    position: relative;
+
     &:hover {
       color: var(--hover-color);
       background-color: var(--hover-background-color);
@@ -80,37 +79,58 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
       background-color: var(--active-background-color);
     }
 
-    &:focus-visible {
+    &:focus-within {
       @include focus-outline;
     }
   }
 
   .kicker {
-    display: flex;
-    justify-content: space-between;
     line-height: var(--line-height-compressed);
-
-    font-weight: 720;
+    font-weight: 680;
     letter-spacing: 0.15ch;
     text-transform: uppercase;
     font-size: var(--font-size-0);
     font-family: var(--font-syne);
-    line-height: var(--line-height-1);
+    display: flex;
+    align-items: center;
+    column-gap: var(--space-1);
+    text-decoration: none;
+    color: currentColor;
 
+    &:link, &:visited {
+      color: currentColor;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
 
     [data-icon] {
-      font-size: var(--font-size-5);
+      flex-shrink: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
     }
   }
 
   .preview-text {
-    opacity: 0.8;
-    line-height:  var(--line-height-3);
+    opacity: 0.9;
+    line-height: var(--line-height-compressed);
   }
 
   h2 {
     margin-top: auto;
+    margin-bottom: var(--space-2);
     color: currentColor;
+    display: flex;
+    justify-content: space-between;
   }
 
 </style>
