@@ -5,8 +5,8 @@ export default defineEcConfig({
   themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
   styleOverrides: {
     uiFontFamily: 'var(--font-atkinson)',
-    uiFontSize: 'var(--font-size-00)',
-    codeFontSize: 'var(--font-size-00)',
+    uiFontSize: 'var(--font-size--1)',
+    codeFontSize: 'var(--font-size--1)',
     codeFontFamily: 'var(--font-monaspace-neon)',
     codePaddingBlock: 'var(--fluid-bento-padding)',
     codePaddingInline: 'var(--fluid-bento-padding)',

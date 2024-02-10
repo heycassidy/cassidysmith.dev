@@ -10,22 +10,11 @@ const { post } = Astro.props;
 <style lang="scss">
   @import '@styles/mixins.scss';
 
-  @include colorModeStyles(light) {
-    .subtitle {
-      --deemphasis-color: var(--color-tertiary-700);
-    }
-  }
-  @include colorModeStyles(dark) {
-    .subtitle {
-      --deemphasis-color: var(--color-tertiary-350);
-    }
-  }
 
   h1 {
     --column: header-content;
     color: currentColor;
     font-size: var(--font-size-7);
-    line-height: var(--line-height-7);
     margin: 0;
     text-wrap: balance;
   }
@@ -34,10 +23,10 @@ const { post } = Astro.props;
     --column: header-content;
     margin-top: var(--space-3);
     font-size: var(--font-size-5);
-    line-height: var(--line-height-5);
+    line-height: var(--line-height-compressed);
     font-family: var(--font-syne);
-    color: var(--deemphasis-color);
     text-wrap: balance;
+    opacity: 0.9;
   }
   
   

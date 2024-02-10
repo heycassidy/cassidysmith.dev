@@ -39,6 +39,7 @@ export const friendlyUTCDate = (date: Date): string => {
   return dayjs(date).utc().format('MMMM D, YYYY')
 }
 
+// Doesn't work in SSG !!
 export const relativeDateTime = (date: Date): string => {
   dayjs.extend(relativeTime)
 
