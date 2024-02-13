@@ -1,0 +1,30 @@
+<div class="grainy-background"></div>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+  
+  @include color-mode(light) {
+    .grainy-background {
+      --opacity: 0.5;
+    }
+  }
+  @include color-mode(dark) {
+    .grainy-background {
+      --opacity: 0.2;
+    }
+  }
+
+  .grainy-background {
+    background: url('../assets/noise.png');
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: 100px;
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: soft-light;
+    opacity: var(--opacity);
+  }
+</style>
