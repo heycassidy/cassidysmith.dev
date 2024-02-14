@@ -1,7 +1,7 @@
 ---
-import { type TocItem } from "@utils/generateToC";
+import { type TocItem } from '@utils/generateToC'
 
-const { heading } = Astro.props;
+const { heading } = Astro.props
 ---
 
 <li>
@@ -19,7 +19,6 @@ const { heading } = Astro.props;
   }
 </li>
 
-
 <style lang="scss">
   @import '@styles/mixins';
 
@@ -34,12 +33,11 @@ const { heading } = Astro.props;
   li {
     line-height: var(--line-height-compressed);
     &::marker {
-      content: " ";
+      content: ' ';
     }
   }
   li > ol,
   li + li {
     margin-top: var(--space-2);
   }
-
 </style>

@@ -17,7 +17,7 @@ import { Icon } from 'astro-icon/components'
       --marker-color: var(--color-primary-525);
     }
   }
-  
+
   @include color-mode(dark) {
     li {
       --marker-color: var(--color-primary-425);
@@ -30,7 +30,7 @@ import { Icon } from 'astro-icon/components'
     grid-template-columns: 1.2em auto;
     column-gap: var(--space-2);
   }
-  
+
   [data-icon] {
     color: var(--marker-color);
     position: relative;
@@ -42,13 +42,11 @@ import { Icon } from 'astro-icon/components'
 
   @at-root :global(ul) {
     padding-left: var(--space-2);
-    
+
     > li {
       &::marker {
-        content: " ";
+        content: ' ';
       }
     }
-    
   }
-
 </style>

@@ -1,15 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 import ContentLink from '@components/ContentLink.astro'
-import { publishedEntries, sortByPublishedAt } from '@utils/index';
+import { publishedEntries, sortByPublishedAt } from '@utils/index'
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
-import Prose from '@components/Prose.astro';
+import Prose from '@components/Prose.astro'
 
-const posts = await getCollection('blog', publishedEntries);
+const posts = await getCollection('blog', publishedEntries)
 const latestPost = posts.sort(sortByPublishedAt)[0]
 ---
-
 
 <article class="latest-post">
   <ContentLink collectionSlug="posts" content={latestPost} class="kicker">
@@ -18,7 +17,10 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
   <Prose>
     <h2>{latestPost.data.title}</h2>
     <p class="preview-text">{latestPost.data.previewText}</p>
-    <DateTimeDisplay dateTime={latestPost.data.publishedAt} class="published-date" />
+    <DateTimeDisplay
+      dateTime={latestPost.data.publishedAt}
+      class="published-date"
+    />
   </Prose>
 </article>
 
@@ -65,14 +67,17 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     row-gap: var(--fluid-bento-gap);
     justify-content: space-between;
 
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
     position: relative;
 
     &:hover {
       color: var(--hover-color);
       background-color: var(--hover-background-color);
     }
-    &:active, &:hover:active {
+    &:active,
+    &:hover:active {
       color: var(--active-color);
       background-color: var(--active-background-color);
     }
@@ -95,7 +100,8 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     text-decoration: none;
     color: currentColor;
 
-    &:link, &:visited {
+    &:link,
+    &:visited {
       color: currentColor;
     }
 
@@ -135,5 +141,4 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     font-size: var(--font-size--1);
     opacity: 0.85;
   }
-
 </style>

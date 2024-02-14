@@ -1,14 +1,13 @@
 ---
-import TableOfContentsHeading from "@components/blog/TaleOfContentsHeading.astro";
-import generateToC from "@utils/generateToC";
+import TableOfContentsHeading from '@components/blog/TaleOfContentsHeading.astro'
+import generateToC from '@utils/generateToC'
 
-const { headings } = Astro.props;
+const { headings } = Astro.props
 
-const toc = generateToC(headings, { 
+const toc = generateToC(headings, {
   minHeadingLevel: 1,
-  maxHeadingLevel: 4
+  maxHeadingLevel: 4,
 })
-
 ---
 
 <aside>
@@ -22,7 +21,7 @@ const toc = generateToC(headings, {
 
 <style lang="scss">
   @import '@styles/mixins';
-  
+
   h2 {
     font-weight: 720;
     letter-spacing: 0.15ch;

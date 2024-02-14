@@ -1,13 +1,10 @@
 ---
-import { SEO } from "astro-seo";
+import { SEO } from 'astro-seo'
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString()
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-
-const { title, description, ...rest } = Astro.props;
-
+const { title, description, ...rest } = Astro.props
 ---
-
 
 <SEO
   title={title}

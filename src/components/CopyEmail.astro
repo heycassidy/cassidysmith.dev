@@ -1,34 +1,31 @@
 ---
-  import { Icon } from 'astro-icon/components'
-  import CopyToClipboard from './CopyToClipboard.svelte';
+import { Icon } from 'astro-icon/components'
+import CopyToClipboard from './CopyToClipboard.svelte'
 
-  const {
-    emailAddress = 'cassidy@cassidysmith.dev',
-  } = Astro.props
+const { emailAddress = 'cassidy@cassidysmith.dev' } = Astro.props
 ---
-
 
 <section class="copy-email">
   <h2 class="heading">
-    Send Me an Email<Icon name="ri:mail-send-fill" /> 
+    Send Me an Email<Icon name="ri:mail-send-fill" />
   </h2>
-  
+
   <div class="layout">
     <div class="email-address">
       <a href=`mailto:${emailAddress}`>
         <span>{emailAddress}</span>
       </a>
     </div>
-    <CopyToClipboard
-      client:idle
-      textToCopy={emailAddress}
-    >
-      <Icon slot="initial" name="ri:clipboard-fill" /><span slot="initial">Copy</span>
-      <Icon slot="success" name="ri:check-line" /><span slot="success">Copied!</span>
+    <CopyToClipboard client:idle textToCopy={emailAddress}>
+      <Icon slot="initial" name="ri:clipboard-fill" /><span slot="initial"
+        >Copy</span
+      >
+      <Icon slot="success" name="ri:check-line" /><span slot="success"
+        >Copied!</span
+      >
     </CopyToClipboard>
   </div>
 </section>
-
 
 <style lang="scss">
   @import '../styles/mixins.scss';
@@ -41,10 +38,10 @@
     .email-address {
       --border-color: var(--color-tertiary-275);
     }
-    a[href^=mailto] {
+    a[href^='mailto'] {
       --color-link: var(--color-tertiary-700);
       --color-link-decoration: var(--color-tertiary-350);
-      
+
       --color-link-hover: var(--color-tertiary-600);
       --color-link-hover-decoration: var(--color-tertiary-275);
 
@@ -60,10 +57,10 @@
     .email-address {
       --border-color: var(--color-tertiary-775);
     }
-    a[href^=mailto] {
+    a[href^='mailto'] {
       --color-link: var(--color-tertiary-275);
       --color-link-decoration: var(--color-tertiary-525);
-      
+
       --color-link-hover: var(--color-tertiary-175);
       --color-link-hover-decoration: var(--color-tertiary-350);
 
@@ -100,18 +97,19 @@
 
     .email-address {
       display: flex;
-      border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
+      border-radius: calc(
+        var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
+      );
       padding: var(--space-2) var(--fluid-bento-padding);
       box-shadow: inset 0 0 0 2px var(--border-color);
       flex-grow: 1;
       line-height: 1;
-      
-      a[href^=mailto] {
+
+      a[href^='mailto'] {
         display: inline-flex;
         gap: 0.5ch;
 
         @include text-link;
-
       }
     }
 
@@ -122,5 +120,4 @@
       justify-content: center;
     }
   }
-  
 </style>

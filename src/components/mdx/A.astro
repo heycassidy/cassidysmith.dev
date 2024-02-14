@@ -1,10 +1,10 @@
 ---
-import TextLink from '@components/TextLink.astro';
+import TextLink from '@components/TextLink.astro'
 
-const { href } = Astro.props;
-
+const { href } = Astro.props
 ---
-<TextLink href={href}  ><slot /></TextLink>
+
+<TextLink href={href}><slot /></TextLink>
 
 <style lang="scss">
   @import '@styles/mixins';

@@ -52,7 +52,6 @@ export const isSameDay = (dateA: Date, dateB: Date): boolean => {
   return dayjs(dateA).isSame(dayjs(dateB), 'day')
 }
 
-
 export const isRelativeURL = (url: string): boolean => {
   try {
     // Attempt to create a URL object with the given URL

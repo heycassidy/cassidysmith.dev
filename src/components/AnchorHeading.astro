@@ -1,14 +1,14 @@
 ---
-import type { HTMLTag, Polymorphic } from 'astro/types';
+import type { HTMLTag, Polymorphic } from 'astro/types'
 import { Icon } from 'astro-icon/components'
 
-type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag, slug: string }>;
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag; slug: string }>
 
-const { as: Tag = 'h1', slug } = Astro.props;
+const { as: Tag = 'h1', slug } = Astro.props
 ---
 
 <Tag class="anchor-heading" id={slug}>
-  <span class="anchor-heading__text" >
+  <span class="anchor-heading__text">
     <slot />
   </span>
   <a class="anchor-heading__link" href=`#${slug}`>
@@ -17,20 +17,21 @@ const { as: Tag = 'h1', slug } = Astro.props;
   </a>
 </Tag>
 
-
 <style lang="scss">
   @import '@styles/mixins';
-  
+
   .anchor-heading {
     scroll-margin-top: var(--fluid-bento-gap);
-    
-    &:hover, &:focus-within {
+
+    &:hover,
+    &:focus-within {
       a {
         opacity: 0.5;
       }
     }
     a {
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         opacity: 1;
       }
     }
@@ -42,7 +43,7 @@ const { as: Tag = 'h1', slug } = Astro.props;
     grid-column: anchor-heading;
     align-items: start;
   }
-  
+
   .anchor-heading__link {
     justify-self: start;
     order: -1;

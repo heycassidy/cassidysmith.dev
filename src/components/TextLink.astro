@@ -2,19 +2,20 @@
 import { Icon } from 'astro-icon/components'
 import { isExternalURL } from '@utils/index'
 
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from 'astro/types'
 
 interface Props extends HTMLAttributes<'a'> {
   href: string
 }
 
-const { href, ...attributes } = Astro.props;
+const { href, ...attributes } = Astro.props
 
-const external = isExternalURL(href, Astro.url.host);
-
+const external = isExternalURL(href, Astro.url.host)
 ---
 
-<a href={href} class:list={[{ external }]} {...attributes}><slot />{external && <Icon name="ri:arrow-right-up-line" size={16} />}</a>
+<a href={href} class:list={[{ external }]} {...attributes}
+  ><slot />{external && <Icon name="ri:arrow-right-up-line" size={16} />}</a
+>
 
 <style lang="scss">
   @import '@styles/mixins';
@@ -29,5 +30,4 @@ const external = isExternalURL(href, Astro.url.host);
       height: 0.8em;
     }
   }
-
 </style>

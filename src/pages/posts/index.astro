@@ -1,15 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
-import AppLayout from '@layouts/AppLayout.astro';
+import { getCollection } from 'astro:content'
+import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
-import Prose from '@components/Prose.astro';
-import SEOTags from '@components/SEOTags.astro';
+import Prose from '@components/Prose.astro'
+import SEOTags from '@components/SEOTags.astro'
 import PostPreview from '@components/blog/PostPreview.astro'
-import { publishedEntries, sortByPublishedAt } from '@utils/index';
+import { publishedEntries, sortByPublishedAt } from '@utils/index'
 
-const posts = await getCollection('blog', publishedEntries);
+const posts = await getCollection('blog', publishedEntries)
 const sortedPosts = posts.sort(sortByPublishedAt)
-
 ---
 
 <AppLayout>
@@ -21,12 +20,16 @@ const sortedPosts = posts.sort(sortByPublishedAt)
   <PrimaryLayout>
     <Prose as="main">
       <h1>Latest Posts</h1>
-      <p>This blog is just getting started! I plan to write mostly on web-dev related topics, but might throw in a few semi-personal life posts in here, too. All posts should be considered works in progress, although, just like my houseplants, I can’t guarantee they’re all still alive. I’ve included the last updated date on each article page.</p>
+      <p>
+        This blog is just getting started! I plan to write mostly on web-dev
+        related topics, but might throw in a few semi-personal life posts in
+        here, too. All posts should be considered works in progress, although,
+        just like my houseplants, I can’t guarantee they’re all still alive.
+        I’ve included the last updated date on each article page.
+      </p>
     </Prose>
     <div class="articles-list">
-      {sortedPosts.map((post) => (
-        <PostPreview post={post} />
-      ))}
+      {sortedPosts.map((post) => <PostPreview post={post} />)}
     </div>
   </PrimaryLayout>
 </AppLayout>
@@ -44,6 +47,4 @@ const sortedPosts = posts.sort(sortByPublishedAt)
     gap: var(--fluid-bento-gap);
     grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   }
-
 </style>
-

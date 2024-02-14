@@ -239,7 +239,7 @@
       "peekViewResult.selectionForeground": "#6c6c6c",
       "peekViewTitle.background": "#ffffff",
       "peekViewTitleDescription.foreground": "#616161e6",
-      "peekViewTitleLabel.foreground": "#333333"
+      "peekViewTitleLabel.foreground": "#333333",
     },
     "syntax": {
       "variables, properties": "#8e6673",
@@ -249,8 +249,8 @@
       "functions, methods": "#394eb7",
       "strings": "#707619",
       "operators, special functions": "#5868de",
-      "comments": "#b7b3b1"
+      "comments": "#b7b3b1",
     },
-    "syntaxFlavorName": "One Dark Pro"
-  }
+    "syntaxFlavorName": "One Dark Pro",
+  },
 }

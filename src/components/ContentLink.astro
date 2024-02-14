@@ -1,18 +1,27 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import type { CollectionEntry, CollectionKey } from 'astro:content';
+import type { HTMLAttributes } from 'astro/types'
+import type { CollectionEntry, CollectionKey } from 'astro:content'
 import { blogSchema, photoSchema } from '../schemas'
 
 interface Props extends HTMLAttributes<'a'> {
-  content: CollectionEntry<CollectionKey>;
-  collectionSlug?: string,
-  linkText?: string;
+  content: CollectionEntry<CollectionKey>
+  collectionSlug?: string
+  linkText?: string
 }
 
-const { linkText, collectionSlug, content, class: className, ...attributes } = Astro.props;
-
+const {
+  linkText,
+  collectionSlug,
+  content,
+  class: className,
+  ...attributes
+} = Astro.props
 ---
 
-<a href={`/${collectionSlug || content.collection}/${content.slug}`} class={className} {...attributes}>
+<a
+  href={`/${collectionSlug || content.collection}/${content.slug}`}
+  class={className}
+  {...attributes}
+>
   {linkText || <slot />}
 </a>

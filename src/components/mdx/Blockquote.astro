@@ -1,12 +1,10 @@
 ---
-const {...props} = Astro.props;
-
+const { ...props } = Astro.props
 ---
 
 <blockquote {...props}>
   <slot />
 </blockquote>
-
 
 <style lang="scss">
   @import '@styles/mixins.scss';
@@ -17,14 +15,14 @@ const {...props} = Astro.props;
       --border-color: var(--color-primary-275);
     }
   }
-  
+
   @include color-mode(dark) {
     blockquote {
       --color: var(--color-primary-175);
       --border-color: var(--color-primary-700);
     }
   }
-  
+
   blockquote {
     color: var(--color);
     padding-block: calc(var(--fluid-bento-gap) * 2);
@@ -41,7 +39,8 @@ const {...props} = Astro.props;
       grid-column: 1;
     }
 
-    &::before, &::after {
+    &::before,
+    &::after {
       content: ' ';
       display: block;
       margin-inline: auto;

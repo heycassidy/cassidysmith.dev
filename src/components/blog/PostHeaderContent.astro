@@ -1,21 +1,19 @@
 ---
-import { Icon } from "astro-icon/components";
-import Button from '@components/Button.astro';
+import { Icon } from 'astro-icon/components'
+import Button from '@components/Button.astro'
 
-const { post } = Astro.props;
-
+const { post } = Astro.props
 ---
 
-<a href="/posts" class="back-to-blog-link"><Icon name="ri:arrow-left-fill" /> Latest posts</a>
-
+<a href="/posts" class="back-to-blog-link"
+  ><Icon name="ri:arrow-left-fill" /> Latest posts</a
+>
 
 <h1>{post.data.title}</h1>
 {post.data.subtitle && <p class="subtitle">{post.data.subtitle}</p>}
 
-
 <style lang="scss">
   @import '@styles/mixins.scss';
-
 
   h1 {
     --column: header-content;
@@ -60,6 +58,4 @@ const { post } = Astro.props;
     text-decoration: none;
     line-height: var(--line-height-compressed);
   }
-  
-  
 </style>

@@ -1,19 +1,34 @@
 ---
 import SocialLink from './SocialLink.astro'
-
 ---
-
 
 <section class="social-links">
   <h2>Browse the Socials</h2>
-  
+
   <div class="links-layout">
-    <SocialLink href="https://github.com/heycassidy" external icon="ri:github-fill">Github</SocialLink>
-    <SocialLink href="https://www.linkedin.com/in/csdev/" external icon="ri:linkedin-box-fill">LinkedIn</SocialLink>
-    <SocialLink href="https://www.instagram.com/cassycle/" external icon="ri:instagram-fill">Instagram</SocialLink>
+    <SocialLink
+      href="https://github.com/heycassidy"
+      external
+      icon="ri:github-fill"
+    >
+      Github
+    </SocialLink>
+    <SocialLink
+      href="https://www.linkedin.com/in/csdev/"
+      external
+      icon="ri:linkedin-box-fill"
+    >
+      LinkedIn
+    </SocialLink>
+    <SocialLink
+      href="https://www.instagram.com/cassycle/"
+      external
+      icon="ri:instagram-fill"
+    >
+      Instagram
+    </SocialLink>
   </div>
 </section>
-
 
 <style lang="scss">
   @import '../styles/mixins.scss';
@@ -30,7 +45,7 @@ import SocialLink from './SocialLink.astro'
       --background-color: var(--color-secondary-850);
     }
   }
-  
+
   .social-links {
     grid-area: social;
     color: var(--color);
@@ -49,7 +64,7 @@ import SocialLink from './SocialLink.astro'
     grid-template-columns: 1fr 1fr 1fr;
     container: social-links-layout;
   }
-  
+
   h2 {
     color: currentColor;
     margin: 0;

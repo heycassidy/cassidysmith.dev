@@ -1,7 +1,6 @@
 ---
-import Footer from '../components/Footer.astro';
+import Footer from '../components/Footer.astro'
 import Banner from '../components/Banner.astro'
-
 ---
 
 <div class="primary-layout">
@@ -23,7 +22,10 @@ import Banner from '../components/Banner.astro'
       gap: var(--fluid-bento-gap);
       align-items: start;
       grid-template-rows: auto 1fr auto;
-      grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--layout-size-3)) [centered-end] 1fr [full-width-end];
+      grid-template-columns: [full-width-start] 1fr [centered-start] minmax(
+          0,
+          var(--layout-size-3)
+        ) [centered-end] 1fr [full-width-end];
     }
     .primary-layout__banner {
       grid-column: centered;

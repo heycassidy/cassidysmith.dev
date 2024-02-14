@@ -1,63 +1,72 @@
 ---
-import PhotoGalleryItem from './PhotoGalleryItem.astro';
+import PhotoGalleryItem from './PhotoGalleryItem.astro'
 
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content'
 interface Props {
-  photos: CollectionEntry<'photos'>[];
+  photos: CollectionEntry<'photos'>[]
 }
 
-const { photos } = Astro.props;
-
+const { photos } = Astro.props
 ---
 
 <div class="gallery-outer">
   <ul class="gallery">
-    {photos.map((photo) => (
-      <PhotoGalleryItem photo={photo} />
-    ))}
+    {photos.map((photo) => <PhotoGalleryItem photo={photo} />)}
   </ul>
 </div>
 
 <script>
-  import { TRANSITION_AFTER_SWAP, TRANSITION_BEFORE_PREPARATION, isTransitionBeforePreparationEvent } from 'astro:transitions/client';
-  
-  const scrollSessionKey = `photo-gallery-scroll`;
-  let direction = '';
+  import {
+    TRANSITION_AFTER_SWAP,
+    TRANSITION_BEFORE_PREPARATION,
+    isTransitionBeforePreparationEvent,
+  } from 'astro:transitions/client'
+
+  const scrollSessionKey = `photo-gallery-scroll`
+  let direction = ''
 
   if (history.scrollRestoration) {
-    history.scrollRestoration = "manual";
+    history.scrollRestoration = 'manual'
   }
 
-  document.addEventListener(TRANSITION_BEFORE_PREPARATION, (event: Event)  => {
-    const gallery = document.querySelector('.gallery');
-    const documentScrollingElement = document.scrollingElement;
+  document.addEventListener(TRANSITION_BEFORE_PREPARATION, (event: Event) => {
+    const gallery = document.querySelector('.gallery')
+    const documentScrollingElement = document.scrollingElement
 
     if (isTransitionBeforePreparationEvent(event)) {
-      direction = event.direction;
+      direction = event.direction
     }
 
     if (documentScrollingElement && gallery && direction === 'forward') {
-      sessionStorage.setItem(scrollSessionKey, JSON.stringify({ left: gallery.scrollLeft , top: documentScrollingElement.scrollTop }));
+      sessionStorage.setItem(
+        scrollSessionKey,
+        JSON.stringify({
+          left: gallery.scrollLeft,
+          top: documentScrollingElement.scrollTop,
+        })
+      )
     }
-  });
+  })
 
   document.addEventListener(TRANSITION_AFTER_SWAP, () => {
-    const gallery = document.querySelector('.gallery');
-    const documentScrollingElement = document.scrollingElement;
+    const gallery = document.querySelector('.gallery')
+    const documentScrollingElement = document.scrollingElement
 
     if (documentScrollingElement && gallery && direction === 'back') {
-      const scrollPosition = JSON.parse(sessionStorage.getItem(scrollSessionKey) || "");
+      const scrollPosition = JSON.parse(
+        sessionStorage.getItem(scrollSessionKey) || ''
+      )
 
-      gallery.scrollTo({ left: scrollPosition });
-      documentScrollingElement.scrollTop = scrollPosition.top;
-      sessionStorage.removeItem(scrollSessionKey);
+      gallery.scrollTo({ left: scrollPosition })
+      documentScrollingElement.scrollTop = scrollPosition.top
+      sessionStorage.removeItem(scrollSessionKey)
     }
-  });
+  })
 </script>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
-  
+
   .gallery-outer {
     grid-column-start: full-width-start;
     grid-column-end: full-width-end;
@@ -83,5 +92,4 @@ const { photos } = Astro.props;
       grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     }
   }
-
 </style>

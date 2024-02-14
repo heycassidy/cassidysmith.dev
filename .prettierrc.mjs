@@ -14,6 +14,6 @@ export default {
   useTabs: false,
   semi: false,
   bracketSpacing: true,
-  trailingComma: "es5",
-  singleQuote: true
-};
+  trailingComma: 'es5',
+  singleQuote: true,
+}

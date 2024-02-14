@@ -1,24 +1,42 @@
 ---
 import { Icon } from 'astro-icon/components'
-import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro';
+import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
 
-import { isSameDay } from '@utils/index';
-const { post, readingTime } = Astro.props;
+import { isSameDay } from '@utils/index'
+const { post, readingTime } = Astro.props
 
-const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
-
+const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt)
 ---
 
 <div class="blog-post-meta">
+  {
+    readingTime && (
+      <span class="post-meta-item">
+        <>
+          <Icon name="ri:hourglass-2-fill" />
+          <span>{readingTime}</span>
+        </>
+      </span>
+    )
+  }
 
-  {readingTime && <span class="post-meta-item">
-    <Icon name="ri:hourglass-2-fill"/><span>{readingTime}</span>
-  </span>}
+  <DateTimeDisplay
+    dateTime={post.data.publishedAt}
+    label="Published"
+    iconName="ri:pencil-fill"
+    class="post-meta-item"
+  />
 
-  <DateTimeDisplay dateTime={post.data.publishedAt} label="Published" iconName="ri:pencil-fill" class="post-meta-item" />
-
-  {isModified && <DateTimeDisplay dateTime={post.data.modifiedAt} label="Updated" iconName="ri:eraser-fill" class="post-meta-item" />}
-
+  {
+    isModified && (
+      <DateTimeDisplay
+        dateTime={post.data.modifiedAt}
+        label="Updated"
+        iconName="ri:eraser-fill"
+        class="post-meta-item"
+      />
+    )
+  }
 </div>
 
 <style lang="scss">
@@ -41,7 +59,7 @@ const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
     row-gap: var(--space-2);
     column-gap: var(--space-3);
     margin-bottom: var(--space-6);
-    color: var(--color)
+    color: var(--color);
   }
 
   .post-meta-item {
@@ -51,5 +69,4 @@ const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
     margin: 0;
     font-size: var(--font-size-0);
   }
-
 </style>

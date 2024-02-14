@@ -1,33 +1,40 @@
 ---
-import { getCollection } from 'astro:content';
-import AppLayout from '@layouts/AppLayout.astro';
-import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content'
+import AppLayout from '@layouts/AppLayout.astro'
+import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
-import Button from '@components/Button.astro';
-import Prose from '@components/Prose.astro';
-import SEOTags from '@components/SEOTags.astro';
+import Button from '@components/Button.astro'
+import Prose from '@components/Prose.astro'
+import SEOTags from '@components/SEOTags.astro'
 
-import { publishedEntries, sortByPosition } from '@utils/index';
+import { publishedEntries, sortByPosition } from '@utils/index'
 
 export async function getStaticPaths() {
-  const entries = await getCollection('photos', publishedEntries);
+  const entries = await getCollection('photos', publishedEntries)
 
-  return entries.map(entry => ({
-    params: { slug: entry.slug }, props: { photo: entry },
-  }));
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { photo: entry },
+  }))
 }
 
-const photos = await getCollection('photos', publishedEntries);
-let sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.slug);
+const photos = await getCollection('photos', publishedEntries)
+let sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.slug)
 
-const { photo } = Astro.props;
-const { Content } = await photo.render();
+const { photo } = Astro.props
+const { Content } = await photo.render()
 
-const aspectRatio = photo.data.image.src.width / photo.data.image.src.height;
-const orientation = aspectRatio > 1 ? 'landscape' : 'portrait';
-const previousPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) - 1 + sortedPhotoSlugs.length) % sortedPhotoSlugs.length];
-const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1) % sortedPhotoSlugs.length];
-
+const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
+const orientation = aspectRatio > 1 ? 'landscape' : 'portrait'
+const previousPhotoSlug =
+  sortedPhotoSlugs[
+    (sortedPhotoSlugs.indexOf(photo.slug) - 1 + sortedPhotoSlugs.length) %
+      sortedPhotoSlugs.length
+  ]
+const nextPhotoSlug =
+  sortedPhotoSlugs[
+    (sortedPhotoSlugs.indexOf(photo.slug) + 1) % sortedPhotoSlugs.length
+  ]
 ---
 
 <AppLayout>
@@ -40,27 +47,55 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
 
   <div class="photo-page-layout">
     <div class="photo-page-layout__image">
-      <div class=`image-container image-container--${orientation}` >
+      <div class=`image-container image-container--${orientation}`>
         <Image
           transition:name={`photo-${photo.id}`}
           src={photo.data.image.src}
           alt={photo.data.image.description}
           width="700"
           quality={70}
-          widths={[400, 800, (orientation === "landscape" ? 920 * 2 : 800 * 2)]} />
+          widths={[400, 800, orientation === 'landscape' ? 920 * 2 : 800 * 2]}
+        />
       </div>
     </div>
     <div class="photo-page-layout__description-and-controls">
       <div class="photo-controls">
-        <Button class="photo-controls-button" as="a" size="small" href="/photos">
+        <Button
+          class="photo-controls-button"
+          as="a"
+          size="small"
+          href="/photos"
+        >
           <Icon name="ri:grid-fill" /> All photos
         </Button>
         <div class="photo-controls-nav">
-          {previousPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${previousPhotoSlug}`}><Icon name="ri:skip-left-fill" /> Previous</Button>}
-          {nextPhotoSlug && <Button class="photo-controls-button" as="a" size="small" href={`/photos/${nextPhotoSlug}`}>Next <Icon name="ri:skip-right-fill" /></Button>}
+          {
+            previousPhotoSlug && (
+              <Button
+                class="photo-controls-button"
+                as="a"
+                size="small"
+                href={`/photos/${previousPhotoSlug}`}
+              >
+                <Icon name="ri:skip-left-fill" /> Previous
+              </Button>
+            )
+          }
+          {
+            nextPhotoSlug && (
+              <Button
+                class="photo-controls-button"
+                as="a"
+                size="small"
+                href={`/photos/${nextPhotoSlug}`}
+              >
+                Next <Icon name="ri:skip-right-fill" />
+              </Button>
+            )
+          }
         </div>
       </div>
-  
+
       <Prose as="main" class="photo-description">
         <h1>{photo.data.title}</h1>
         <Content class="photo-content" />
@@ -69,17 +104,15 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
   </div>
 </AppLayout>
 
-
 <style lang="scss" define:vars={{ 'aspect-ratio': aspectRatio }}>
   @import '../../styles/mixins.scss';
-
 
   .photo-page-layout {
     display: grid;
     width: 100%;
     height: 100%;
     grid-template-rows: auto 1fr;
-    
+
     @media (min-aspect-ratio: 1) {
       align-items: stretch;
       grid-template-rows: 1fr;
@@ -138,17 +171,16 @@ const nextPhotoSlug = sortedPhotoSlugs[(sortedPhotoSlugs.indexOf(photo.slug) + 1
     overflow: hidden;
 
     aspect-ratio: var(--aspect-ratio);
-    
+
     // Screen aspect ratio
     @media (min-aspect-ratio: 1) {
-
       // Image aspect ratio
       &--portrait {
         max-height: 100%;
         width: auto;
       }
     }
-    
+
     img {
       display: block;
       width: 100%;

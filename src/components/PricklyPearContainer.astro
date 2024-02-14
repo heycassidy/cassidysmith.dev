@@ -1,20 +1,29 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from 'astro:assets'
 import PricklyPearController from '../components/PricklyPearController.svelte'
 import placeholderCactus from '../assets/prickly-pear.png'
 ---
-<div class="prickly-pear-container">
 
+<div class="prickly-pear-container">
   <div class="scene-box">
     <PricklyPearController client:idle>
-      <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} width="800" height="800" slot="placeholder-cactus" loading="eager" />
+      <Image
+        src={placeholderCactus}
+        alt="Illustration of prickly pear cactus"
+        class="placeholder-cactus"
+        quality={90}
+        width="800"
+        height="800"
+        slot="placeholder-cactus"
+        loading="eager"
+      />
     </PricklyPearController>
   </div>
 </div>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
-  
+
   .prickly-pear-container {
     grid-area: cactus;
     display: grid;
@@ -54,7 +63,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
       filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
     }
   }
-  
+
   .scene-box {
     position: relative;
     display: flex;

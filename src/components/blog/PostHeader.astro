@@ -1,17 +1,13 @@
 ---
-
-const { class: className, ...rest } = Astro.props;
-
+const { class: className, ...rest } = Astro.props
 ---
 
 <header class={className} {...rest}>
   <slot />
 </header>
 
-
 <style lang="scss">
   @import '@styles/mixins.scss';
-
 
   @include color-mode(light) {
     header {
@@ -33,5 +29,4 @@ const { class: className, ...rest } = Astro.props;
     background-color: var(--background-color);
     color: var(--color);
   }
-
 </style>

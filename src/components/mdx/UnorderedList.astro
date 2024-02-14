@@ -6,20 +6,18 @@ const html = await Astro.slots.render('default')
 const root = parse(html)
 const listItems = root.querySelectorAll('li')
 
-const {...props} = Astro.props;
-
+const { ...props } = Astro.props
 ---
 
 <ul {...props}>
   {
-    listItems.map(item => (
+    listItems.map((item) => (
       <UnorderedListItem>
         <Fragment set:html={item.innerHTML} />
       </UnorderedListItem>
     ))
   }
 </ul>
-
 
 <style lang="scss">
   ul {

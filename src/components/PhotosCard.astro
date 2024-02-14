@@ -1,26 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from 'astro:content'
 import PhotosCardItem from '../components/PhotosCardItem.astro'
 import { Icon } from 'astro-icon/components'
-import { publishedEntries, sortByPosition } from '@utils/index';
+import { publishedEntries, sortByPosition } from '@utils/index'
 
-const photos = await getCollection('photos', publishedEntries);
+const photos = await getCollection('photos', publishedEntries)
 
-let sortedPhotos = photos.sort(sortByPosition).slice(0, 6);
-
+let sortedPhotos = photos.sort(sortByPosition).slice(0, 6)
 ---
+
 <section class="photos-card">
   <a href="/photos" class="photo-cards__link">
     <h2>Check Out My Photos <Icon name="ri:arrow-right-fill" /></h2>
   </a>
-  
+
   <div class="photos-card__preview">
-    {sortedPhotos.map((photo) => (
-      <PhotosCardItem photo={photo} />
-    ))}
+    {sortedPhotos.map((photo) => <PhotosCardItem photo={photo} />)}
   </div>
 </section>
-
 
 <style lang="scss">
   @import '@styles/mixins.scss';
@@ -60,13 +57,16 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 6);
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--fluid-bento-gap);
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
 
     &:hover {
       color: var(--hover-color);
       background-color: var(--hover-background-color);
     }
-    &:active, &:hover:active {
+    &:active,
+    &:hover:active {
       color: var(--active-color);
       background-color: var(--active-background-color);
     }
@@ -79,7 +79,8 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 6);
     padding: 0 var(--fluid-bento-padding);
     text-decoration: none;
 
-    &:link, &:visited {
+    &:link,
+    &:visited {
       color: currentColor;
     }
 

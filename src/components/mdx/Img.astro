@@ -1,24 +1,19 @@
 ---
+import { Image } from 'astro:assets'
 
-import { Image } from 'astro:assets';
+const { alt, src } = Astro.props
 
-
-const { alt, src } = Astro.props;
-
-let column: 'breakout' | 'text' | 'small' = 'small';
-let displayWidth = (src.width - 2) / 2;
+let column: 'breakout' | 'text' | 'small' = 'small'
+let displayWidth = (src.width - 2) / 2
 
 if (src.width > 1800) {
-  column = 'breakout';
-  displayWidth = 900;
+  column = 'breakout'
+  displayWidth = 900
 } else if (src.width > 1400 && src.width <= 1800) {
-  column = 'text';
-  displayWidth = 700;
+  column = 'text'
+  displayWidth = 700
 }
-
-
 ---
-
 
 <Image
   class={`blog-post-image blog-post-image--${column}`}
@@ -28,8 +23,8 @@ if (src.width > 1800) {
   width={displayWidth}
   height={(src.height / src.width) * displayWidth}
   densities={[2]}
-  loading="lazy" />
-
+  loading="lazy"
+/>
 
 <style lang="scss">
   @import '@styles/mixins.scss';
@@ -69,7 +64,4 @@ if (src.width > 1800) {
     --column: text;
     margin-inline: auto;
   }
-
-
 </style>
-

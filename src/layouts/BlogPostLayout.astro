@@ -1,10 +1,10 @@
 ---
-import PostHeader from "../components/blog/PostHeader.astro"
-import Prose from "@components/Prose.astro"
+import PostHeader from '../components/blog/PostHeader.astro'
+import Prose from '@components/Prose.astro'
 ---
 
 <article>
-  <PostHeader class="blog-post-grid" >
+  <PostHeader class="blog-post-grid">
     <slot name="header" />
   </PostHeader>
   <Prose as="main" class="blog-post-grid blog-post-content">
@@ -35,27 +35,27 @@ import Prose from "@components/Prose.astro"
         grid-column: var(--column, text);
       }
 
-      grid-template-columns: 
+      grid-template-columns:
         [full-width-start breakout-start]
-          1fr
-            [text-start aside-start header-content-start anchor-heading-start]
-              minmax(0, var(--layout-size-2))
-            [text-end aside-end header-content-end anchor-heading-end]
-          1fr
+        1fr
+        [text-start aside-start header-content-start anchor-heading-start]
+        minmax(0, var(--layout-size-2))
+        [text-end aside-end header-content-end anchor-heading-end]
+        1fr
         [breakout-end full-width-end];
 
       @include breakpoint-medium {
-        grid-template-columns: 
+        grid-template-columns:
           [full-width-start breakout-start anchor-heading-start]
-            1fr
-              [text-start header-content-start]
-                minmax(0, var(--layout-size-2))
-              [text-end anchor-heading]
-            1fr
+          1fr
+          [text-start header-content-start]
+          minmax(0, var(--layout-size-2))
+          [text-end anchor-heading]
+          1fr
           [breakout-end aside-start]
-            minmax(var(--space-content-1), 10fr)
+          minmax(var(--space-content-1), 10fr)
           [header-content-end aside-end]
-            1fr
+          1fr
           [full-width-end];
       }
     }

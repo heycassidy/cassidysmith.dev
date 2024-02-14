@@ -2,28 +2,34 @@
 import Blockquote from '@components/mdx/Blockquote.astro'
 
 interface Props {
-  citationName: string;
-  citationUrl?: string;
-  citationSource?: string;
+  citationName: string
+  citationUrl?: string
+  citationSource?: string
 }
 
-const {citationUrl, citationSource, citationName } = Astro.props;
-
+const { citationUrl, citationSource, citationName } = Astro.props
 ---
 
 <Blockquote {...{ cite: citationUrl }}>
   <slot />
-  <footer>{citationName}
-    {(citationSource && citationUrl) && (<>—
-      <cite><a href={citationUrl}>{citationSource}</a></cite>
-      </>)}
+  <footer>
+    {citationName}
+    {
+      citationSource && citationUrl && (
+        <>
+          —
+          <cite>
+            <a href={citationUrl}>{citationSource}</a>
+          </cite>
+        </>
+      )
+    }
   </footer>
 </Blockquote>
 
-
 <style lang="scss">
   @import '@styles/mixins.scss';
-  
+
   footer {
     font-size: var(--font-size-1);
   }
@@ -35,5 +41,4 @@ const {citationUrl, citationSource, citationName } = Astro.props;
   a {
     @include text-link;
   }
-
 </style>

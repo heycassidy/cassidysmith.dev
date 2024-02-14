@@ -2,7 +2,7 @@
   <a href="/">Cassidy Smith</a>
 </span>
 
-<style lang="scss"> 
+<style lang="scss">
   @import '../styles/mixins.scss';
 
   .banner-logo {
@@ -22,24 +22,27 @@
       padding-bottom: calc(var(--fluid-bento-padding) / 2);
       display: block;
       text-decoration: none;
-      transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;
+      transition:
+        background-color 0.2s,
+        color 0.2s,
+        text-decoration-color 0.2s;
 
-
-      &:link, &:visited {
+      &:link,
+      &:visited {
         color: white;
         background-color: var(--color-primary-600);
       }
       &:hover {
         background-color: var(--color-primary-525);
       }
-      &:active, &:hover:active {
+      &:active,
+      &:hover:active {
         background-color: var(--color-accent-one-525);
       }
 
       &:focus-visible {
         @include focus-outline;
       }
-
     }
   }
 </style>

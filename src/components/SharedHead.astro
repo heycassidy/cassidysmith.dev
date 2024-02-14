@@ -2,34 +2,36 @@
 import { AstroFont } from 'astro-font'
 import { ViewTransitions } from 'astro:transitions'
 import Theme from '../components/Theme.astro'
-
-
 ---
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
-  <link rel="sitemap" href="/sitemap-index.xml">
+  <link rel="sitemap" href="/sitemap-index.xml" />
   <slot />
   <Theme />
   <ViewTransitions fallback="none" />
   <AstroFont
     config={[
       {
-        src: [{
-          style: 'normal',
-          weight: '400',
-          path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-normal.woff2',
-        }, {
-          style: 'normal',
-          weight: '700',
-          path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-700-normal.woff2',
-        }, {
-          style: 'italic',
-          weight: '400',
-          path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-italic.woff2',
-        }],
+        src: [
+          {
+            style: 'normal',
+            weight: '400',
+            path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-normal.woff2',
+          },
+          {
+            style: 'normal',
+            weight: '700',
+            path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-700-normal.woff2',
+          },
+          {
+            style: 'italic',
+            weight: '400',
+            path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-italic.woff2',
+          },
+        ],
         fetch: import.meta.env.PROD,
         basePath: './dist',
         preload: true,
@@ -39,11 +41,13 @@ import Theme from '../components/Theme.astro'
         name: 'Atkinson Hyperlegible',
       },
       {
-        src: [{
-          style: 'normal',
-          weight: '400 800',
-          path: 'https://cdn.jsdelivr.net/fontsource/fonts/syne:vf@latest/latin-wght-normal.woff2',
-        }],
+        src: [
+          {
+            style: 'normal',
+            weight: '400 800',
+            path: 'https://cdn.jsdelivr.net/fontsource/fonts/syne:vf@latest/latin-wght-normal.woff2',
+          },
+        ],
         fetch: import.meta.env.PROD,
         basePath: './dist',
         preload: true,
@@ -53,11 +57,13 @@ import Theme from '../components/Theme.astro'
         cssVariable: 'font-syne',
       },
       {
-        src: [{
-          style: 'normal',
-          weight: '400',
-          path: 'https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.000/fonts/webfonts/MonaspaceNeon-Regular.woff',
-        }],
+        src: [
+          {
+            style: 'normal',
+            weight: '400',
+            path: 'https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.000/fonts/webfonts/MonaspaceNeon-Regular.woff',
+          },
+        ],
         fetch: import.meta.env.PROD,
         basePath: './dist',
         preload: true,

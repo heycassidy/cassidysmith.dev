@@ -1,11 +1,11 @@
 ---
-import { friendlyUTCDate } from '@utils/index';
+import { friendlyUTCDate } from '@utils/index'
 import { Icon } from 'astro-icon/components'
 
 type Props = {
-  iconName?: string,
-  class?: string,
-  dateTime: Date,
+  iconName?: string
+  class?: string
+  dateTime: Date
   label?: string
 }
 
@@ -13,7 +13,11 @@ const { iconName, label, dateTime, class: className, ...rest } = Astro.props
 ---
 
 <span class:list={['post-date-time', className]} {...rest}>
-  {iconName && <Icon name={iconName} />}<span>{label} <time datetime={dateTime.toISOString()}>{friendlyUTCDate(dateTime)}</time></span>
+  {iconName && <Icon name={iconName} />}<span
+    >{label}
+    <time datetime={dateTime.toISOString()}>{friendlyUTCDate(dateTime)}</time
+    ></span
+  >
 </span>
 
 <style lang="scss">
