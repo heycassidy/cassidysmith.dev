@@ -23,4 +23,5 @@ export const blogSchema = () =>
     modifiedAt: z.date(),
     author: z.string(),
     readingTime: z.string().optional(),
+    tags: z.array(z.string()).optional(),
   })

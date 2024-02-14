@@ -28,19 +28,10 @@ let sortedPhotos = photos.sort(sortByPosition)
 </AppLayout>
 
 <style lang="scss">
-  @import '../../styles/mixins.scss';
-
-  a {
-    @include text-link;
-  }
+  @import '@styles/mixins.scss';
 
   main {
     padding: var(--fluid-bento-padding);
     max-width: var(--space-content-4);
-  }
-
-  .page-layout {
-    display: grid;
-    gap: var(--fluid-bento-gap);
   }
 </style>

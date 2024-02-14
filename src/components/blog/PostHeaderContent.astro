@@ -1,7 +1,13 @@
 ---
+import { Icon } from "astro-icon/components";
+import Button from '@components/Button.astro';
+
 const { post } = Astro.props;
 
 ---
+
+<a href="/posts" class="back-to-blog-link"><Icon name="ri:arrow-left-fill" /> Latest posts</a>
+
 
 <h1>{post.data.title}</h1>
 {post.data.subtitle && <p class="subtitle">{post.data.subtitle}</p>}
@@ -27,6 +33,32 @@ const { post } = Astro.props;
     font-family: var(--font-syne);
     text-wrap: balance;
     opacity: 0.9;
+  }
+
+  @include color-mode(light) {
+    .back-to-blog-link {
+      --color-link: var(--color-accent-two-600);
+      --color-link-hover: var(--color-accent-two-775);
+      --color-link-active: var(--color-accent-one-525);
+    }
+  }
+  @include color-mode(dark) {
+    .back-to-blog-link {
+      --color-link: var(--color-secondary-275);
+      --color-link-hover: var(--color-secondary-100);
+      --color-link-active: var(--color-accent-one-525);
+    }
+  }
+
+  .back-to-blog-link {
+    @include text-link($visited: false);
+    justify-self: start;
+    margin-bottom: var(--space-7);
+    display: flex;
+    align-items: center;
+    column-gap: 0.5ch;
+    text-decoration: none;
+    line-height: var(--line-height-compressed);
   }
   
   

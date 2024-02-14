@@ -21,14 +21,14 @@ const { class: className, ...rest } = Astro.props;
   }
   @include color-mode(dark) {
     header {
-      --color: var(--color-accent-two-275);
-      --background-color: var(--color-accent-two-850);
+      --color: var(--color-secondary-275);
+      --background-color: var(--color-secondary-850);
     }
   }
 
   header {
     padding-top: calc(var(--fluid-bento-padding) * 2);
-    padding-bottom: calc(var(--fluid-bento-padding) * 2);
+    padding-bottom: calc(var(--fluid-bento-padding) * 3);
     border-radius: var(--fluid-bento-radius);
     background-color: var(--background-color);
     color: var(--color);

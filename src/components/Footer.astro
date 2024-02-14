@@ -1,9 +1,8 @@
 ---
-
+const { class: className, ...rest } = Astro.props;
 ---
 
-
-<footer>
+<footer class={className} {...rest}>
   <span>
     This site is hand-made by yours truly, powered by <a href="https://astro.build/">Astro</a>. The fonts I’ve chosen are <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a> and <a href="https://gitlab.com/bonjour-monde/fonderie/syne-typeface">Syne</a>. View the source code on <a href="https://github.com/heycassidy/cassidysmith.dev">GitHub</a>. 
   </span>

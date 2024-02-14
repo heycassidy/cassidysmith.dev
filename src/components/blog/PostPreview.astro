@@ -1,24 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components'
+import type { CollectionEntry } from 'astro:content';
 import ContentLink from '@components/ContentLink.astro'
-import { publishedEntries, sortByPublishedAt } from '@utils/index';
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
 import Prose from '@components/Prose.astro';
 
-const posts = await getCollection('blog', publishedEntries);
-const latestPost = posts.sort(sortByPublishedAt)[0]
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
 ---
 
 
-<article class="latest-post">
-  <ContentLink collectionSlug="posts" content={latestPost} class="kicker">
-    Read the Latest <Icon name="ri:arrow-right-fill" />
-  </ContentLink>
+<article class="post-preview">
   <Prose>
-    <h2>{latestPost.data.title}</h2>
-    <p class="preview-text">{latestPost.data.previewText}</p>
-    <DateTimeDisplay dateTime={latestPost.data.publishedAt} class="published-date" />
+    <ContentLink collectionSlug="posts" content={post}>
+      <h2>{post.data.title}</h2>
+    </ContentLink>
+    <p class="preview-text">{post.data.previewText}</p>
+    <DateTimeDisplay dateTime={post.data.publishedAt} class="published-date"/>
   </Prose>
 </article>
 
@@ -26,33 +27,31 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
   @import '@styles/mixins.scss';
 
   @include color-mode(light) {
-    .latest-post {
+    .post-preview {
       --color: var(--color-accent-two-700);
       --background-color: var(--color-accent-two-175);
 
       --hover-color: var(--color-accent-two-950);
       --hover-background-color: var(--color-accent-two-275);
 
-      --active-color: var(--color-accent-two-100);
+      --active-color: var(--color-accent-one-100);
       --active-background-color: var(--color-accent-one-525);
     }
   }
   @include color-mode(dark) {
-    .latest-post {
-      --color: var(--color-secondary-275);
-      --background-color: var(--color-secondary-850);
+    .post-preview {
+      --color: var(--color-primary-275);
+      --background-color: var(--color-primary-850);
 
-      --hover-color: var(--color-secondary-0);
-      --hover-background-color: var(--color-secondary-700);
+      --hover-color: var(--color-primary-0);
+      --hover-background-color: var(--color-primary-700);
 
       --active-color: var(--color-accent-one-100);
       --active-background-color: var(--color-accent-one-525);
     }
   }
 
-  .latest-post {
-    grid-area: blog;
-
+  .post-preview {
     color: var(--color);
     background-color: var(--background-color);
     border-radius: var(--fluid-bento-radius);
@@ -82,16 +81,7 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     }
   }
 
-  .kicker {
-    line-height: var(--line-height-compressed);
-    font-weight: 680;
-    letter-spacing: 0.15ch;
-    text-transform: uppercase;
-    font-size: var(--font-size-0);
-    font-family: var(--font-syne);
-    display: flex;
-    align-items: center;
-    column-gap: var(--space-1);
+  a {
     text-decoration: none;
     color: currentColor;
 
@@ -127,9 +117,9 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     margin-top: auto;
     margin-bottom: var(--space-2);
     color: currentColor;
-    display: flex;
-    justify-content: space-between;
+    text-wrap: pretty;
   }
+
 
   .published-date {
     font-size: var(--font-size--1);

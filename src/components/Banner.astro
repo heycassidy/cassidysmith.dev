@@ -1,11 +1,11 @@
 ---
 import BannerLogo from "./BannerLogo.astro";
+
+const { class: className, ...rest } = Astro.props;
 ---
-
-
-<header role="banner" id="theme-switcher-portal">
+<header role="banner" id="theme-switcher-portal" class={className} {...rest}>
   <nav>
-    <BannerLogo class="test"/>
+    <BannerLogo/>
   </nav>
 </header>
 

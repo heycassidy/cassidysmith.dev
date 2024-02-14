@@ -1,6 +1,7 @@
 ---
-import '../styles/global.css'
-import SharedHead from '../components/SharedHead.astro'
+import '@styles/global.css'
+import SharedHead from '@components/SharedHead.astro'
+import GrainyBackground from '@components/GrainyBackground.astro'
 ---
 
 <!DOCTYPE html>
@@ -10,5 +11,6 @@ import SharedHead from '../components/SharedHead.astro'
   </SharedHead>
   <body>
     <slot />
+    <GrainyBackground />
   </body>
 </html>

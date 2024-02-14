@@ -33,6 +33,7 @@ export default defineConfig({
           'link',
           'arrow-right-circle-fill',
           'arrow-right-fill',
+          'arrow-left-fill',
           'clipboard-fill',
           'check-line',
           'instagram-line',

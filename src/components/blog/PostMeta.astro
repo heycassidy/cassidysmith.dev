@@ -1,6 +1,8 @@
 ---
-import PostMetaItem from './PostMetaItem.astro';
-import { friendlyUTCDate, isSameDay } from '@utils/index';
+import { Icon } from 'astro-icon/components'
+import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro';
+
+import { isSameDay } from '@utils/index';
 const { post, readingTime } = Astro.props;
 
 const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
@@ -8,15 +10,15 @@ const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
 ---
 
 <div class="blog-post-meta">
-  {readingTime && <PostMetaItem iconName="ri:hourglass-2-fill">{readingTime}</PostMetaItem>}
 
-  <PostMetaItem iconName="ri:pencil-fill">
-    Published <time datetime={post.data.publishedAt.toISOString()}>{friendlyUTCDate(post.data.publishedAt)}</time>
-  </PostMetaItem>
-  
-  {isModified && <PostMetaItem iconName="ri:eraser-fill">
-    Modified <time datetime={post.data.modifiedAt.toISOString()}>{friendlyUTCDate(post.data.modifiedAt)}</time>
-  </PostMetaItem>}
+  {readingTime && <span class="post-meta-item">
+    <Icon name="ri:hourglass-2-fill"/><span>{readingTime}</span>
+  </span>}
+
+  <DateTimeDisplay dateTime={post.data.publishedAt} label="Published" iconName="ri:pencil-fill" class="post-meta-item" />
+
+  {isModified && <DateTimeDisplay dateTime={post.data.modifiedAt} label="Updated" iconName="ri:eraser-fill" class="post-meta-item" />}
+
 </div>
 
 <style lang="scss">
@@ -40,6 +42,14 @@ const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt);
     column-gap: var(--space-3);
     margin-bottom: var(--space-6);
     color: var(--color)
+  }
+
+  .post-meta-item {
+    display: flex;
+    column-gap: var(--space-2);
+    align-items: center;
+    margin: 0;
+    font-size: var(--font-size-0);
   }
 
 </style>
