@@ -1,0 +1,57 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import AppLayout from '@layouts/AppLayout.astro'
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import Prose from '@components/Prose.astro'
+import SEOTags from '@components/SEOTags.astro'
+import PostsList from '@components/blog/PostsList.astro'
+import {
+  activeTags,
+  entryIsPublished,
+  sortByPublishedAt,
+  entryHasTag,
+} from '@utils/index'
+
+export async function getStaticPaths() {
+  const tags = await getCollection('tags', activeTags)
+
+  return tags.map((entry: CollectionEntry<'tags'>) => ({
+    params: { slug: entry.slug },
+    props: { tag: entry },
+  }))
+}
+
+const { tag } = Astro.props
+
+let posts = await getCollection('blog')
+posts = posts
+  .filter(entryIsPublished)
+  .filter(entryHasTag(tag))
+  .sort(sortByPublishedAt)
+
+const { Content } = await tag.render()
+---
+
+<AppLayout>
+  <SEOTags
+    slot="head"
+    title={`Posts Tagged ${tag.data.title}`}
+    description={`Posts Tagged: ${tag.data.title} from Cassidy’s blog`}
+  />
+  <PrimaryLayout>
+    <Prose as="main">
+      <h1>Posts Tagged {tag.data.title}</h1>
+      <Content />
+    </Prose>
+    <PostsList posts={posts} />
+  </PrimaryLayout>
+</AppLayout>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  main {
+    padding: var(--fluid-bento-padding);
+    max-width: var(--space-content-4);
+  }
+</style>

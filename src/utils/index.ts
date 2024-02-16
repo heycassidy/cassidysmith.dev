@@ -3,9 +3,19 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
-export const publishedEntries = (
-  entry: CollectionEntry<CollectionKey>
+export const entryIsPublished = (
+  entry: CollectionEntry<'blog' | 'photos'>
 ): boolean => import.meta.env.DEV || entry.data.published
+
+export const entryHasTag =
+  (tag: CollectionEntry<'tags'>) =>
+  (entry: CollectionEntry<'blog'>): boolean =>
+    entry.data.tags.some(
+      (entryTag: CollectionEntry<'tags'>) => entryTag.slug === tag.slug
+    )
+
+export const activeTags = (entry: CollectionEntry<'tags'>): boolean =>
+  import.meta.env.DEV || entry.data.active
 
 export const sortByPosition = (
   entryA: CollectionEntry<CollectionKey>,

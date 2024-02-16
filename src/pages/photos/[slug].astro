@@ -6,11 +6,10 @@ import { Icon } from 'astro-icon/components'
 import Button from '@components/Button.astro'
 import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
-
-import { publishedEntries, sortByPosition } from '@utils/index'
+import { entryIsPublished, sortByPosition } from '@utils/index'
 
 export async function getStaticPaths() {
-  const entries = await getCollection('photos', publishedEntries)
+  const entries = await getCollection('photos', entryIsPublished)
 
   return entries.map((entry) => ({
     params: { slug: entry.slug },
@@ -18,7 +17,7 @@ export async function getStaticPaths() {
   }))
 }
 
-const photos = await getCollection('photos', publishedEntries)
+const photos = await getCollection('photos', entryIsPublished)
 let sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.slug)
 
 const { photo } = Astro.props

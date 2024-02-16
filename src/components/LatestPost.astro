@@ -2,11 +2,11 @@
 import { getCollection } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 import ContentLink from '@components/ContentLink.astro'
-import { publishedEntries, sortByPublishedAt } from '@utils/index'
+import { entryIsPublished, sortByPublishedAt } from '@utils/index'
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
 import Prose from '@components/Prose.astro'
 
-const posts = await getCollection('blog', publishedEntries)
+const posts = await getCollection('blog', entryIsPublished)
 const latestPost = posts.sort(sortByPublishedAt)[0]
 ---
 

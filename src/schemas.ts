@@ -1,4 +1,4 @@
-import { z, type SchemaContext } from 'astro:content'
+import { z, reference, type SchemaContext } from 'astro:content'
 
 export const photoSchema = ({ image }: SchemaContext) =>
   z.object({
@@ -23,5 +23,11 @@ export const blogSchema = () =>
     modifiedAt: z.date(),
     author: z.string(),
     readingTime: z.string().optional(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(reference('tags')),
+  })
+
+export const tagSchema = () =>
+  z.object({
+    title: z.string(),
+    active: z.boolean().default(false),
   })

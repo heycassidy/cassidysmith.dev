@@ -4,10 +4,10 @@ import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
-import PostPreview from '@components/blog/PostPreview.astro'
-import { publishedEntries, sortByPublishedAt } from '@utils/index'
+import PostsList from '@components/blog/PostsList.astro'
+import { entryIsPublished, sortByPublishedAt } from '@utils/index'
 
-const posts = await getCollection('blog', publishedEntries)
+const posts = await getCollection('blog', entryIsPublished)
 const sortedPosts = posts.sort(sortByPublishedAt)
 ---
 
@@ -28,9 +28,7 @@ const sortedPosts = posts.sort(sortByPublishedAt)
         I’ve included the last updated date on each article page.
       </p>
     </Prose>
-    <div class="articles-list">
-      {sortedPosts.map((post) => <PostPreview post={post} />)}
-    </div>
+    <PostsList posts={sortedPosts} />
   </PrimaryLayout>
 </AppLayout>
 
@@ -40,11 +38,5 @@ const sortedPosts = posts.sort(sortByPublishedAt)
   main {
     padding: var(--fluid-bento-padding);
     max-width: var(--space-content-4);
-  }
-
-  .articles-list {
-    display: grid;
-    gap: var(--fluid-bento-gap);
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   }
 </style>

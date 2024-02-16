@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content'
-import { publishedEntries } from '@utils/index'
+import { entryIsPublished } from '@utils/index'
 import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import BlogPostLayout from '@layouts/BlogPostLayout.astro'
@@ -22,7 +22,7 @@ import H6 from '@components/mdx/H6.astro'
 import SEOTags from '@components/SEOTags.astro'
 
 export async function getStaticPaths() {
-  const entries = await getCollection('blog', publishedEntries)
+  const entries = await getCollection('blog', entryIsPublished)
 
   return entries.map((entry: CollectionEntry<'blog'>) => ({
     params: { slug: entry.slug },

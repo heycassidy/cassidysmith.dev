@@ -5,8 +5,8 @@ import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import PhotoGallery from '@components/PhotoGallery.astro'
 import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
-import { publishedEntries, sortByPosition } from '@utils/index'
-const photos = await getCollection('photos', publishedEntries)
+import { entryIsPublished, sortByPosition } from '@utils/index'
+const photos = await getCollection('photos', entryIsPublished)
 
 let sortedPhotos = photos.sort(sortByPosition)
 ---
