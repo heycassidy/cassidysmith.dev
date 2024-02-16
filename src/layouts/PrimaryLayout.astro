@@ -17,15 +17,14 @@ import Banner from '../components/Banner.astro'
   @layer layout {
     .primary-layout {
       margin: 0 auto;
-      min-height: 100%;
+      min-height: 100dvh;
       display: grid;
       gap: var(--fluid-bento-gap);
       align-items: start;
       grid-template-rows: auto 1fr auto;
-      grid-template-columns: [full-width-start] 1fr [centered-start] minmax(
-          0,
-          var(--layout-size-3)
-        ) [centered-end] 1fr [full-width-end];
+      grid-template-columns:
+        [full-width-start] 1fr [centered-start] minmax(0, var(--layout-size-3))
+        [centered-end] 1fr [full-width-end];
     }
     .primary-layout__banner {
       grid-column: centered;

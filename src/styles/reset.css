@@ -1,6 +1,6 @@
 @layer reset {
   /*
-    Josh's Custom CSS Reset
+    Partially from Josh's Custom CSS Reset
     https://www.joshwcomeau.com/css/custom-css-reset/
   */
   *,
@@ -11,12 +11,8 @@
   * {
     margin: 0;
   }
-  html,
   body {
-    height: 100%;
-  }
-  body {
-    line-height: 1.5;
+    position: relative;
     -webkit-font-smoothing: antialiased;
   }
   img,
