@@ -1,14 +1,19 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { type CollectionEntry, getEntries } from 'astro:content'
 import ContentLink from '@components/ContentLink.astro'
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
+import TagsList from '@components/blog/TagsList.astro'
 import Prose from '@components/Prose.astro'
+import { tagIsActive } from '@utils/index'
 
 interface Props {
   post: CollectionEntry<'blog'>
 }
 
 const { post } = Astro.props
+
+const tags = await getEntries(post.data.tags)
+const activeTags = tags.filter(tagIsActive)
 ---
 
 <article class="post-preview">
@@ -17,7 +22,13 @@ const { post } = Astro.props
       <h2>{post.data.title}</h2>
     </ContentLink>
     <p class="preview-text">{post.data.previewText}</p>
-    <DateTimeDisplay dateTime={post.data.publishedAt} class="published-date" />
+    <div class="bottom-row">
+      <DateTimeDisplay
+        dateTime={post.data.publishedAt}
+        class="published-date"
+      />
+      <TagsList tags={activeTags} />
+    </div>
   </Prose>
 </article>
 
@@ -99,7 +110,7 @@ const { post } = Astro.props
       flex-shrink: 0;
     }
 
-    &::before {
+    &::after {
       content: '';
       position: absolute;
       top: 0;
@@ -125,5 +136,13 @@ const { post } = Astro.props
   .published-date {
     font-size: var(--font-size--1);
     opacity: 0.85;
+  }
+
+  .bottom-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    column-gap: var(--space-4);
   }
 </style>

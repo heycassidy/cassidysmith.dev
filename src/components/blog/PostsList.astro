@@ -19,6 +19,9 @@ const { posts } = Astro.props
   .posts-list {
     display: grid;
     gap: var(--fluid-bento-gap);
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+
+    @include breakpoint-medium {
+      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    }
   }
 </style>

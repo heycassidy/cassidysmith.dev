@@ -1,13 +1,26 @@
 ---
+import { getEntries, type CollectionEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
-import Button from '@components/Button.astro'
+import TagsList from '@components/blog/TagsList.astro'
+import { tagIsActive } from '@utils/index'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
 
 const { post } = Astro.props
+
+const tags = await getEntries(post.data.tags)
+const activeTags = tags.filter(tagIsActive)
 ---
 
-<a href="/posts" class="back-to-blog-link"
-  ><Icon name="ri:arrow-left-fill" /> Latest posts</a
->
+<div class="top-row">
+  <a href="/posts" class="back-to-blog-link"
+    ><Icon name="ri:arrow-left-fill" /> Latest posts</a
+  >
+
+  <TagsList tags={activeTags} class="tags-list" />
+</div>
 
 <h1>{post.data.title}</h1>
 {post.data.subtitle && <p class="subtitle">{post.data.subtitle}</p>}
@@ -33,6 +46,16 @@ const { post } = Astro.props
     opacity: 0.9;
   }
 
+  .top-row {
+    --column: header-content;
+    margin-bottom: var(--space-7);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    column-count: var(--fluid-bento-gap);
+  }
+
   @include color-mode(light) {
     .back-to-blog-link {
       --color-link: var(--color-accent-two-600);
@@ -51,7 +74,6 @@ const { post } = Astro.props
   .back-to-blog-link {
     @include text-link($visited: false);
     justify-self: start;
-    margin-bottom: var(--space-7);
     display: flex;
     align-items: center;
     column-gap: 0.5ch;

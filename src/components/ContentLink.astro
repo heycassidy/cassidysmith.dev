@@ -1,7 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 import type { CollectionEntry, CollectionKey } from 'astro:content'
-import { blogSchema, photoSchema } from '../schemas'
 
 interface Props extends HTMLAttributes<'a'> {
   content: CollectionEntry<CollectionKey>

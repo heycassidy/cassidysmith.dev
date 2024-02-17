@@ -10,12 +10,10 @@ export const entryIsPublished = (
 export const entryHasTag =
   (tag: CollectionEntry<'tags'>) =>
   (entry: CollectionEntry<'blog'>): boolean =>
-    entry.data.tags.some(
-      (entryTag: CollectionEntry<'tags'>) => entryTag.slug === tag.slug
-    )
+    entry.data.tags.some((entryTag) => entryTag.slug === tag.slug)
 
-export const activeTags = (entry: CollectionEntry<'tags'>): boolean =>
-  import.meta.env.DEV || entry.data.active
+export const tagIsActive = (tag: CollectionEntry<'tags'>): boolean =>
+  import.meta.env.DEV || tag.data.active
 
 export const sortByPosition = (
   entryA: CollectionEntry<CollectionKey>,

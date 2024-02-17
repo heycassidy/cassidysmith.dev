@@ -6,14 +6,14 @@ import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
 import PostsList from '@components/blog/PostsList.astro'
 import {
-  activeTags,
+  tagIsActive,
   entryIsPublished,
   sortByPublishedAt,
   entryHasTag,
 } from '@utils/index'
 
 export async function getStaticPaths() {
-  const tags = await getCollection('tags', activeTags)
+  const tags = await getCollection('tags', tagIsActive)
 
   return tags.map((entry: CollectionEntry<'tags'>) => ({
     params: { slug: entry.slug },
