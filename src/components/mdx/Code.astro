@@ -1,34 +1,37 @@
 <code><slot /></code>
-
 <style lang="scss">
   @import '@styles/mixins.scss';
 
   @include color-mode(light) {
-    :global(p) > code {
-      --color: var(--color-neutral-850);
+    :global(p) > code,
+    :global(span) > code,
+    :global(li) > code {
+      --color: var(--color-secondary-700);
       --background-color: var(--color-neutral-175);
-      --border-color: var(--color-neutral-275);
     }
   }
   @include color-mode(dark) {
-    :global(p) > code {
-      --color: var(--color-neutral-275);
-      --background-color: var(--color-neutral-850);
-      --border-color: var(--color-neutral-775);
+    :global(p) > code,
+    :global(span) > code,
+    :global(li) > code {
+      --color: var(--color-secondary-275);
+      --background-color: var(--color-secondary-850);
     }
   }
 
-  :global(p) > code {
-    font-size: var(--font-size-0);
+  :global(p) > code,
+  :global(span) > code,
+  :global(li) > code {
+    white-space: break-spaces;
+    font-size: var(--font-size--1);
     font-family: var(--font-monaspace-neon);
 
     border-radius: var(--radius-tiny);
 
     color: var(--color);
     background-color: var(--background-color);
-    box-shadow: 0 0 0 1px var(--border-color);
 
-    padding-inline: var(--space-2);
+    padding-inline: var(--space-1);
     padding-block: var(--space-1);
   }
 </style>

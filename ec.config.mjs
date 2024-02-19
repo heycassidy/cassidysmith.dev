@@ -9,7 +9,7 @@ export default defineEcConfig({
     codeFontSize: 'var(--font-size--1)',
     codeFontFamily: 'var(--font-monaspace-neon)',
     codePaddingBlock: 'var(--fluid-bento-padding)',
-    codePaddingInline: 'var(--fluid-bento-padding)',
+    codePaddingInline: 'calc(var(--fluid-bento-padding) * 2)',
     borderRadius: 'calc(var(--fluid-bento-radius) / 2)',
     borderWidth: '1px',
     borderColor: ({ theme }) =>

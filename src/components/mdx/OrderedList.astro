@@ -1,17 +1,17 @@
 ---
-import { parse } from 'node-html-parser'
+import { parseHTML } from 'linkedom'
 import OrderedListItem from '@components/mdx/OrderedListItem.astro'
 
 const html = await Astro.slots.render('default')
-const root = parse(html)
-const listItems = root.querySelectorAll('li')
+const { document } = parseHTML(html)
+const children = Array.from(document.children)
 
 const { ...props } = Astro.props
 ---
 
 <ol {...props}>
   {
-    listItems.map((item) => (
+    children.map((item) => (
       <OrderedListItem>
         <Fragment set:html={item.innerHTML} />
       </OrderedListItem>
@@ -21,6 +21,7 @@ const { ...props } = Astro.props
 
 <style lang="scss">
   ol {
-    text-wrap: balance;
+    text-wrap: pretty;
+    line-height: var(--line-height-list);
   }
 </style>

@@ -1,0 +1,21 @@
+---
+import { parseHTML } from 'linkedom'
+import ComponentDemo from '@components/blog/ComponentDemo.astro'
+
+const html = await Astro.slots.render('default')
+const { document } = parseHTML(html)
+const children = document.children
+
+children[0].setAttribute('open', '')
+---
+
+<ComponentDemo>
+  <h2>Frequently Asked Questions</h2>
+  <Fragment set:html={document} />
+</ComponentDemo>
+
+<style>
+  h2 {
+    font-size: var(--font-size-2);
+  }
+</style>

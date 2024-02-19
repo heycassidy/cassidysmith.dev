@@ -18,6 +18,7 @@
     --font-size-8: 2.109rem;
 
     --line-height-base: 1.6;
+    --line-height-list: 1.4;
     --line-height-heading: 1.15;
     --line-height-compressed: 1.2;
     --line-height-body: var(--line-height-base);

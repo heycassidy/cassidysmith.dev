@@ -1,7 +1,8 @@
 @layer base {
   .blog-post-content {
-    .expressive-code {
-      margin-block-end: var(--space-3);
+    .expressive-code,
+    .component-demo {
+      margin-block-end: var(--space-6);
     }
   }
 }
