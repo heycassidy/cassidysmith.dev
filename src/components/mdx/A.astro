@@ -4,8 +4,7 @@ import TextLink from '@components/TextLink.astro'
 const { href } = Astro.props
 ---
 
-<TextLink href={href}><slot /></TextLink>
-<style lang="scss">
+<TextLink href={href}><slot /></TextLink><style lang="scss">
   @import '@styles/mixins';
 
   @include color-mode(light) {

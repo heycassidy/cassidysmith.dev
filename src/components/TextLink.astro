@@ -15,9 +15,7 @@ const external = isExternalURL(href, Astro.url.host)
 
 <a href={href} class:list={[{ external }]} {...attributes}
   ><slot />{external && <Icon name="ri:arrow-right-up-line" size={16} />}</a
->
-
-<style lang="scss">
+><style lang="scss">
   @import '@styles/mixins';
 
   a {
