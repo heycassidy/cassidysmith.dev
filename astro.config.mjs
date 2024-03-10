@@ -10,9 +10,9 @@ import astroExpressiveCode from 'astro-expressive-code'
 export default defineConfig({
   site: 'https://cassidysmith.dev',
   trailingSlash: 'never',
-  prefetch: {
-    prefetchAll: true,
-  },
+  // prefetch: {
+  //   prefetchAll: true,
+  // },
   markdown: {
     smartypants: true,
     remarkPlugins: [remarkReadingTime],
