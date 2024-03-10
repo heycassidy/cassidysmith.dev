@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import PostPreview from '@components/blog/PostPreview.astro'
+
+interface Props {
+  posts: CollectionEntry<'blog'>[]
+}
+
+const { posts } = Astro.props
+---
+
+<div class="posts-list">
+  {posts.map((post) => <PostPreview post={post} />)}
+</div>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  .posts-list {
+    display: grid;
+    gap: var(--fluid-bento-gap);
+
+    @include breakpoint-medium {
+      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    }
+  }
+</style>

@@ -86,7 +86,7 @@
     outline-offset: 5px;
 
     @media (hover: none) {
-      --size: 48px;
+      --size: 2rem;
     }
 
     & > svg {

@@ -1,8 +1,8 @@
 ---
 title: Dangerous Plant
 slug: dangerous-plant
-draft: false
-sortOrder: 2
+published: true
+position: 2
 image:
   {
     src: ./images/dangerous-plant.jpg,

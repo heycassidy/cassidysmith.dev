@@ -4,9 +4,14 @@
 @import 'tokens.css';
 @import 'themes.css';
 @import 'typography.scss';
+@import 'prose.scss';
 @import 'util.scss';
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-base-background);
     color: var(--color-base-text);

@@ -1,0 +1,83 @@
+---
+import { getEntries, type CollectionEntry } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import TagsList from '@components/blog/TagsList.astro'
+import { tagIsActive } from '@utils/index'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+
+const tags = await getEntries(post.data.tags)
+const activeTags = tags.filter(tagIsActive)
+---
+
+<div class="top-row">
+  <a href="/posts" class="back-to-blog-link"
+    ><Icon name="ri:arrow-left-fill" /> Latest posts</a
+  >
+
+  <TagsList tags={activeTags} class="tags-list" />
+</div>
+
+<h1>{post.data.title}</h1>
+{post.data.subtitle && <p class="subtitle">{post.data.subtitle}</p>}
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  h1 {
+    --column: header-content;
+    color: currentColor;
+    font-size: var(--font-size-7);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .subtitle {
+    --column: header-content;
+    margin-top: var(--space-3);
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-compressed);
+    font-family: var(--font-syne);
+    text-wrap: balance;
+    opacity: 0.9;
+  }
+
+  .top-row {
+    --column: header-content;
+    margin-bottom: var(--space-7);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    column-count: var(--fluid-bento-gap);
+  }
+
+  @include color-mode(light) {
+    .back-to-blog-link {
+      --color-link: var(--color-accent-two-600);
+      --color-link-hover: var(--color-accent-two-775);
+      --color-link-active: var(--color-accent-one-525);
+    }
+  }
+  @include color-mode(dark) {
+    .back-to-blog-link {
+      --color-link: var(--color-secondary-275);
+      --color-link-hover: var(--color-secondary-100);
+      --color-link-active: var(--color-accent-one-525);
+    }
+  }
+
+  .back-to-blog-link {
+    @include text-link($visited: false);
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5ch;
+    text-decoration: none;
+    line-height: var(--line-height-compressed);
+  }
+</style>

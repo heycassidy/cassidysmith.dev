@@ -1,20 +1,22 @@
 ---
-import ContentLink from './ContentLink.astro';
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
+import ContentLink from './ContentLink.astro'
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
 
 interface Props {
-  photo: CollectionEntry<'photos'>;
+  photo: CollectionEntry<'photos'>
 }
 
-const { photo } = Astro.props;
+const { photo } = Astro.props
 ---
 
 <li class="link-container">
   <ContentLink
     content={photo}
     class="photo-link"
-    style={`aspect-ratio: ${photo.data.image.src.width / photo.data.image.src.height};`} aria-label="Open image">
+    style={`aspect-ratio: ${photo.data.image.src.width / photo.data.image.src.height};`}
+    aria-label="Open image"
+  >
     <Image
       transition:name={`photo-${photo.id}`}
       src={photo.data.image.src}
@@ -22,8 +24,9 @@ const { photo } = Astro.props;
       quality={60}
       height="450"
       densities={[1.5, 2]}
-      loading="lazy" />
-      <span class="screen-reader-only">Open image: {photo.data.title}</span>
+      loading="lazy"
+    />
+    <span class="screen-reader-only">Open image: {photo.data.title}</span>
   </ContentLink>
 </li>
 
@@ -36,7 +39,7 @@ const { photo } = Astro.props;
     align-items: center;
 
     grid-row: 1;
-    
+
     @include breakpoint-small {
       grid-row: auto;
       aspect-ratio: 1 / 1;
@@ -49,7 +52,7 @@ const { photo } = Astro.props;
     border-radius: var(--radius-tiny);
     background-color: var(--color-base-background);
     height: 100vw;
-    
+
     @include breakpoint-small {
       height: auto;
       max-height: 100%;
@@ -65,7 +68,6 @@ const { photo } = Astro.props;
           transform: scale(1.05);
           filter: brightness(1.05);
         }
-
       }
     }
     &:focus-visible {
@@ -85,7 +87,4 @@ const { photo } = Astro.props;
     height: auto;
     transition: all 0.2s ease-in-out;
   }
-
-
 </style>
-

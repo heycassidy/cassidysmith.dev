@@ -1,8 +1,8 @@
 ---
   title: Sun and Power
   slug: sun-and-power
-  draft: false
-  sortOrder: 0
+  published: true
+  position: 0
   image: {
     src: ./images/sun-and-power.jpg,
     description: a typical Chicago apartment building with the wooden staircase in the back is basked in the evening sun. In the foreground a power pole stands with electrical wires running off of it in all directions, crisscrossing across the entire scene except for the top left quadrant

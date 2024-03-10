@@ -1,8 +1,8 @@
 ---
 title: Pick Me Up
 slug: pick-me-up
-draft: false
-sortOrder: 4
+published: true
+position: 4
 image:
   {
     src: ./images/pick-me-up.jpg,

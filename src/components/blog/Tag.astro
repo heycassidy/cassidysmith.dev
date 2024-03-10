@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import ContentLink from '@components/ContentLink.astro'
+
+interface Props {
+  tag: CollectionEntry<'tags'>
+}
+
+const { tag } = Astro.props
+---
+
+<ContentLink content={tag} class="tag-link"># {tag.data.title}</ContentLink>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    .tag-link {
+      --color-button-text: color-mix(in oklch, currentColor, transparent 10%);
+      --color-button-background: color-mix(in oklch, white, transparent 40%);
+
+      --color-button-hover-text: color-mix(in oklch, currentColor, black 50%);
+      --color-button-hover-background: color-mix(
+        in oklch,
+        white,
+        transparent 5%
+      );
+
+      --color-button-active-text: var(--color-accent-one-0);
+      --color-button-active-background: var(--color-accent-one-525);
+    }
+  }
+  @include color-mode(dark) {
+    .tag-link {
+      --color-button-text: color-mix(in oklch, currentColor, transparent 20%);
+      --color-button-background: color-mix(in oklch, black, transparent 70%);
+
+      --color-button-hover-text: color-mix(
+        in oklch,
+        currentColor,
+        transparent 0%
+      );
+      --color-button-hover-background: color-mix(
+        in oklch,
+        black,
+        transparent 30%
+      );
+
+      --color-button-active-text: var(--color-accent-one-0);
+      --color-button-active-background: var(--color-accent-one-525);
+    }
+  }
+
+  .tag-link {
+    @include button;
+
+    padding-block: var(--space-1);
+    padding-inline: var(--space-2);
+
+    font: inherit;
+    line-height: 1;
+  }
+</style>

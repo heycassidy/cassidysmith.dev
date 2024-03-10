@@ -1,36 +1,51 @@
 ---
 import SocialLink from './SocialLink.astro'
-
 ---
-
 
 <section class="social-links">
   <h2>Browse the Socials</h2>
-  
+
   <div class="links-layout">
-    <SocialLink href="https://github.com/heycassidy" external icon="ion:logo-github">Github</SocialLink>
-    <SocialLink href="https://www.linkedin.com/in/csdev/" external icon="ion:logo-linkedin">LinkedIn</SocialLink>
-    <SocialLink href="https://www.instagram.com/cassycle/" external icon="ion:logo-instagram">Instagram</SocialLink>
+    <SocialLink
+      href="https://github.com/heycassidy"
+      external
+      icon="ri:github-fill"
+    >
+      Github
+    </SocialLink>
+    <SocialLink
+      href="https://www.linkedin.com/in/csdev/"
+      external
+      icon="ri:linkedin-box-fill"
+    >
+      LinkedIn
+    </SocialLink>
+    <SocialLink
+      href="https://www.instagram.com/cassycle/"
+      external
+      icon="ri:instagram-fill"
+    >
+      Instagram
+    </SocialLink>
   </div>
 </section>
-
 
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  :global(:root[data-theme='light']) {
+  @include color-mode(light) {
     .social-links {
       --color: var(--color-secondary-700);
       --background-color: var(--color-secondary-175);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include color-mode(dark) {
     .social-links {
       --color: var(--color-secondary-350);
-      --background-color: var(--color-secondary-875);
+      --background-color: var(--color-secondary-850);
     }
   }
-  
+
   .social-links {
     grid-area: social;
     color: var(--color);
@@ -49,7 +64,7 @@ import SocialLink from './SocialLink.astro'
     grid-template-columns: 1fr 1fr 1fr;
     container: social-links-layout;
   }
-  
+
   h2 {
     color: currentColor;
     margin: 0;

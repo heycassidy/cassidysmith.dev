@@ -1,13 +1,14 @@
 ---
-import Footer from '../components/Footer.astro';
+import Footer from '../components/Footer.astro'
 import Banner from '../components/Banner.astro'
-
 ---
 
 <div class="primary-layout">
-  <Banner />
-  <slot />
-  <Footer />
+  <Banner class="primary-layout__banner" />
+  <div class="primary-layout__slot-wrapper">
+    <slot />
+  </div>
+  <Footer class="primary-layout__footer" />
 </div>
 
 <style lang="scss">
@@ -16,18 +17,29 @@ import Banner from '../components/Banner.astro'
   @layer layout {
     .primary-layout {
       margin: 0 auto;
-      min-height: 100%;
+      min-height: 100dvh;
       display: grid;
       gap: var(--fluid-bento-gap);
       align-items: start;
-      grid-template-rows: max-content;
-      grid-template-columns: [full-width-start] 1fr [centered-start] minmax(0, var(--layout-size-3)) [centered-end] 1fr [full-width-end];
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns:
+        [full-width-start] 1fr [centered-start] minmax(0, var(--layout-size-3))
+        [centered-end] 1fr [full-width-end];
+    }
+    .primary-layout__banner {
+      grid-column: centered;
+    }
+    .primary-layout__footer {
+      grid-column: centered;
+    }
+    .primary-layout__slot-wrapper {
+      grid-column: full-width;
+      display: grid;
+      grid-template-columns: subgrid;
+      gap: var(--fluid-bento-gap);
 
       :global(> *) {
-        grid-column: centered;
-      }
-      :global(footer) {
-        grid-column: full-width;
+        grid-column: var(--column, centered);
       }
     }
   }

@@ -1,25 +1,41 @@
 ---
-import AppLayout from '../layouts/AppLayout.astro';
-import PrimaryLayout from '../layouts/PrimaryLayout.astro'
-import SocialLinks from '../components/SocialLinks.astro'
-import PricklyPearContainer from '../components/PricklyPearContainer.astro'
-import CopyEmail from '../components/CopyEmail.astro';
-import PhotosCard from '../components/PhotosCard.astro';
+import AppLayout from '@layouts/AppLayout.astro'
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import SocialLinks from '@components/SocialLinks.astro'
+import PricklyPearContainer from '@components/PricklyPearContainer.astro'
+import CopyEmail from '@components/CopyEmail.astro'
+import PhotosCard from '@components/PhotosCard.astro'
+import Prose from '@components/Prose.astro'
+import SEOTags from '@components/SEOTags.astro'
+import TextLink from '@components/TextLink.astro'
+import LatestPost from '@components/LatestPost.astro'
 ---
 
 <AppLayout>
+  <SEOTags
+    slot="head"
+    description="Cassidy Smith is a front-end engineer and UI designer"
+  />
   <PrimaryLayout>
     <div class="page-layout">
-      <main>
-        <h1>Hi, I’m Cassidy</h1>
-        <p>I’m a front-end engineer and UI designer at <a
-            href="https://nobledesktop.com"
-            target="_blank"
-            rel="noopener noreferrer">Noble Desktop</a
-          >. I enjoy creative and intentional problem solving with code. Day-to-day, I work in Ruby on Rails, JavaScript/ES6, Next.js, React, CSS, and HTML. I also love to explore new tools, languages, and frameworks.
+      <Prose as="main">
+        <h1>Hello, I’m Cassidy</h1>
+        <p>
+          I’m a professional CSS Programmer, UI Builder, Web Weaver, Full-Stack
+          Developer, Web Software Worker, Failed Designer, and maybe a few other
+          made-up titles! Perpetually and proudly a noob at web dev and life, I
+          try to stay curious, but like most people, I often get stuck in the
+          rut of what I think I know. Balance, I guess? Anyway! Thank you for
+          reading my ramblings and welcome to my little <TextLink
+            href="https://maggieappleton.com/garden-history"
+          >
+            digital garden
+          </TextLink> where I water my prickly projects and feed my creative
+          brain worms.
         </p>
-      </main>
-    
+      </Prose>
+
+      <LatestPost />
       <PhotosCard />
       <SocialLinks />
       <CopyEmail />
@@ -31,19 +47,14 @@ import PhotosCard from '../components/PhotosCard.astro';
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  :global(:root[data-theme='light']) {
+  @include color-mode(light) {
     main {
-      --background-color: var(--color-primary-275);
+      --background-color: var(--color-primary-175);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include color-mode(dark) {
     main {
-      --background-color: var(--color-primary-875);
-    }
-    :global(.page-layout > *) {
-      box-shadow:
-        0 0 var(--fluid-bento-gap) 0 var(--color-stark-background),
-        0 0 0 2px var(--color-stark-background);
+      --background-color: var(--color-primary-850);
     }
   }
 
@@ -53,8 +64,8 @@ import PhotosCard from '../components/PhotosCard.astro';
     padding: var(--fluid-bento-padding);
     background-color: var(--background-color);
 
-    a {
-      @include text-link;
+    p {
+      text-wrap: pretty;
     }
   }
 
@@ -63,29 +74,30 @@ import PhotosCard from '../components/PhotosCard.astro';
     gap: var(--fluid-bento-gap);
     container: bento;
 
-    grid-template-areas: 
-      "intro"
-      "photos"
-      "social"
-      "email"
-      "cactus";
+    grid-template-areas:
+      'intro'
+      'blog'
+      'photos'
+      'social'
+      'email'
+      'cactus';
 
     @include breakpoint-small {
       grid-template-columns: 5fr 4fr;
-      grid-template-rows: auto auto 1fr;
-      grid-template-areas: 
-        "intro email"
-        "intro cactus"
-        "photos cactus"
-        "social cactus";
+      grid-template-areas:
+        'intro blog'
+        'intro email'
+        'intro cactus'
+        'photos cactus'
+        'social cactus';
     }
     @include breakpoint-medium {
       grid-template-columns: 6fr 6fr 10fr 11fr;
-      grid-template-areas: 
-        "intro intro intro cactus"
-        "intro intro intro cactus"
-        "photos photos social cactus"
-        ". email email cactus";
+      grid-template-areas:
+        'intro intro intro blog'
+        'photos photos social cactus'
+        '. email email cactus'
+        '. . .  cactus';
     }
   }
 </style>

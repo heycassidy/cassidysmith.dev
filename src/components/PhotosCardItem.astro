@@ -1,13 +1,12 @@
 ---
-
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
 
 interface Props {
-  photo: CollectionEntry<'photos'>;
+  photo: CollectionEntry<'photos'>
 }
 
-const { photo } = Astro.props;
+const { photo } = Astro.props
 ---
 
 <Image
@@ -17,7 +16,8 @@ const { photo } = Astro.props;
   quality={60}
   height="80"
   densities={[1.5, 2]}
-  loading="lazy" />
+  loading="lazy"
+/>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
@@ -33,7 +33,4 @@ const { photo } = Astro.props;
     padding: var(--space-1);
     background-color: var(--color-stark-background);
   }
-
-
 </style>
-

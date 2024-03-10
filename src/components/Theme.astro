@@ -1,24 +1,23 @@
 ---
-import ThemeSwitcher from "./ThemeSwitcher.svelte";
-
+import ThemeSwitcher from './ThemeSwitcher.svelte'
 ---
 
 <ThemeSwitcher client:only="svelte" />
 
 <!-- is:inline is necessary because this script needs to set the data attribute before any CSS is loaded to prevent FOUC -->
 <script is:inline>
-  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
-  setColorMode();
+  setColorMode()
 
-  darkModeMediaQuery.addEventListener('change', setColorMode);
+  darkModeMediaQuery.addEventListener('change', setColorMode)
 
   // Needed for Astro View Transitions
-  document.addEventListener("astro:after-swap", setColorMode);
+  document.addEventListener('astro:after-swap', setColorMode)
 
   function setColorMode() {
     const theme = getPreference()
-    
+
     if (theme) {
       document.documentElement.setAttribute('data-theme', theme)
       document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme)

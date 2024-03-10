@@ -1,8 +1,8 @@
 ---
   title: Scary Bush
   slug: scary-bush
-  draft: false
-  sortOrder: 5
+  published: true
+  position: 5
   image: {
     src: ./images/scary-bush.jpg,
     description: Two large bushes on the side of a road have large textile decals of eyes and mouths with pointy, serrated teeth

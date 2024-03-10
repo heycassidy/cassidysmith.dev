@@ -1,8 +1,8 @@
 ---
   title: White Elephant
   slug: white-elephant
-  draft: false
-  sortOrder: 100
+  published: true
+  position: 100
   image: {
     src: ./images/white-elephant.jpg,
     description: a white statue of an elephant with its trunk held high. It stands in front of a green hedge in the backyard of a row house with several other houses visible in the background.

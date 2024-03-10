@@ -1,31 +1,37 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from 'astro:assets'
 import PricklyPearController from '../components/PricklyPearController.svelte'
 import placeholderCactus from '../assets/prickly-pear.png'
 ---
-<div class="prickly-pear-container">
 
+<div class="prickly-pear-container">
   <div class="scene-box">
     <PricklyPearController client:idle>
-      <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} width="800" height="800" slot="placeholder-cactus" loading="eager" />
+      <Image
+        src={placeholderCactus}
+        alt="Illustration of prickly pear cactus"
+        class="placeholder-cactus"
+        quality={90}
+        width="800"
+        height="800"
+        slot="placeholder-cactus"
+        loading="eager"
+      />
     </PricklyPearController>
   </div>
 </div>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
-  
+
   .prickly-pear-container {
     grid-area: cactus;
     display: grid;
     align-content: start;
+    align-self: start;
     gap: var(--space-1);
     overflow: hidden;
     border-radius: var(--fluid-bento-radius);
-    
-    @include breakpoint-medium {
-      align-self: end;
-    }
 
     a {
       justify-self: center;
@@ -42,25 +48,22 @@ import placeholderCactus from '../assets/prickly-pear.png'
     }
   }
 
-  :global(:root[data-theme='light']) {
+  @include color-mode(light) {
     .scene-box {
       --color-sky: var(--color-neutral-275);
       --color-ground: var(--color-tertiary-525);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include color-mode(dark) {
     .scene-box {
-      --color-sky: var(--color-primary-875);
-      --color-ground: var(--color-primary-950);
-      // box-shadow:
-      //   0 0 var(--fluid-bento-gap) 0 var(--color-stark-background),
-      //   0 0 0 2px var(--color-stark-background);
+      --color-sky: var(--color-primary-850);
+      --color-ground: var(--color-primary-875);
     }
     img {
       filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
     }
   }
-  
+
   .scene-box {
     position: relative;
     display: flex;

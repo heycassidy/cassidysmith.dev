@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon/components'
+import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
+
+import { isSameDay } from '@utils/index'
+const { post, readingTime } = Astro.props
+
+const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt)
+---
+
+<div class="blog-post-meta">
+  {
+    readingTime && (
+      <span class="post-meta-item">
+        <>
+          <Icon name="ri:hourglass-2-fill" />
+          <span>{readingTime}</span>
+        </>
+      </span>
+    )
+  }
+
+  <DateTimeDisplay
+    dateTime={post.data.publishedAt}
+    label="Published"
+    iconName="ri:pencil-fill"
+    class="post-meta-item"
+  />
+
+  {
+    isModified && (
+      <DateTimeDisplay
+        dateTime={post.data.modifiedAt}
+        label="Updated"
+        iconName="ri:eraser-fill"
+        class="post-meta-item"
+      />
+    )
+  }
+</div>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    .blog-post-meta {
+      --color: var(--color-primary-700);
+    }
+  }
+  @include color-mode(dark) {
+    .blog-post-meta {
+      --color: var(--color-primary-425);
+    }
+  }
+
+  .blog-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--space-2);
+    column-gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    color: var(--color);
+  }
+
+  .post-meta-item {
+    display: flex;
+    column-gap: var(--space-2);
+    align-items: center;
+    margin: 0;
+    font-size: var(--font-size-0);
+    line-height: var(--line-height-compressed);
+  }
+</style>

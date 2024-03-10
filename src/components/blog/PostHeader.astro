@@ -1,0 +1,32 @@
+---
+const { class: className, ...rest } = Astro.props
+---
+
+<header class={className} {...rest}>
+  <slot />
+</header>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    header {
+      --color: var(--color-accent-two-775);
+      --background-color: var(--color-accent-two-175);
+    }
+  }
+  @include color-mode(dark) {
+    header {
+      --color: var(--color-secondary-275);
+      --background-color: var(--color-secondary-850);
+    }
+  }
+
+  header {
+    padding-top: calc(var(--fluid-bento-padding) * 2);
+    padding-bottom: calc(var(--fluid-bento-padding) * 3);
+    border-radius: var(--fluid-bento-radius);
+    background-color: var(--background-color);
+    color: var(--color);
+  }
+</style>

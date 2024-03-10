@@ -1,0 +1,71 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import { entryIsPublished } from '@utils/index'
+import AppLayout from '@layouts/AppLayout.astro'
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import BlogPostLayout from '@layouts/BlogPostLayout.astro'
+import Blockquote from '@components/mdx/Blockquote.astro'
+import UnorderedList from '@components/mdx/UnorderedList.astro'
+import OrderedList from '@components/mdx/OrderedList.astro'
+import Img from '@components/mdx/Img.astro'
+import Code from '@components/mdx/Code.astro'
+import A from '@components/mdx/A.astro'
+import PostHeaderContent from '@components/blog/PostHeaderContent.astro'
+import PostMeta from '@components/blog/PostMeta.astro'
+import TableOfContents from '@components/blog/TableOfContents.astro'
+import H1 from '@components/mdx/H1.astro'
+import H2 from '@components/mdx/H2.astro'
+import H3 from '@components/mdx/H3.astro'
+import H4 from '@components/mdx/H4.astro'
+import H5 from '@components/mdx/H5.astro'
+import H6 from '@components/mdx/H6.astro'
+import SEOTags from '@components/SEOTags.astro'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog', entryIsPublished)
+
+  return entries.map((entry: CollectionEntry<'blog'>) => ({
+    params: { slug: entry.slug },
+    props: { post: entry },
+  }))
+}
+
+const components = {
+  blockquote: Blockquote,
+  ul: UnorderedList,
+  ol: OrderedList,
+  img: Img,
+  code: Code,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  a: A,
+}
+
+const { post } = Astro.props
+const { Content, remarkPluginFrontmatter, headings } = await post.render()
+---
+
+<AppLayout>
+  <SEOTags
+    slot="head"
+    title={post.data.title}
+    description={post.data.subtitle}
+  />
+
+  <PrimaryLayout>
+    <BlogPostLayout>
+      <PostHeaderContent slot="header" post={post} />
+      <PostMeta
+        slot="sidebar"
+        post={post}
+        readingTime={remarkPluginFrontmatter.readingTime}
+      />
+      <TableOfContents slot="sidebar" headings={headings} />
+      <Content components={components} />
+    </BlogPostLayout>
+  </PrimaryLayout>
+</AppLayout>

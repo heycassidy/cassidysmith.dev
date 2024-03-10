@@ -1,0 +1,53 @@
+---
+interface Props {
+  question: string
+  answer: string
+}
+
+const { question, answer } = Astro.props
+---
+
+<details>
+  <summary>{question}</summary>
+  <div class="answer">
+    {answer}
+  </div>
+</details>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  details {
+    --border-color: var(--color-primary-425);
+    --hover-background: color-mix(
+      in lch,
+      var(--color-stark-foreground),
+      transparent 92%
+    );
+  }
+
+  summary {
+    cursor: pointer;
+    padding-block: var(--space-1);
+    padding-inline: var(--space-2);
+    &:hover,
+    &:focus-visible {
+      background-color: var(--hover-background);
+      outline: none;
+    }
+    &:focus-visible {
+      @include focus-outline;
+    }
+  }
+  details {
+    border-bottom: 1px solid var(--border-color);
+    &:first-of-type {
+      border-top: 1px solid var(--border-color);
+    }
+  }
+  .answer {
+    padding-inline: var(--space-2);
+    padding-block-start: var(--space-1);
+    padding-block-end: var(--space-2);
+  }
+</style>

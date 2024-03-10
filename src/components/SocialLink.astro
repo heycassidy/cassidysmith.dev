@@ -1,18 +1,24 @@
 ---
 import { Icon } from 'astro-icon/components'
 
-const {href, external = false, icon = false} = Astro.props;
+const { href, external = false, icon = false } = Astro.props
 ---
 
-<a class="social-link" href={href} target={external && '_blank'} rel={external && 'noopener noreferrer'} {...Astro.props}>
-  {icon && <Icon name={icon}/>}
+<a
+  class="social-link"
+  href={href}
+  target={external && '_blank'}
+  rel={external && 'noopener noreferrer'}
+  {...Astro.props}
+>
+  {icon && <Icon name={icon} />}
   <span class="screen-reader-only"><slot /></span>
 </a>
 
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  :global(:root[data-theme='light']) {
+  @include color-mode(light) {
     .social-link {
       --color: var(--color-secondary-700);
       --background-color: var(--color-secondary-275);
@@ -24,7 +30,7 @@ const {href, external = false, icon = false} = Astro.props;
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include color-mode(dark) {
     .social-link {
       --color: var(--color-secondary-275);
       --background-color: var(--color-secondary-775);
@@ -36,17 +42,22 @@ const {href, external = false, icon = false} = Astro.props;
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  
 
   .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: clamp(var(--space-1), 2cqw, var(--space-2));
-    border-radius: calc(var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2);
-    transition: background-color 0.2s, color 0.2s, text-decoration-color 0.2s;
+    border-radius: calc(
+      var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
+    );
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      text-decoration-color 0.2s;
 
-    &:link, &:visited {
+    &:link,
+    &:visited {
       color: var(--color);
       background-color: var(--background-color);
     }
@@ -54,7 +65,8 @@ const {href, external = false, icon = false} = Astro.props;
       color: var(--hover-color);
       background-color: var(--hover-background-color);
     }
-    &:active, &:hover:active {
+    &:active,
+    &:hover:active {
       color: var(--active-color);
       background-color: var(--active-background-color);
     }
@@ -63,9 +75,8 @@ const {href, external = false, icon = false} = Astro.props;
     }
 
     svg {
-      width: var(--space-5);
+      width: var(--space-7);
       height: auto;
     }
   }
-
 </style>

@@ -1,0 +1,148 @@
+---
+import { type CollectionEntry, getEntries } from 'astro:content'
+import ContentLink from '@components/ContentLink.astro'
+import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
+import TagsList from '@components/blog/TagsList.astro'
+import Prose from '@components/Prose.astro'
+import { tagIsActive } from '@utils/index'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+
+const tags = await getEntries(post.data.tags)
+const activeTags = tags.filter(tagIsActive)
+---
+
+<article class="post-preview">
+  <Prose>
+    <ContentLink collectionSlug="posts" content={post}>
+      <h2>{post.data.title}</h2>
+    </ContentLink>
+    <p class="preview-text">{post.data.previewText}</p>
+    <div class="bottom-row">
+      <DateTimeDisplay
+        dateTime={post.data.publishedAt}
+        class="published-date"
+      />
+      <TagsList tags={activeTags} />
+    </div>
+  </Prose>
+</article>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    .post-preview {
+      --color: var(--color-accent-two-700);
+      --background-color: var(--color-accent-two-175);
+
+      --hover-color: var(--color-accent-two-950);
+      --hover-background-color: var(--color-accent-two-275);
+
+      --active-color: var(--color-accent-one-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+  @include color-mode(dark) {
+    .post-preview {
+      --color: var(--color-primary-275);
+      --background-color: var(--color-primary-850);
+
+      --hover-color: var(--color-primary-0);
+      --hover-background-color: var(--color-primary-700);
+
+      --active-color: var(--color-accent-one-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+
+  .post-preview {
+    color: var(--color);
+    background-color: var(--background-color);
+    border-radius: var(--fluid-bento-radius);
+    padding: var(--fluid-bento-padding);
+
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--fluid-bento-gap);
+    justify-content: space-between;
+
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+    position: relative;
+
+    &:hover {
+      color: var(--hover-color);
+      background-color: var(--hover-background-color);
+    }
+    &:active,
+    &:hover:active {
+      color: var(--active-color);
+      background-color: var(--active-background-color);
+    }
+
+    &:focus-within {
+      @include focus-outline;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: currentColor;
+
+    &:link,
+    &:visited {
+      color: currentColor;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    [data-icon] {
+      flex-shrink: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
+  }
+
+  .preview-text {
+    opacity: 0.9;
+    line-height: var(--line-height-compressed);
+  }
+
+  h2 {
+    margin-top: auto;
+    margin-bottom: var(--space-2);
+    color: currentColor;
+    text-wrap: pretty;
+  }
+
+  .published-date {
+    font-size: var(--font-size--1);
+    opacity: 0.85;
+  }
+
+  .bottom-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    column-gap: var(--space-4);
+  }
+</style>

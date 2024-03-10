@@ -1,0 +1,45 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { CollectionEntry } from 'astro:content'
+import Tag from '@components/blog/Tag.astro'
+
+interface Props {}
+
+interface Props extends HTMLAttributes<'ul'> {
+  tags: CollectionEntry<'tags'>[]
+}
+
+const { tags, class: className, ...rest } = Astro.props
+---
+
+<ul class={className} {...rest}>
+  {
+    tags.map((tag) => (
+      <li>
+        <Tag tag={tag} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  @import '@styles/mixins.scss';
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2);
+  }
+
+  li {
+    font-size: var(--font-size--1);
+    z-index: 1;
+  }
+
+  li::marker {
+    content: '';
+  }
+</style>

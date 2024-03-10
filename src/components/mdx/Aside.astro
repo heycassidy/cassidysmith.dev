@@ -1,0 +1,52 @@
+---
+const props = Astro.props
+---
+
+<aside {...props}>
+  <div>
+    <slot />
+  </div>
+</aside>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    aside {
+      --border-color: var(--color-neutral-175);
+    }
+  }
+
+  @include color-mode(dark) {
+    aside {
+      --border-color: var(--color-neutral-850);
+    }
+  }
+
+  aside {
+    --column: aside;
+
+    font-size: var(--font-size--1);
+
+    > div {
+      position: relative;
+      padding: var(--fluid-bento-padding);
+      border-top: 2px solid var(--border-color);
+      border-bottom: 2px solid var(--border-color);
+    }
+  }
+
+  @include breakpoint-medium {
+    aside {
+      position: relative;
+
+      > div {
+        position: absolute;
+        padding-inline: var(--fluid-bento-padding) 0;
+        padding-block: 0;
+        box-shadow: -2px 0 0 0 var(--border-color);
+        border: 0;
+      }
+    }
+  }
+</style>

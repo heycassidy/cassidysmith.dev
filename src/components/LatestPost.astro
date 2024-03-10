@@ -1,0 +1,144 @@
+---
+import { getCollection } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import ContentLink from '@components/ContentLink.astro'
+import { entryIsPublished, sortByPublishedAt } from '@utils/index'
+import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
+import Prose from '@components/Prose.astro'
+
+const posts = await getCollection('blog', entryIsPublished)
+const latestPost = posts.sort(sortByPublishedAt)[0]
+---
+
+<article class="latest-post">
+  <ContentLink collectionSlug="posts" content={latestPost} class="kicker">
+    Read the Latest <Icon name="ri:arrow-right-fill" />
+  </ContentLink>
+  <Prose>
+    <h2>{latestPost.data.title}</h2>
+    <p class="preview-text">{latestPost.data.previewText}</p>
+    <DateTimeDisplay
+      dateTime={latestPost.data.publishedAt}
+      class="published-date"
+    />
+  </Prose>
+</article>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    .latest-post {
+      --color: var(--color-accent-two-700);
+      --background-color: var(--color-accent-two-175);
+
+      --hover-color: var(--color-accent-two-950);
+      --hover-background-color: var(--color-accent-two-275);
+
+      --active-color: var(--color-accent-two-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+  @include color-mode(dark) {
+    .latest-post {
+      --color: var(--color-secondary-275);
+      --background-color: var(--color-secondary-850);
+
+      --hover-color: var(--color-secondary-0);
+      --hover-background-color: var(--color-secondary-700);
+
+      --active-color: var(--color-accent-one-100);
+      --active-background-color: var(--color-accent-one-525);
+    }
+  }
+
+  .latest-post {
+    grid-area: blog;
+
+    color: var(--color);
+    background-color: var(--background-color);
+    border-radius: var(--fluid-bento-radius);
+    padding: var(--fluid-bento-padding);
+
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--fluid-bento-gap);
+    justify-content: space-between;
+
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+    position: relative;
+
+    &:hover {
+      color: var(--hover-color);
+      background-color: var(--hover-background-color);
+    }
+    &:active,
+    &:hover:active {
+      color: var(--active-color);
+      background-color: var(--active-background-color);
+    }
+
+    &:focus-within {
+      @include focus-outline;
+    }
+  }
+
+  .kicker {
+    line-height: var(--line-height-compressed);
+    font-weight: 680;
+    letter-spacing: 0.15ch;
+    text-transform: uppercase;
+    font-size: var(--font-size-0);
+    font-family: var(--font-syne);
+    display: flex;
+    align-items: center;
+    column-gap: var(--space-1);
+    text-decoration: none;
+    color: currentColor;
+
+    &:link,
+    &:visited {
+      color: currentColor;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    [data-icon] {
+      flex-shrink: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
+  }
+
+  .preview-text {
+    opacity: 0.9;
+    line-height: var(--line-height-compressed);
+  }
+
+  h2 {
+    margin-top: auto;
+    margin-bottom: var(--space-2);
+    color: currentColor;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .published-date {
+    font-size: var(--font-size--1);
+    opacity: 0.85;
+  }
+</style>

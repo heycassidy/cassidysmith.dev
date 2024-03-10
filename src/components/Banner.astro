@@ -1,19 +1,19 @@
 ---
-import BannerLogo from "./BannerLogo.astro";
+import BannerLogo from './BannerLogo.astro'
+
+const { class: className, ...rest } = Astro.props
 ---
 
-
-<header role="banner" id="theme-switcher-portal">
+<header role="banner" id="theme-switcher-portal" class={className} {...rest}>
   <nav>
-    <BannerLogo class="test"/>
+    <BannerLogo />
   </nav>
 </header>
 
-
-<style lang="scss"> 
+<style lang="scss">
   @import '../styles/mixins.scss';
 
-  header[role=banner] {
+  header[role='banner'] {
     margin-top: var(--fluid-bento-gap);
     display: flex;
   }

@@ -1,16 +1,16 @@
 ---
-import '../styles/global.css'
-
-import SharedHead from '../components/SharedHead.astro'
-
-
-const { title, description } = Astro.props
+import '@styles/global.css'
+import SharedHead from '@components/SharedHead.astro'
+import GrainyBackground from '@components/GrainyBackground.astro'
 ---
 
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-  <SharedHead {...{ title, description }} />
-  <body>
-    <slot />
-  </body>
+  <SharedHead>
+    <slot name="head" />
+    <body>
+      <slot />
+      <GrainyBackground />
+    </body>
+  </SharedHead>
 </html>

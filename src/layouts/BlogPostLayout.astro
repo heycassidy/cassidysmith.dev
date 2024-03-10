@@ -1,0 +1,71 @@
+---
+import PostHeader from '../components/blog/PostHeader.astro'
+import Prose from '@components/Prose.astro'
+---
+
+<article>
+  <PostHeader class="blog-post-grid">
+    <slot name="header" />
+  </PostHeader>
+  <Prose as="main" class="blog-post-grid blog-post-content">
+    <div class="blog-post-grid__sidebar">
+      <slot name="sidebar" />
+    </div>
+    <slot />
+  </Prose>
+</article>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+  @import '@styles/blog-post-content';
+
+  @layer layout {
+    article {
+      display: grid;
+      row-gap: calc(var(--fluid-bento-gap) * 2);
+    }
+
+    .blog-post-grid {
+      display: grid;
+      align-items: start;
+      column-gap: var(--fluid-bento-padding);
+      --column: text;
+
+      :global(> *) {
+        grid-column: var(--column, text);
+      }
+
+      grid-template-columns:
+        [full-width-start breakout-start]
+        1fr
+        [text-start aside-start header-content-start anchor-heading-start]
+        minmax(0, var(--layout-size-2))
+        [text-end aside-end header-content-end anchor-heading-end]
+        1fr
+        [breakout-end full-width-end];
+
+      @include breakpoint-medium {
+        grid-template-columns:
+          [full-width-start breakout-start anchor-heading-start]
+          1fr
+          [text-start header-content-start]
+          minmax(0, var(--layout-size-2))
+          [text-end anchor-heading]
+          1fr
+          [breakout-end aside-start]
+          minmax(var(--space-content-1), 10fr)
+          [header-content-end aside-end]
+          1fr
+          [full-width-end];
+      }
+    }
+
+    .blog-post-grid__sidebar {
+      z-index: 1;
+      --column: aside;
+      @include breakpoint-medium {
+        height: 0;
+      }
+    }
+  }
+</style>

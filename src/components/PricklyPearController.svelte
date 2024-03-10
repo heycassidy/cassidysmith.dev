@@ -64,7 +64,7 @@
     }
   }
 
-  :global(:root[data-theme='light']) {
+  @include color-mode(light) {
     .regenerate-button {
       --color-button-text: white;
       --color-button-background: #{transparentize(black, $amount: 0.4)};
@@ -75,7 +75,7 @@
       --color-focus-outline: black;
     }
   }
-  :global(:root[data-theme='dark']) {
+  @include color-mode(dark) {
     .regenerate-button {
       --color-button-text: #{transparentize(white, 0.2)};
       --color-button-background: #{transparentize(black, $amount: 0.4)};

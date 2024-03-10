@@ -1,0 +1,34 @@
+---
+import TextLink from '@components/TextLink.astro'
+
+const { href } = Astro.props
+---
+
+<TextLink href={href}><slot /></TextLink><style lang="scss">
+  @import '@styles/mixins';
+
+  @include color-mode(light) {
+    a.external {
+      --color-link: var(--color-secondary-600);
+      --color-link-decoration: var(--color-secondary-350);
+      --color-link-hover: var(--color-secondary-425);
+      --color-link-hover-decoration: var(--color-secondary-350);
+      --color-link-active: var(--color-accent-one-600);
+      --color-link-active-decoration: var(--color-accent-one-525);
+      --color-link-visited: inherit;
+      --color-link-visited-decoration: var(--color-secondary-350);
+    }
+  }
+  @include color-mode(dark) {
+    a.external {
+      --color-link: var(--color-secondary-350);
+      --color-link-decoration: var(--color-secondary-350);
+      --color-link-hover: var(--color-secondary-275);
+      --color-link-hover-decoration: var(--color-secondary-175);
+      --color-link-active: var(--color-accent-one-425);
+      --color-link-active-decoration: var(--color-accent-one-525);
+      --color-link-visited: inherit;
+      --color-link-visited-decoration: var(--color-secondary-350);
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content'
+import AppLayout from '@layouts/AppLayout.astro'
+import PrimaryLayout from '@layouts/PrimaryLayout.astro'
+import Prose from '@components/Prose.astro'
+import SEOTags from '@components/SEOTags.astro'
+import PostsList from '@components/blog/PostsList.astro'
+import { entryIsPublished, sortByPublishedAt } from '@utils/index'
+
+const posts = await getCollection('blog', entryIsPublished)
+const sortedPosts = posts.sort(sortByPublishedAt)
+---
+
+<AppLayout>
+  <SEOTags
+    slot="head"
+    title="Latest Posts"
+    description="Cassidy’s latest loosely-organized writings consisting of front-end web development tutorials, things she’s learned, and other various thoughts"
+  />
+  <PrimaryLayout>
+    <Prose as="main">
+      <h1>Latest Posts</h1>
+      <p>
+        This blog is just getting started! I plan to write mostly on web-dev
+        related topics, but might throw in a few semi-personal life posts in
+        here, too. All posts should be considered works in progress, although,
+        just like my houseplants, I can’t guarantee they’re all still alive.
+        I’ve included the last updated date on each article page.
+      </p>
+    </Prose>
+    <PostsList posts={sortedPosts} />
+  </PrimaryLayout>
+</AppLayout>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  main {
+    padding: var(--fluid-bento-padding);
+    max-width: var(--space-content-4);
+  }
+</style>

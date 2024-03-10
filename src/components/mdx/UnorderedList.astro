@@ -1,0 +1,26 @@
+---
+import { parseHTML } from 'linkedom'
+import UnorderedListItem from '@components/mdx/UnorderedListItem.astro'
+
+const html = await Astro.slots.render('default')
+const { document } = parseHTML(html)
+const children = Array.from(document.children)
+
+const { ...props } = Astro.props
+---
+
+<ul {...props}>
+  {
+    children.map((item) => (
+      <UnorderedListItem>
+        <Fragment set:html={item.innerHTML} />
+      </UnorderedListItem>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  ul {
+    text-wrap: pretty;
+  }
+</style>

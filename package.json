@@ -11,13 +11,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.3",
+    "@astrojs/mdx": "^2.0.6",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/svelte": "^5.0.3",
-    "astro": "^4.1.1",
+    "astro": "^4.4.15",
+    "astro-expressive-code": "^0.32.4",
     "astro-font": "^0.0.72",
+    "astro-seo": "^0.8.0",
     "chroma-js": "^2.4.2",
+    "dayjs": "^1.11.10",
+    "mdast-util-to-string": "^4.0.0",
     "prickly-pear": "github:heycassidy/prickly-pear",
+    "reading-time": "^1.5.0",
     "sharp": "^0.32.6",
     "svelte": "^4.1.2",
     "svelte-portal": "^2.2.1"
@@ -27,8 +32,7 @@
     "prickly-pear-hosted": "github:heycassidy/prickly-pear"
   },
   "devDependencies": {
-    "@iconify-json/heroicons": "^1.1.12",
-    "@iconify-json/ion": "^1.1.12",
+    "@iconify-json/ri": "^1.1.19",
     "@typescript-eslint/parser": "^6.1.0",
     "astro-icon": "^1.0.0-next.2",
     "autoprefixer": "^10.4.14",
@@ -37,10 +41,11 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-astro": "^0.27.2",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "prettier": "^3.0.0",
-    "prettier-plugin-astro": "^0.11.0",
+    "linkedom": "^0.16.8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.11.1",
     "sass": "^1.63.6",
     "sass-svg-uri": "^2.0.0",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   }
 }

@@ -1,0 +1,37 @@
+<pre class="pre-code">
+  <slot />
+</pre>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    .pre-code code {
+      --color: var(--color-neutral-850);
+      --background-color: var(--color-neutral-175);
+      --border-color: var(--color-neutral-275);
+    }
+  }
+  @include color-mode(dark) {
+    .pre-code code {
+      --color: var(--color-neutral-275);
+      --background-color: var(--color-neutral-850);
+      --border-color: var(--color-neutral-775);
+    }
+  }
+
+  .pre-code code {
+    font-size: var(--font-size-0);
+    font-family: var(--font-monaspace-neon);
+
+    border-radius: var(--radius-tiny);
+
+    color: var(--color);
+    background-color: var(--background-color);
+    box-shadow: 0 0 0 1px var(--border-color);
+
+    padding-inline: var(--space-2);
+    padding-block: var(--space-1);
+    margin-block: var(--space-4);
+  }
+</style>

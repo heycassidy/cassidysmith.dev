@@ -1,0 +1,22 @@
+---
+import Aside from '@components/mdx/Aside.astro'
+
+const { id, refLabel } = Astro.props
+---
+
+<Aside id={`note-${id}`}>
+  <a class="note-ref-anchor" href={`#note-ref-${id}`}>{refLabel}</a>
+  <div>
+    <slot />
+  </div>
+</Aside>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  .note-ref-anchor {
+    @include text-link($visited: false);
+    float: left;
+    margin-right: var(--space-1);
+  }
+</style>

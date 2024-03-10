@@ -1,0 +1,36 @@
+<li>
+  <slot />
+</li>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    li {
+      --marker-color: var(--color-primary-525);
+    }
+  }
+
+  @include color-mode(dark) {
+    li {
+      --marker-color: var(--color-primary-425);
+    }
+  }
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+
+  @at-root :global(ol) {
+    padding-left: var(--space-7);
+
+    > li {
+      padding-left: var(--space-1);
+    }
+    > li::marker {
+      font-family: var(--font-syne);
+      font-weight: 650;
+      color: var(--marker-color);
+    }
+  }
+</style>

@@ -8,23 +8,35 @@
   }
 }
 
-@mixin text-link {
+@mixin text-link($visited: true) {
   transition:
     color 0.2s,
+    text-decoration-thickness 0.2s,
+    text-underline-offset 0.2s,
     text-decoration-color 0.2s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 
   &:link {
     color: var(--color-link);
     text-decoration-color: var(--color-link-decoration);
+    text-underline-offset: 0.1em;
   }
-  &:visited {
-    color: var(--color-link-visited);
-    text-decoration-color: var(--color-link-visited-decoration);
+  @if $visited {
+    &:visited {
+      color: var(--color-link-visited);
+      text-decoration-color: var(--color-link-visited-decoration);
+    }
+  } @else {
+    &:visited {
+      color: var(--color-link);
+      text-decoration-color: var(--color-link-decoration);
+    }
   }
   &:hover {
     color: var(--color-link-hover);
     text-decoration-color: var(--color-link-hover-decoration);
     text-decoration-style: dashed;
+    text-underline-offset: 0.25em;
   }
   &:active,
   &:hover:active {
@@ -87,28 +99,34 @@
   mask-size: $size;
 }
 
-@mixin breakpoint-x-small {
-  @media (min-width: 20rem) {
+@mixin breakpoint-x-small($direction: 'min') {
+  @media (#{$direction}-width: 20rem) {
     @content;
   }
 }
-@mixin breakpoint-small {
-  @media (min-width: 37.5rem) {
+@mixin breakpoint-small($direction: 'min') {
+  @media (#{$direction}-width: 37.5rem) {
     @content;
   }
 }
-@mixin breakpoint-medium {
-  @media (min-width: 56.25rem) {
+@mixin breakpoint-medium($direction: 'min') {
+  @media (#{$direction}-width: 56.25rem) {
     @content;
   }
 }
-@mixin breakpoint-large {
-  @media (min-width: 75rem) {
+@mixin breakpoint-large($direction: 'min') {
+  @media (#{$direction}-width: 75rem) {
     @content;
   }
 }
-@mixin breakpoint-x-large {
-  @media (min-width: 112.5rem) {
+@mixin breakpoint-x-large($direction: 'min') {
+  @media (#{$direction}-width: 112.5rem) {
+    @content;
+  }
+}
+
+@mixin color-mode($mode) {
+  :global(:root[data-theme='#{$mode}']) {
     @content;
   }
 }

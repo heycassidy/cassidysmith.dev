@@ -1,0 +1,25 @@
+<div class="component-demo">
+  <slot />
+</div>
+
+<style lang="scss">
+  @import '@styles/mixins.scss';
+
+  @include color-mode(light) {
+    .component-demo {
+      --background-color: var(--color-neutral-175);
+    }
+  }
+  @include color-mode(dark) {
+    .component-demo {
+      --background-color: var(--color-neutral-850);
+    }
+  }
+
+  .component-demo {
+    --column: breakout;
+    padding: var(--fluid-bento-padding);
+    background-color: var(--background-color);
+    border-radius: var(--fluid-bento-radius);
+  }
+</style>

@@ -5,25 +5,23 @@
     --font-body: var(--font-atkinson);
     --font-heading: var(--font-syne);
 
-    --font-size-00: 0.7rem;
-    --font-size-0: 0.8rem;
+    --font-size--2: 0.726rem;
+    --font-size--1: 0.808rem;
+    --font-size-0: 0.899rem;
     --font-size-1: 1rem;
-    --font-size-2: 1.0625rem;
-    --font-size-3: 1.1458rem;
-    --font-size-4: 1.2292rem;
-    --font-size-5: 1.4167rem;
-    --font-size-6: 1.7292rem;
-    --font-size-7: 2.4375rem;
+    --font-size-2: 1.113rem;
+    --font-size-3: 1.238rem;
+    --font-size-4: 1.377rem;
+    --font-size-5: 1.532rem;
+    --font-size-6: 1.704rem;
+    --font-size-7: 1.896rem;
+    --font-size-8: 2.109rem;
 
-    --line-height-1: 1.5;
-    --line-height-2: 1.412;
-    --line-height-3: 1.309;
-    --line-height-4: 1.22;
-    --line-height-5: 1.059;
-    --line-height-6: 1.301;
-    --line-height-7: 1.231;
+    --line-height-base: 1.6;
+    --line-height-list: 1.4;
+    --line-height-heading: 1.15;
     --line-height-compressed: 1.2;
-    --line-height-body: var(--line-height-1);
+    --line-height-body: var(--line-height-base);
 
     --space-000: -0.5rem;
     --space-00: -0.25rem;
@@ -48,14 +46,14 @@
     --fluid-bento-padding: clamp(var(--space-2), 3cqw, var(--space-3));
     --fluid-bento-radius: clamp(var(--space-1), 3cqw, var(--space-3));
 
-    --space-content-1: 20ch;
-    --space-content-2: 45ch;
-    --space-content-3: 60ch;
-    --space-content-4: 75ch;
+    --space-content-1: 10rem;
+    --space-content-2: 28rem;
+    --space-content-3: 38rem;
+    --space-content-4: 48rem;
 
     --layout-size-1: 25rem;
-    --layout-size-2: 40rem;
-    --layout-size-3: 60rem;
+    --layout-size-2: 35rem;
+    --layout-size-3: 65rem;
     --layout-size-4: 70rem;
     --layout-size-5: 85rem;
 
