@@ -18,7 +18,6 @@ const { photo } = Astro.props
     aria-label="Open image"
   >
     <Image
-      transition:name={`photo-${photo.id}`}
       src={photo.data.image.src}
       alt={photo.data.image.description}
       quality={60}

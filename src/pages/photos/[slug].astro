@@ -48,7 +48,6 @@ const nextPhotoSlug =
     <div class="photo-page-layout__image">
       <div class=`image-container image-container--${orientation}`>
         <Image
-          transition:name={`photo-${photo.id}`}
           src={photo.data.image.src}
           alt={photo.data.image.description}
           width="700"

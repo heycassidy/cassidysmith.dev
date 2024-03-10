@@ -1,6 +1,5 @@
 ---
 import { AstroFont } from 'astro-font'
-import { ViewTransitions } from 'astro:transitions'
 import Theme from '../components/Theme.astro'
 ---
 
@@ -11,7 +10,6 @@ import Theme from '../components/Theme.astro'
   <link rel="sitemap" href="/sitemap-index.xml" />
   <slot />
   <Theme />
-  <!-- <ViewTransitions fallback="none" /> -->
   <AstroFont
     config={[
       {
