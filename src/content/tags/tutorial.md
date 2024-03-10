@@ -1,4 +1,4 @@
 ---
-title: Astro
+title: Tutorial
 active: true
 ---

@@ -1,13 +1,15 @@
 ---
-title: Modifiy Slot Contents in Astro
-subtitle: Exploring and exceeding the the limitations of Astro component slots
-previewText: Exploring and exceeding the the limitations of Astro component slots
-published: false
+title: Modify Slot Contents in Astro
+subtitle: Grab Astro slot HTML, parse it, modify it, and render it
+previewText: Iteratively process and modify Astro component children
+published: true
 publishedAt: 2024-01-28T22:12:59Z
 modifiedAt: 2024-02-07 22:05:32
 author: Cassidy Smith
 tags:
   - astro
+  - tutorial
+  - javascript
 ---
 
 import AsideNote from '@components/mdx/AsideNote.astro'
@@ -17,15 +19,15 @@ import FAQSectionBasic from '@components/blog/astro-slot-children-post/FAQSectio
 import FAQSectionHTMLParser from '@components/blog/astro-slot-children-post/FAQSectionHTMLParser.astro'
 import FAQItem from '@components/blog/astro-slot-children-post/FAQItem.astro'
 
-If you've spent some time in Astro, you're probably familiar with the `<slot />` feature which you can use to insert child components into a wrapper component. In this post, we’ll explore a way to modify Astro slot children from inside the wrapper component.
+If you've spent some time in Astro, you're probably familiar with the `<slot />` feature which you can use to render child components inside a wrapper component. In this post, we’ll explore a way to modify Astro slot children from inside the wrapper component.
 
 ## Astro Slot Basics
 
 You can learn all about Astro slots in the [Astro docs](https://docs.astro.build/en/basics/astro-components/#slots), but for this post, we’ll start with a basic example which we’ll build upon later.
 
-Let’s say we want to build an FAQ section with some custom styles and behavior using the HTML `<details>` element and insert FAQ items along-side the FAQ section on our page.
+Let’s say we want to build an FAQ section with some custom styles and behavior using the HTML `<details>` element. We might want one component for the FAQ section and one component for the individual FAQ items that go inside the section.
 
-First, we’ve got an Astro component for the FAQ section where we’ll insert render our frequently asked questions via the `<slot />`.
+First, we’ve got an Astro component for the FAQ section where we’ll insert our frequently asked questions via the `<slot />`.
 
 ```astro title="FAQSection.astro"
 <section>
@@ -34,7 +36,7 @@ First, we’ve got an Astro component for the FAQ section where we’ll insert r
 </section>
 ```
 
-Next, we’ve got an Astro component for each individual FAQ item. This component uses the HTML `<details>` and `<summary>` elements to let us expand and collapse each answer.
+Next, we’ve got an Astro component for each individual FAQ item. This component uses the HTML `<details>` and `<summary>` elements together to enable each answer to expand and collapse.
 
 ```astro title="FAQItem.astro"
 ---
@@ -49,7 +51,7 @@ const { question, answer } = Astro.props
 
 Putting those two components together on our Astro page, we insert the `FAQItem` components between the opening and closing tags of our `FAQSection`.
 
-```astro title="FAQPage.astro"
+```astro title="strawberries.astro"
 ---
 import FAQSection from '@components/FAQSection.astro'
 import FAQItem from '@compoents/FAQItem.astro'
@@ -67,7 +69,7 @@ import FAQItem from '@compoents/FAQItem.astro'
 </FAQSection>
 ```
 
-In the final rendered HTML, the `<slot />` placeholder inside the `FAQSection` component gets replaced with the rendered HTML of our `FAQItem` children components:
+In the final rendered HTML shown below, the `<slot />` placeholder inside the `FAQSection` component gets replaced with the rendered HTML of our `FAQItem` children components:
 
 ```html
 <section>
@@ -95,12 +97,13 @@ This would display on the page as something like this:
     answer="Yes, you may have three :)"
   />
 </FAQSectionBasic>
+(I’ve added some additional styles, not shown.)
 
 Astro slots are very useful!
 
 ## Limitations of Astro Slots
 
-This is all pretty standard stuff for Astro and other web frameworks like React, Svelte, etc., but one of the limitations of Astro slots as compared to React children is there is no built-in way to modify children passed in via the `<slot />`. Maybe we want to set an attribute on certain children, or style odd-numbered items a little differently. By default, we can't do that because Astro doesn’t pre-rendered slots content.
+This is all pretty standard stuff for Astro and other web frameworks like React, Svelte, etc., but one of the limitations of Astro slots as compared to React children is there is no built-in way to modify children passed in via the `<slot />`. Suppose we want to set an attribute on certain children, or style odd-numbered items a little differently. By default, we can't do that because Astro doesn’t give us access to pre-rendered slots content.
 
 ## Modify Astro Slot Contents
 
@@ -136,16 +139,17 @@ const html = await Astro.slots.render('default')
 
 ### Parse HTML
 
-To parse HTML, we’ll need to install an HTML parser. I like to use [linkedom] for this.
+To parse HTML, we’ll need to install an HTML parser. I found [linkedom](https://github.com/WebReflection/linkedom) to work pretty well for this, but there are several other options available if you don’t want to write your own HTML parser.
 
 ```
 npm install -D linkedom
 ```
 
 As shown below:
-1. import `parseHTML` from linkedom
-2. destructure the parsed HTML document into `document` from `parseHTML(html)`
-3. Assign the HTMLCollection `document.children` to a `children` variable
+
+1. First, import `parseHTML` from the linkedom package
+2. Then we destructure the parsed HTML document into `document` from `parseHTML(html)`
+3. Finally, assign the HTMLCollection `document.children` to a `children` variable
 
 ```astro title="FAQSection.astro" ins={"1.":2} ins={"2.":5} ins={"3.":6}
 ---
@@ -167,10 +171,18 @@ const children = document.children
 Now we have have an array of children HTML elements that were passed into the `<slot />` of the `FAQSection` component. We can do almost anything we'd normally do to HTML elements.
 
 There are a few important things to get clear:
-- `children` consists of HTML elements, not Astro components. This means you cannot pass props to the children and access them via the child component `Astro.props`. Unfortunate!
-- DOM manipulation on `children` is implemented by our HTML parser (linkedom in this case), not the browser. Remember, everything between the code fences ( `---` ) in Astro runs on the server, not in the browser. HTML parsers may or may not implement the full HTML spec.
 
-So how should we modify our FAQ section slot children? Well, one common pattern for FAQs is to open the first one by default. Since we’re expecting our children to be `FAQItem` components which render a `<details>` element, we can add the `open` attribute to the first slot child.
+- `children` consists of HTML elements, not Astro components. This means you cannot pass props to the children and access them via the child component `Astro.props`. Unfortunate!
+- DOM manipulation on `children` is implemented by our HTML parser (linkedom in this case), not the browser. Remember, everything between the code fences ( `---` ) in Astro runs on the server or build process, not in the browser. HTML parsers like linkedom may or may not implement all the DOM manipulation methods you’re used to using in the browser.
+
+So how should we modify our FAQ section slot children? One common pattern for FAQs is to have the first one expanded by default. Since we’re expecting our children to be `FAQItem` components <AsideNoteRef id="enforce-children-type" refLabel="2" /> which render a `<details>` element, we can add the `open` attribute to the first slot child.
+
+<AsideNote id="enforce-children-type" refLabel="2">
+  If “expecting” a specific component type as children is too
+  vibes-driven-development for you, you can iterate through each child and throw
+  an error if any of them are not a `details` element! Or maybe utilize
+  TypeScript here.
+</AsideNote>
 
 ```astro title="FAQSection.astro" ins={8}
 ---
@@ -188,9 +200,6 @@ children[0].setAttribute('open', '')
   <slot />
 </section>
 ```
-
-
-
 
 ### Render Modified Slot Contents
 
@@ -214,7 +223,7 @@ children[0].setAttribute('open', '')
 </section>
 ```
 
-And here’s the result! Notice the first FAQ is open by default.
+And here’s the result! Notice the first FAQ is open by default, which is exactly what we wanted.
 
 <FAQSectionHTMLParser>
   <FAQItem
@@ -227,12 +236,18 @@ And here’s the result! Notice the first FAQ is open by default.
   />
 </FAQSectionHTMLParser>
 
-
 ## Let’s Wrap Up
 
 Thanks for reading! In summary, you can modify astro slot contents, but it comes with some pretty big caveats:
 
-1. You need to use a third-party HTML parser (or implement your own, heh).
-2. You can’t pass props to slot children which are Astro components. I know, bummer!
+1. You need to use a third-party HTML parser (or implement your own 😎).
+2. You can’t pass props to slot children which are Astro components. I know, bummer! <AsideNoteRef id="astro-children-props" refLabel="3" />
 
-If you figure out #2, please let me know! Or if you have any other feedback, questions, or ideas about this post, I'd love to hear from you. Eventually I'd like to implement some form of comments on this blog, but for now you can email me here: [cassidy@cassidysmith.dev](mailto:cassidy@cassidysmith.dev)
+<AsideNote id="astro-children-props" refLabel="3">
+  Well you sort of can, but you have to pass the children in as functions that
+  return a component. See [Astro’s docs on the slot render()
+  function](https://docs.astro.build/en/reference/api-reference/#astroslotsrender)
+  for more details.
+</AsideNote>
+
+If you have any other feedback, questions, or ideas about this post, I'd love to hear from you. Eventually I'd like to implement some form of comments on this blog, but for now you can email me here: [cassidy@cassidysmith.dev](mailto:cassidy@cassidysmith.dev)
