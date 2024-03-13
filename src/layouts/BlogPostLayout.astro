@@ -15,9 +15,12 @@ import Prose from '@components/Prose.astro'
   </Prose>
 </article>
 
+<style lang="scss" is:global>
+  @import '@styles/blog-post-content.scss';
+</style>
+
 <style lang="scss">
   @import '@styles/mixins.scss';
-  @import '@styles/blog-post-content';
 
   @layer layout {
     article {
