@@ -37,9 +37,6 @@ const { tags, class: className, ...rest } = Astro.props
   li {
     font-size: var(--font-size--1);
     z-index: 1;
-  }
-
-  li::marker {
-    content: '';
+    list-style: none;
   }
 </style>

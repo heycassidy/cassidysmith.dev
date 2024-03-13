@@ -10,7 +10,7 @@ const { heading } = Astro.props
   </a>
   {
     heading.children.length > 0 && (
-      <ol>
+      <ol role="list">
         {heading.children.map((heading: TocItem) => (
           <Astro.self heading={heading} />
         ))}
@@ -32,9 +32,7 @@ const { heading } = Astro.props
   }
   li {
     line-height: var(--line-height-compressed);
-    &::marker {
-      content: ' ';
-    }
+    list-style: none;
   }
   li > ol,
   li + li {
