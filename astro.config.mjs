@@ -13,6 +13,9 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  redirects: {
+    '/posts/modify-astro-slot-contents': '/posts/modify-astro-slot-children',
+  },
   markdown: {
     smartypants: true,
     remarkPlugins: [remarkReadingTime],
