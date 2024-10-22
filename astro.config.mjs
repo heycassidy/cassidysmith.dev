@@ -5,9 +5,11 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/remark/remark-reading-time.mjs'
 import astroExpressiveCode from 'astro-expressive-code'
+import vercel from '@astrojs/vercel/static'
 
 // https://astro.build/config
 export default defineConfig({
+  output: "static",
   site: 'https://cassidysmith.dev',
   trailingSlash: 'never',
   prefetch: {
@@ -55,4 +57,9 @@ export default defineConfig({
     mdx({}),
     sitemap(),
   ],
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 })
