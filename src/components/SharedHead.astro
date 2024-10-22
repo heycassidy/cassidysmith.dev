@@ -1,6 +1,8 @@
 ---
 import { AstroFont } from 'astro-font'
 import Theme from '../components/Theme.astro'
+import '@fontsource-variable/syne'
+import '@fontsource/atkinson-hyperlegible'
 ---
 
 <head>
@@ -10,66 +12,4 @@ import Theme from '../components/Theme.astro'
   <link rel="sitemap" href="/sitemap-index.xml" />
   <slot />
   <Theme />
-  <AstroFont
-    config={[
-      {
-        src: [
-          {
-            style: 'normal',
-            weight: '400',
-            path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-normal.woff2',
-          },
-          {
-            style: 'normal',
-            weight: '700',
-            path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-700-normal.woff2',
-          },
-          {
-            style: 'italic',
-            weight: '400',
-            path: 'https://cdn.jsdelivr.net/fontsource/fonts/atkinson-hyperlegible@latest/latin-400-italic.woff2',
-          },
-        ],
-        fetch: import.meta.env.PROD,
-        basePath: './dist',
-        preload: true,
-        display: 'swap',
-        fallback: 'sans-serif',
-        cssVariable: 'font-atkinson',
-        name: 'Atkinson Hyperlegible',
-      },
-      {
-        src: [
-          {
-            style: 'normal',
-            weight: '400 800',
-            path: 'https://cdn.jsdelivr.net/fontsource/fonts/syne:vf@latest/latin-wght-normal.woff2',
-          },
-        ],
-        fetch: import.meta.env.PROD,
-        basePath: './dist',
-        preload: true,
-        display: 'swap',
-        name: 'Syne Variable',
-        fallback: 'sans-serif',
-        cssVariable: 'font-syne',
-      },
-      {
-        src: [
-          {
-            style: 'normal',
-            weight: '400',
-            path: 'https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.000/fonts/webfonts/MonaspaceNeon-Regular.woff',
-          },
-        ],
-        fetch: import.meta.env.PROD,
-        basePath: './dist',
-        preload: true,
-        display: 'swap',
-        name: 'Monaspace Neon',
-        fallback: 'sans-serif',
-        cssVariable: 'font-monaspace-neon',
-      },
-    ]}
-  />
 </head>

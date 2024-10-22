@@ -2,6 +2,9 @@
 
 @layer base {
   :root {
+    --font-atkinson: 'Atkinson Hyperlegible', sans-serif;
+    --font-syne: 'Syne Variable', sans-serif;
+    
     --font-body: var(--font-atkinson);
     --font-heading: var(--font-syne);
 
