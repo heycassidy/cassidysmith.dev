@@ -1,8 +1,15 @@
-<script>
+<script lang="ts">
   import DiceIcon from './DiceIcon.svelte'
+  import { type Snippet } from 'svelte'
   import { generateCactus, clearCactus } from 'prickly-pear'
-  let canvasElement
-  let imagePlaceholderWrapper
+  let canvasElement: HTMLCanvasElement
+  let imagePlaceholderWrapper: HTMLDivElement
+
+  interface Props {
+    placeholderCactus: Snippet
+  }
+
+  let { placeholderCactus }: Props = $props()
 
   async function click() {
     clearCactus()
@@ -15,20 +22,20 @@
   class="prickly-pear"
   bind:this={canvasElement}
   aria-label="Randomly generated illustration of a prickly pear cactus"
-/>
+></canvas>
 
 <div class="image-placeholder-wrapper" bind:this={imagePlaceholderWrapper}>
-  <slot name="placeholder-cactus" />
+  {@render placeholderCactus()}
 </div>
 
 <div class="controls-row">
-  <button class="regenerate-button" on:click={click}>
+  <button class="regenerate-button" onclick={click}>
     <DiceIcon /> Grow a random cactus
   </button>
 </div>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '../styles/mixins.scss';
 
   .prickly-pear {
     position: absolute;
@@ -53,7 +60,7 @@
   }
 
   .regenerate-button {
-    @include button;
+    @include mixins.button;
     gap: var(--space-2);
     backdrop-filter: blur(8px);
 
@@ -64,7 +71,7 @@
     }
   }
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .regenerate-button {
       --color-button-text: white;
       --color-button-background: #{transparentize(black, $amount: 0.4)};
@@ -75,7 +82,7 @@
       --color-focus-outline: black;
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .regenerate-button {
       --color-button-text: #{transparentize(white, 0.2)};
       --color-button-background: #{transparentize(black, $amount: 0.4)};

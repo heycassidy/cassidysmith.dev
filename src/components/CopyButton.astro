@@ -1,0 +1,108 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { Icon } from 'astro-icon/components'
+
+interface Props extends HTMLAttributes<'button'> {
+  textToCopy: string
+}
+
+const { textToCopy } = Astro.props
+---
+
+<copy-button data-text-to-copy={textToCopy}>
+  <button>
+    <Icon aria-hidden="true" name="ri:clipboard-fill" /> Copy
+  </button>
+  <template id="copied"><Icon aria-hidden="true" name="ri:check-line" /> Copied!</template>
+</copy-button>
+
+<script>
+  class CopyButton extends HTMLElement {
+    static get observedAttributes() {
+      return ['copied']
+    }
+
+    resetTimeout: NodeJS.Timeout | null
+    textToCopy: string
+    readyHTML: string
+    copiedHTML: string
+    button?: HTMLButtonElement | null
+
+    constructor() {
+      super()
+
+      this.readyHTML = ''
+      this.copiedHTML = ''
+
+      this.textToCopy = this.dataset.textToCopy ?? ''
+      this.resetTimeout = null
+    }
+
+    connectedCallback() {
+      this.button = this.querySelector('button')
+
+      this.readyHTML = this.button?.innerHTML ?? ''
+      this.copiedHTML = this.querySelector('#copied')?.innerHTML ?? ''
+
+      this.button?.addEventListener('click', this.copy.bind(this))
+    }
+
+    disconnectedCallback() {
+      this.reset()
+    }
+
+    attributeChangedCallback(name: string, oldValue: any, newValue: any) {
+      if (name === 'copied' && this.button) {
+        this.button.innerHTML = newValue === null ? this.readyHTML : this.copiedHTML
+      }
+    }
+
+    copy() {
+      navigator.clipboard.writeText(this.textToCopy)
+      this.copied = true
+      this.resetTimeout = setTimeout(this.reset.bind(this), 5000)
+    }
+
+    reset() {
+      this.copied = false
+
+      if (this.resetTimeout) {
+        clearTimeout(this.resetTimeout)
+      }
+    }
+
+    get copied() {
+      return this.hasAttribute('copied')
+    }
+
+    set copied(v) {
+      this.toggleAttribute('copied', v)
+    }
+  }
+
+  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+  customElements.define('copy-button', CopyButton)
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins.scss';
+
+  @include mixins.color-mode(light) {
+    button {
+      --color-button-text: var(--color-tertiary-775);
+      --color-button-background: var(--color-tertiary-275);
+      --color-button-hover-text: var(--color-tertiary-950);
+      --color-button-hover-background: var(--color-tertiary-350);
+    }
+  }
+
+  button {
+    @include mixins.button;
+
+    :global(svg) {
+      width: 0.9em;
+      height: auto;
+      flex-shrink: 0;
+    }
+  }
+</style>

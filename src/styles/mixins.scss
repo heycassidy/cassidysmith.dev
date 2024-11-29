@@ -85,10 +85,6 @@
   &:focus-visible {
     @include focus-outline;
   }
-
-  &--small {
-    font-size: var(--font-size-0);
-  }
 }
 
 @mixin dot-pattern-background($color, $size) {

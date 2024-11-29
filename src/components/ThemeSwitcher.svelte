@@ -2,7 +2,7 @@
 
 <script>
   import { portal } from 'svelte-portal'
-  let theme = document.documentElement.getAttribute('data-theme')
+  let theme = $state(document.documentElement.getAttribute('data-theme'))
 
   let portalElement = document.querySelector('#theme-switcher-portal')
 
@@ -23,7 +23,7 @@
     title="Toggles light & dark"
     aria-label={theme}
     aria-live="polite"
-    on:click={toggle}
+    onclick={toggle}
     use:portal={'#theme-switcher-portal'}
   >
     <svg
@@ -101,14 +101,14 @@
   }
 
   .sun-and-moon {
-    & > :is(.moon, .sun, .sun-beams) {
+    & > :is(:global(.moon, .sun, .sun-beams)) {
       transform-origin: center center;
     }
 
-    & > :is(.moon, .sun) {
+    & > :is(:global(.moon, .sun)) {
       fill: var(--icon-fill);
 
-      @at-root .theme-toggle:is(:hover, :focus-visible) > & {
+      @at-root .theme-toggle:is(:global(:hover, :focus-visible)) > & {
         fill: var(--icon-fill-hover);
       }
     }
@@ -116,7 +116,7 @@
     & > .sun-beams {
       fill: var(--icon-fill);
 
-      @at-root .theme-toggle:is(:hover, :focus-visible) & {
+      @at-root .theme-toggle:is(:global(:hover, :focus-visible)) & {
         fill: var(--icon-fill-hover);
       }
     }
