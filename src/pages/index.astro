@@ -30,8 +30,8 @@ import LatestPost from '@components/LatestPost.astro'
             href="https://maggieappleton.com/garden-history"
           >
             digital garden
-          </TextLink> where I water my prickly projects and feed my creative
-          brain worms.
+          </TextLink> where I water my prickly projects and feed my creative brain
+          worms.
         </p>
       </Prose>
 
@@ -45,14 +45,14 @@ import LatestPost from '@components/LatestPost.astro'
 </AppLayout>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     main {
       --background-color: var(--color-primary-175);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     main {
       --background-color: var(--color-primary-850);
     }
@@ -82,7 +82,7 @@ import LatestPost from '@components/LatestPost.astro'
       'email'
       'cactus';
 
-    @include breakpoint-small {
+    @include mixins.breakpoint-small {
       grid-template-columns: 5fr 4fr;
       grid-template-areas:
         'intro blog'
@@ -91,7 +91,7 @@ import LatestPost from '@components/LatestPost.astro'
         'photos cactus'
         'social cactus';
     }
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
       grid-template-columns: 6fr 6fr 10fr 11fr;
       grid-template-areas:
         'intro intro intro blog'

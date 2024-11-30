@@ -16,11 +16,11 @@ import Prose from '@components/Prose.astro'
 </article>
 
 <style lang="scss" is:global>
-  @import '@styles/blog-post-content.scss';
+  @use '@styles/blog-post-content';
 </style>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   @layer layout {
     article {
@@ -47,7 +47,7 @@ import Prose from '@components/Prose.astro'
         1fr
         [breakout-end full-width-end];
 
-      @include breakpoint-medium {
+      @include mixins.breakpoint-medium {
         grid-template-columns:
           [full-width-start breakout-start anchor-heading-start]
           1fr
@@ -66,7 +66,7 @@ import Prose from '@components/Prose.astro'
     .blog-post-grid__sidebar {
       z-index: 1;
       --column: aside;
-      @include breakpoint-medium {
+      @include mixins.breakpoint-medium {
         height: 0;
       }
     }

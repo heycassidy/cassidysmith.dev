@@ -7,15 +7,15 @@ const { class: className, ...rest } = Astro.props
 </header>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     header {
       --color: var(--color-accent-two-775);
       --background-color: var(--color-accent-two-175);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     header {
       --color: var(--color-secondary-275);
       --background-color: var(--color-secondary-850);

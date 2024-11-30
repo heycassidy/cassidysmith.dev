@@ -40,14 +40,14 @@ const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt)
 </div>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .blog-post-meta {
       --color: var(--color-primary-700);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .blog-post-meta {
       --color: var(--color-primary-425);
     }

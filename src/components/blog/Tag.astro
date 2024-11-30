@@ -12,9 +12,9 @@ const { tag } = Astro.props
 <ContentLink content={tag} class="tag-link"># {tag.data.title}</ContentLink>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .tag-link {
       --color-button-text: color-mix(in oklch, currentColor, transparent 10%);
       --color-button-background: color-mix(in oklch, white, transparent 40%);
@@ -26,7 +26,7 @@ const { tag } = Astro.props
       --color-button-active-background: var(--color-accent-one-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .tag-link {
       --color-button-text: color-mix(in oklch, currentColor, transparent 20%);
       --color-button-background: color-mix(in oklch, black, transparent 70%);
@@ -40,7 +40,7 @@ const { tag } = Astro.props
   }
 
   .tag-link {
-    @include button;
+    @include mixins.button;
 
     padding-block: var(--space-1);
     padding-inline: var(--space-2);

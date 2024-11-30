@@ -10,15 +10,15 @@ import { Icon } from 'astro-icon/components'
 </li>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     li {
       --marker-color: var(--color-primary-525);
     }
   }
 
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     li {
       --marker-color: var(--color-primary-425);
     }

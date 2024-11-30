@@ -15,7 +15,7 @@ const { question, answer } = Astro.props
 </details>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   details {
     --border-color: var(--color-primary-425);
@@ -36,7 +36,7 @@ const { question, answer } = Astro.props
       outline: none;
     }
     &:focus-visible {
-      @include focus-outline;
+      @include mixins.focus-outline;
     }
   }
   details {

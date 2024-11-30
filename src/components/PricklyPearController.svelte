@@ -74,31 +74,47 @@
   @include mixins.color-mode(light) {
     .regenerate-button {
       --color-button-text: white;
-      --color-button-background: #{transparentize(black, $amount: 0.4)};
+      --color-button-background: color-mix(in srgb, black 40%, transparent);
       --color-button-hover-text: white;
-      --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
+      --color-button-hover-background: color-mix(
+        in srgb,
+        black 60%,
+        transparent
+      );
       --color-button-active-text: white;
-      --color-button-active-background: #{transparentize(black, $amount: 0.2)};
+      --color-button-active-background: color-mix(
+        in srgb,
+        black 20%,
+        transparent
+      );
       --color-focus-outline: black;
     }
   }
   @include mixins.color-mode(dark) {
     .regenerate-button {
-      --color-button-text: #{transparentize(white, 0.2)};
-      --color-button-background: #{transparentize(black, $amount: 0.4)};
-      --color-button-hover-text: #{transparentize(white, 0)};
-      --color-button-hover-background: #{transparentize(black, $amount: 0.6)};
-      --color-button-active-text: #{transparentize(white, 0.6)};
-      --color-button-active-background: #{transparentize(black, $amount: 0.2)};
+      --color-button-text: color-mix(in srgb, white 80%, transparent);
+      --color-button-background: color-mix(in srgb, black 40%, transparent);
+      --color-button-hover-text: color-mix(in srgb, white 100%, transparent);
+      --color-button-hover-background: color-mix(
+        in srgb,
+        black 60%,
+        transparent
+      );
+      --color-button-active-text: color-mix(in srgb, white 40%, transparent);
+      --color-button-active-background: color-mix(
+        in srgb,
+        black 20%,
+        transparent
+      );
       --color-focus-outline: white;
-      box-shadow: 0 0 0 2px #{transparentize(white, 0.9)};
+      box-shadow: 0 0 0 2px color-mix(in srgb, white 10%, transparent);
 
       &:hover {
-        box-shadow: 0 0 0 2px #{transparentize(white, 0.8)};
+        box-shadow: 0 0 0 2px color-mix(in srgb, white 20%, transparent);
       }
       &:active,
       &:hover:active {
-        box-shadow: 0 0 0 2px #{transparentize(white, 0.9)};
+        box-shadow: 0 0 0 2px color-mix(in srgb, white 10%, transparent);
       }
     }
     canvas {

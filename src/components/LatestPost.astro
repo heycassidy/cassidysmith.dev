@@ -25,9 +25,9 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
 </article>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .latest-post {
       --color: var(--color-accent-two-700);
       --background-color: var(--color-accent-two-175);
@@ -39,7 +39,7 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .latest-post {
       --color: var(--color-secondary-275);
       --background-color: var(--color-secondary-850);
@@ -83,7 +83,7 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     }
 
     &:focus-within {
-      @include focus-outline;
+      @include mixins.focus-outline;
     }
   }
 

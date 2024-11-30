@@ -3,7 +3,7 @@
 </span>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
   .banner-logo {
     display: block;
@@ -41,7 +41,7 @@
       }
 
       &:focus-visible {
-        @include focus-outline;
+        @include mixins.focus-outline;
       }
     }
   }

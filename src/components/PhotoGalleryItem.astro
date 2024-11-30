@@ -30,7 +30,7 @@ const { photo } = Astro.props
 </li>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
   .link-container {
     display: flex;
@@ -39,7 +39,7 @@ const { photo } = Astro.props
 
     grid-row: 1;
 
-    @include breakpoint-small {
+    @include mixins.breakpoint-small {
       grid-row: auto;
       aspect-ratio: 1 / 1;
     }
@@ -52,14 +52,14 @@ const { photo } = Astro.props
     background-color: var(--color-base-background);
     height: 100vw;
 
-    @include breakpoint-small {
+    position: relative;
+    overflow: hidden;
+
+    @include mixins.breakpoint-small {
       height: auto;
       max-height: 100%;
       max-height: 100%;
     }
-
-    position: relative;
-    overflow: hidden;
 
     @media (hover: hover) {
       &:hover {
@@ -76,7 +76,7 @@ const { photo } = Astro.props
       }
     }
     &:focus-visible {
-      @include focus-outline(var(--color-stark-foreground));
+      @include mixins.focus-outline(var(--color-stark-foreground));
     }
   }
 

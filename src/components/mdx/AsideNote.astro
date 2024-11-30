@@ -12,10 +12,10 @@ const { id, refLabel } = Astro.props
 </Aside>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   .note-ref-anchor {
-    @include text-link($visited: false);
+    @include mixins.text-link($visited: false);
     float: left;
     margin-right: var(--space-1);
   }

@@ -7,13 +7,22 @@ import placeholderCactus from '../assets/prickly-pear.png'
 <div class="prickly-pear-container">
   <div class="scene-box">
     <PricklyPearController client:idle>
-      <Image src={placeholderCactus} alt="Illustration of prickly pear cactus" class="placeholder-cactus" quality={90} width="800" height="800" slot="placeholderCactus" loading="eager" />
+      <Image
+        src={placeholderCactus}
+        alt="Illustration of prickly pear cactus"
+        class="placeholder-cactus"
+        quality={90}
+        width="800"
+        height="800"
+        slot="placeholderCactus"
+        loading="eager"
+      />
     </PricklyPearController>
   </div>
 </div>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
   .prickly-pear-container {
     grid-area: cactus;
@@ -26,7 +35,7 @@ import placeholderCactus from '../assets/prickly-pear.png'
 
     a {
       justify-self: center;
-      @include text-link;
+      @include mixins.text-link;
       text-align: center;
       font-size: var(--font-size-0);
       display: inline-flex;
@@ -39,13 +48,13 @@ import placeholderCactus from '../assets/prickly-pear.png'
     }
   }
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .scene-box {
       --color-sky: var(--color-neutral-275);
       --color-ground: var(--color-tertiary-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .scene-box {
       --color-sky: var(--color-primary-850);
       --color-ground: var(--color-primary-875);

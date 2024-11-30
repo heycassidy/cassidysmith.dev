@@ -23,7 +23,13 @@
   },
   "prettier.documentSelectors": ["**/*.astro"],
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSaveMode": "file"
+  "editor.formatOnSaveMode": "file",
+  "cSpell.words": [
+    "astrojs",
+    "bento",
+    "bluesky",
+    "Hyperlegible"
+  ]
 }

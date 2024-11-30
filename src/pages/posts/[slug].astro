@@ -21,14 +21,12 @@ import H5 from '@components/mdx/H5.astro'
 import H6 from '@components/mdx/H6.astro'
 import SEOTags from '@components/SEOTags.astro'
 
-export async function getStaticPaths() {
-  const entries = await getCollection('blog', entryIsPublished)
-
-  return entries.map((entry: CollectionEntry<'blog'>) => ({
-    params: { slug: entry.slug },
-    props: { post: entry },
-  }))
+interface Props {
+  post: CollectionEntry<'blog'>
 }
+
+const { post } = Astro.props
+const { Content, remarkPluginFrontmatter, headings } = await post.render()
 
 const components = {
   blockquote: Blockquote,
@@ -45,8 +43,14 @@ const components = {
   a: A,
 }
 
-const { post } = Astro.props
-const { Content, remarkPluginFrontmatter, headings } = await post.render()
+export async function getStaticPaths() {
+  const entries = await getCollection('blog', entryIsPublished)
+
+  return entries.map((entry: CollectionEntry<'blog'>) => ({
+    params: { slug: entry.slug },
+    props: { post: entry },
+  }))
+}
 ---
 
 <AppLayout>

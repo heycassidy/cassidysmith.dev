@@ -7,14 +7,14 @@ const { id, refLabel } = Astro.props
 </sup>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   sup {
     display: inline-flex;
   }
 
   a {
-    @include text-link($visited: false);
+    @include mixins.text-link($visited: false);
     line-height: 1;
     font-size: var(--font-size--1);
   }

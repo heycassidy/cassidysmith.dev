@@ -33,9 +33,9 @@ const activeTags = tags.filter(tagIsActive)
 </article>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .post-preview {
       --color: var(--color-accent-two-700);
       --background-color: var(--color-accent-two-175);
@@ -47,7 +47,7 @@ const activeTags = tags.filter(tagIsActive)
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .post-preview {
       --color: var(--color-primary-275);
       --background-color: var(--color-primary-850);
@@ -89,7 +89,7 @@ const activeTags = tags.filter(tagIsActive)
     }
 
     &:focus-within {
-      @include focus-outline;
+      @include mixins.focus-outline;
     }
   }
 

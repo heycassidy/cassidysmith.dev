@@ -14,13 +14,13 @@ const { posts } = Astro.props
 </div>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   .posts-list {
     display: grid;
     gap: var(--fluid-bento-gap);
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
       grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
     }
   }

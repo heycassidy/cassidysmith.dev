@@ -5,9 +5,9 @@ const { href } = Astro.props
 ---
 
 <TextLink href={href}><slot /></TextLink><style lang="scss">
-  @import '@styles/mixins';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     a.external {
       --color-link: var(--color-secondary-600);
       --color-link-decoration: var(--color-secondary-350);
@@ -19,7 +19,7 @@ const { href } = Astro.props
       --color-link-visited-decoration: var(--color-secondary-350);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     a.external {
       --color-link: var(--color-secondary-350);
       --color-link-decoration: var(--color-secondary-350);

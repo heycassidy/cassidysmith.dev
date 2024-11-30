@@ -7,16 +7,16 @@ const { ...props } = Astro.props
 </blockquote>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     blockquote {
       --color: var(--color-primary-600);
       --border-color: var(--color-primary-275);
     }
   }
 
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     blockquote {
       --color: var(--color-primary-175);
       --border-color: var(--color-primary-700);

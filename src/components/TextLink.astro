@@ -16,12 +16,12 @@ const external = isExternalURL(href, Astro.url.host)
 <a href={href} class:list={[{ external }]} {...attributes}
   ><slot />{external && <Icon name="ri:arrow-right-up-line" size={16} />}</a
 ><style lang="scss">
-  @import '@styles/mixins';
+  @use '@styles/mixins';
 
   a {
     display: inline-flex;
     align-items: center;
-    @include text-link;
+    @include mixins.text-link;
 
     [data-icon] {
       width: 0.8em;

@@ -14,11 +14,11 @@ import SocialLink from './SocialLink.astro'
       Github
     </SocialLink>
     <SocialLink
-      href="https://www.linkedin.com/in/csdev/"
+      href="https://bsky.app/profile/cassidy.social"
       external
-      icon="ri:linkedin-box-fill"
+      icon="ri:bluesky-fill"
     >
-      LinkedIn
+      BlueSky
     </SocialLink>
     <SocialLink
       href="https://www.instagram.com/cassycle/"
@@ -31,15 +31,15 @@ import SocialLink from './SocialLink.astro'
 </section>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .social-links {
       --color: var(--color-secondary-700);
       --background-color: var(--color-secondary-175);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .social-links {
       --color: var(--color-secondary-350);
       --background-color: var(--color-secondary-850);

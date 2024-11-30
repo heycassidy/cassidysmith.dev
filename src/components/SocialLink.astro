@@ -16,9 +16,9 @@ const { href, external = false, icon = false } = Astro.props
 </a>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .social-link {
       --color: var(--color-secondary-700);
       --background-color: var(--color-secondary-275);
@@ -30,7 +30,7 @@ const { href, external = false, icon = false } = Astro.props
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .social-link {
       --color: var(--color-secondary-275);
       --background-color: var(--color-secondary-775);
@@ -71,7 +71,7 @@ const { href, external = false, icon = false } = Astro.props
       background-color: var(--active-background-color);
     }
     &:focus-visible {
-      @include focus-outline;
+      @include mixins.focus-outline;
     }
 
     svg {

@@ -65,7 +65,7 @@ const { photos } = Astro.props
 </script>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
   .gallery-outer {
     grid-column-start: full-width-start;
@@ -85,7 +85,7 @@ const { photos } = Astro.props
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
-    @include breakpoint-small {
+    @include mixins.breakpoint-small {
       overflow: visible;
       display: grid;
       padding: calc(var(--fluid-bento-padding) + var(--fluid-bento-gap)) 0;

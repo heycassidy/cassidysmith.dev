@@ -12,6 +12,19 @@ import {
   entryHasTag,
 } from '@utils/index'
 
+interface Props {
+  tag: CollectionEntry<'tags'>
+}
+
+const { tag } = Astro.props
+const { Content } = await tag.render()
+
+let posts = await getCollection('blog')
+posts = posts
+  .filter(entryIsPublished)
+  .filter(entryHasTag(tag))
+  .sort(sortByPublishedAt)
+
 export async function getStaticPaths() {
   const tags = await getCollection('tags', tagIsActive)
 
@@ -20,16 +33,6 @@ export async function getStaticPaths() {
     props: { tag: entry },
   }))
 }
-
-const { tag } = Astro.props
-
-let posts = await getCollection('blog')
-posts = posts
-  .filter(entryIsPublished)
-  .filter(entryHasTag(tag))
-  .sort(sortByPublishedAt)
-
-const { Content } = await tag.render()
 ---
 
 <AppLayout>
@@ -48,7 +51,7 @@ const { Content } = await tag.render()
 </AppLayout>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   main {
     padding: var(--fluid-bento-padding);

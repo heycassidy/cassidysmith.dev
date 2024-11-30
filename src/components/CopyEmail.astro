@@ -22,9 +22,9 @@ const { emailAddress = 'cassidy@cassidysmith.dev' } = Astro.props
 </section>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .copy-email {
       --color: var(--color-tertiary-700);
       --background-color: var(--color-tertiary-175);
@@ -43,7 +43,7 @@ const { emailAddress = 'cassidy@cassidysmith.dev' } = Astro.props
       --color-link-active-decoration: var(--color-accent-one-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .copy-email {
       --color: var(--color-tertiary-275);
       --background-color: var(--color-tertiary-850);
@@ -101,7 +101,7 @@ const { emailAddress = 'cassidy@cassidysmith.dev' } = Astro.props
         display: inline-flex;
         gap: 0.5ch;
 
-        @include text-link;
+        @include mixins.text-link;
       }
     }
 

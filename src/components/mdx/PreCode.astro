@@ -3,16 +3,16 @@
 </pre>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .pre-code code {
       --color: var(--color-neutral-850);
       --background-color: var(--color-neutral-175);
       --border-color: var(--color-neutral-275);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .pre-code code {
       --color: var(--color-neutral-275);
       --background-color: var(--color-neutral-850);

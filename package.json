@@ -35,9 +35,9 @@
     "prickly-pear-hosted": "github:heycassidy/prickly-pear"
   },
   "devDependencies": {
-    "@iconify-json/ri": "^1.1.21",
+    "@iconify-json/ri": "^1.2.3",
     "@typescript-eslint/parser": "^8.11.0",
-    "astro-icon": "^1.0.0-next.2",
+    "astro-icon": "^1.1.4",
     "autoprefixer": "^10.4.19",
     "cssnano": "^7.0.3",
     "eslint": "^9.13.0",
@@ -45,8 +45,8 @@
     "eslint-plugin-astro": "^0.27.2",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "linkedom": "^0.18.4",
-    "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.0",
+    "prettier": "^3.4.1",
+    "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.77.6",
     "sass-svg-uri": "^2.0.0",
     "typescript": "^5.5.3"

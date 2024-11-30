@@ -28,7 +28,7 @@ const { citationUrl, citationSource, citationName } = Astro.props
 </Blockquote>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   footer {
     font-size: var(--font-size-1);
@@ -39,6 +39,6 @@ const { citationUrl, citationSource, citationName } = Astro.props
   }
 
   a {
-    @include text-link;
+    @include mixins.text-link;
   }
 </style>

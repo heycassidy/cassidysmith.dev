@@ -27,15 +27,15 @@ if (src.width > 1800) {
 />
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .blog-post-image {
       --background-color: var(--color-neutral-175);
     }
   }
 
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .blog-post-image {
       --background-color: var(--color-neutral-850);
     }
@@ -56,7 +56,7 @@ if (src.width > 1800) {
   .blog-post-image--text {
     width: 100%;
     --column: breakout;
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
       --column: text;
     }
   }

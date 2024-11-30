@@ -1,30 +1,27 @@
 ---
-import { getCollection } from 'astro:content'
-import AppLayout from '@layouts/AppLayout.astro'
+import { getCollection, type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
+import { entryIsPublished, sortByPosition } from '@utils/index'
+
+import AppLayout from '@layouts/AppLayout.astro'
 import Button from '@components/Button.astro'
 import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
-import { entryIsPublished, sortByPosition } from '@utils/index'
 
-export async function getStaticPaths() {
-  const entries = await getCollection('photos', entryIsPublished)
-
-  return entries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { photo: entry },
-  }))
+interface Props {
+  photo: CollectionEntry<'photos'>
 }
 
-const photos = await getCollection('photos', entryIsPublished)
-let sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.slug)
-
+// For this page
 const { photo } = Astro.props
 const { Content } = await photo.render()
-
 const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
 const orientation = aspectRatio > 1 ? 'landscape' : 'portrait'
+
+// For the previous/next/all buttons
+const photos = await getCollection('photos', entryIsPublished)
+const sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.slug)
 const previousPhotoSlug =
   sortedPhotoSlugs[
     (sortedPhotoSlugs.indexOf(photo.slug) - 1 + sortedPhotoSlugs.length) %
@@ -34,6 +31,15 @@ const nextPhotoSlug =
   sortedPhotoSlugs[
     (sortedPhotoSlugs.indexOf(photo.slug) + 1) % sortedPhotoSlugs.length
   ]
+
+export async function getStaticPaths() {
+  const photos = await getCollection('photos', entryIsPublished)
+
+  return photos.map((photo) => ({
+    params: { slug: photo.slug },
+    props: { photo },
+  }))
+}
 ---
 
 <AppLayout>
@@ -48,6 +54,7 @@ const nextPhotoSlug =
     <div class="photo-page-layout__image">
       <div class=`image-container image-container--${orientation}`>
         <Image
+          loading="eager"
           src={photo.data.image.src}
           alt={photo.data.image.description}
           width="700"
@@ -103,7 +110,7 @@ const nextPhotoSlug =
 </AppLayout>
 
 <style lang="scss" define:vars={{ 'aspect-ratio': aspectRatio }}>
-  @import '../../styles/mixins.scss';
+  @use '@styles/mixins';
 
   .photo-page-layout {
     display: grid;
@@ -117,12 +124,12 @@ const nextPhotoSlug =
     }
   }
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .photo-page-layout__image {
       --photo-padding: var(--fluid-bento-padding);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .photo-page-layout__image {
       --photo-padding: calc(var(--fluid-bento-padding) * 2);
     }
@@ -193,7 +200,7 @@ const nextPhotoSlug =
     }
 
     :global(a) {
-      @include text-link;
+      @include mixins.text-link;
     }
   }
 

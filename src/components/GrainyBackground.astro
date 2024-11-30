@@ -1,14 +1,14 @@
 <div class="grainy-background"></div>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .grainy-background {
       --opacity: 0.6;
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .grainy-background {
       --opacity: 0.3;
     }

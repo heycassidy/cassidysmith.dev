@@ -1,7 +1,7 @@
 <code><slot /></code><style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     :global(p) > code,
     :global(span) > code,
     :global(li) > code {
@@ -9,7 +9,7 @@
       --background-color: var(--color-neutral-175);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     :global(p) > code,
     :global(span) > code,
     :global(li) > code {

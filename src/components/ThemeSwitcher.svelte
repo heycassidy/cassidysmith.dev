@@ -62,7 +62,7 @@
 {/if}
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '../styles/mixins.scss';
 
   .theme-toggle {
     --size: 1.5rem;
@@ -96,7 +96,7 @@
     }
 
     &:focus-visible {
-      @include focus-outline;
+      @include mixins.focus-outline;
     }
   }
 

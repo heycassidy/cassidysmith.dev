@@ -20,9 +20,9 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 6)
 </section>
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .photos-card {
       --color: var(--color-neutral-700);
       --background-color: var(--color-neutral-275);
@@ -34,7 +34,7 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 6)
       --active-background-color: var(--color-accent-one-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .photos-card {
       --color: var(--color-neutral-275);
       --background-color: var(--color-neutral-775);
@@ -71,7 +71,7 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 6)
       background-color: var(--active-background-color);
     }
     &:focus-within {
-      @include focus-outline;
+      @include mixins.focus-outline;
     }
   }
 

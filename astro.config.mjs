@@ -45,6 +45,7 @@ export default defineConfig({
           'instagram-fill',
           'github-fill',
           'linkedin-box-fill',
+          'bluesky-fill',
           'hourglass-2-fill',
           'pen-nib-fill',
           'scissors-2-fill',
@@ -62,4 +63,13 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    },
+  }
 })

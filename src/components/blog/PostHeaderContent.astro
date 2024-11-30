@@ -26,7 +26,7 @@ const activeTags = tags.filter(tagIsActive)
 {post.data.subtitle && <p class="subtitle">{post.data.subtitle}</p>}
 
 <style lang="scss">
-  @import '@styles/mixins.scss';
+  @use '@styles/mixins';
 
   h1 {
     --column: header-content;
@@ -56,14 +56,14 @@ const activeTags = tags.filter(tagIsActive)
     column-count: var(--fluid-bento-gap);
   }
 
-  @include color-mode(light) {
+  @include mixins.color-mode(light) {
     .back-to-blog-link {
       --color-link: var(--color-accent-two-600);
       --color-link-hover: var(--color-accent-two-775);
       --color-link-active: var(--color-accent-one-525);
     }
   }
-  @include color-mode(dark) {
+  @include mixins.color-mode(dark) {
     .back-to-blog-link {
       --color-link: var(--color-secondary-275);
       --color-link-hover: var(--color-secondary-100);
@@ -72,7 +72,7 @@ const activeTags = tags.filter(tagIsActive)
   }
 
   .back-to-blog-link {
-    @include text-link($visited: false);
+    @include mixins.text-link($visited: false);
     justify-self: start;
     display: flex;
     align-items: center;

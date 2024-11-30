@@ -20,10 +20,10 @@ const { heading } = Astro.props
 </li>
 
 <style lang="scss">
-  @import '@styles/mixins';
+  @use '@styles/mixins';
 
   a {
-    @include text-link($visited: false);
+    @include mixins.text-link($visited: false);
     text-decoration: none;
   }
 

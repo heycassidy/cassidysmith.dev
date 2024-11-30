@@ -17,7 +17,7 @@ const { class: className, ...rest } = Astro.props
 </footer>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @use '@styles/mixins';
 
   footer {
     display: flex;
@@ -33,6 +33,6 @@ const { class: className, ...rest } = Astro.props
   }
 
   a {
-    @include text-link;
+    @include mixins.text-link();
   }
 </style>

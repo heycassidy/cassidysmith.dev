@@ -18,7 +18,7 @@ const { as: Tag = 'h1', slug } = Astro.props
 </Tag>
 
 <style lang="scss">
-  @import '@styles/mixins';
+  @use '@styles/mixins';
 
   .anchor-heading {
     scroll-margin-top: var(--fluid-bento-gap);
@@ -49,7 +49,7 @@ const { as: Tag = 'h1', slug } = Astro.props
     order: -1;
   }
 
-  @include breakpoint-medium {
+  @include mixins.breakpoint-medium {
     .anchor-heading__link {
       justify-self: end;
     }
@@ -67,7 +67,7 @@ const { as: Tag = 'h1', slug } = Astro.props
     place-content: center;
 
     &:focus-visible {
-      @include focus-outline;
+      @include mixins.focus-outline;
     }
   }
 </style>
