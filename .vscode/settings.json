@@ -26,10 +26,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSaveMode": "file",
-  "cSpell.words": [
-    "astrojs",
-    "bento",
-    "bluesky",
-    "Hyperlegible"
-  ]
+  "cSpell.words": ["astrojs", "bento", "bluesky", "favicons", "Hyperlegible"]
 }

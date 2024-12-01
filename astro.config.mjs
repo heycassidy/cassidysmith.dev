@@ -9,7 +9,7 @@ import vercel from '@astrojs/vercel/static'
 
 // https://astro.build/config
 export default defineConfig({
-  output: "static",
+  output: 'static',
   site: 'https://cassidysmith.dev',
   trailingSlash: 'never',
   prefetch: {
@@ -71,5 +71,5 @@ export default defineConfig({
         },
       },
     },
-  }
+  },
 })
