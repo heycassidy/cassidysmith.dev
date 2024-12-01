@@ -82,7 +82,7 @@ export async function getStaticPaths() {
                 as="a"
                 size="small"
                 href={`/photos/${previousPhotoSlug}`}
-                data-direction="previous"
+                data-direction="back"
               >
                 <Icon name="ri:skip-left-fill" /> Previous
               </Button>
@@ -95,7 +95,7 @@ export async function getStaticPaths() {
                 as="a"
                 size="small"
                 href={`/photos/${nextPhotoSlug}`}
-                data-direction="next"
+                data-direction="forward"
               >
                 Next <Icon name="ri:skip-right-fill" />
               </Button>
