@@ -8,6 +8,7 @@ import AppLayout from '@layouts/AppLayout.astro'
 import Button from '@components/Button.astro'
 import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
+import GrainyBackground from '@components/GrainyBackground.astro'
 
 interface Props {
   photo: CollectionEntry<'photos'>
@@ -108,6 +109,8 @@ export async function getStaticPaths() {
         <h1>{photo.data.title}</h1>
         <Content class="photo-content" />
       </Prose>
+
+      <GrainyBackground />
     </div>
   </div>
 </AppLayout>
@@ -115,12 +118,6 @@ export async function getStaticPaths() {
 <style lang="scss" define:vars={{ 'aspect-ratio': aspectRatio }}>
   @use '@styles/mixins';
 
-  main.prose {
-    view-transition-name: photo-prose;
-    h1 {
-      view-transition-name: photo-title;
-    }
-  }
   .photo-page-layout {
     display: grid;
     min-height: 100dvh;
@@ -155,10 +152,15 @@ export async function getStaticPaths() {
     }
   }
   .photo-page-layout__description-and-controls {
+    position: relative;
     padding: var(--fluid-bento-padding);
     display: grid;
     gap: var(--fluid-bento-gap);
     grid-template-rows: auto 1fr;
+    background-color: var(--color-base-background);
+
+    view-transition-name: photo-slide-content;
+
     @media (min-aspect-ratio: 1) {
       align-items: center;
     }
@@ -202,6 +204,7 @@ export async function getStaticPaths() {
       display: block;
       width: 100%;
       height: auto;
+      // view-transition-name: photo-slide;
     }
   }
 
