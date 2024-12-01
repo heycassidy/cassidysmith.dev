@@ -8,6 +8,17 @@
 @import 'util.scss';
 
 @layer base {
+  @view-transition {
+    navigation: auto;
+  }
+  @media (prefers-reduced-motion) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
   }
