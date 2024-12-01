@@ -62,6 +62,11 @@
   border-radius: calc(
     var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
   );
+
+  :global([data-icon]) {
+    flex-shrink: 0;
+  }
+
   transition:
     color 0.2s,
     background-color 0.2s;
