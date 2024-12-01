@@ -16,3 +16,23 @@ import '@fontsource/atkinson-hyperlegible/700.css'
   <Theme />
   <ViewTransitions />
 </head>
+
+<script>
+  document.addEventListener('astro:before-preparation', (event) => {
+    const dir = (event.sourceElement as HTMLElement)?.dataset.direction
+    if (dir) {
+      history.replaceState({ ...history.state, direction: dir }, '')
+      event.direction = dir
+    } else {
+      const savedDir = history.state?.direction
+      if (savedDir) {
+        event.direction =
+          event.direction === 'back'
+            ? savedDir === 'back'
+              ? 'forward'
+              : 'back'
+            : savedDir
+      }
+    }
+  })
+</script>

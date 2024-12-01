@@ -1,0 +1,84 @@
+/* no root group */
+:root {
+  view-transition-name: none;
+}
+
+/* Slide photos from the sides.
+ * Use * as we do not know the names.
+ * view-transition-class would also work nice here but requires level 2 view transition API
+ */
+:root[data-astro-transition='forward'] {
+  &::view-transition-old(*) {
+    animation: 0.25s ease-in reverse both photoFromLeft;
+  }
+  &::view-transition-new(*) {
+    animation: 0.5s 0.1s ease-in-out both photoFromRight;
+  }
+}
+:root[data-astro-transition='back'] {
+  &::view-transition-old(*) {
+    animation: 0.3s ease-in reverse both photoFromRight;
+  }
+  &::view-transition-new(*) {
+    animation: 0.4s 0.1s ease-in-out both photoFromLeft;
+  }
+}
+
+/* restore browser defaults for prose. Not necessary when using class instead of star above.*/
+:root[data-astro-transition]::view-transition-old(photo-prose),
+:root[data-astro-transition]::view-transition-old(photo-title) {
+  animation:
+    0.5s ease both -ua-view-transition-fade-out,
+    -ua-mix-blend-mode-plus-lighter;
+}
+:root[data-astro-transition]::view-transition-new(photo-prose),
+:root[data-astro-transition]::view-transition-new(photo-title) {
+  animation:
+    0.5s ease -ua-view-transition-fade-in,
+    -ua-mix-blend-mode-plus-lighter;
+}
+
+/* Or as an alternative to restoring: skip cross-fade */
+:root[data-astro-transition]::view-transition-old(photo-prose),
+:root[data-astro-transition]::view-transition-old(photo-title) {
+  display: none;
+}
+:root[data-astro-transition]::view-transition-new(photo-prose),
+:root[data-astro-transition]::view-transition-new(photo-title) {
+  animation: none;
+}
+
+/* Make it a bit more interesting */
+::view-transition-group(photo-prose) {
+  animation-duration: 0.3s;
+  animation-delay: 0.2s;
+}
+
+@keyframes photoFromRight {
+  0% {
+    opacity: 0;
+    transform: scale(1) translateX(200px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+@keyframes photoFromLeft {
+  0% {
+    opacity: 0;
+    transform: scale(1) translateX(-200px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
