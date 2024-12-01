@@ -20,6 +20,7 @@ const {
 <a
   href={`/${collectionSlug || content.collection}/${content.slug}`}
   class={className}
+  data-direction="content"
   {...attributes}
 >
   {linkText || <slot />}

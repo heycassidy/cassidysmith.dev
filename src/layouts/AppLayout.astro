@@ -1,16 +1,12 @@
 ---
 import '@styles/global.css'
+import '@styles/view-transition.css'
 import SharedHead from '@components/SharedHead.astro'
 import GrainyBackground from '@components/GrainyBackground.astro'
 ---
 
 <!doctype html>
-<html
-  lang="en"
-  data-theme="light"
-  transition:name="root"
-  transition:animate="none"
->
+<html lang="en" data-theme="light">
   <SharedHead>
     <slot name="head" />
   </SharedHead>

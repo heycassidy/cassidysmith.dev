@@ -16,3 +16,10 @@ import '@fontsource/atkinson-hyperlegible/700.css'
   <Theme />
   <ViewTransitions />
 </head>
+
+<script>
+  document.addEventListener('astro:before-preparation', (event) => {
+    event.direction =
+      (event.sourceElement as HTMLElement)?.dataset.direction || 'forward'
+  })
+</script>
