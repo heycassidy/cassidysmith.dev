@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
 import Theme from '../components/Theme.astro'
 import '@fontsource-variable/syne'
 import '@fontsource/atkinson-hyperlegible/400.css'
@@ -13,4 +14,5 @@ import '@fontsource/atkinson-hyperlegible/700.css'
   <link rel="sitemap" href="/sitemap-index.xml" />
   <slot />
   <Theme />
+  <ViewTransitions />
 </head>

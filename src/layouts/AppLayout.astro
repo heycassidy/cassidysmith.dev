@@ -4,8 +4,13 @@ import SharedHead from '@components/SharedHead.astro'
 import GrainyBackground from '@components/GrainyBackground.astro'
 ---
 
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!doctype html>
+<html
+  lang="en"
+  data-theme="light"
+  transition:name="root"
+  transition:animate="none"
+>
   <SharedHead>
     <slot name="head" />
   </SharedHead>

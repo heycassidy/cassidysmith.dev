@@ -42,6 +42,21 @@ export async function getStaticPaths() {
 }
 ---
 
+<script is:inline>
+  document.addEventListener('astro:before-preparation', (event) => {
+    const button = event.sourceElement
+
+    if ('direction' in button?.dataset) {
+      if (button.dataset.direction === 'next') {
+        event.direction = 'forward'
+      }
+      if (button.dataset.direction === 'previous') {
+        event.direction = 'back'
+      }
+    }
+  })
+</script>
+
 <AppLayout>
   <SEOTags
     slot="head"
@@ -60,6 +75,8 @@ export async function getStaticPaths() {
           width="700"
           quality={70}
           widths={[400, 800, orientation === 'landscape' ? 920 * 2 : 800 * 2]}
+          transition:name={`photo-${photo.id}`}
+          transition:animate="slide"
         />
       </div>
     </div>
@@ -81,6 +98,7 @@ export async function getStaticPaths() {
                 as="a"
                 size="small"
                 href={`/photos/${previousPhotoSlug}`}
+                data-direction="previous"
               >
                 <Icon name="ri:skip-left-fill" /> Previous
               </Button>
@@ -93,6 +111,7 @@ export async function getStaticPaths() {
                 as="a"
                 size="small"
                 href={`/photos/${nextPhotoSlug}`}
+                data-direction="next"
               >
                 Next <Icon name="ri:skip-right-fill" />
               </Button>

@@ -16,7 +16,7 @@ const tags = await getEntries(post.data.tags)
 const activeTags = tags.filter(tagIsActive)
 ---
 
-<article class="post-preview">
+<article class="post-preview" transition:name="blog-post">
   <Prose>
     <ContentLink collectionSlug="posts" content={post}>
       <h2>{post.data.title}</h2>
