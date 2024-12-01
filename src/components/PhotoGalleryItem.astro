@@ -24,6 +24,7 @@ const { photo } = Astro.props
       height="450"
       densities={[1.5, 2]}
       loading="lazy"
+      transition:name={`photo-${photo.id}`}
     />
     <span class="screen-reader-only">Open image: {photo.data.title}</span>
   </ContentLink>

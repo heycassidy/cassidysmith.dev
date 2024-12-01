@@ -8,6 +8,7 @@ import AppLayout from '@layouts/AppLayout.astro'
 import Button from '@components/Button.astro'
 import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
+import GrainyBackground from '@components/GrainyBackground.astro'
 
 interface Props {
   photo: CollectionEntry<'photos'>
@@ -60,6 +61,7 @@ export async function getStaticPaths() {
           width="700"
           quality={70}
           widths={[400, 800, orientation === 'landscape' ? 920 * 2 : 800 * 2]}
+          transition:name={`photo-${photo.id}`}
         />
       </div>
     </div>
@@ -81,6 +83,7 @@ export async function getStaticPaths() {
                 as="a"
                 size="small"
                 href={`/photos/${previousPhotoSlug}`}
+                data-direction="previous-photo"
               >
                 <Icon name="ri:skip-left-fill" /> Previous
               </Button>
@@ -93,6 +96,7 @@ export async function getStaticPaths() {
                 as="a"
                 size="small"
                 href={`/photos/${nextPhotoSlug}`}
+                data-direction="next-photo"
               >
                 Next <Icon name="ri:skip-right-fill" />
               </Button>
@@ -105,6 +109,8 @@ export async function getStaticPaths() {
         <h1>{photo.data.title}</h1>
         <Content class="photo-content" />
       </Prose>
+
+      <GrainyBackground />
     </div>
   </div>
 </AppLayout>
@@ -146,10 +152,15 @@ export async function getStaticPaths() {
     }
   }
   .photo-page-layout__description-and-controls {
+    position: relative;
     padding: var(--fluid-bento-padding);
     display: grid;
     gap: var(--fluid-bento-gap);
     grid-template-rows: auto 1fr;
+    background-color: var(--color-base-background);
+
+    view-transition-name: photo-slide-content;
+
     @media (min-aspect-ratio: 1) {
       align-items: center;
     }
@@ -193,6 +204,7 @@ export async function getStaticPaths() {
       display: block;
       width: 100%;
       height: auto;
+      // view-transition-name: photo-slide;
     }
   }
 

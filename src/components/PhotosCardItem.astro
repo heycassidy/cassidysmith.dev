@@ -16,6 +16,7 @@ const { photo } = Astro.props
   height="80"
   densities={[1.5, 2]}
   loading="lazy"
+  transition:name={`photo-${photo.id}`}
 />
 
 <style lang="scss">
