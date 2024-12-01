@@ -19,7 +19,7 @@ const activeTags = tags.filter(tagIsActive)
 <article class="post-preview" transition:name="blog-post">
   <Prose>
     <ContentLink collectionSlug="posts" content={post}>
-      <h2>{post.data.title}</h2>
+      <h2 transition:name="blog-post-title">{post.data.title}</h2>
     </ContentLink>
     <p class="preview-text">{post.data.previewText}</p>
     <div class="bottom-row">

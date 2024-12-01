@@ -22,7 +22,7 @@ const activeTags = tags.filter(tagIsActive)
   <TagsList tags={activeTags} class="tags-list" />
 </div>
 
-<h1>{post.data.title}</h1>
+<h1 transition:name="blog-post-title">{post.data.title}</h1>
 {post.data.subtitle && <p class="subtitle">{post.data.subtitle}</p>}
 
 <style lang="scss">

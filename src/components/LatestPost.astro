@@ -15,7 +15,7 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     Read the Latest <Icon name="ri:arrow-right-fill" />
   </ContentLink>
   <Prose>
-    <h2>{latestPost.data.title}</h2>
+    <h2 transition:name="blog-post-title">{latestPost.data.title}</h2>
     <p class="preview-text">{latestPost.data.previewText}</p>
     <DateTimeDisplay
       dateTime={latestPost.data.publishedAt}
