@@ -14,6 +14,7 @@ export default defineConfig({
   trailingSlash: 'never',
   prefetch: {
     prefetchAll: true,
+    defaultStrategy: 'load',
   },
   redirects: {
     '/posts/modify-astro-slot-contents': '/posts/modify-astro-slot-children',
