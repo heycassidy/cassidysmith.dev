@@ -67,7 +67,7 @@ export async function getStaticPaths() {
     <div class="photo-page-layout__description-and-controls">
       <div class="photo-controls">
         <Button
-          class="photo-controls-button"
+          class="photo-controls-button photo-controls-button--all"
           as="a"
           size="small"
           href="/photos"
@@ -78,7 +78,7 @@ export async function getStaticPaths() {
           {
             previousPhotoSlug && (
               <Button
-                class="photo-controls-button"
+                class="photo-controls-button photo-controls-button--previous"
                 as="a"
                 size="small"
                 href={`/photos/${previousPhotoSlug}`}
@@ -91,7 +91,7 @@ export async function getStaticPaths() {
           {
             nextPhotoSlug && (
               <Button
-                class="photo-controls-button"
+                class="photo-controls-button photo-controls-button--next"
                 as="a"
                 size="small"
                 href={`/photos/${nextPhotoSlug}`}
@@ -168,11 +168,15 @@ export async function getStaticPaths() {
     width: 100%;
     display: flex;
     gap: var(--space-2);
+    flex-wrap: wrap;
+
+    .photo-controls-button--all {
+      margin-right: auto;
+    }
   }
   .photo-controls-nav {
     display: flex;
     gap: var(--space-2);
-    margin-left: auto;
   }
 
   .image-container {
