@@ -1,9 +1,3 @@
----
-import ThemeSwitcher from './ThemeSwitcher.svelte'
----
-
-<ThemeSwitcher client:only="svelte" />
-
 <!-- is:inline is necessary because this script needs to set the data attribute before any CSS is loaded to prevent FOUC -->
 <script is:inline>
   const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')

@@ -2,6 +2,7 @@
 import '@styles/global.css'
 import SharedHead from '@components/SharedHead.astro'
 import GrainyBackground from '@components/GrainyBackground.astro'
+import ThemeSwitcher from '@components/ThemeSwitcher.svelte'
 ---
 
 <!DOCTYPE html>
@@ -10,6 +11,7 @@ import GrainyBackground from '@components/GrainyBackground.astro'
     <slot name="head" />
   </SharedHead>
   <body>
+    <ThemeSwitcher client:only="svelte" />
     <slot />
     <GrainyBackground />
   </body>
