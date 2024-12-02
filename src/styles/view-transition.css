@@ -9,12 +9,12 @@
  */
 :root[data-astro-transition='next-photo'] {
   &::view-transition-old(*) {
-    animation-name: slideToRight, fadeOut;
+    animation-name: slideToLeft, fadeOut;
     animation-timing-function: ease-in-out;
     animation-duration: 0.1s;
   }
   &::view-transition-new(*) {
-    animation-name: slideFromLeft, fadeIn;
+    animation-name: slideFromRight, fadeIn;
     animation-timing-function: ease-in-out;
     animation-duration: 0.25s;
   }
@@ -29,12 +29,12 @@
 }
 :root[data-astro-transition='previous-photo'] {
   &::view-transition-old(*) {
-    animation-name: slideToLeft, fadeOut;
+    animation-name: slideToRight, fadeOut;
     animation-timing-function: ease-in-out;
     animation-duration: 0.1s;
   }
   &::view-transition-new(*) {
-    animation-name: slideFromRight, fadeIn;
+    animation-name: slideFromLeft, fadeIn;
     animation-timing-function: ease-in-out;
     animation-duration: 0.25s;
   }
