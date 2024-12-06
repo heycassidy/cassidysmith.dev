@@ -5,7 +5,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/remark/remark-reading-time.mjs'
 import astroExpressiveCode from 'astro-expressive-code'
-import vercel from '@astrojs/vercel/static'
+import vercel from '@astrojs/vercel'
 
 // https://astro.build/config
 export default defineConfig({
@@ -64,13 +64,4 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        },
-      },
-    },
-  },
 })

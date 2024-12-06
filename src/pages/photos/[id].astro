@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content'
+import { render, getCollection, type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
 import { entryIsPublished, sortByPosition } from '@utils/index'
@@ -16,28 +16,28 @@ interface Props {
 
 // For this page
 const { photo } = Astro.props
-const { Content } = await photo.render()
+const { Content } = await render(photo)
 const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
 const orientation = aspectRatio > 1 ? 'landscape' : 'portrait'
 
 // For the previous/next/all buttons
 const photos = await getCollection('photos', entryIsPublished)
-const sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.slug)
+const sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.id)
 const previousPhotoSlug =
   sortedPhotoSlugs[
-    (sortedPhotoSlugs.indexOf(photo.slug) - 1 + sortedPhotoSlugs.length) %
+    (sortedPhotoSlugs.indexOf(photo.id) - 1 + sortedPhotoSlugs.length) %
       sortedPhotoSlugs.length
   ]
 const nextPhotoSlug =
   sortedPhotoSlugs[
-    (sortedPhotoSlugs.indexOf(photo.slug) + 1) % sortedPhotoSlugs.length
+    (sortedPhotoSlugs.indexOf(photo.id) + 1) % sortedPhotoSlugs.length
   ]
 
 export async function getStaticPaths() {
   const photos = await getCollection('photos', entryIsPublished)
 
   return photos.map((photo) => ({
-    params: { slug: photo.slug },
+    params: { id: photo.id },
     props: { photo },
   }))
 }

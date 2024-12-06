@@ -1,6 +1,5 @@
 ---
   title: Scary Bush
-  slug: scary-bush
   published: true
   position: 5
   image: {

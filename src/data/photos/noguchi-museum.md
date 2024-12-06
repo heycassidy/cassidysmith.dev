@@ -1,6 +1,5 @@
 ---
   title: Noguchi Museum
-  slug: noguchi-museum
   published: true
   position: 7
   image: {

@@ -1,6 +1,5 @@
 ---
   title: Zollhaus Rooftop
-  slug: zollhaus-rooftop
   published: true
   position: 8
   image: {

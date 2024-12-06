@@ -10,7 +10,7 @@ export const entryIsPublished = (
 export const entryHasTag =
   (tag: CollectionEntry<'tags'>) =>
   (entry: CollectionEntry<'blog'>): boolean =>
-    entry.data.tags.some((entryTag) => entryTag.slug === tag.slug)
+    entry.data.tags.some((entryTag) => entryTag.id === tag.id)
 
 export const tagIsActive = (tag: CollectionEntry<'tags'>): boolean =>
   import.meta.env.DEV || tag.data.active
