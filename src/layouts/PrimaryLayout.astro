@@ -11,9 +11,7 @@ import Banner from '../components/Banner.astro'
   <Footer class="primary-layout__footer" />
 </div>
 
-<style lang="scss">
-  @use '@styles/mixins';
-
+<style>
   @layer layout {
     .primary-layout {
       margin: 0 auto;
@@ -38,7 +36,7 @@ import Banner from '../components/Banner.astro'
       grid-template-columns: subgrid;
       gap: var(--fluid-bento-gap);
 
-      :global(> *) {
+      &:global(> *) {
         grid-column: var(--column, centered);
       }
     }
