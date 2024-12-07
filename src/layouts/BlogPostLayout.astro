@@ -1,6 +1,7 @@
 ---
 import PostHeader from '../components/blog/PostHeader.astro'
 import Prose from '@components/Prose.astro'
+import '@styles/blog-post-content.css'
 ---
 
 <article>
@@ -14,10 +15,6 @@ import Prose from '@components/Prose.astro'
     <slot />
   </Prose>
 </article>
-
-<style lang="scss" is:global>
-  @use '@styles/blog-post-content';
-</style>
 
 <style lang="scss">
   @use '@styles/mixins';
