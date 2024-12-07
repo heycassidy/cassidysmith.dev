@@ -1,6 +1,5 @@
 ---
 title: Dangerous Plant
-slug: dangerous-plant
 published: true
 position: 2
 image:

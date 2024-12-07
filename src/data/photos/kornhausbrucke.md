@@ -1,6 +1,5 @@
 ---
   title: Kornhausbrücke Portal
-  slug: kornhausbrucke
   published: true
   position: 3
   image: {

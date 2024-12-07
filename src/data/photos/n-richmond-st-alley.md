@@ -1,6 +1,5 @@
 ---
   title: N. Richmond St. Alley
-  slug: n-richmond-st-alley
   published: true
   position: 100
   image: {

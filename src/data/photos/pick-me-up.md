@@ -1,6 +1,5 @@
 ---
 title: Pick Me Up
-slug: pick-me-up
 published: true
 position: 4
 image:

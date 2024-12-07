@@ -1,6 +1,5 @@
 ---
 title: Big Number Five
-slug: big-number-five
 published: true
 position: 6
 image:

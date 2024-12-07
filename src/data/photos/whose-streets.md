@@ -1,6 +1,5 @@
 ---
   title: Whose Streets?
-  slug: whose-streets
   published: true
   position: 1
   image: {

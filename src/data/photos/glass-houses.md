@@ -1,6 +1,5 @@
 ---
 title: Glass Houses
-slug: glass-houses
 published: true
 position: 100
 image:

@@ -1,6 +1,5 @@
 ---
   title: White Elephant
-  slug: white-elephant
   published: true
   position: 100
   image: {

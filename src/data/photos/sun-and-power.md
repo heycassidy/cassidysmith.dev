@@ -1,6 +1,5 @@
 ---
   title: Sun and Power
-  slug: sun-and-power
   published: true
   position: 0
   image: {
