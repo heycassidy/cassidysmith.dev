@@ -1,5 +1,3 @@
-@use './mixins.scss';
-
 @layer base {
   .screen-reader-only {
     border: 0 !important;
