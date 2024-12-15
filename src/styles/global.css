@@ -3,9 +3,9 @@
 @import 'reset.css';
 @import 'tokens.css';
 @import 'themes.css';
-@import 'typography.scss';
-@import 'prose.scss';
-@import 'util.scss';
+@import 'typography.css';
+@import 'prose.css';
+@import 'util.css';
 
 @layer base {
   html {
