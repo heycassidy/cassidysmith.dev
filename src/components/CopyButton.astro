@@ -1,5 +1,4 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
 import Button from '@components/Button.astro'
 import { Icon } from 'astro-icon/components'
 
@@ -103,6 +102,5 @@ const {
     }
   }
 
-  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
   customElements.define('copy-button', CopyButton)
 </script>
