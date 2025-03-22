@@ -36,10 +36,9 @@ const external = isExternalURL(href, Astro.url.host)
     }),
     focusRing(),
     css({
-      display: 'inline-flex',
-      alignItems: 'center',
-
       '& [data-icon]': {
+        display: 'inline',
+        verticalAlign: '-0.1em',
         width: '0.8em',
         height: '0.8em',
       },
