@@ -19,14 +19,8 @@
   async function click() {
     clearCactus()
     generateCactus(canvasElement, { color: '#687d27' })
-    // imagePlaceholderWrapper.setAttribute('hidden', '')
+    imagePlaceholderWrapper.setAttribute('hidden', '')
   }
-
-  onMount(() => {
-    clearCactus()
-    generateCactus(canvasElement, { color: '#687d27' })
-    // imagePlaceholderWrapper.setAttribute('hidden', '')
-  })
 </script>
 
 <canvas
@@ -42,10 +36,9 @@
   aria-label="Randomly generated illustration of a prickly pear cactus"
 ></canvas>
 
-<!-- Try generate on load for now -->
-<!-- <div class="image-placeholder-wrapper" bind:this={imagePlaceholderWrapper}>
+<div bind:this={imagePlaceholderWrapper}>
   {@render placeholderCactus()}
-</div> -->
+</div>
 
 <div
   class={css({
