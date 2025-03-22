@@ -1,4 +1,7 @@
 ---
+import { css } from '@styled-system/css'
+import focusRing from '@recipes/focusRing'
+
 interface Props {
   question: string
   answer: string
@@ -7,47 +10,48 @@ interface Props {
 const { question, answer } = Astro.props
 ---
 
-<details>
-  <summary>{question}</summary>
-  <div class="answer">
+<details
+  class={css({
+    _light: {
+      borderBottom: '1px solid {colors.neutral.275}',
+      '&:first-of-type': {
+        borderTop: '1px solid {colors.neutral.275}',
+      },
+    },
+    _dark: {
+      borderBottom: '1px solid {colors.neutral.525}',
+      '&:first-of-type': {
+        borderTop: '1px solid {colors.neutral.525}',
+      },
+    },
+  })}
+>
+  <summary
+    class:list={[
+      css({
+        paddingBlock: 1,
+        paddingInline: 2,
+        _light: {
+          _hover: {
+            backgroundColor: 'neutral.75',
+          },
+        },
+        _dark: {
+          _hover: {
+            backgroundColor: 'neutral.875',
+          },
+        },
+      }),
+      focusRing(),
+    ]}>{question}</summary
+  >
+  <div
+    class={css({
+      paddingBlockStart: 1,
+      paddingBlockEnd: 2,
+      paddingInline: 2,
+    })}
+  >
     {answer}
   </div>
 </details>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  details {
-    --border-color: var(--color-primary-425);
-    --hover-background: color-mix(
-      in lch,
-      var(--color-stark-foreground),
-      transparent 92%
-    );
-  }
-
-  summary {
-    cursor: pointer;
-    padding-block: var(--space-1);
-    padding-inline: var(--space-2);
-    &:hover,
-    &:focus-visible {
-      background-color: var(--hover-background);
-      outline: none;
-    }
-    &:focus-visible {
-      @include mixins.focus-outline;
-    }
-  }
-  details {
-    border-bottom: 1px solid var(--border-color);
-    &:first-of-type {
-      border-top: 1px solid var(--border-color);
-    }
-  }
-  .answer {
-    padding-inline: var(--space-2);
-    padding-block-start: var(--space-1);
-    padding-block-end: var(--space-2);
-  }
-</style>

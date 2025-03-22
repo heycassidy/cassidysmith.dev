@@ -1,21 +1,25 @@
 ---
+import { css } from '@styled-system/css'
+import textLink from '@recipes/textLink'
+import focusRing from '@recipes/focusRing'
 const { id, refLabel } = Astro.props
 ---
 
-<sup id={`note-ref-${id}`}>
-  <a href={`#note-${id}`}>{refLabel}</a>
+<sup
+  id={`note-ref-${id}`}
+  class={css({
+    display: 'inline-flex',
+  })}
+>
+  <a
+    href={`#note-${id}`}
+    class:list={[
+      css({
+        lineHeight: 1,
+        fontSize: 'sm',
+      }),
+      textLink({ visited: false }),
+      focusRing(),
+    ]}>{refLabel}</a
+  >
 </sup>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  sup {
-    display: inline-flex;
-  }
-
-  a {
-    @include mixins.text-link($visited: false);
-    line-height: 1;
-    font-size: var(--font-size--1);
-  }
-</style>

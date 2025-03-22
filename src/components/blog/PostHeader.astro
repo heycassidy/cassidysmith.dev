@@ -1,32 +1,106 @@
 ---
-const { class: className, ...rest } = Astro.props
+import { css } from '@styled-system/css'
+import focusRing from '@recipes/focusRing'
+import { getEntries, type CollectionEntry } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import TagsList from '@components/blog/TagsList.astro'
+import { tagIsActive } from '@utils/index'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+
+const tags = await getEntries(post.data.tags)
+const activeTags = tags.filter(tagIsActive)
 ---
 
-<header class={className} {...rest} transition:name="blog-post">
-  <slot />
-</header>
+<div
+  class:list={[
+    css({
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      alignItems: 'baseline',
+      columnGap: 'bento.gap',
 
-<style lang="scss">
-  @use '@styles/mixins';
+      '&&': {
+        gridColumn: 'header-content',
+      },
+    }),
+  ]}
+>
+  <a
+    href="/posts"
+    class:list={[
+      css({
+        justifySelf: 'start',
+        textDecoration: 'none',
 
-  @include mixins.color-mode(light) {
-    header {
-      --color: var(--color-accent-two-775);
-      --background-color: var(--color-accent-two-175);
-    }
-  }
-  @include mixins.color-mode(dark) {
-    header {
-      --color: var(--color-secondary-275);
-      --background-color: var(--color-secondary-850);
-    }
-  }
+        lineHeight: 'tight',
+        fontWeight: '680',
+        letterSpacing: 'wider',
+        textTransform: 'uppercase',
+        fontSize: 'xs',
+        fontFamily: 'syne',
+        display: 'flex',
+        alignItems: 'center',
+        columnGap: '1.5',
 
-  header {
-    padding-top: calc(var(--fluid-bento-padding) * 2);
-    padding-bottom: calc(var(--fluid-bento-padding) * 3);
-    border-radius: var(--fluid-bento-radius);
-    background-color: var(--background-color);
-    color: var(--color);
-  }
-</style>
+        '&&': {
+          gridColumn: 'header-content',
+        },
+
+        color: 'currentColor',
+        _hover: {
+          color: 'color-mix(in oklch, currentColor, white 30%)',
+        },
+        _active: {
+          color: 'active.accent',
+        },
+      }),
+      focusRing(),
+    ]}
+  >
+    <Icon name="ri:arrow-left-fill" /> Latest posts
+  </a>
+
+  <TagsList tags={activeTags} />
+</div>
+
+<h1
+  class:list={[
+    css({
+      color: 'currentColor',
+      textWrap: 'balance',
+      textStyle: 'h1',
+      marginBlockEnd: 0,
+      '&&': {
+        gridColumn: 'header-content',
+      },
+    }),
+  ]}
+>
+  {post.data.title}
+</h1>
+{
+  post.data.subtitle && (
+    <p
+      class:list={[
+        css({
+          fontSize: 'xl',
+          lineHeight: 'tight',
+          fontFamily: 'syne',
+          textWrap: 'balance',
+          opacity: 0.9,
+          '&&': {
+            gridColumn: 'header-content',
+          },
+        }),
+      ]}
+    >
+      {post.data.subtitle}
+    </p>
+  )
+}

@@ -1,0 +1,65 @@
+---
+import { css } from '@styled-system/css'
+import blogPostLayout from '@recipes/blogPostLayout'
+import focusRing from '@recipes/focusRing'
+import type { HTMLTag, Polymorphic } from 'astro/types'
+import { Icon } from 'astro-icon/components'
+
+const layoutClasses = blogPostLayout()
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag; slug: string }>
+
+const { as: Tag = 'h1', slug } = Astro.props
+---
+
+<Tag
+  id={slug}
+  class:list={[
+    layoutClasses.anchorHeading,
+    css({
+      scrollMarginBlockStart: 'bento.gap',
+      display: 'grid',
+      gridTemplateColumns: 'subgrid',
+      alignItems: 'start',
+
+      '&:hover, &:focus-within': {
+        '& a': {
+          opacity: 0.6,
+          '&:hover, &:focus-visible': {
+            opacity: 1,
+          },
+        },
+      },
+    }),
+  ]}
+>
+  <span>
+    <slot />
+  </span>
+  <a
+    href=`#${slug}`
+    class:list={[
+      css({
+        justifySelf: 'start',
+        order: -1,
+        opacity: 0,
+        color: 'active.accent',
+        textDecoration: 'none',
+        transition: 'opacity 0.2s',
+        width: '6',
+        height: '6',
+        display: 'grid',
+        placeContent: 'center',
+        marginBlockStart: 1,
+
+        md: {
+          justifySelf: 'end',
+        },
+      }),
+      focusRing(),
+    ]}
+  >
+    <Icon name="ri:link" size="100%" />
+    <span class={css({ srOnly: true })}>Link to this heading</span>
+  </a>
+</Tag>

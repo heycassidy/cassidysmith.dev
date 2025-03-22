@@ -1,30 +1,46 @@
-<div class="grainy-background"></div>
+---
+// https://noice.vercel.app/
+import { css } from '@styled-system/css'
+---
 
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @include mixins.color-mode(light) {
-    .grainy-background {
-      --opacity: 0.6;
-    }
-  }
-  @include mixins.color-mode(dark) {
-    .grainy-background {
-      --opacity: 0.3;
-    }
-  }
-
-  .grainy-background {
-    background: url('../assets/noise.png');
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-size: 100px;
-    pointer-events: none;
-    z-index: -1;
-    mix-blend-mode: soft-light;
-    opacity: var(--opacity);
-  }
-</style>
+<div
+  class={css({
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    pointerEvents: 'none',
+    _light: {
+      mixBlendMode: 'color-burn',
+      opacity: '0.3',
+    },
+    _dark: {
+      mixBlendMode: 'color-dodge',
+      opacity: '0.5',
+    },
+  })}
+>
+  <svg id="noice" class={css({ width: 'full', height: 'full' })}>
+    <filter id="noise-filter">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="1"
+        numOctaves="4"
+        stitchTiles="stitch"></feTurbulence>
+      <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="0.5"></feFuncR>
+        <feFuncG type="linear" slope="0.5"></feFuncG>
+        <feFuncB type="linear" slope="0.5"></feFuncB>
+        <feFuncA type="linear" slope="1"></feFuncA>
+      </feComponentTransfer>
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.5" intercept="-0.25"></feFuncR>
+        <feFuncG type="linear" slope="1.5" intercept="-0.25"></feFuncG>
+        <feFuncB type="linear" slope="1.5" intercept="-0.25"></feFuncB>
+      </feComponentTransfer>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noise-filter)"></rect>
+  </svg>
+</div>

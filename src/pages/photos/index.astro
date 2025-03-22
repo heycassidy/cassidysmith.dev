@@ -1,9 +1,9 @@
 ---
+import { css } from '@styled-system/css'
 import { getCollection } from 'astro:content'
 import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import PhotoGallery from '@components/PhotoGallery.astro'
-import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
 import { entryIsPublished, sortByPosition } from '@utils/index'
 const photos = await getCollection('photos', entryIsPublished)
@@ -18,23 +18,29 @@ let sortedPhotos = photos.sort(sortByPosition)
     description="A curated collection of photos by Cassidy Smith"
   />
   <PrimaryLayout>
-    <Prose as="main" transition:name="page-main-header">
-      <h1>Photography</h1>
+    <main
+      class={css({
+        padding: 'bento.padding',
+        maxWidth: '3xl',
+      })}
+    >
+      <h1
+        class={css({
+          textStyle: 'h1',
+          marginBlockStart: 'lineHeightCrop.syne',
+        })}
+      >
+        Photography
+      </h1>
       <p>
         Sometimes you gotta step away from the keyboard, go outside, and look at
         something further away than your nearest screen. My photography practice
         is spontaneous, amateur, and casual. I shoot whatever happens to catch
-        my attention and I intentionally avoid planning photos. My photos are an
-        expression of my experience navigating my environment as a pedestrian.
+        my attention and I intentionally avoid planning photos. These photos are
+        an expression of my experience navigating an environment built for cars
+        as a pedestrian.
       </p>
-    </Prose>
+    </main>
     <PhotoGallery photos={sortedPhotos} />
   </PrimaryLayout>
 </AppLayout>
-
-<style>
-  main {
-    padding: var(--fluid-bento-padding);
-    max-width: var(--space-content-4);
-  }
-</style>

@@ -1,38 +1,68 @@
 ---
+import { css } from '@styled-system/css'
+
+import TextLink from '@components/TextLink.astro'
+
 const { class: className, ...rest } = Astro.props
 ---
 
-<footer class={className} {...rest}>
-  <span>
-    This site is hand-made by yours truly, powered by <a
-      href="https://astro.build/">Astro</a
-    >. The fonts I’ve chosen are <a href="https://brailleinstitute.org/freefont"
-      >Atkinson Hyperlegible</a
-    > and <a href="https://gitlab.com/bonjour-monde/fonderie/syne-typeface"
-      >Syne</a
-    >. View the source code on <a
-      href="https://github.com/heycassidy/cassidysmith.dev">GitHub</a
+<footer
+  class:list={[
+    className,
+    css({
+      display: 'grid',
+      justifyItems: 'center',
+      paddingBlock: 2,
+      fontSize: 'sm',
+      position: 'relative',
+
+      _before: {
+        content: "' '",
+        position: 'absolute',
+        insetBlockStart: '-2px',
+        inlineSize: 'full',
+        blockSize: '1px',
+      },
+
+      _light: {
+        color: 'neutral.525',
+        _before: {
+          backgroundImage:
+            'linear-gradient(90deg, transparent, {colors.neutral.150}, transparent)',
+        },
+      },
+      _dark: {
+        color: 'neutral.525',
+        _before: {
+          backgroundImage:
+            'linear-gradient(90deg, transparent, {colors.neutral.850}, transparent)',
+        },
+      },
+
+      gridColumn: 'full-width',
+      gridTemplateColumns: 'subgrid',
+    }),
+  ]}
+>
+  <p
+    class={css({
+      gridColumn: 'centered',
+    })}
+  >
+    This site is hand-made by yours truly, powered by <TextLink
+      useColorStyles
+      href="https://astro.build/">Astro</TextLink
+    >. The fonts I’ve chosen are <TextLink
+      useColorStyles
+      href="https://brailleinstitute.org/freefont"
+      >Atkinson Hyperlegible</TextLink
+    > and <TextLink
+      useColorStyles
+      href="https://gitlab.com/bonjour-monde/fonderie/syne-typeface"
+      >Syne</TextLink
+    >. View the source code on <TextLink
+      useColorStyles
+      href="https://github.com/heycassidy/cassidysmith.dev">GitHub</TextLink
     >.
-  </span>
+  </p>
 </footer>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  footer {
-    display: flex;
-    justify-content: center;
-    align-self: end;
-    column-gap: var(--space-2);
-    row-gap: var(--space-1);
-
-    padding: var(--fluid-bento-padding) var(--fluid-bento-gap);
-    color: var(--color-base-text-faded);
-    font-size: var(--font-size-0);
-    line-height: var(--line-height-compressed);
-  }
-
-  a {
-    @include mixins.text-link();
-  }
-</style>

@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "astro dev",
     "dev:host": "astro dev --host",
     "start": "astro dev",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@iconify-json/ri": "^1.2.3",
+    "@pandacss/dev": "^0.53.0",
     "@typescript-eslint/parser": "^8.11.0",
     "astro-icon": "^1.1.4",
     "autoprefixer": "^10.4.19",

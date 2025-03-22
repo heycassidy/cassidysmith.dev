@@ -1,10 +1,5 @@
 ---
 import { ClientRouter } from 'astro:transitions'
-import Theme from '../components/Theme.astro'
-import '@fontsource-variable/syne'
-import '@fontsource/atkinson-hyperlegible/400.css'
-import '@fontsource/atkinson-hyperlegible/400-italic.css'
-import '@fontsource/atkinson-hyperlegible/700.css'
 ---
 
 <head>
@@ -13,7 +8,42 @@ import '@fontsource/atkinson-hyperlegible/700.css'
   <meta name="generator" content={Astro.generator} />
   <link rel="sitemap" href="/sitemap-index.xml" />
   <slot />
-  <Theme />
+
+  <!-- is:inline is necessary because this script needs to set the data attribute before any CSS is loaded to prevent FOUC -->
+  <script is:inline>
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    setColorMode()
+
+    darkModeMediaQuery.addEventListener('change', setColorMode)
+
+    // Needed for Astro View Transitions
+    document.addEventListener('astro:after-swap', setColorMode)
+
+    function setColorMode() {
+      const theme = getPreference()
+
+      if (theme) {
+        document.documentElement.setAttribute('data-color-mode', theme)
+        document
+          .querySelector('#theme-toggle')
+          ?.setAttribute('aria-label', theme)
+      }
+    }
+
+    function getPreference() {
+      // First check if user manually set the theme on this site
+      if (
+        typeof localStorage !== 'undefined' &&
+        localStorage.getItem('theme')
+      ) {
+        return localStorage.getItem('theme')
+      }
+
+      // Next, check if user has a system-wide preference
+      return darkModeMediaQuery.matches ? 'dark' : 'light'
+    }
+  </script>
   <ClientRouter />
 </head>
 

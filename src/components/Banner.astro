@@ -1,23 +1,38 @@
 ---
-import BannerLogo from './BannerLogo.astro'
+import { css } from '@styled-system/css'
+import BannerLogo from '@components/BannerLogo.astro'
+import ThemeSwitcher from '@components/ThemeSwitcher.svelte'
 
 const { class: className, ...rest } = Astro.props
 ---
 
-<header role="banner" id="theme-switcher-portal" class={className} {...rest}>
+<header
+  role="banner"
+  class:list={[
+    className,
+    css({
+      marginBlockStart: 'bento.gap',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingInlineStart: 'bento.padding',
+      paddingInlineEnd: 'calc({spacing.bento.padding} / 2)',
+      paddingBlock: 'calc({spacing.bento.padding} / 2)',
+
+      borderRadius: 'bento',
+
+      _light: {
+        backgroundColor: 'neutral.75',
+      },
+      _dark: {
+        backgroundColor: 'neutral.875',
+      },
+    }),
+  ]}
+  {...rest}
+>
   <nav>
     <BannerLogo />
   </nav>
+  <ThemeSwitcher client:only="svelte" />
 </header>
-
-<style>
-  header[role='banner'] {
-    margin-top: var(--fluid-bento-gap);
-    display: flex;
-  }
-
-  :global(.theme-toggle) {
-    margin-left: auto;
-    align-self: center;
-  }
-</style>

@@ -1,0 +1,48 @@
+---
+import { css } from '@styled-system/css'
+import textLink from '@recipes/textLink'
+import focusRing from '@recipes/focusRing'
+import { type TocItem } from '@utils/generateToC'
+
+const { heading } = Astro.props
+---
+
+<li
+  class={css({
+    // listStyle: 'none',
+    lineHeight: 'tight',
+    '& + li, & > ol': {
+      marginBlockStart: '2',
+    },
+  })}
+>
+  <a
+    href={'#' + heading.slug}
+    class:list={[
+      css({
+        colorPalette: 'purple',
+      }),
+      textLink({
+        visited: false,
+        decoration: false,
+      }),
+      focusRing(),
+    ]}
+  >
+    {heading.text}
+  </a>
+  {
+    heading.children.length > 0 && (
+      <ol
+        role="list"
+        class={css({
+          paddingInlineStart: '3',
+        })}
+      >
+        {heading.children.map((heading: TocItem) => (
+          <Astro.self heading={heading} />
+        ))}
+      </ol>
+    )
+  }
+</li>

@@ -1,6 +1,7 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { css } from '@styled-system/css'
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
+import PostMetaItem from '@components/blog/PostMetaItem.astro'
 
 import { isSameDay } from '@utils/index'
 const { post, readingTime } = Astro.props
@@ -8,66 +9,43 @@ const { post, readingTime } = Astro.props
 const isModified = !isSameDay(post.data.modifiedAt, post.data.publishedAt)
 ---
 
-<div class="blog-post-meta">
+<div
+  class={css({
+    display: 'flex',
+    flexWrap: 'wrap',
+    rowGap: '2',
+    columnGap: '3',
+    marginBottom: '6',
+
+    '&&': {
+      gridColumn: 'post-meta',
+    },
+
+    _light: {
+      color: 'pink.650',
+    },
+    _dark: {
+      color: 'neutral.400',
+    },
+  })}
+>
   {
     readingTime && (
-      <span class="post-meta-item">
-        <>
-          <Icon name="ri:hourglass-2-fill" />
-          <span>{readingTime}</span>
-        </>
-      </span>
+      <PostMetaItem iconName="ri:hourglass-2-fill">
+        <span>{readingTime}</span>
+      </PostMetaItem>
     )
   }
 
-  <DateTimeDisplay
-    dateTime={post.data.publishedAt}
-    label="Published"
-    iconName="ri:pencil-fill"
-    class="post-meta-item"
-  />
+  <PostMetaItem iconName="ri:pencil-fill">
+    <DateTimeDisplay dateTime={post.data.publishedAt} label="Published" />
+  </PostMetaItem>
 
   {
     isModified && (
-      <DateTimeDisplay
-        dateTime={post.data.modifiedAt}
-        label="Updated"
-        iconName="ri:eraser-fill"
-        class="post-meta-item"
-      />
+      <PostMetaItem iconName="ri:eraser-fill">
+        <DateTimeDisplay dateTime={post.data.modifiedAt} label="Updated" />
+      </PostMetaItem>
     )
   }
 </div>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @include mixins.color-mode(light) {
-    .blog-post-meta {
-      --color: var(--color-primary-700);
-    }
-  }
-  @include mixins.color-mode(dark) {
-    .blog-post-meta {
-      --color: var(--color-primary-425);
-    }
-  }
-
-  .blog-post-meta {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: var(--space-2);
-    column-gap: var(--space-3);
-    margin-bottom: var(--space-6);
-    color: var(--color);
-  }
-
-  .post-meta-item {
-    display: flex;
-    column-gap: var(--space-2);
-    align-items: center;
-    margin: 0;
-    font-size: var(--font-size-0);
-    line-height: var(--line-height-compressed);
-  }
-</style>

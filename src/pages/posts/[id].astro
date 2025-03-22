@@ -1,16 +1,16 @@
 ---
+import { css } from '@styled-system/css'
+import { prose } from '@styled-system/patterns'
+import blogPostLayout from '@recipes/blogPostLayout'
 import { render, getCollection, type CollectionEntry } from 'astro:content'
 import { entryIsPublished } from '@utils/index'
 import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
-import BlogPostLayout from '@layouts/BlogPostLayout.astro'
-import Blockquote from '@components/mdx/Blockquote.astro'
 import UnorderedList from '@components/mdx/UnorderedList.astro'
 import OrderedList from '@components/mdx/OrderedList.astro'
-import Img from '@components/mdx/Img.astro'
 import Code from '@components/mdx/Code.astro'
 import A from '@components/mdx/A.astro'
-import PostHeaderContent from '@components/blog/PostHeaderContent.astro'
+import PostHeader from '@components/blog/PostHeader.astro'
 import PostMeta from '@components/blog/PostMeta.astro'
 import TableOfContents from '@components/blog/TableOfContents.astro'
 import H1 from '@components/mdx/H1.astro'
@@ -29,10 +29,8 @@ const { post } = Astro.props
 const { Content, remarkPluginFrontmatter, headings } = await render(post)
 
 const components = {
-  blockquote: Blockquote,
   ul: UnorderedList,
   ol: OrderedList,
-  img: Img,
   code: Code,
   h1: H1,
   h2: H2,
@@ -42,6 +40,8 @@ const components = {
   h6: H6,
   a: A,
 }
+
+const layoutClasses = blogPostLayout()
 
 export async function getStaticPaths() {
   const entries = await getCollection('blog', entryIsPublished)
@@ -61,15 +61,69 @@ export async function getStaticPaths() {
   />
 
   <PrimaryLayout>
-    <BlogPostLayout>
-      <PostHeaderContent slot="header" post={post} />
-      <PostMeta
-        slot="sidebar"
-        post={post}
-        readingTime={remarkPluginFrontmatter.readingTime}
-      />
-      <TableOfContents slot="sidebar" headings={headings} />
-      <Content components={components} />
-    </BlogPostLayout>
+    <article
+      class={css({
+        display: 'grid',
+        rowGap: 'calc({spacing.bento.gap} * 2)',
+      })}
+    >
+      <header
+        class:list={[
+          layoutClasses.root,
+          css({
+            paddingBlockStart: 'calc({spacing.bento.padding} * 2)',
+            paddingBlockEnd: 'calc({spacing.bento.padding} * 3)',
+            borderRadius: 'bento',
+
+            _light: {
+              color: 'pink.775',
+              backgroundColor: 'pink.50',
+            },
+
+            _dark: {
+              color: 'pink.400',
+              backgroundColor: 'pink.850',
+            },
+          }),
+        ]}
+      >
+        <PostHeader post={post} />
+      </header>
+
+      <main class={layoutClasses.root}>
+        <div
+          class:list={[
+            css({
+              zIndex: 1,
+              md: {
+                gridRow: 1,
+                height: 0,
+              },
+            }),
+            layoutClasses.aside,
+          ]}
+        >
+          <PostMeta
+            slot="sidebar"
+            post={post}
+            readingTime={remarkPluginFrontmatter.readingTime}
+          />
+          <TableOfContents slot="sidebar" headings={headings} />
+        </div>
+
+        <div
+          class:list={[
+            layoutClasses.root,
+            layoutClasses.fullWidth,
+            prose(),
+            css({
+              md: { gridRow: 1 },
+            }),
+          ]}
+        >
+          <Content components={components} />
+        </div>
+      </main>
+    </article>
   </PrimaryLayout>
 </AppLayout>

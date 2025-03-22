@@ -1,5 +1,6 @@
 ---
-import PhotoGalleryItem from './PhotoGalleryItem.astro'
+import { css } from '@styled-system/css'
+import PhotoGalleryItem from '@components/PhotoGalleryItem.astro'
 
 import type { CollectionEntry } from 'astro:content'
 interface Props {
@@ -9,38 +10,40 @@ interface Props {
 const { photos } = Astro.props
 ---
 
-<div class="gallery-outer">
-  <ul class="gallery">
+<div
+  class={css({
+    backgroundColor: 'stark.background',
+    marginBlockEnd: 6,
+    sm: {
+      paddingBlock: 10,
+    },
+    '&&': {
+      gridColumnStart: 'full-width-start',
+      gridColumnEnd: 'full-width-end',
+    },
+  })}
+>
+  <ul
+    class={css({
+      maxWidth: '5xl',
+      marginInline: 'auto',
+      marginBlock: 0,
+      padding: 'bento.padding',
+      display: 'flex',
+      gap: 'bento.gap',
+      width: '100%',
+      overflowX: 'auto',
+      overflowY: 'hidden',
+      WebkitOverflowScrolling: 'touch',
+
+      sm: {
+        overflow: 'visible',
+        display: 'grid',
+        padding: 0,
+        gridTemplateColumns: 'repeat(auto-fill, minmax(15rem, 1fr))',
+      },
+    })}
+  >
     {photos.map((photo) => <PhotoGalleryItem photo={photo} />)}
   </ul>
 </div>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  .gallery-outer {
-    grid-column-start: full-width-start;
-    grid-column-end: full-width-end;
-    background-color: var(--color-stark-background);
-  }
-
-  .gallery {
-    list-style: none;
-    max-width: var(--layout-size-3);
-    margin: 0 auto;
-    padding: var(--fluid-bento-padding);
-    display: flex;
-    gap: var(--fluid-bento-gap);
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-
-    @include mixins.breakpoint-small {
-      overflow: visible;
-      display: grid;
-      padding: calc(var(--fluid-bento-padding) + var(--fluid-bento-gap)) 0;
-      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    }
-  }
-</style>

@@ -1,48 +1,28 @@
-<span class="banner-logo" role="img" aria-label="Logo">
-  <a href="/">Cassidy Smith</a>
-</span>
+---
+import { css } from '@styled-system/css'
+import focusRing from '@recipes/focusRing'
+---
 
-<style lang="scss">
-  @use '@styles/mixins';
-
-  .banner-logo {
-    display: block;
-    font-family: var(--font-heading);
-    font-weight: 720;
-    font-size: var(--font-size-1);
-    line-height: var(--line-height-compressed);
-    text-transform: uppercase;
-    letter-spacing: 0.05ch;
-
-    a {
-      border-radius: var(--fluid-bento-radius);
-      padding-left: var(--fluid-bento-padding);
-      padding-right: var(--fluid-bento-padding);
-      padding-top: calc(var(--fluid-bento-padding) / 2);
-      padding-bottom: calc(var(--fluid-bento-padding) / 2);
-      display: block;
-      text-decoration: none;
-      transition:
-        background-color 0.2s,
-        color 0.2s,
-        text-decoration-color 0.2s;
-
-      &:link,
-      &:visited {
-        color: white;
-        background-color: var(--color-primary-600);
-      }
-      &:hover {
-        background-color: var(--color-primary-525);
-      }
-      &:active,
-      &:hover:active {
-        background-color: var(--color-accent-one-525);
-      }
-
-      &:focus-visible {
-        @include mixins.focus-outline;
-      }
-    }
-  }
-</style>
+<a
+  href="/"
+  class:list={[
+    css({
+      display: 'block',
+      fontFamily: 'syne',
+      fontWeight: '730',
+      fontSize: 'lg',
+      lineHeight: 'tight',
+      textTransform: 'uppercase',
+      letterSpacing: 'wide',
+      _light: {
+        color: 'neutral.650',
+      },
+      _dark: {
+        color: 'neutral.400',
+      },
+    }),
+    focusRing(),
+  ]}
+>
+  <span class={css({})} role="img" aria-label="Logo">Cassidy Smith</span>
+</a>

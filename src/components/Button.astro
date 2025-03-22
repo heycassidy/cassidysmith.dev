@@ -1,19 +1,48 @@
 ---
 import type { HTMLTag, Polymorphic } from 'astro/types'
+import { css } from '@styled-system/css'
+import button from '@recipes/button'
+import focusRing from '@recipes/focusRing'
+import { Icon } from 'astro-icon/components'
 
-type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag; size?: 'small' }>
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag
+  size?: 'sm' | 'md' | 'lg'
+  color?: string
+  iconLeft?: string
+  iconRight?: string
+  class?: string
+}>
 
-const { as: Tag = 'button', class: className, size, ...props } = Astro.props
+const {
+  as: Tag = 'button',
+  class: className,
+  color = 'neutral',
+  size = 'md',
+  iconLeft,
+  iconRight,
+  ...props
+} = Astro.props
 ---
 
-<Tag class:list={['button', size ? `button--${size}` : '', className]} {...props}>
-  <slot />
-</Tag>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  .button {
-    @include mixins.button;
+<Tag
+  class:list={[
+    css({
+      colorPalette: color,
+    }),
+    button({ size }),
+    focusRing(),
+    className,
+  ]}
+  {...props}
+>
+  {iconLeft && <Icon aria-hidden="true" name={iconLeft} />}
+  {
+    Astro.slots.has('default') && (
+      <span>
+        <slot />
+      </span>
+    )
   }
-</style>
+  {iconRight && <Icon aria-hidden="true" name={iconRight} />}
+</Tag>

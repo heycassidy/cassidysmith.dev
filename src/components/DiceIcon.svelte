@@ -1,5 +1,34 @@
-<div class="dice">
-  <span class="side front 1">
+<script lang="ts">
+  import { css } from '@styled-system/css'
+  import type { SystemStyleObject } from '@styled-system/types'
+
+  const diceSideStyles: SystemStyleObject = {
+    display: "block",
+    position: "absolute",
+    width: "1em",
+    height: "1em",
+    color: "black",
+    background: "black",
+    "& > svg": {
+      fill: "white",
+      width: "100%",
+      height: "100%"
+    }
+  }
+
+</script>
+
+<div class={['dice', css({
+  fontSize: "0.7em",
+  width: "1em",
+  height: "1em",
+  transformStyle: "preserve-3d",
+  perspective: "30rem",
+  transform: "rotate3d(1, -1, 0, 310deg) translateY(-5px) translateZ(5px) translateX(-5px)"
+})].join(' ')}>
+  <span class={css(diceSideStyles, {
+    transform: "rotateX(0deg) translateZ(0.5em)"
+  })}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -11,7 +40,9 @@
       />
     </svg>
   </span>
-  <span class="side back 6">
+  <span class={css(diceSideStyles, {
+    transform: "rotateY(-180deg) translateZ(0.5em)"
+  })}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -23,7 +54,9 @@
       />
     </svg>
   </span>
-  <span class="side right 4">
+  <span class={css(diceSideStyles, {
+    transform: "rotateY(90deg) translateZ(0.5em)"
+  })}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -35,7 +68,9 @@
       />
     </svg>
   </span>
-  <span class="side left 3">
+  <span class={css(diceSideStyles, {
+    transform: "rotateY(-90deg) translateZ(0.5em)"
+  })}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -47,7 +82,9 @@
       />
     </svg>
   </span>
-  <span class="side top 5">
+  <span class={css(diceSideStyles, {
+    transform: "rotateX(90deg) translateZ(0.5em)"
+  })}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -59,7 +96,9 @@
       />
     </svg>
   </span>
-  <span class="side bottom 2">
+  <span class={css(diceSideStyles, {
+    transform: "rotateX(-90deg) translateZ(0.5em)"
+  })}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -72,48 +111,3 @@
     </svg>
   </span>
 </div>
-
-<style>
-  .dice {
-    font-size: 0.7rem;
-    width: 1em;
-    height: 1em;
-    transform-style: preserve-3d;
-    perspective: 30rem;
-    transform: rotate3d(1, -1, 0, 310deg) translateY(-5px) translateZ(5px)
-      translateX(-5px);
-  }
-
-  .side {
-    display: block;
-    position: absolute;
-    width: 1em;
-    height: 1em;
-    color: black;
-    background: black;
-    & > svg {
-      fill: white;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .front {
-    transform: rotateX(0deg) translateZ(0.5em);
-  }
-  .top {
-    transform: rotateX(90deg) translateZ(0.5em);
-  }
-  .right {
-    transform: rotateY(90deg) translateZ(0.5em);
-  }
-  .left {
-    transform: rotateY(-90deg) translateZ(0.5em);
-  }
-  .bottom {
-    transform: rotateX(-90deg) translateZ(0.5em);
-  }
-  .back {
-    transform: rotateY(-180deg) translateZ(0.5em);
-  }
-</style>

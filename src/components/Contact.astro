@@ -1,0 +1,118 @@
+---
+import { css } from '@styled-system/css'
+import SocialLink from '@components/SocialLink.astro'
+import textLink from '@recipes/textLink'
+import focusRing from '@recipes/focusRing'
+import CopyButton from '@components/CopyButton.astro'
+
+const { emailAddress = 'hello@cassidysmith.dev' } = Astro.props
+---
+
+<section
+  class={css({
+    gridArea: 'contact',
+    borderRadius: 'bento',
+    padding: 'bento.padding',
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: 'auto 1fr',
+    gap: 'bento.gap',
+
+    _light: {
+      color: 'green.775',
+      backgroundColor: 'green.50',
+    },
+    _dark: {
+      color: 'green.400',
+      backgroundColor: 'green.850',
+    },
+  })}
+>
+  <h2
+    class={css({
+      textStyle: '2xl',
+      fontWeight: '710',
+      marginBlockStart: 'lineHeightCrop.syne',
+      lineHeight: 'tight',
+    })}
+  >
+    Get in Contact
+  </h2>
+
+  <div
+    class={css({
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '2',
+      alignSelf: 'end',
+    })}
+  >
+    <div
+      class={css({
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexBasis: 'full',
+        columnGap: '2',
+        rowGap: '1',
+        justifyContent: 'space-between',
+        width: 'full',
+        alignItems: 'center',
+        marginInlineEnd: 'auto',
+        gridColumn: '1 / -1',
+        paddingBlock: '0.5',
+        paddingInline: '0.5',
+
+        borderRadius: 'calc({radii.bento} - {spacing.bento.padding} / 2)',
+        _light: {
+          backgroundColor: 'green.25',
+          color: 'green.900',
+          boxShadow: '0 0 0 1px {colors.green.150}',
+        },
+        _dark: {
+          backgroundColor: 'green.875',
+          color: 'green.400',
+          boxShadow: '0 0 0 1px {colors.green.925}',
+        },
+      })}
+    >
+      <a
+        href={`mailto:${emailAddress}`}
+        class:list={[
+          css({
+            flexGrow: 1,
+            marginInlineStart: '2',
+
+            lineHeight: 'tight',
+            fontSize: 'sm',
+          }),
+          textLink({ color: false }),
+          focusRing(),
+        ]}>{emailAddress}</a
+      >
+      <CopyButton
+        textToCopy={emailAddress}
+        size="sm"
+        color="green"
+        class={css({
+          borderRadius:
+            'calc({radii.bento} - {spacing.bento.padding} / 2 - {spacing.0.5})',
+        })}
+      />
+    </div>
+
+    <SocialLink
+      href="https://github.com/heycassidy"
+      external
+      icon="ri:github-fill"
+    >
+      Github
+    </SocialLink>
+    <SocialLink
+      href="https://bsky.app/profile/cassidy.social"
+      external
+      icon="ri:bluesky-fill"
+    >
+      BlueSky
+    </SocialLink>
+  </div>
+</section>

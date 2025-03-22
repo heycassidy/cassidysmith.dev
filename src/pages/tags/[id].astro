@@ -1,8 +1,8 @@
 ---
+import { css } from '@styled-system/css'
 import { render, getCollection, type CollectionEntry } from 'astro:content'
 import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
-import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
 import PostsList from '@components/blog/PostsList.astro'
 import {
@@ -42,17 +42,26 @@ export async function getStaticPaths() {
     description={`Posts Tagged: ${tag.data.title} from Cassidy’s blog`}
   />
   <PrimaryLayout>
-    <Prose as="main">
-      <h1>Posts Tagged {tag.data.title}</h1>
+    <main
+      class={css({
+        padding: 'bento.padding',
+        maxWidth: '2xl',
+      })}
+    >
+      <h1
+        class={css({
+          textStyle: 'h1',
+          marginBlockStart: 'lineHeightCrop.syne',
+        })}
+      >
+        Posts Tagged <em
+          class={css({
+            fontWeight: '600',
+          })}>{tag.data.title}</em
+        >
+      </h1>
       <Content />
-    </Prose>
+    </main>
     <PostsList posts={posts} />
   </PrimaryLayout>
 </AppLayout>
-
-<style>
-  main {
-    padding: var(--fluid-bento-padding);
-    max-width: var(--space-content-4);
-  }
-</style>

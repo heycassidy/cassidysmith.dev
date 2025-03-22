@@ -1,6 +1,6 @@
 @layer reset, base, layout, component;
 
-@import 'reset.css';
+/* @import 'reset.css'; */
 @import 'tokens.css';
 @import 'themes.css';
 @import 'typography.css';

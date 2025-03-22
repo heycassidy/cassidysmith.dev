@@ -1,11 +1,10 @@
 ---
+import { css } from '@styled-system/css'
 import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
-import SocialLinks from '@components/SocialLinks.astro'
 import PricklyPearContainer from '@components/PricklyPearContainer.astro'
-import CopyEmail from '@components/CopyEmail.astro'
+import Contact from '@components/Contact.astro'
 import PhotosCard from '@components/PhotosCard.astro'
-import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
 import TextLink from '@components/TextLink.astro'
 import LatestPost from '@components/LatestPost.astro'
@@ -17,87 +16,89 @@ import LatestPost from '@components/LatestPost.astro'
     description="Cassidy Smith is a front-end engineer and UI designer"
   />
   <PrimaryLayout>
-    <div class="page-layout">
-      <Prose as="main" transition:name="page-main-header">
-        <h1>Hello, I’m Cassidy</h1>
-        <p>
+    <div
+      class={css({
+        display: 'grid',
+        gap: 'bento.gap',
+        container: 'bento',
+        gridTemplateAreas: `
+          'intro'
+          'blog'
+          'contact'
+          'cactus'
+          'photos'
+        `,
+        sm: {
+          gridTemplateColumns: '5fr 4fr',
+          gridTemplateAreas: `
+            'intro blog'
+            'intro cactus'
+            'intro cactus'
+            'contact cactus'
+            'photos .'
+          `,
+        },
+        md: {
+          gridTemplateColumns: '10fr 5fr 5fr 10fr',
+          gridTemplateAreas: `
+            'intro intro intro cactus'
+            'blog blog contact contact'
+            'photos photos . .'
+          `,
+        },
+        xl: {
+          gridTemplateColumns: '10fr 5fr 5fr 10fr',
+          gridTemplateAreas: `
+            'intro intro intro cactus'
+            'blog contact contact cactus'
+            'photos photos . .'
+          `,
+        },
+      })}
+    >
+      <main
+        class:list={[
+          css({
+            gridArea: 'intro',
+            padding: 'calc({spacing.bento.padding} * 2)',
+            borderRadius: 'bento',
+            _light: {
+              color: 'purple.775',
+              backgroundColor: 'purple.50',
+            },
+            _dark: {
+              color: 'purple.400',
+              backgroundColor: 'purple.875',
+            },
+          }),
+        ]}
+      >
+        <h1
+          class={css({
+            textStyle: 'h1',
+            marginBlockStart: 'lineHeightCrop.syne',
+          })}
+        >
+          Hi — I’m Cassidy.
+        </h1>
+        <p class={css({})}>
           I’m a professional CSS Programmer, UI Builder, Web Weaver, Full-Stack
-          Developer, Web Software Worker, Failed Designer, and maybe a few other
-          made-up titles! Perpetually and proudly a noob at web dev and life, I
-          try to stay curious, but like most people, I often get stuck in the
-          rut of what I think I know. Balance, I guess? Anyway! Thank you for
-          reading my ramblings and welcome to my little <TextLink
+          Developer, Web Software Worker, Failed Designer, and perhaps a few
+          other made-up titles! Perpetually and proudly a noob at web dev and
+          life, I try to stay curious amid the chaos. Welcome to my <TextLink
+            useColorStyles
             href="https://maggieappleton.com/garden-history"
           >
             digital garden
           </TextLink> where I water my prickly projects and feed my creative brain
           worms.
         </p>
-      </Prose>
+      </main>
 
       <LatestPost />
-      <PhotosCard />
-      <SocialLinks />
-      <CopyEmail />
+      <Contact />
       <PricklyPearContainer />
+      <PhotosCard />
     </div>
   </PrimaryLayout>
 </AppLayout>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @include mixins.color-mode(light) {
-    main {
-      --background-color: var(--color-primary-175);
-    }
-  }
-  @include mixins.color-mode(dark) {
-    main {
-      --background-color: var(--color-primary-850);
-    }
-  }
-
-  main {
-    grid-area: intro;
-    border-radius: var(--fluid-bento-radius);
-    padding: var(--fluid-bento-padding);
-    background-color: var(--background-color);
-
-    p {
-      text-wrap: pretty;
-    }
-  }
-
-  .page-layout {
-    display: grid;
-    gap: var(--fluid-bento-gap);
-    container: bento;
-
-    grid-template-areas:
-      'intro'
-      'blog'
-      'photos'
-      'social'
-      'email'
-      'cactus';
-
-    @include mixins.breakpoint-small {
-      grid-template-columns: 5fr 4fr;
-      grid-template-areas:
-        'intro blog'
-        'intro email'
-        'intro cactus'
-        'photos cactus'
-        'social cactus';
-    }
-    @include mixins.breakpoint-medium {
-      grid-template-columns: 6fr 6fr 10fr 11fr;
-      grid-template-areas:
-        'intro intro intro blog'
-        'photos photos social cactus'
-        '. email email cactus'
-        '. . .  cactus';
-    }
-  }
-</style>
