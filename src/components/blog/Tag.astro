@@ -3,7 +3,7 @@ import { css } from '@styled-system/css'
 import interactiveSurface from '@recipes/interactiveSurface'
 import focusRing from '@recipes/focusRing'
 import type { CollectionEntry } from 'astro:content'
-import ContentLink from '@components/ContentLink.astro'
+import { tagPath } from 'astro-path-helpers'
 
 interface Props {
   tag: CollectionEntry<'tags'>
@@ -12,8 +12,8 @@ interface Props {
 const { tag } = Astro.props
 ---
 
-<ContentLink
-  content={tag}
+<a
+  href={tagPath(tag.id)}
   class:list={[
     css({
       fontSize: 'xs',
@@ -24,5 +24,5 @@ const { tag } = Astro.props
     }),
     focusRing(),
     interactiveSurface({ material: 'adaptive' }),
-  ]}># {tag.data.title}</ContentLink
+  ]}># {tag.data.title}</a
 >

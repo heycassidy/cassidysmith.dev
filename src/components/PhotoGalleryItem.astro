@@ -1,9 +1,9 @@
 ---
 import { css } from '@styled-system/css'
 import focusRing from '@recipes/focusRing'
-import ContentLink from '@components/ContentLink.astro'
 import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
+import { photoPath } from 'astro-path-helpers'
 
 interface Props {
   photo: CollectionEntry<'photos'>
@@ -25,8 +25,8 @@ const { photo } = Astro.props
     },
   })}
 >
-  <ContentLink
-    content={photo}
+  <a
+    href={photoPath(photo.id)}
     style={`aspect-ratio: ${photo.data.image.src.width / photo.data.image.src.height};`}
     aria-label="Open image"
     class:list={[
@@ -76,5 +76,5 @@ const { photo } = Astro.props
       })}
     />
     <span class="screen-reader-only">Open image: {photo.data.title}</span>
-  </ContentLink>
+  </a>
 </li>

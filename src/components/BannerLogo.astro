@@ -1,10 +1,11 @@
 ---
 import { css } from '@styled-system/css'
 import focusRing from '@recipes/focusRing'
+import { rootPath } from 'astro-path-helpers'
 ---
 
 <a
-  href="/"
+  href={rootPath()}
   class:list={[
     css({
       display: 'block',

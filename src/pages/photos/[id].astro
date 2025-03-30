@@ -3,6 +3,7 @@ import { css } from '@styled-system/css'
 import { render, getCollection, type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 import { entryIsPublished, sortByPosition } from '@utils/index'
+import { photoPath, photosPath } from 'astro-path-helpers'
 
 import AppLayout from '@layouts/AppLayout.astro'
 import Button from '@components/Button.astro'
@@ -146,7 +147,7 @@ export async function getStaticPaths() {
           })}
           as="a"
           size="sm"
-          href="/photos"
+          href={photosPath()}
           iconLeft="ri:grid-fill"
         >
           All photos
@@ -162,7 +163,7 @@ export async function getStaticPaths() {
               <Button
                 as="a"
                 size="sm"
-                href={`/photos/${previousPhotoSlug}`}
+                href={photoPath(previousPhotoSlug)}
                 data-direction="previous-photo"
                 iconLeft="ri:skip-left-fill"
               >
@@ -176,7 +177,7 @@ export async function getStaticPaths() {
                 class="photo-controls-button photo-controls-button--next"
                 as="a"
                 size="sm"
-                href={`/photos/${nextPhotoSlug}`}
+                href={photoPath(nextPhotoSlug)}
                 data-direction="next-photo"
                 iconRight="ri:skip-right-fill"
               >

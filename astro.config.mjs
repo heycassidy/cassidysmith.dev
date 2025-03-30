@@ -6,12 +6,14 @@ import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/remark/remark-reading-time.mjs'
 import astroExpressiveCode from 'astro-expressive-code'
 import vercel from '@astrojs/vercel'
+import pathHelpers from "astro-path-helpers/integration"
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
   site: 'https://cassidysmith.dev',
   trailingSlash: 'never',
+
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'load',
@@ -24,6 +26,7 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   integrations: [
+    pathHelpers(),
     svelte(),
     icon({
       include: {

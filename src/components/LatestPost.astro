@@ -5,9 +5,9 @@ import interactiveSurface from '@recipes/interactiveSurface'
 import focusRing from '@recipes/focusRing'
 import { getCollection } from 'astro:content'
 import { Icon } from 'astro-icon/components'
-import ContentLink from '@components/ContentLink.astro'
 import { entryIsPublished, sortByPublishedAt } from '@utils/index'
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
+import { postsPath } from 'astro-path-helpers'
 
 const posts = await getCollection('blog', entryIsPublished)
 const latestPost = posts.sort(sortByPublishedAt)[0]
@@ -35,9 +35,8 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     focusRing({ mode: 'focus-visible-within' }),
   ]}
 >
-  <ContentLink
-    collectionSlug="posts"
-    content={latestPost}
+  <a
+    href={postsPath()}
     class:list={[
       linkOverlay(),
       css({
@@ -67,7 +66,7 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
     ]}
   >
     Read the Latest <Icon aria-hidden="true" name="ri:arrow-right-fill" />
-  </ContentLink>
+  </a>
   <div>
     <h2
       class={css({

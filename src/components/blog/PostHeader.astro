@@ -5,6 +5,7 @@ import { getEntries, type CollectionEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 import TagsList from '@components/blog/TagsList.astro'
 import { tagIsActive } from '@utils/index'
+import { postsPath } from 'astro-path-helpers'
 
 interface Props {
   post: CollectionEntry<'blog'>
@@ -32,7 +33,7 @@ const activeTags = tags.filter(tagIsActive)
   ]}
 >
   <a
-    href="/posts"
+    href={postsPath()}
     class:list={[
       css({
         justifySelf: 'start',

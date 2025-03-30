@@ -4,10 +4,10 @@ import interactiveSurface from '@recipes/interactiveSurface'
 import focusRing from '@recipes/focusRing'
 import { linkOverlay } from '@styled-system/patterns'
 import { type CollectionEntry, getEntries } from 'astro:content'
-import ContentLink from '@components/ContentLink.astro'
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
 import TagsList from '@components/blog/TagsList.astro'
 import { tagIsActive } from '@utils/index'
+import { postPath } from 'astro-path-helpers'
 
 interface Props {
   post: CollectionEntry<'blog'>
@@ -40,9 +40,8 @@ const activeTags = tags.filter(tagIsActive)
     focusRing({ mode: 'focus-visible-within' }),
   ]}
 >
-  <ContentLink
-    collectionSlug="posts"
-    content={post}
+  <a
+    href={postPath(post.id)}
     class:list={[
       linkOverlay(),
       css({
@@ -71,7 +70,7 @@ const activeTags = tags.filter(tagIsActive)
     >
       {post.data.title}
     </h2>
-  </ContentLink>
+  </a>
 
   <p
     class={css({
