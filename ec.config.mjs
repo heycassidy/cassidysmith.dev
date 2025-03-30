@@ -2,65 +2,62 @@ import { defineEcConfig } from 'astro-expressive-code'
 
 export default defineEcConfig({
   themes: ['github-dark', 'github-light'],
-  themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
+  themeCssSelector: (theme) => `[data-color-mode='${theme.type}']`,
   styleOverrides: {
     uiFontFamily: 'var(--font-atkinson)',
-    uiFontSize: 'var(--font-size--1)',
-    codeFontSize: 'var(--font-size--1)',
-    codeFontFamily: 'var(--font-monaspace-neon)',
-    codePaddingBlock: 'var(--fluid-bento-padding)',
-    codePaddingInline: 'calc(var(--fluid-bento-padding) * 2)',
-    borderRadius: 'calc(var(--fluid-bento-radius) / 2)',
+    uiFontSize: 'var(--font-sizes-xs)',
+    codeFontSize: 'var(--font-sizes-xs)',
+    // codeFontFamily: 'var(--font-monaspace-neon)',
+    codePaddingBlock: 'var(--spacing-3)',
+    codePaddingInline: 'var(--spacing-8)',
+    borderRadius: 'calc(var(--radii-bento) / 2)',
     borderWidth: '1px',
     borderColor: ({ theme }) =>
       theme.type === 'dark'
-        ? 'var(--color-neutral-775)'
-        : 'var(--color-neutral-275)',
+        ? 'var(--colors-neutral-775)'
+        : 'var(--colors-neutral-275)',
     codeBackground: ({ theme }) =>
       theme.type === 'dark'
-        ? 'var(--color-neutral-875)'
-        : 'var(--color-neutral-0)',
+        ? 'var(--colors-neutral-875)'
+        : 'var(--colors-neutral-50)',
 
     frames: {
-      tooltipSuccessBackground: 'var(--color-neutral-950)',
+      tooltipSuccessBackground: 'var(--colors-neutral-925)',
       frameBoxShadowCssValue: 'none',
       editorTabBarBackground: ({ theme }) =>
         theme.type === 'dark'
-          ? 'var(--color-neutral-850)'
-          : 'var(--color-neutral-175)',
+          ? 'var(--colors-neutral-850)'
+          : 'var(--colors-neutral-75)',
       editorActiveTabIndicatorTopColor: 'none',
       editorActiveTabIndicatorBottomColor: 'none',
       editorActiveTabBackground: ({ theme }) =>
         theme.type === 'dark'
-          ? 'var(--color-neutral-875)'
-          : 'var(--color-neutral-0)',
+          ? 'var(--colors-neutral-875)'
+          : 'var(--colors-neutral-25)',
       terminalBackground: ({ theme }) =>
         theme.type === 'dark'
-          ? 'var(--color-neutral-875)'
-          : 'var(--color-neutral-0)',
+          ? 'var(--colors-neutral-875)'
+          : 'var(--colors-neutral-25)',
       terminalTitlebarBackground: ({ theme }) =>
         theme.type === 'dark'
-          ? 'var(--color-neutral-850)'
-          : 'var(--color-neutral-175)',
+          ? 'var(--colors-neutral-850)'
+          : 'var(--colors-neutral-75)',
       terminalTitlebarBorderBottomColor: ({ theme }) =>
         theme.type === 'dark'
-          ? 'var(--color-neutral-775)'
-          : 'var(--color-neutral-175)',
+          ? 'var(--colors-neutral-775)'
+          : 'var(--colors-neutral-75)',
       terminalTitlebarDotsForeground: ({ theme }) =>
         theme.type === 'dark'
-          ? 'var(--color-neutral-775)'
-          : 'var(--color-neutral-175)',
+          ? 'var(--colors-neutral-775)'
+          : 'var(--colors-neutral-75)',
       terminalTitlebarDotsOpacity: 1,
-    },
-    textMarkers: {
-      lineDiffIndicatorMarginLeft: 'calc(var(--fluid-bento-padding) / 4)',
     },
   },
   plugins: [
     {
       name: 'Custom Base Styles',
       baseStyles: `
-      --column: breakout;
+      grid-column: breakout !important;
       font-variant-ligatures: discretionary-ligatures;
     `,
     },

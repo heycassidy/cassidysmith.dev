@@ -48,11 +48,6 @@
   }
 }
 
-::view-transition-image-pair(blog-post) {
-  overflow: hidden;
-  border-radius: var(--fluid-bento-radius);
-}
-
 @keyframes fadeInOut {
   from {
     opacity: 1;

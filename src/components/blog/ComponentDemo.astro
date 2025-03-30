@@ -1,25 +1,22 @@
-<div class="component-demo">
+---
+import { css } from '@styled-system/css'
+---
+
+<div
+  class={css({
+    padding: 'bento.padding',
+    borderRadius: 'bento',
+    '&&': {
+      gridColumn: 'breakout',
+    },
+
+    _light: {
+      backgroundColor: 'neutral.50',
+    },
+    _dark: {
+      backgroundColor: 'neutral.850',
+    },
+  })}
+>
   <slot />
 </div>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @include mixins.color-mode(light) {
-    .component-demo {
-      --background-color: var(--color-neutral-175);
-    }
-  }
-  @include mixins.color-mode(dark) {
-    .component-demo {
-      --background-color: var(--color-neutral-850);
-    }
-  }
-
-  .component-demo {
-    --column: breakout;
-    padding: var(--fluid-bento-padding);
-    background-color: var(--background-color);
-    border-radius: var(--fluid-bento-radius);
-  }
-</style>

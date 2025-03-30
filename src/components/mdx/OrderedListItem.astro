@@ -1,36 +1,20 @@
-<li>
+---
+import { css } from '@styled-system/css'
+---
+
+<li
+  class={css({
+    paddingInlineStart: 1,
+
+    '&::marker': {
+      fontFamily: 'syne',
+      fontWeight: '650',
+    },
+
+    '& + li': {
+      marginBlockStart: 2,
+    },
+  })}
+>
   <slot />
 </li>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @include mixins.color-mode(light) {
-    li {
-      --marker-color: var(--color-primary-525);
-    }
-  }
-
-  @include mixins.color-mode(dark) {
-    li {
-      --marker-color: var(--color-primary-425);
-    }
-  }
-
-  li + li {
-    margin-top: var(--space-2);
-  }
-
-  @at-root :global(ol) {
-    padding-left: var(--space-7);
-
-    > li {
-      padding-left: var(--space-1);
-    }
-    > li::marker {
-      font-family: var(--font-syne);
-      font-weight: 650;
-      color: var(--marker-color);
-    }
-  }
-</style>

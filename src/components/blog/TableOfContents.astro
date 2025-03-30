@@ -1,5 +1,6 @@
 ---
-import TableOfContentsHeading from '@components/blog/TableOfContentsHeading.astro'
+import { css } from '@styled-system/css'
+import TableOfContentsItem from '@components/blog/TableOfContentsItem.astro'
 import generateToC from '@utils/generateToC'
 
 const { headings } = Astro.props
@@ -10,32 +11,24 @@ const toc = generateToC(headings, {
 })
 ---
 
-<aside>
-  <h2>On This Page</h2>
-  <nav class="toc">
+<aside
+  class={css({
+    marginBlockEnd: '6',
+  })}
+>
+  <h2
+    class={css({
+      textStyle: 'h6',
+      textTransform: 'uppercase',
+      letterSpacing: 'wider',
+      marginBlockStart: 0,
+    })}
+  >
+    On This Page
+  </h2>
+  <nav>
     <ol>
-      {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
+      {toc.map((heading) => <TableOfContentsItem heading={heading} />)}
     </ol>
   </nav>
 </aside>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  h2 {
-    font-weight: 720;
-    letter-spacing: 0.15ch;
-    text-transform: uppercase;
-    font-size: var(--font-size-0);
-    line-height: var(--line-height-compressed);
-    margin-bottom: var(--space-3);
-  }
-
-  ol {
-    padding: 0;
-  }
-
-  aside {
-    margin-bottom: var(--space-6);
-  }
-</style>

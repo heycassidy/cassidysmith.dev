@@ -1,82 +1,35 @@
 ---
+import { css } from '@styled-system/css'
+import interactiveSurface from '@recipes/interactiveSurface'
+import focusRing from '@recipes/focusRing'
 import { Icon } from 'astro-icon/components'
+import Button from '@components/Button.astro'
 
-const { href, external = false, icon = false } = Astro.props
+interface Props {
+  href: string
+  icon: string
+  external?: boolean
+}
+
+const { href, external = false, icon, ...props } = Astro.props
 ---
 
-<a
-  class="social-link"
+<Button
+  as="a"
   href={href}
-  target={external && '_blank'}
-  rel={external && 'noopener noreferrer'}
-  {...Astro.props}
+  target={external ? '_blank' : null}
+  rel={external ? 'noopener noreferrer' : null}
+  color="green"
+  size="sm"
+  iconLeft={icon}
+  iconRight="ri:arrow-right-up-line"
+  class={css({
+    flexGrow: 1,
+    justifyContent: 'center',
+    '& [data-icon]': {
+      inlineSize: '4',
+      blockSize: 'auto',
+    },
+  })}
+  {...props}><slot /></Button
 >
-  {icon && <Icon name={icon} />}
-  <span class="screen-reader-only"><slot /></span>
-</a>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @include mixins.color-mode(light) {
-    .social-link {
-      --color: var(--color-secondary-700);
-      --background-color: var(--color-secondary-275);
-
-      --hover-color: var(--color-secondary-600);
-      --hover-background-color: var(--color-secondary-100);
-
-      --active-color: var(--color-neutral-100);
-      --active-background-color: var(--color-accent-one-525);
-    }
-  }
-  @include mixins.color-mode(dark) {
-    .social-link {
-      --color: var(--color-secondary-275);
-      --background-color: var(--color-secondary-775);
-
-      --hover-color: var(--color-secondary-0);
-      --hover-background-color: var(--color-secondary-700);
-
-      --active-color: var(--color-neutral-100);
-      --active-background-color: var(--color-accent-one-525);
-    }
-  }
-
-  .social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(var(--space-1), 2cqw, var(--space-2));
-    border-radius: calc(
-      var(--fluid-bento-radius) - var(--fluid-bento-padding) / 2
-    );
-    transition:
-      background-color 0.2s,
-      color 0.2s,
-      text-decoration-color 0.2s;
-
-    &:link,
-    &:visited {
-      color: var(--color);
-      background-color: var(--background-color);
-    }
-    &:hover {
-      color: var(--hover-color);
-      background-color: var(--hover-background-color);
-    }
-    &:active,
-    &:hover:active {
-      color: var(--active-color);
-      background-color: var(--active-background-color);
-    }
-    &:focus-visible {
-      @include mixins.focus-outline;
-    }
-
-    svg {
-      width: var(--space-7);
-      height: auto;
-    }
-  }
-</style>

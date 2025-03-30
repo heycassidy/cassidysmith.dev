@@ -1,4 +1,7 @@
 ---
+import { css } from '@styled-system/css'
+import textLink from '@recipes/textLink'
+import focusRing from '@recipes/focusRing'
 import { Icon } from 'astro-icon/components'
 import { isExternalURL } from '@utils/index'
 
@@ -6,26 +9,41 @@ import type { HTMLAttributes } from 'astro/types'
 
 interface Props extends HTMLAttributes<'a'> {
   href: string
+  useVisitedStyles?: boolean
+  useColorStyles?: boolean
+  useDecorationStyles?: boolean
 }
 
-const { href, ...attributes } = Astro.props
+const {
+  href,
+  useVisitedStyles = true,
+  useColorStyles = true,
+  useDecorationStyles = true,
+  ...attributes
+} = Astro.props
 
 const external = isExternalURL(href, Astro.url.host)
 ---
 
-<a href={href} class:list={[{ external }]} {...attributes}
+<a
+  href={href}
+  class:list={[
+    { external },
+    textLink({
+      color: useColorStyles,
+      decoration: useDecorationStyles,
+      visited: useVisitedStyles,
+    }),
+    focusRing(),
+    css({
+      '& [data-icon]': {
+        display: 'inline',
+        verticalAlign: '-0.1em',
+        width: '0.8em',
+        height: '0.8em',
+      },
+    }),
+  ]}
+  {...attributes}
   ><slot />{external && <Icon name="ri:arrow-right-up-line" size={16} />}</a
-><style lang="scss">
-  @use '@styles/mixins';
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    @include mixins.text-link;
-
-    [data-icon] {
-      width: 0.8em;
-      height: 0.8em;
-    }
-  }
-</style>
+>

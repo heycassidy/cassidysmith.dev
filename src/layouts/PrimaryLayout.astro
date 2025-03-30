@@ -1,46 +1,39 @@
 ---
-import Footer from '../components/Footer.astro'
-import Banner from '../components/Banner.astro'
+import { css } from '@styled-system/css'
+import Footer from '@components/Footer.astro'
+import Banner from '@components/Banner.astro'
 ---
 
-<div class="primary-layout">
-  <Banner class="primary-layout__banner" />
-  <div class="primary-layout__slot-wrapper">
+<div
+  class={css({
+    marginBlock: 0,
+    marginInline: 'auto',
+    minHeight: '100vh',
+    display: 'grid',
+    gap: 'bento.gap',
+    alignItems: 'start',
+    gridTemplateRows: 'auto 1fr auto',
+    gridTemplateColumns:
+      '[full-width-start] 1fr [centered-start] minmax(0, {sizes.5xl}) [centered-end] 1fr [full-width-end]',
+  })}
+>
+  <Banner
+    class={css({
+      gridColumn: 'centered',
+    })}
+  />
+  <div
+    class={css({
+      gridColumn: 'full-width',
+      display: 'grid',
+      gridTemplateColumns: 'subgrid',
+      gap: 'bento.gap',
+      '& > *': {
+        gridColumn: 'centered',
+      },
+    })}
+  >
     <slot />
   </div>
-  <Footer class="primary-layout__footer" />
+  <Footer />
 </div>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @layer layout {
-    .primary-layout {
-      margin: 0 auto;
-      min-height: 100dvh;
-      display: grid;
-      gap: var(--fluid-bento-gap);
-      align-items: start;
-      grid-template-rows: auto 1fr auto;
-      grid-template-columns:
-        [full-width-start] 1fr [centered-start] minmax(0, var(--layout-size-3))
-        [centered-end] 1fr [full-width-end];
-    }
-    .primary-layout__banner {
-      grid-column: centered;
-    }
-    .primary-layout__footer {
-      grid-column: centered;
-    }
-    .primary-layout__slot-wrapper {
-      grid-column: full-width;
-      display: grid;
-      grid-template-columns: subgrid;
-      gap: var(--fluid-bento-gap);
-
-      :global(> *) {
-        grid-column: var(--column, centered);
-      }
-    }
-  }
-</style>

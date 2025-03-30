@@ -1,4 +1,5 @@
 ---
+import { css } from '@styled-system/css'
 import { parseHTML } from 'linkedom'
 import OrderedListItem from '@components/mdx/OrderedListItem.astro'
 
@@ -9,7 +10,14 @@ const children = Array.from(document.children)
 const { ...props } = Astro.props
 ---
 
-<ol {...props}>
+<ol
+  class={css({
+    textWrap: 'pretty',
+    paddingInlineStart: 7,
+    listStyle: 'auto',
+  })}
+  {...props}
+>
   {
     children.map((item) => (
       <OrderedListItem>
@@ -18,10 +26,3 @@ const { ...props } = Astro.props
     ))
   }
 </ol>
-
-<style lang="scss">
-  ol {
-    text-wrap: pretty;
-    line-height: var(--line-height-list);
-  }
-</style>

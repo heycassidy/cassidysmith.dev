@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # Vercel
 .vercel
+
+## Panda
+styled-system
+styled-system-studio

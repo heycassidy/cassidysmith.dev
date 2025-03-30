@@ -1,4 +1,5 @@
 ---
+import { css } from '@styled-system/css'
 import type { CollectionEntry } from 'astro:content'
 import PostPreview from '@components/blog/PostPreview.astro'
 
@@ -9,19 +10,14 @@ interface Props {
 const { posts } = Astro.props
 ---
 
-<div class="posts-list">
+<div
+  class={css({
+    display: 'grid',
+    gap: 'bento.gap',
+    gridTemplateColumns: {
+      md: 'repeat(auto-fill, minmax(30rem, 1fr))',
+    },
+  })}
+>
   {posts.map((post) => <PostPreview post={post} />)}
 </div>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  .posts-list {
-    display: grid;
-    gap: var(--fluid-bento-gap);
-
-    @include mixins.breakpoint-medium {
-      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-    }
-  }
-</style>

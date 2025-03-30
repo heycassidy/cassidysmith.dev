@@ -1,0 +1,28 @@
+---
+import { css } from '@styled-system/css'
+import { Icon } from 'astro-icon/components'
+
+type Props = {
+  iconName?: string
+  class?: string
+  label?: string
+}
+
+const { iconName, label, class: className, ...rest } = Astro.props
+---
+
+<span
+  class:list={[
+    css({
+      display: 'flex',
+      columnGap: '2',
+      alignItems: 'center',
+      lineHeight: 'tight',
+      fontSize: 'sm',
+    }),
+    className,
+  ]}
+  {...rest}
+>
+  {iconName && <Icon name={iconName} />}<slot />
+</span>

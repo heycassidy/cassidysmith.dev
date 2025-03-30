@@ -1,19 +1,40 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+import Button from '@components/Button.astro'
 import { Icon } from 'astro-icon/components'
 
-interface Props extends HTMLAttributes<'button'> {
+interface Props {
   textToCopy: string
+  initialLabel?: string
+  successLabel?: string
+  iconName?: string
+  size?: 'sm' | 'md' | 'lg'
+  color?: string
+  class?: string
 }
 
-const { textToCopy } = Astro.props
+const {
+  textToCopy,
+  initialLabel = 'Copy',
+  successLabel = 'Copied',
+  size,
+  color,
+  class: className,
+  ...props
+} = Astro.props
 ---
 
-<copy-button data-text-to-copy={textToCopy}>
-  <button>
-    <Icon aria-hidden="true" name="ri:clipboard-fill" /> Copy
-  </button>
-  <template id="copied"><Icon aria-hidden="true" name="ri:check-line" /> Copied!</template>
+<copy-button data-text-to-copy={textToCopy} {...props}>
+  <Button
+    color={color}
+    size={size}
+    iconRight="ri:clipboard-fill"
+    class={className}
+  >
+    {initialLabel}
+  </Button>
+  <template id="copied"
+    >{successLabel} <Icon aria-hidden="true" name="ri:check-line" /></template
+  >
 </copy-button>
 
 <script>
@@ -53,7 +74,8 @@ const { textToCopy } = Astro.props
 
     attributeChangedCallback(name: string, oldValue: any, newValue: any) {
       if (name === 'copied' && this.button) {
-        this.button.innerHTML = newValue === null ? this.readyHTML : this.copiedHTML
+        this.button.innerHTML =
+          newValue === null ? this.readyHTML : this.copiedHTML
       }
     }
 
@@ -80,29 +102,5 @@ const { textToCopy } = Astro.props
     }
   }
 
-  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
   customElements.define('copy-button', CopyButton)
 </script>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  @include mixins.color-mode(light) {
-    button {
-      --color-button-text: var(--color-tertiary-775);
-      --color-button-background: var(--color-tertiary-275);
-      --color-button-hover-text: var(--color-tertiary-950);
-      --color-button-hover-background: var(--color-tertiary-350);
-    }
-  }
-
-  button {
-    @include mixins.button;
-
-    :global(svg) {
-      width: 0.9em;
-      height: auto;
-      flex-shrink: 0;
-    }
-  }
-</style>

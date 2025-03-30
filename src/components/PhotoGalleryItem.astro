@@ -1,7 +1,9 @@
 ---
-import ContentLink from './ContentLink.astro'
+import { css } from '@styled-system/css'
+import focusRing from '@recipes/focusRing'
 import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
+import { photoPath } from 'astro-path-helpers'
 
 interface Props {
   photo: CollectionEntry<'photos'>
@@ -10,12 +12,47 @@ interface Props {
 const { photo } = Astro.props
 ---
 
-<li class="link-container">
-  <ContentLink
-    content={photo}
-    class="photo-link"
+<li
+  class={css({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gridRow: 1,
+
+    sm: {
+      gridRow: 'auto',
+      aspectRatio: '1 / 1',
+    },
+  })}
+>
+  <a
+    href={photoPath(photo.id)}
     style={`aspect-ratio: ${photo.data.image.src.width / photo.data.image.src.height};`}
     aria-label="Open image"
+    class:list={[
+      focusRing(),
+      css({
+        cursor: 'zoom-in',
+        display: 'block',
+
+        height: '100vw',
+        position: 'relative',
+        zIndex: '2', // This puts it above the grain effect
+        overflow: 'hidden',
+        borderRadius: 'xs',
+        sm: {
+          height: 'auto',
+          maxHeight: '100%',
+          maxWidth: '100%',
+        },
+        _focusVisible: {
+          '& img': {
+            transform: 'scale(1.05)',
+            filter: 'brightness(1.05)',
+          },
+        },
+      }),
+    ]}
   >
     <Image
       src={photo.data.image.src}
@@ -25,66 +62,19 @@ const { photo } = Astro.props
       densities={[1.5, 2]}
       loading="lazy"
       transition:name={`photo-${photo.id}`}
+      class={css({
+        display: 'block',
+        width: '100%',
+        height: 'auto',
+        transition: 'all 0.2s ease-in-out',
+        _supportsHover: {
+          _hover: {
+            transform: 'scale(1.05)',
+            filter: 'brightness(1.05)',
+          },
+        },
+      })}
     />
     <span class="screen-reader-only">Open image: {photo.data.title}</span>
-  </ContentLink>
+  </a>
 </li>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  .link-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    grid-row: 1;
-
-    @include mixins.breakpoint-small {
-      grid-row: auto;
-      aspect-ratio: 1 / 1;
-    }
-  }
-
-  .photo-link {
-    cursor: zoom-in;
-    display: block;
-    border-radius: var(--radius-tiny);
-    background-color: var(--color-base-background);
-    height: 100vw;
-
-    position: relative;
-    overflow: hidden;
-
-    @include mixins.breakpoint-small {
-      height: auto;
-      max-height: 100%;
-      max-height: 100%;
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        img {
-          transform: scale(1.05);
-          filter: brightness(1.05);
-        }
-      }
-    }
-    &:focus-visible {
-      img {
-        transform: scale(1.05);
-        filter: brightness(1.05);
-      }
-    }
-    &:focus-visible {
-      @include mixins.focus-outline(var(--color-stark-foreground));
-    }
-  }
-
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: all 0.2s ease-in-out;
-  }
-</style>

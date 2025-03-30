@@ -6,12 +6,14 @@ import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/remark/remark-reading-time.mjs'
 import astroExpressiveCode from 'astro-expressive-code'
 import vercel from '@astrojs/vercel'
+import pathHelpers from "astro-path-helpers/integration"
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
   site: 'https://cassidysmith.dev',
   trailingSlash: 'never',
+
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'load',
@@ -24,34 +26,36 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   integrations: [
+    pathHelpers(),
     svelte(),
     icon({
       include: {
         ri: [
-          'arrow-right-up-line',
-          'send-plane-fill',
-          'mail-send-fill',
-          'skip-right-fill',
-          'skip-left-fill',
-          'gallery-view',
-          'grid-fill',
-          'corner-down-right-line',
-          'link',
+          'arrow-left-fill',
           'arrow-right-circle-fill',
           'arrow-right-fill',
-          'arrow-left-fill',
-          'clipboard-fill',
-          'check-line',
-          'instagram-line',
-          'instagram-fill',
-          'github-fill',
-          'linkedin-box-fill',
+          'arrow-right-up-line',
           'bluesky-fill',
-          'hourglass-2-fill',
-          'pen-nib-fill',
-          'scissors-2-fill',
-          'pencil-fill',
+          'check-line',
+          'clipboard-fill',
+          'corner-down-right-line',
           'eraser-fill',
+          'file-copy-fill',
+          'gallery-view',
+          'github-fill',
+          'grid-fill',
+          'hourglass-2-fill',
+          'instagram-fill',
+          'instagram-line',
+          'link',
+          'linkedin-box-fill',
+          'mail-send-fill',
+          'pen-nib-fill',
+          'pencil-fill',
+          'scissors-2-fill',
+          'send-plane-fill',
+          'skip-left-fill',
+          'skip-right-fill',
         ],
       },
     }),

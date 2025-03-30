@@ -1,18 +1,21 @@
 ---
-import '@styles/global.css'
+import '../index.css'
 import '@styles/view-transition.css'
+import '@fontsource-variable/syne'
+import '@fontsource/atkinson-hyperlegible/400.css'
+import '@fontsource/atkinson-hyperlegible/400-italic.css'
+import '@fontsource/atkinson-hyperlegible/700.css'
+
 import SharedHead from '@components/SharedHead.astro'
 import GrainyBackground from '@components/GrainyBackground.astro'
-import ThemeSwitcher from '@components/ThemeSwitcher.svelte'
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-color-mode="light">
   <SharedHead>
     <slot name="head" />
   </SharedHead>
   <body>
-    <ThemeSwitcher client:only="svelte" />
     <slot />
     <GrainyBackground />
   </body>

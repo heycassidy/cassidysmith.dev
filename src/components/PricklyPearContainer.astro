@@ -1,17 +1,82 @@
 ---
+import { css } from '@styled-system/css'
 import { Image } from 'astro:assets'
-import PricklyPearController from '../components/PricklyPearController.svelte'
+import PricklyPearController from '@components/PricklyPearController.svelte'
 import placeholderCactus from '../assets/prickly-pear.png'
 ---
 
-<div class="prickly-pear-container">
-  <div class="scene-box">
+<div
+  class={css({
+    gridArea: 'cactus',
+    alignContent: 'start',
+    overflow: 'hidden',
+    borderRadius: 'bento',
+    backgroundColor: 'var(--color-ground)',
+
+    _light: {
+      '--color-sky': '{colors.neutral.150}',
+      '--color-ground': '{colors.neutral.650}',
+    },
+    _dark: {
+      '--color-sky': '{colors.neutral.850}',
+      '--color-ground': '{colors.neutral.875}',
+      '& img, & canvas': {
+        filter: 'brightness(0.5)',
+      },
+    },
+  })}
+>
+  <div
+    class={css({
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'flex-end',
+      containerType: 'size',
+
+      backgroundColor: 'var(--color-sky)',
+      height: '100%',
+      aspectRatio: '0.85',
+
+      sm: {
+        aspectRatio: 'auto',
+      },
+
+      _before: {
+        content: "''",
+        position: 'absolute',
+        bottom: '0',
+        left: '0',
+        right: '0',
+        height: 'calc(100cqh - 100cqw + {spacing.12})',
+        backgroundColor: 'var(--color-ground)',
+      },
+
+      _after: {
+        content: "''",
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 'calc(100cqh - 100cqw - {spacing.3})',
+        height: '8',
+        backgroundColor: 'var(--color-ground)',
+        '--mask':
+          'conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 50% / 0.5rem 100%',
+        mask: 'var(--mask)',
+      },
+    })}
+  >
     <PricklyPearController client:idle>
       <Image
         src={placeholderCactus}
         alt="Illustration of prickly pear cactus"
-        class="placeholder-cactus"
-        quality={90}
+        class={css({
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          width: '100%',
+          height: 'auto',
+        })}
+        quality={80}
         width="800"
         height="800"
         slot="placeholderCactus"
@@ -20,74 +85,3 @@ import placeholderCactus from '../assets/prickly-pear.png'
     </PricklyPearController>
   </div>
 </div>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  .prickly-pear-container {
-    grid-area: cactus;
-    display: grid;
-    align-content: start;
-    align-self: start;
-    gap: var(--space-1);
-    overflow: hidden;
-    border-radius: var(--fluid-bento-radius);
-
-    a {
-      justify-self: center;
-      @include mixins.text-link;
-      text-align: center;
-      font-size: var(--font-size-0);
-      display: inline-flex;
-      gap: 0.5ch;
-
-      :global(svg) {
-        width: 0.9em;
-        height: auto;
-      }
-    }
-  }
-
-  @include mixins.color-mode(light) {
-    .scene-box {
-      --color-sky: var(--color-neutral-275);
-      --color-ground: var(--color-tertiary-525);
-    }
-  }
-  @include mixins.color-mode(dark) {
-    .scene-box {
-      --color-sky: var(--color-primary-850);
-      --color-ground: var(--color-primary-875);
-    }
-    img {
-      filter: hue-rotate(21deg) brightness(0.4) saturate(1.8);
-    }
-  }
-
-  .scene-box {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-
-    background-color: var(--color-sky);
-    aspect-ratio: 1/1;
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 25%;
-      background-color: var(--color-ground);
-    }
-  }
-
-  .placeholder-cactus {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-  }
-</style>

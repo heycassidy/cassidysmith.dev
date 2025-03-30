@@ -1,14 +1,16 @@
 ---
+import { css } from '@styled-system/css'
 import { render, getCollection, type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
 import { entryIsPublished, sortByPosition } from '@utils/index'
+import { photoPath, photosPath } from 'astro-path-helpers'
 
 import AppLayout from '@layouts/AppLayout.astro'
 import Button from '@components/Button.astro'
-import Prose from '@components/Prose.astro'
 import SEOTags from '@components/SEOTags.astro'
 import GrainyBackground from '@components/GrainyBackground.astro'
+
+import A from '@components/mdx/A.astro'
 
 interface Props {
   photo: CollectionEntry<'photos'>
@@ -18,7 +20,12 @@ interface Props {
 const { photo } = Astro.props
 const { Content } = await render(photo)
 const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
-const orientation = aspectRatio > 1 ? 'landscape' : 'portrait'
+const isLandscape = aspectRatio > 1
+const isPortrait = aspectRatio <= 1
+
+const components = {
+  a: A,
+}
 
 // For the previous/next/all buttons
 const photos = await getCollection('photos', entryIsPublished)
@@ -51,41 +58,116 @@ export async function getStaticPaths() {
     description={`A detailed view of a photo from my photography collection, this one titled ${photo.data.title}`}
   />
 
-  <div class="photo-page-layout">
-    <div class="photo-page-layout__image">
-      <div class=`image-container image-container--${orientation}`>
+  <div
+    class={css({
+      display: 'grid',
+      minHeight: '100dvh',
+      gridTemplateRows: 'auto 1fr',
+
+      '@media (min-aspect-ratio: 1)': {
+        alignItems: 'stretch',
+        gridTemplateRows: '1fr',
+        gridTemplateColumns: '1fr 1fr',
+      },
+    })}
+  >
+    <div
+      class={css({
+        background: 'stark.background',
+        padding: 'bento.padding',
+        display: 'flex',
+        alignItems: 'center',
+        '@media (min-aspect-ratio: 1)': {
+          maxHeight: '100dvh',
+          justifyContent: 'flex-end',
+        },
+      })}
+    >
+      <div
+        style={`--aspect-ratio: ${aspectRatio};`}
+        class={css({
+          position: 'relative',
+          zIndex: '2', // This puts it above the grain effect
+          width: '100%',
+          height: 'auto',
+          borderRadius: 'xs',
+          overflow: 'hidden',
+          aspectRatio: 'var(--aspect-ratio)',
+          '@media (min-aspect-ratio: 1)': {
+            maxHeight: isPortrait ? '100%' : 'auto',
+            width: isPortrait ? 'auto' : '100%',
+          },
+        })}
+      >
         <Image
           loading="eager"
           src={photo.data.image.src}
           alt={photo.data.image.description}
           width="700"
           quality={70}
-          widths={[400, 800, orientation === 'landscape' ? 920 * 2 : 800 * 2]}
+          widths={[400, 800, isLandscape ? 920 * 2 : 800 * 2]}
           transition:name={`photo-${photo.id}`}
+          class={css({
+            display: 'block',
+            width: '100%',
+            height: 'auto',
+          })}
         />
       </div>
     </div>
-    <div class="photo-page-layout__description-and-controls">
-      <div class="photo-controls">
+    <div
+      class={css({
+        position: 'relative',
+        padding: 'bento.padding',
+        display: 'grid',
+        gap: 'bento.gap',
+        gridTemplateRows: 'auto 1fr',
+
+        // view transition name and background so that photos slide from behind
+        viewTransitionName: 'photo-slide-content',
+        backgroundColor: 'base.background',
+        zIndex: 2,
+
+        '@media (min-aspect-ratio: 1)': {
+          alignItems: 'center',
+        },
+      })}
+    >
+      <div
+        class={css({
+          width: '100%',
+          display: 'flex',
+          gap: '2',
+          flexWrap: 'wrap',
+        })}
+      >
         <Button
-          class="photo-controls-button photo-controls-button--all"
+          class={css({
+            marginRight: 'auto',
+          })}
           as="a"
-          size="small"
-          href="/photos"
+          size="sm"
+          href={photosPath()}
+          iconLeft="ri:grid-fill"
         >
-          <Icon name="ri:grid-fill" /> All photos
+          All photos
         </Button>
-        <div class="photo-controls-nav">
+        <div
+          class={css({
+            display: 'flex',
+            gap: '2',
+          })}
+        >
           {
             previousPhotoSlug && (
               <Button
-                class="photo-controls-button photo-controls-button--previous"
                 as="a"
-                size="small"
-                href={`/photos/${previousPhotoSlug}`}
+                size="sm"
+                href={photoPath(previousPhotoSlug)}
                 data-direction="previous-photo"
+                iconLeft="ri:skip-left-fill"
               >
-                <Icon name="ri:skip-left-fill" /> Previous
+                Previous
               </Button>
             )
           }
@@ -94,133 +176,40 @@ export async function getStaticPaths() {
               <Button
                 class="photo-controls-button photo-controls-button--next"
                 as="a"
-                size="small"
-                href={`/photos/${nextPhotoSlug}`}
+                size="sm"
+                href={photoPath(nextPhotoSlug)}
                 data-direction="next-photo"
+                iconRight="ri:skip-right-fill"
               >
-                Next <Icon name="ri:skip-right-fill" />
+                Next
               </Button>
             )
           }
         </div>
       </div>
 
-      <Prose as="main" class="photo-description">
-        <h1>{photo.data.title}</h1>
-        <Content class="photo-content" />
-      </Prose>
+      <main
+        class={css({
+          width: '100%',
+          textWrap: 'pretty',
+          '@media (min-aspect-ratio: 1)': {
+            maxWidth: '3xl',
+            justifySelf: 'center',
+          },
+        })}
+      >
+        <h1
+          class={css({
+            textStyle: 'h1',
+            marginBlockStart: 0,
+          })}
+        >
+          {photo.data.title}
+        </h1>
+        <Content components={components} />
+      </main>
 
       <GrainyBackground />
     </div>
   </div>
 </AppLayout>
-
-<style lang="scss" define:vars={{ 'aspect-ratio': aspectRatio }}>
-  @use '@styles/mixins';
-
-  .photo-page-layout {
-    display: grid;
-    min-height: 100dvh;
-    grid-template-rows: auto 1fr;
-
-    @media (min-aspect-ratio: 1) {
-      align-items: stretch;
-      grid-template-rows: 1fr;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @include mixins.color-mode(light) {
-    .photo-page-layout__image {
-      --photo-padding: var(--fluid-bento-padding);
-    }
-  }
-  @include mixins.color-mode(dark) {
-    .photo-page-layout__image {
-      --photo-padding: calc(var(--fluid-bento-padding) * 2);
-    }
-  }
-
-  .photo-page-layout__image {
-    background: var(--color-stark-background);
-    padding: var(--photo-padding);
-    display: flex;
-    align-items: center;
-    @media (min-aspect-ratio: 1) {
-      max-height: 100dvh;
-      justify-content: flex-end;
-    }
-  }
-  .photo-page-layout__description-and-controls {
-    position: relative;
-    padding: var(--fluid-bento-padding);
-    display: grid;
-    gap: var(--fluid-bento-gap);
-    grid-template-rows: auto 1fr;
-    background-color: var(--color-base-background);
-
-    view-transition-name: photo-slide-content;
-
-    @media (min-aspect-ratio: 1) {
-      align-items: center;
-    }
-  }
-
-  .photo-controls {
-    width: 100%;
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-
-    .photo-controls-button--all {
-      margin-right: auto;
-    }
-  }
-  .photo-controls-nav {
-    display: flex;
-    gap: var(--space-2);
-  }
-
-  .image-container {
-    position: relative;
-    background-color: var(--color-base-background);
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-tiny);
-    overflow: hidden;
-
-    aspect-ratio: var(--aspect-ratio);
-
-    // Screen aspect ratio
-    @media (min-aspect-ratio: 1) {
-      // Image aspect ratio
-      &--portrait {
-        max-height: 100%;
-        width: auto;
-      }
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      // view-transition-name: photo-slide;
-    }
-  }
-
-  .photo-description {
-    width: 100%;
-    @media (min-aspect-ratio: 1) {
-      max-width: var(--space-content-3);
-      justify-self: center;
-    }
-
-    :global(a) {
-      @include mixins.text-link;
-    }
-  }
-
-  .photo-controls-button {
-    text-wrap: nowrap;
-  }
-</style>

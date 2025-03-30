@@ -1,24 +1,20 @@
 import { defineCollection } from 'astro:content'
 import { blogSchema, tagSchema, photoSchema } from './schemas'
-import { glob } from 'astro/loaders'
+import { glob, file } from 'astro/loaders'
 
-const photographyCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/photos' }),
+const photos = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/data/photos' }),
   schema: photoSchema,
 })
 
-const blogCollection = defineCollection({
+const blog = defineCollection({
   loader: glob({ pattern: '**/*.mdx', base: './src/data/blog' }),
   schema: blogSchema,
 })
 
-const tagCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/tags' }),
+const tags = defineCollection({
+  loader: file('src/data/tags.json'),
   schema: tagSchema,
 })
 
-export const collections = {
-  photos: photographyCollection,
-  blog: blogCollection,
-  tags: tagCollection,
-}
+export const collections = { photos, blog, tags }

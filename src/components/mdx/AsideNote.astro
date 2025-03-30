@@ -1,22 +1,25 @@
 ---
+import { css } from '@styled-system/css'
+import textLink from '@recipes/textLink'
+import focusRing from '@recipes/focusRing'
 import Aside from '@components/mdx/Aside.astro'
 
 const { id, refLabel } = Astro.props
 ---
 
 <Aside id={`note-${id}`}>
-  <a class="note-ref-anchor" href={`#note-ref-${id}`}>{refLabel}</a>
+  <a
+    class:list={[
+      css({
+        float: 'left',
+        marginRight: '2',
+      }),
+      textLink({ visited: false }),
+      focusRing(),
+    ]}
+    href={`#note-ref-${id}`}>{refLabel}</a
+  >
   <div>
     <slot />
   </div>
 </Aside>
-
-<style lang="scss">
-  @use '@styles/mixins';
-
-  .note-ref-anchor {
-    @include mixins.text-link($visited: false);
-    float: left;
-    margin-right: var(--space-1);
-  }
-</style>
