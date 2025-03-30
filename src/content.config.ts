@@ -13,7 +13,6 @@ const blog = defineCollection({
 })
 
 const tags = defineCollection({
-  // loader: glob({ pattern: '**/*.md', base: './src/data/tags' }),
   loader: file('src/data/tags.json'),
   schema: tagSchema,
 })
