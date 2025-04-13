@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 import { entryIsPublished, sortByPublishedAt } from '@utils/index'
 import DateTimeDisplay from '@components/blog/DateTimeDisplay.astro'
-import { postsPath } from 'astro-path-helpers/generated'
+import { postPath } from 'astro-path-helpers/generated'
 
 const posts = await getCollection('blog', entryIsPublished)
 const latestPost = posts.sort(sortByPublishedAt)[0]
@@ -36,7 +36,7 @@ const latestPost = posts.sort(sortByPublishedAt)[0]
   ]}
 >
   <a
-    href={postsPath()}
+    href={postPath(latestPost.id)}
     class:list={[
       linkOverlay(),
       css({
