@@ -5,7 +5,7 @@ import { getEntries, type CollectionEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 import TagsList from '@components/blog/TagsList.astro'
 import { tagIsActive } from '@utils/index'
-import { postsPath } from 'astro-path-helpers'
+import { postsPath } from 'astro-path-helpers/generated'
 
 interface Props {
   post: CollectionEntry<'blog'>

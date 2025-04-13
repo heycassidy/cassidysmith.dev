@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content'
 import PhotosCardItem from '@components/PhotosCardItem.astro'
 import { Icon } from 'astro-icon/components'
 import { entryIsPublished, sortByPosition } from '@utils/index'
-import { photosPath } from 'astro-path-helpers'
+import { photosPath } from 'astro-path-helpers/generated'
 
 const photos = await getCollection('photos', entryIsPublished)
 

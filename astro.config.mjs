@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/remark/remark-reading-time.mjs'
 import astroExpressiveCode from 'astro-expressive-code'
 import vercel from '@astrojs/vercel'
-import pathHelpers from "astro-path-helpers/integration"
+import pathHelpers from "astro-path-helpers"
 
 // https://astro.build/config
 export default defineConfig({
