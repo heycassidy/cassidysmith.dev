@@ -59,12 +59,8 @@ const { photo } = Astro.props
       quality={60}
       height="450"
       densities={[1.5, 2]}
-      loading="lazy"
       transition:name={`photo-${photo.id}`}
       class={css({
-        display: 'block',
-        width: '100%',
-        height: 'auto',
         transition: 'all 0.2s ease-in-out',
         _supportsHover: {
           _hover: {

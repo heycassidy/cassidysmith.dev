@@ -20,7 +20,6 @@ interface Props {
 const { photo } = Astro.props
 const { Content } = await render(photo)
 const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
-const isLandscape = aspectRatio > 1
 const isPortrait = aspectRatio <= 1
 
 const components = {
@@ -88,14 +87,17 @@ export async function getStaticPaths() {
         class={css({
           position: 'relative',
           zIndex: '2', // This puts it above the grain effect
-          width: '100%',
-          height: 'auto',
+          width: isPortrait ? 'auto' : '100%',
+          height: isPortrait ? '100%' : 'auto',
+          maxHeight: 'fit-content',
           borderRadius: 'xs',
           overflow: 'hidden',
           aspectRatio: 'var(--aspect-ratio)',
-          '@media (min-aspect-ratio: 1)': {
-            maxHeight: isPortrait ? '100%' : 'auto',
-            width: isPortrait ? 'auto' : '100%',
+          _light: {
+            backgroundColor: 'neutral.50',
+          },
+          _dark: {
+            backgroundColor: 'neutral.875',
           },
         })}
       >
@@ -103,15 +105,8 @@ export async function getStaticPaths() {
           loading="eager"
           src={photo.data.image.src}
           alt={photo.data.image.description}
-          width="700"
           quality={70}
-          widths={[400, 800, isLandscape ? 920 * 2 : 800 * 2]}
           transition:name={`photo-${photo.id}`}
-          class={css({
-            display: 'block',
-            width: '100%',
-            height: 'auto',
-          })}
         />
       </div>
     </div>

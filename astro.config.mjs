@@ -13,7 +13,10 @@ export default defineConfig({
   output: 'static',
   site: 'https://cassidysmith.dev',
   trailingSlash: 'never',
-
+  image: {
+    responsiveStyles: true,
+    layout: 'constrained',
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'load',
