@@ -169,7 +169,7 @@ import focusRing from '@recipes/focusRing'
 
     attributeChangedCallback(name: string, oldValue: Theme, newValue: Theme) {
       if (name === 'theme' && this.button) {
-        this.setTheme(newValue)
+        this.setTheme(newValue, true)
       }
     }
 
@@ -186,10 +186,12 @@ import focusRing from '@recipes/focusRing'
       this.theme = prevTheme === 'dark' ? 'light' : 'dark'
     }
 
-    setTheme(theme: Theme) {
+    setTheme(theme: Theme, savePreference = false) {
       this.button?.setAttribute('aria-label', theme)
       document.documentElement.setAttribute('data-color-mode', theme)
-      localStorage.setItem('theme', theme)
+      if (savePreference) {
+        localStorage.setItem('theme', theme)
+      }
     }
   }
 
