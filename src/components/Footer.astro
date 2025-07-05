@@ -3,66 +3,51 @@ import { css } from '@styled-system/css'
 
 import TextLink from '@components/TextLink.astro'
 
-const { class: className, ...rest } = Astro.props
+const { class: className } = Astro.props
 ---
 
 <footer
   class:list={[
     className,
     css({
-      display: 'grid',
-      justifyItems: 'center',
-      paddingBlock: 2,
-      fontSize: 'sm',
-      position: 'relative',
-
-      _before: {
-        content: "' '",
-        position: 'absolute',
-        insetBlockStart: '-2px',
-        inlineSize: 'full',
-        blockSize: '1px',
-      },
-
-      _light: {
-        color: 'neutral.525',
-        _before: {
-          backgroundImage:
-            'linear-gradient(90deg, transparent, {colors.neutral.150}, transparent)',
-        },
-      },
-      _dark: {
-        color: 'neutral.525',
-        _before: {
-          backgroundImage:
-            'linear-gradient(90deg, transparent, {colors.neutral.850}, transparent)',
-        },
-      },
-
-      gridColumn: 'full-width',
-      gridTemplateColumns: 'subgrid',
+      backgroundColor: 'columnRule',
+      paddingBlockEnd: 'columnHeaderBar',
+      paddingInline: 'columnRule',
     }),
   ]}
 >
-  <p
+  <div
     class={css({
-      gridColumn: 'centered',
+      display: 'grid',
+      justifyItems: 'center',
+      paddingBlock: 2,
+      paddingInline: 2,
+      fontSize: 'xs',
+      borderRadius: 'bento',
+      _light: {
+        backgroundColor: 'neutral.50',
+      },
+      _dark: {
+        backgroundColor: 'neutral.875',
+      },
     })}
   >
-    This site is hand-made by yours truly, powered by <TextLink
-      useColorStyles
-      href="https://astro.build/">Astro</TextLink
-    >. The fonts I’ve chosen are <TextLink
-      useColorStyles
-      href="https://brailleinstitute.org/freefont"
-      >Atkinson Hyperlegible</TextLink
-    > and <TextLink
-      useColorStyles
-      href="https://gitlab.com/bonjour-monde/fonderie/syne-typeface"
-      >Syne</TextLink
-    >. View the source code on <TextLink
-      useColorStyles
-      href="https://github.com/heycassidy/cassidysmith.dev">GitHub</TextLink
-    >.
-  </p>
+    <p>
+      This site is hand-made by yours truly, powered by <TextLink
+        useColorStyles
+        href="https://astro.build/">Astro</TextLink
+      >. The fonts I’ve chosen are <TextLink
+        useColorStyles
+        href="https://brailleinstitute.org/freefont"
+        >Atkinson Hyperlegible</TextLink
+      > and <TextLink
+        useColorStyles
+        href="https://gitlab.com/bonjour-monde/fonderie/syne-typeface"
+        >Syne</TextLink
+      >. View the source code on <TextLink
+        useColorStyles
+        href="https://github.com/heycassidy/cassidysmith.dev">GitHub</TextLink
+      >.
+    </p>
+  </div>
 </footer>

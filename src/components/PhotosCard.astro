@@ -19,6 +19,7 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 8)
     focusRing({ mode: 'focus-visible-within' }),
     interactiveSurface(),
     css({
+      colorPalette: 'neutral',
       gridArea: 'photos',
       borderRadius: 'bento',
       paddingBlock: 'bento.padding',
@@ -63,7 +64,7 @@ let sortedPhotos = photos.sort(sortByPosition).slice(0, 8)
         },
       })}
     >
-      Check Out My Photos <Icon aria-hidden="true" name="ri:arrow-right-fill" />
+      Look at the Photos <Icon aria-hidden="true" name="ri:arrow-right-fill" />
     </h2>
   </a>
 

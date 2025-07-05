@@ -6,34 +6,31 @@ import Banner from '@components/Banner.astro'
 
 <div
   class={css({
-    marginBlock: 0,
     marginInline: 'auto',
     minHeight: '100vh',
     display: 'grid',
-    gap: 'bento.gap',
     alignItems: 'start',
     gridTemplateRows: 'auto 1fr auto',
     gridTemplateColumns:
-      '[full-width-start] 1fr [centered-start] minmax(0, {sizes.5xl}) [centered-end] 1fr [full-width-end]',
+      '[full-width-start] minmax(0, 1fr) [centered-start] minmax(0, {sizes.5xl}) [centered-end] minmax(0, 1fr) [full-width-end]',
   })}
 >
-  <Banner
-    class={css({
-      gridColumn: 'centered',
-    })}
-  />
   <div
     class={css({
       gridColumn: 'full-width',
       display: 'grid',
       gridTemplateColumns: 'subgrid',
-      gap: 'bento.gap',
       '& > *': {
         gridColumn: 'centered',
       },
     })}
   >
+    <Banner
+      class={css({
+        gridColumn: 'centered',
+      })}
+    />
     <slot />
+    <Footer />
   </div>
-  <Footer />
 </div>

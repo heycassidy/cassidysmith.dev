@@ -1,27 +1,27 @@
 import { sva } from '@styled-system/css'
 
 const mobileColumns = `
-        [full-width-start breakout-start]
+        [full-width-start]
 
-          1fr
+          minmax({spacing.bento.padding}, 1fr)
 
-        [text-start aside-start header-content-start anchor-heading-start]
+        [text-start breakout-start aside-start header-content-start anchor-heading-start]
 
           minmax(0, {sizes.xl})
 
-        [text-end aside-end header-content-end anchor-heading-end]
+        [text-end breakout-end aside-end header-content-end anchor-heading-end]
 
-          1fr
+          minmax({spacing.bento.padding}, 1fr)
 
-        [breakout-end full-width-end]
+        [full-width-end]
       `
 
 const desktopColumns = `
-        [full-width-start breakout-start anchor-heading-start]
+        [full-width-start anchor-heading-start]
 
-          1fr
+          minmax({spacing.bento.padding}, 1fr)
 
-        [text-start header-content-start]
+        [text-start breakout-start header-content-start]
 
           minmax(0, {sizes.xl})
 
@@ -35,7 +35,7 @@ const desktopColumns = `
 
         [header-content-end aside-end]
 
-          1fr
+          minmax({spacing.bento.padding}, 1fr)
 
         [full-width-end]
       `
@@ -55,7 +55,7 @@ export default sva({
     root: {
       display: 'grid',
       alignItems: 'start',
-      columnGap: 'bento.gap',
+      columnGap: 'bento.padding',
       rowGap: '1rlh',
 
       // Default direct child column

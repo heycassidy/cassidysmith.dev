@@ -18,10 +18,13 @@ const { photo } = Astro.props
     justifyContent: 'center',
     alignItems: 'center',
     gridRow: 1,
+    borderRadius: 'bento',
 
     sm: {
       gridRow: 'auto',
       aspectRatio: '1 / 1',
+      padding: '4',
+      backgroundColor: 'stark.background',
     },
   })}
 >
@@ -38,11 +41,11 @@ const { photo } = Astro.props
         height: '100vw',
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: 'xs',
         sm: {
           height: 'auto',
           maxHeight: '100%',
           maxWidth: '100%',
+          boxShadow: '0 0 0 2px {colors.stark.foreground}',
         },
         _focusVisible: {
           '& img': {
@@ -61,7 +64,10 @@ const { photo } = Astro.props
       densities={[1.5, 2]}
       transition:name={`photo-${photo.id}`}
       class={css({
-        transition: 'all 0.2s ease-in-out',
+        width: '100%',
+        transition: 'all 0.3s',
+        transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+
         _supportsHover: {
           _hover: {
             transform: 'scale(1.05)',
@@ -70,6 +76,6 @@ const { photo } = Astro.props
         },
       })}
     />
-    <span class="screen-reader-only">Open image: {photo.data.title}</span>
+    <span class={css({ srOnly: true })}>Open image: {photo.data.title}</span>
   </a>
 </li>

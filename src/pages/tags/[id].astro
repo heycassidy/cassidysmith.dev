@@ -44,23 +44,46 @@ export async function getStaticPaths() {
   <PrimaryLayout>
     <main
       class={css({
-        padding: 'bento.padding',
-        maxWidth: '2xl',
+        paddingInline: 'columnRule',
+        paddingBlockStart: 'columnRule',
+        gap: 'columnRule',
+        backgroundColor: 'columnRule',
       })}
     >
-      <h1
+      <div
         class={css({
-          textStyle: 'h1',
-          marginBlockStart: 'lineHeightCrop.syne',
+          padding: 'calc({spacing.bento.padding} * 2)',
+          borderRadius: 'bento',
+          _light: {
+            color: 'neutral.775',
+            backgroundColor: 'neutral.25',
+          },
+          _dark: {
+            color: 'neutral.400',
+            backgroundColor: 'neutral.875',
+          },
         })}
       >
-        Posts Tagged <em
+        <div
           class={css({
-            fontWeight: '600',
-          })}>{tag.data.title}</em
+            maxWidth: '3xl',
+          })}
         >
-      </h1>
-      <Content />
+          <h1
+            class={css({
+              textStyle: 'h1',
+              marginBlockStart: 'lineHeightCrop.syne',
+            })}
+          >
+            Posts Tagged <em
+              class={css({
+                fontWeight: '600',
+              })}>{tag.data.title}</em
+            >
+          </h1>
+          <Content />
+        </div>
+      </div>
     </main>
     <PostsList posts={posts} />
   </PrimaryLayout>

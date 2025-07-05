@@ -1,21 +1,27 @@
-import textStyles from '@styles/textStyles'
-import layerStyles from '@styles/layerStyles'
 import colors from '@styles/colors'
+import layerStyles from '@styles/layerStyles'
+import textStyles from '@styles/textStyles'
 
 const semanticTokens = {
   colors: {
     base: {
       background: {
         value: {
-          _light: '{colors.neutral.25}',
+          _light: '{colors.neutral.75}',
           _dark: '{colors.neutral.900}',
         },
       },
       text: {
         value: {
           _light: '{colors.neutral.650}',
-          _dark: '{colors.neutral.400}',
+          _dark: '{colors.neutral.275}',
         },
+      },
+    },
+    columnRule: {
+      value: {
+        _light: '{colors.neutral.900}',
+        _dark: '{colors.neutral.525}',
       },
     },
     active: {
@@ -32,6 +38,12 @@ const semanticTokens = {
     },
   },
   spacing: {
+    columnRule: {
+      value: '{borderWidths.extraThick}',
+    },
+    columnHeaderBar: {
+      value: '{spacing.2}',
+    },
     bento: {
       padding: {
         value: 'clamp({spacing.3}, var(--clamp-scaling-factor), {spacing.4})',
@@ -43,7 +55,7 @@ const semanticTokens = {
   },
   radii: {
     bento: {
-      value: 'clamp({spacing.3}, var(--clamp-scaling-factor), {spacing.4})',
+      value: '{spacing.2}',
     },
   },
 }
@@ -156,6 +168,13 @@ export default {
             },
           },
         },
+      },
+
+      borderWidths: {
+        thin: { value: '1px' },
+        medium: { value: '1.5px' },
+        thick: { value: '2px' },
+        extraThick: { value: '3px' },
       },
     },
 

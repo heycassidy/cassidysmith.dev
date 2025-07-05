@@ -9,7 +9,6 @@ const { heading } = Astro.props
 
 <li
   class={css({
-    // listStyle: 'none',
     lineHeight: 'tight',
     '& + li, & > ol': {
       marginBlockStart: '2',
@@ -19,9 +18,6 @@ const { heading } = Astro.props
   <a
     href={'#' + heading.slug}
     class:list={[
-      css({
-        colorPalette: 'purple',
-      }),
       textLink({
         visited: false,
         decoration: false,

@@ -2,10 +2,8 @@
   import { css, cx } from '@styled-system/css'
   import button from '@recipes/button'
   import focusRing from '@recipes/focusRing'
-
   import DiceIcon from './DiceIcon.svelte'
   import type { Snippet } from 'svelte'
-  import { onMount } from 'svelte'
   import { generateCactus, clearCactus } from 'prickly-pear'
   let canvasElement: HTMLCanvasElement
   let imagePlaceholderWrapper: HTMLDivElement
@@ -64,7 +62,7 @@
         },
       }),
       button({ material: 'dark-glass' }),
-      focusRing({ color: 'white' }),
+      focusRing(),
     ].join(' ')}
     onclick={click}
   >

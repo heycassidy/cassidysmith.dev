@@ -20,25 +20,49 @@ const sortedPosts = posts.sort(sortByPublishedAt)
   <PrimaryLayout>
     <main
       class={css({
-        padding: 'bento.padding',
-        maxWidth: '2xl',
+        paddingInline: 'columnRule',
+        paddingBlockStart: 'columnRule',
+        gap: 'columnRule',
+        backgroundColor: 'columnRule',
       })}
     >
-      <h1
+      <div
         class={css({
-          textStyle: 'h1',
-          marginBlockStart: 'lineHeightCrop.syne',
+          padding: 'calc({spacing.bento.padding} * 2)',
+          borderRadius: 'bento',
+          _light: {
+            color: 'neutral.775',
+            backgroundColor: 'neutral.25',
+          },
+          _dark: {
+            color: 'neutral.400',
+            backgroundColor: 'neutral.875',
+          },
         })}
       >
-        Latest Posts
-      </h1>
-      <p>
-        This blog is just getting started! I plan to write mostly on web-dev
-        related topics, but might throw in a few semi-personal life posts in
-        here, too. All posts should be considered works in progress, although,
-        just like my houseplants, I can't guarantee they're all still alive.
-        I've included the last updated date on each article page.
-      </p>
+        <div
+          class={css({
+            maxWidth: '3xl',
+          })}
+        >
+          <h1
+            class={css({
+              textStyle: 'h1',
+              marginBlockStart: 'lineHeightCrop.syne',
+            })}
+          >
+            Latest Posts
+          </h1>
+          <p>
+            This blog is just getting started! I plan to write mostly on web-dev
+            related topics, but might throw in a few semi-personal life posts in
+            here, too. All posts should be considered works in progress,
+            although, just like my houseplants, I can't guarantee they're all
+            still alive. I've included the last updated date on each article
+            page.
+          </p>
+        </div>
+      </div>
     </main>
     <PostsList posts={sortedPosts} />
   </PrimaryLayout>

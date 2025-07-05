@@ -1,6 +1,5 @@
 ---
 import { css } from '@styled-system/css'
-import SocialLink from '@components/SocialLink.astro'
 import textLink from '@recipes/textLink'
 import focusRing from '@recipes/focusRing'
 import CopyButton from '@components/CopyButton.astro'
@@ -16,15 +15,14 @@ const { emailAddress = 'hello@cassidysmith.dev' } = Astro.props
     display: 'grid',
     gridTemplateColumns: '1fr',
     gridTemplateRows: 'auto 1fr',
-    gap: 'bento.gap',
 
     _light: {
-      color: 'green.775',
-      backgroundColor: 'green.50',
+      color: 'neutral.775',
+      backgroundColor: 'neutral.50',
     },
     _dark: {
-      color: 'green.400',
-      backgroundColor: 'green.850',
+      color: 'neutral.400',
+      backgroundColor: 'neutral.850',
     },
   })}
 >
@@ -64,14 +62,14 @@ const { emailAddress = 'hello@cassidysmith.dev' } = Astro.props
 
         borderRadius: 'calc({radii.bento} - {spacing.bento.padding} / 2)',
         _light: {
-          backgroundColor: 'green.25',
-          color: 'green.900',
-          boxShadow: '0 0 0 1px {colors.green.150}',
+          backgroundColor: 'neutral.25',
+          color: 'neutral.900',
+          boxShadow: '0 0 0 {borderWidths.thin} {colors.neutral.150}',
         },
         _dark: {
-          backgroundColor: 'green.875',
-          color: 'green.400',
-          boxShadow: '0 0 0 1px {colors.green.925}',
+          backgroundColor: 'neutral.875',
+          color: 'neutral.400',
+          boxShadow: '0 0 0 {borderWidths.thin} {colors.neutral.925}',
         },
       })}
     >
@@ -92,7 +90,6 @@ const { emailAddress = 'hello@cassidysmith.dev' } = Astro.props
       <CopyButton
         textToCopy={emailAddress}
         size="sm"
-        color="green"
         class={css({
           borderRadius:
             'calc({radii.bento} - {spacing.bento.padding} / 2 - {spacing.0.5})',

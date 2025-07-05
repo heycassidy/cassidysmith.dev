@@ -7,23 +7,19 @@ export default defineEcConfig({
     uiFontFamily: 'var(--font-atkinson)',
     uiFontSize: 'var(--font-sizes-xs)',
     codeFontSize: 'var(--font-sizes-xs)',
-    // codeFontFamily: 'var(--font-monaspace-neon)',
     codePaddingBlock: 'var(--spacing-3)',
     codePaddingInline: 'var(--spacing-8)',
     borderRadius: 'calc(var(--radii-bento) / 2)',
-    borderWidth: '1px',
-    borderColor: ({ theme }) =>
-      theme.type === 'dark'
-        ? 'var(--colors-neutral-775)'
-        : 'var(--colors-neutral-275)',
-    codeBackground: ({ theme }) =>
-      theme.type === 'dark'
-        ? 'var(--colors-neutral-875)'
-        : 'var(--colors-neutral-50)',
+    borderWidth: 'var(--spacing-column-rule)',
+    borderColor: 'var(--colors-column-rule)',
 
     frames: {
       tooltipSuccessBackground: 'var(--colors-neutral-925)',
       frameBoxShadowCssValue: 'none',
+      editorBackground: ({ theme }) =>
+        theme.type === 'dark'
+          ? 'var(--colors-neutral-850)'
+          : 'var(--colors-neutral-25)',
       editorTabBarBackground: ({ theme }) =>
         theme.type === 'dark'
           ? 'var(--colors-neutral-850)'

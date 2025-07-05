@@ -40,10 +40,10 @@ export default cva({
           },
         },
         _dark: {
-          color: 'blue.525',
-          textDecorationColor: 'blue.775',
+          color: 'blue.150',
+          textDecorationColor: 'blue.150',
           _hover: {
-            color: 'blue.400',
+            color: 'blue.275',
             textDecorationColor: 'currentColor',
           },
           _active: {
@@ -51,10 +51,10 @@ export default cva({
             textDecorationColor: 'currentColor',
           },
           _visited: {
-            color: 'blue.525',
-            textDecorationColor: 'blue.775',
+            color: 'blue.150',
+            textDecorationColor: 'blue.150',
             _hover: {
-              color: 'blue.400',
+              color: 'blue.275',
               textDecorationColor: 'currentColor',
             },
             _active: {

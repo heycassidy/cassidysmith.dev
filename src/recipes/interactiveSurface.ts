@@ -20,15 +20,16 @@ export default cva({
         _light: {
           color: 'colorPalette.775',
           backgroundColor: 'colorPalette.75',
-          // boxShadow:
-          //   '0 0 0 2px inset {colors.colorPalette.275}, 0 2px 0 0 {colors.colorPalette.275}',
-          boxShadow:
-            '0 0 0 1px inset {colors.colorPalette.150}, 0 -3px 0 0 inset {colors.colorPalette.275}',
+          '--hover-bg':
+            'oklch(from {colors.colorPalette.50} calc(l * 0.95) calc(c * 3.5) h)',
 
           _hover: {
             color: 'colorPalette.875',
-            backgroundColor: 'colorPalette.275',
-            boxShadow: '0 0 0 1px inset {colors.colorPalette.525}',
+            backgroundColor: 'var(--hover-bg)',
+            boxShadow: `
+              0 0 0 1px {colors.colorPalette.650},
+              0 0 0 4px inset var(--hover-bg),
+              0 0 0 5px inset {colors.colorPalette.875}`,
           },
           _active: {
             color: 'active.contrast',
@@ -37,15 +38,18 @@ export default cva({
           },
         },
         _dark: {
-          color: 'colorPalette.275',
-          backgroundColor: 'colorPalette.850',
-          boxShadow:
-            '0 0 0 1px inset {colors.colorPalette.775}, 0 -4px 0 0 inset {colors.colorPalette.925}',
+          color: 'colorPalette.150',
+          backgroundColor: 'colorPalette.775',
+          '--hover-bg':
+            'oklch(from {colors.colorPalette.875} calc(l * 1.05) calc(c * 1.5) h)',
 
           _hover: {
-            color: 'colorPalette.400',
-            backgroundColor: 'colorPalette.850',
-            boxShadow: '0 0 0 1px inset {colors.colorPalette.925}',
+            color: 'colorPalette.150',
+            backgroundColor: 'var(--hover-bg)',
+            boxShadow: `
+              0 0 0 1px inset {colors.colorPalette.275},
+              0 0 0 4px inset var(--hover-bg),
+              0 0 0 5px inset {colors.colorPalette.275}`,
           },
           _active: {
             color: 'active.contrast',

@@ -20,27 +20,51 @@ let sortedPhotos = photos.sort(sortByPosition)
   <PrimaryLayout>
     <main
       class={css({
-        padding: 'bento.padding',
-        maxWidth: '3xl',
+        padding: 'columnRule',
+        gap: 'columnRule',
+        backgroundColor: 'columnRule',
+        display: 'grid',
+        gridAutoColumns: 'minmax(0, auto)',
       })}
     >
-      <h1
+      <div
         class={css({
-          textStyle: 'h1',
-          marginBlockStart: 'lineHeightCrop.syne',
+          padding: 'calc({spacing.bento.padding} * 2)',
+          borderRadius: 'bento',
+          _light: {
+            color: 'neutral.775',
+            backgroundColor: 'neutral.25',
+          },
+          _dark: {
+            color: 'neutral.400',
+            backgroundColor: 'neutral.875',
+          },
         })}
       >
-        Photography
-      </h1>
-      <p>
-
-      </p>
-      <p>
-        Photography is a fun way to look deeply and connect with your surroundings. For me, it's casual, spontaneous, and fun.
-        I shoot whatever catches my attention while remembering that attention is a muscle to develop.
-        Our car-dominant cities have become places to pass through, but I want you to remember that your city is a place to <i>be</i>. Sit. Look around. Maybe take a photo.
-      </p>
+        <div
+          class={css({
+            maxWidth: '3xl',
+          })}
+        >
+          <h1
+            class={css({
+              textStyle: 'h1',
+              marginBlockStart: 'lineHeightCrop.syne',
+            })}
+          >
+            Photography
+          </h1>
+          <p>
+            Photography is a fun way to look deeply and connect with your
+            surroundings. For me, it's casual, spontaneous, and fun. I shoot
+            whatever catches my attention while remembering that attention is a
+            muscle I can develop. Our car-dominant cities have become places to
+            pass through, but I want you to remember that your city is a place
+            to <i>be</i>. Sit. Look around. Maybe take a photo.
+          </p>
+        </div>
+      </div>
+      <PhotoGallery photos={sortedPhotos} />
     </main>
-    <PhotoGallery photos={sortedPhotos} />
   </PrimaryLayout>
 </AppLayout>

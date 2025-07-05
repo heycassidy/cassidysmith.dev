@@ -13,7 +13,9 @@ const { posts } = Astro.props
 <div
   class={css({
     display: 'grid',
-    gap: 'bento.gap',
+    padding: 'columnRule',
+    gap: 'columnRule',
+    backgroundColor: 'columnRule',
     gridTemplateColumns: {
       md: 'repeat(auto-fill, minmax(30rem, 1fr))',
     },

@@ -90,9 +90,10 @@ export async function getStaticPaths() {
           width: isPortrait ? 'auto' : '100%',
           height: isPortrait ? '100%' : 'auto',
           maxHeight: 'fit-content',
-          borderRadius: 'xs',
           overflow: 'hidden',
-          aspectRatio: 'var(--aspect-ratio)',
+          '@media (min-aspect-ratio: 1)': {
+            aspectRatio: 'var(--aspect-ratio)',
+          },
           _light: {
             backgroundColor: 'neutral.50',
           },
@@ -113,18 +114,18 @@ export async function getStaticPaths() {
     <div
       class={css({
         position: 'relative',
-        padding: 'bento.padding',
+        // padding: 'bento.padding',
         display: 'grid',
-        gap: 'bento.gap',
         gridTemplateRows: 'auto 1fr',
 
         // view transition name and background so that photos slide from behind
         viewTransitionName: 'photo-slide-content',
         backgroundColor: 'base.background',
+
         zIndex: 2,
 
         '@media (min-aspect-ratio: 1)': {
-          alignItems: 'center',
+          boxShadow: 'calc(-1 * {spacing.columnRule}) 0 0 0 {colors.columnRule}',
         },
       })}
     >
@@ -132,7 +133,10 @@ export async function getStaticPaths() {
         class={css({
           width: '100%',
           display: 'flex',
-          gap: '2',
+          gap: 'columnRule',
+          backgroundColor: 'columnRule',
+          paddingBlockEnd: 'columnRule',
+          paddingBlockStart: 'columnHeaderBar',
           flexWrap: 'wrap',
         })}
       >
@@ -147,61 +151,68 @@ export async function getStaticPaths() {
         >
           All photos
         </Button>
-        <div
+        <!-- filler span -->
+        <span
           class={css({
-            display: 'flex',
-            gap: '2',
-          })}
-        >
-          {
-            previousPhotoSlug && (
-              <Button
-                as="a"
-                size="sm"
-                href={photoPath(previousPhotoSlug)}
-                data-direction="previous-photo"
-                iconLeft="ri:skip-left-fill"
-              >
-                Previous
-              </Button>
-            )
-          }
-          {
-            nextPhotoSlug && (
-              <Button
-                class="photo-controls-button photo-controls-button--next"
-                as="a"
-                size="sm"
-                href={photoPath(nextPhotoSlug)}
-                data-direction="next-photo"
-                iconRight="ri:skip-right-fill"
-              >
-                Next
-              </Button>
-            )
-          }
-        </div>
+            flexGrow: 1,
+            backgroundColor: 'base.background',
+            borderRadius: 'calc({radii.bento} - {spacing.bento.padding} / 2)',
+          })}></span>
+        {
+          previousPhotoSlug && (
+            <Button
+              as="a"
+              size="sm"
+              href={photoPath(previousPhotoSlug)}
+              data-direction="previous-photo"
+              iconLeft="ri:skip-left-fill"
+            >
+              Previous
+            </Button>
+          )
+        }
+        {
+          nextPhotoSlug && (
+            <Button
+              class="photo-controls-button photo-controls-button--next"
+              as="a"
+              size="sm"
+              href={photoPath(nextPhotoSlug)}
+              data-direction="next-photo"
+              iconRight="ri:skip-right-fill"
+            >
+              Next
+            </Button>
+          )
+        }
       </div>
 
       <main
         class={css({
           width: '100%',
           textWrap: 'pretty',
+          padding: 'bento.padding',
+          borderBlockEnd: '{spacing.columnHeaderBar} solid {colors.columnRule}',
+
+          display: 'flex',
+          alignItems: 'center',
+
           '@media (min-aspect-ratio: 1)': {
             maxWidth: '3xl',
-            justifySelf: 'center',
           },
         })}
       >
-        <h1
-          class={css({
-            textStyle: 'h1',
-            marginBlockStart: 0,
-          })}
-        >
-          {photo.data.title}
-        </h1>
-        <Content components={components} />
+        <div>
+          <h1
+            class={css({
+              textStyle: 'h1',
+              marginBlockStart: 0,
+            })}
+          >
+            {photo.data.title}
+          </h1>
+          <Content components={components} />
+        </div>
       </main>
 
       <GrainyBackground />

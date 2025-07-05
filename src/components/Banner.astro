@@ -1,7 +1,7 @@
 ---
-import { css } from '@styled-system/css'
 import BannerLogo from '@components/BannerLogo.astro'
 import ThemeSwitcher from '@components/ThemeSwitcher.astro'
+import { css } from '@styled-system/css'
 
 const { class: className, ...rest } = Astro.props
 ---
@@ -11,28 +11,33 @@ const { class: className, ...rest } = Astro.props
   class:list={[
     className,
     css({
-      marginBlockStart: 'bento.gap',
+      backgroundColor: 'columnRule',
+      paddingBlockStart: 'columnHeaderBar',
+      paddingInline: 'columnRule',
+    }),
+  ]}
+  {...rest}
+>
+  <div
+    class={css({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       paddingInlineStart: 'bento.padding',
       paddingInlineEnd: 'calc({spacing.bento.padding} / 2)',
       paddingBlock: 'calc({spacing.bento.padding} / 2)',
-
       borderRadius: 'bento',
-
       _light: {
-        backgroundColor: 'neutral.75',
+        backgroundColor: 'neutral.50',
       },
       _dark: {
         backgroundColor: 'neutral.875',
       },
-    }),
-  ]}
-  {...rest}
->
-  <nav>
-    <BannerLogo />
-  </nav>
-  <ThemeSwitcher />
+    })}
+  >
+    <nav>
+      <BannerLogo />
+    </nav>
+    <ThemeSwitcher />
+  </div>
 </header>

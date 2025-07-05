@@ -18,34 +18,8 @@ const props = Astro.props
         position: 'absolute',
         paddingInline: 'bento.padding',
         paddingBlock: 'bento.padding',
-        borderRadius: 'calc(var(--radii-bento) / 2)',
         overflow: 'hidden',
-
-        _before: {
-          content: "' '",
-          position: 'absolute',
-          display: 'block',
-          width: '20',
-          height: '100%',
-          top: 0,
-          left: 0,
-          zIndex: -1,
-        },
-
-        _light: {
-          border: 0,
-          _before: {
-            backgroundImage:
-              'linear-gradient(to right, {colors.neutral.50}, transparent)',
-          },
-        },
-        _dark: {
-          border: 0,
-          _before: {
-            backgroundImage:
-              'linear-gradient(to right, {colors.neutral.900}, transparent)',
-          },
-        },
+        borderBlockStart: '{spacing.columnRule} solid {colors.columnRule}'
       },
     },
   })}

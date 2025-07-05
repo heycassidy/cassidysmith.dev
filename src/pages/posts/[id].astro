@@ -64,7 +64,9 @@ export async function getStaticPaths() {
     <article
       class={css({
         display: 'grid',
-        rowGap: 'calc({spacing.bento.gap} * 2)',
+        rowGap: 'columnRule',
+        backgroundColor: 'columnRule',
+        padding: 'columnRule',
       })}
     >
       <header
@@ -90,9 +92,19 @@ export async function getStaticPaths() {
         <PostHeader post={post} />
       </header>
 
-      <main class={layoutClasses.root}>
+      <main class:list={[layoutClasses.root, css({
+        borderRadius: "bento",
+        paddingBlock: 'calc({spacing.bento.padding} * 2)',
+        _light: {
+          backgroundColor: 'neutral.25'
+        },
+        _dark: {
+          backgroundColor: 'neutral.875'
+        }
+      })]}>
         <div
           class:list={[
+            layoutClasses.aside,
             css({
               zIndex: 1,
               md: {
@@ -100,7 +112,6 @@ export async function getStaticPaths() {
                 height: 0,
               },
             }),
-            layoutClasses.aside,
           ]}
         >
           <PostMeta

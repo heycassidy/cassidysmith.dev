@@ -12,16 +12,7 @@ const { photos } = Astro.props
 
 <div
   class={css({
-    backgroundColor: 'stark.background',
-    marginBlockEnd: 6,
     zIndex: '1', // This puts it above the grain effect
-    sm: {
-      paddingBlock: 10,
-    },
-    '&&': {
-      gridColumnStart: 'full-width-start',
-      gridColumnEnd: 'full-width-end',
-    },
   })}
 >
   <ul
@@ -29,15 +20,18 @@ const { photos } = Astro.props
       maxWidth: '5xl',
       marginInline: 'auto',
       marginBlock: 0,
-      padding: 'bento.padding',
       display: 'flex',
-      gap: 'bento.gap',
+      padding: '2',
+      gap: '2',
+      backgroundColor: 'stark.background',
       width: '100%',
       overflowX: 'auto',
       overflowY: 'hidden',
       WebkitOverflowScrolling: 'touch',
 
       sm: {
+        gap: 'columnRule',
+        backgroundColor: 'columnRule',
         overflow: 'visible',
         display: 'grid',
         padding: 0,
