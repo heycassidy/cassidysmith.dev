@@ -2,8 +2,9 @@ import { defineTextStyles } from '@pandacss/dev'
 import type { SystemStyleObject } from '@pandacss/dev'
 
 const sizes = [
-  '3xs',
   '2xs',
+  'xs',
+  'sm',
   'xs',
   'md',
   'lg',

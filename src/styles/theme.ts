@@ -93,9 +93,9 @@ export default {
         // line heights that correspond to font sizes
         // from https://precise-type.com/modular-scale.html
         fz: {
-          '3xs': { value: '1.4545' },
-          '2xs': { value: '1.8462' },
-          xs: { value: '1.7143' },
+          '2xs': { value: '1.4545' },
+          xs: { value: '1.8462' },
+          sm: { value: '1.7143' },
           md: { value: '1.5' },
           lg: { value: '1.3333' },
           xl: { value: '1.6' },
@@ -114,9 +114,9 @@ export default {
         // letter spacings that correspond to font sizes
         // from https://precise-type.com/modular-scale.html
         fz: {
-          '3xs': { value: '0.0136em' },
-          '2xs': { value: '0.0069em' },
-          xs: { value: '0.0043em' },
+          '2xs': { value: '0.0136em' },
+          xs: { value: '0.0069em' },
+          sm: { value: '0.0043em' },
           md: { value: '0em' },
           lg: { value: '-0.0033em' },
           xl: { value: '-0.006em' },

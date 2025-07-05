@@ -8,6 +8,7 @@ import PhotosCard from '@components/PhotosCard.astro'
 import SEOTags from '@components/SEOTags.astro'
 import TextLink from '@components/TextLink.astro'
 import LatestPost from '@components/LatestPost.astro'
+import GitHubProject from '@components/GitHubProject.astro'
 ---
 
 <AppLayout>
@@ -28,6 +29,7 @@ import LatestPost from '@components/LatestPost.astro'
           'blog'
           'contact'
           'cactus'
+          'gh-project'
           'photos'
         `,
         sm: {
@@ -37,7 +39,7 @@ import LatestPost from '@components/LatestPost.astro'
             'intro cactus'
             'intro cactus'
             'contact cactus'
-            'photos .'
+            'gh-project photos'
           `,
         },
         md: {
@@ -45,7 +47,7 @@ import LatestPost from '@components/LatestPost.astro'
           gridTemplateAreas: `
             'intro intro intro cactus'
             'blog blog contact contact'
-            'photos photos . .'
+            'gh-project gh-project photos photos'
           `,
         },
         xl: {
@@ -53,7 +55,7 @@ import LatestPost from '@components/LatestPost.astro'
           gridTemplateAreas: `
             'intro intro intro cactus'
             'blog contact contact cactus'
-            'photos photos . .'
+            'gh-project gh-project photos photos'
           `,
         },
       })}
@@ -98,6 +100,7 @@ import LatestPost from '@components/LatestPost.astro'
       <LatestPost />
       <Contact />
       <PricklyPearContainer />
+      <GitHubProject repoName="astro-path-helpers" />
       <PhotosCard />
     </div>
   </PrimaryLayout>

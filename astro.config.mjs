@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig, envField } from 'astro/config'
 import icon from 'astro-icon'
 import svelte from '@astrojs/svelte'
 import mdx from '@astrojs/mdx'
@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/remark/remark-reading-time.mjs'
 import astroExpressiveCode from 'astro-expressive-code'
 import vercel from '@astrojs/vercel'
-import pathHelpers from "astro-path-helpers"
+import pathHelpers from 'astro-path-helpers'
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,6 +24,14 @@ export default defineConfig({
   redirects: {
     '/posts/modify-astro-slot-contents': '/posts/modify-astro-slot-children',
   },
+  env: {
+    schema: {
+      GH_PERSONAL_ACCESS_TOKEN: envField.string({
+        context: 'server',
+        access: 'secret',
+      }),
+    },
+  },
   markdown: {
     smartypants: true,
     remarkPlugins: [remarkReadingTime],
@@ -38,10 +46,12 @@ export default defineConfig({
           'arrow-right-circle-fill',
           'arrow-right-fill',
           'arrow-right-up-line',
+          'arrow-right-up-fill',
           'bluesky-fill',
           'check-line',
           'clipboard-fill',
           'corner-down-right-line',
+          'code-line',
           'eraser-fill',
           'file-copy-fill',
           'gallery-view',
@@ -59,6 +69,7 @@ export default defineConfig({
           'send-plane-fill',
           'skip-left-fill',
           'skip-right-fill',
+          'star-fill',
         ],
       },
     }),

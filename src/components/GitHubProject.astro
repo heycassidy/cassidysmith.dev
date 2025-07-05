@@ -1,0 +1,136 @@
+---
+import { css } from '@styled-system/css'
+import { linkOverlay } from '@styled-system/patterns'
+import interactiveSurface from '@recipes/interactiveSurface'
+import focusRing from '@recipes/focusRing'
+import { Icon } from 'astro-icon/components'
+import { Octokit } from 'octokit'
+
+import { GH_PERSONAL_ACCESS_TOKEN } from 'astro:env/server'
+
+interface Props {
+  repoName: string
+}
+
+const { repoName } = Astro.props
+
+const octokit = new Octokit({
+  auth: GH_PERSONAL_ACCESS_TOKEN,
+})
+
+const repoDetails = await octokit.rest.repos.get({
+  owner: 'heycassidy',
+  repo: repoName,
+})
+
+console.log(repoDetails)
+
+const {
+  name,
+  description,
+  stargazers_count: starsCount,
+  language,
+  html_url: url,
+} = repoDetails.data
+console.log(name, description, starsCount, language, url)
+---
+
+<article
+  class:list={[
+    css({
+      colorPalette: 'green',
+      gridArea: 'gh-project',
+
+      borderRadius: 'bento',
+      padding: 'bento.padding',
+
+      display: 'flex',
+      flexDirection: 'column',
+      rowGap: '1',
+      justifyContent: 'space-between',
+
+      textDecoration: 'none',
+
+      position: 'relative',
+    }),
+    interactiveSurface(),
+    focusRing({ mode: 'focus-visible-within' }),
+  ]}
+>
+  <div>
+    <a
+      href={url}
+      class:list={[
+        linkOverlay(),
+        css({
+          '&:focus': {
+            outline: 'none',
+          },
+        }),
+      ]}
+    >
+      <h2
+        class={css({
+          color: 'currentColor',
+          display: 'flex',
+          gap: '1.5',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          textStyle: '2xl',
+          fontWeight: '710',
+        })}
+      >
+        {name}
+        <Icon aria-hidden="true" name="ri:arrow-right-up-fill" />
+      </h2>
+    </a>
+    <p
+      class={css({
+        opacity: '0.9',
+        textStyle: 'md',
+      })}
+    >
+      {description}
+    </p>
+  </div>
+
+  <div
+    class={css({
+      display: 'flex',
+      alignItems: 'center',
+      gap: 3,
+      textStyle: 'sm',
+    })}
+  >
+    <span
+      class={css({
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+      })}
+    >
+      <span class={css({ srOnly: true })}>{starsCount} stars on GitHub</span>
+      <Icon aria-label="This is a GitHub repo" name="ri:star-fill" />
+      <span>{starsCount}</span>
+    </span>
+
+    <span
+      class={css({
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+      })}
+    >
+      <Icon aria-hidden name="ri:code-line" />
+      <span>{language}</span>
+    </span>
+
+    <span class={css({ marginInlineStart: 'auto' })}>
+      <Icon
+        size="1rem"
+        aria-label="This is a GitHub repo"
+        name="ri:github-fill"
+      />
+    </span>
+  </div>
+</article>
