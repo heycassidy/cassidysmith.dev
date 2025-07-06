@@ -39,6 +39,10 @@ const { photos } = Astro.props
       },
     })}
   >
-    {photos.map((photo) => <PhotoGalleryItem photo={photo} />)}
+    {
+      photos.map((photo, i) => (
+        <PhotoGalleryItem photo={photo} priority={i < 2} />
+      ))
+    }
   </ul>
 </div>

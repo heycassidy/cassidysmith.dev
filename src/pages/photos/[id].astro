@@ -1,7 +1,8 @@
 ---
 import { css } from '@styled-system/css'
 import { render, getCollection, type CollectionEntry } from 'astro:content'
-import { Image } from 'astro:assets'
+import LocalImageWithLQIP from '@components/LocalImageWithLQIP.astro'
+
 import { entryIsPublished, sortByPosition } from '@utils/index'
 import { photoPath, photosPath } from 'astro-path-helpers/generated'
 
@@ -102,11 +103,13 @@ export async function getStaticPaths() {
           },
         })}
       >
-        <Image
-          loading="eager"
+        <LocalImageWithLQIP
+          lqipSrc={photo.data.image.src.src}
+          lqipSize={16}
+          priority
+          quality="medium"
           src={photo.data.image.src}
           alt={photo.data.image.description}
-          quality={70}
           transition:name={`photo-${photo.id}`}
         />
       </div>
@@ -125,7 +128,8 @@ export async function getStaticPaths() {
         zIndex: 2,
 
         '@media (min-aspect-ratio: 1)': {
-          boxShadow: 'calc(-1 * {spacing.columnRule}) 0 0 0 {colors.columnRule}',
+          boxShadow:
+            'calc(-1 * {spacing.columnRule}) 0 0 0 {colors.columnRule}',
         },
       })}
     >

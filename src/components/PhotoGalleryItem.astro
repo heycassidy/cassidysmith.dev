@@ -1,15 +1,19 @@
 ---
 import { css } from '@styled-system/css'
 import focusRing from '@recipes/focusRing'
-import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import { photoPath } from 'astro-path-helpers/generated'
+import LocalImageWithLQIP from '@components/LocalImageWithLQIP.astro'
 
 interface Props {
   photo: CollectionEntry<'photos'>
+  priority: boolean
 }
 
-const { photo } = Astro.props
+const { photo, priority = false } = Astro.props
+
+const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
+const isPortrait = aspectRatio <= 1
 ---
 
 <li
@@ -42,9 +46,10 @@ const { photo } = Astro.props
         position: 'relative',
         overflow: 'hidden',
         sm: {
-          height: 'auto',
-          maxHeight: '100%',
+          width: isPortrait ? 'auto' : '100%',
+          height: isPortrait ? '100%' : 'auto',
           maxWidth: '100%',
+          maxHeight: 'fit-content',
           boxShadow: '0 0 0 2px {colors.stark.foreground}',
         },
         _focusVisible: {
@@ -56,14 +61,20 @@ const { photo } = Astro.props
       }),
     ]}
   >
-    <Image
+    <LocalImageWithLQIP
+      lqipSrc={photo.data.image.src.src}
       src={photo.data.image.src}
       alt={photo.data.image.description}
-      quality={60}
-      height="450"
-      densities={[1.5, 2]}
-      transition:name={`photo-${photo.id}`}
+      quality="medium"
+      priority={priority}
+      sizes={`
+        (max-width: 640px) 1200px,
+        (max-width: 732px) 330px,
+        (max-width: 1215px) 360px,
+        276px
+      `}
       class={css({
+        position: 'relative',
         width: '100%',
         transition: 'all 0.3s',
         transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
