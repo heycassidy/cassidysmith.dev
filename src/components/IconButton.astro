@@ -1,0 +1,43 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+import { css } from '@styled-system/css'
+import button from '@recipes/button'
+import focusRing from '@recipes/focusRing'
+import { Icon } from 'astro-icon/components'
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag
+  size?: 'sm' | 'md' | 'lg'
+  material?: 'solid' | 'dark-glass' | 'adaptive' | 'ghost'
+  color?: string
+  icon: string
+  ariaLabel: string
+  class?: string
+}>
+
+const {
+  as: Tag = 'button',
+  class: className,
+  color = 'neutral',
+  size = 'md',
+  material = 'solid',
+  icon,
+  ariaLabel,
+  ...props
+} = Astro.props
+---
+
+<Tag
+  aria-label={ariaLabel}
+  class:list={[
+    css({
+      colorPalette: color,
+    }),
+    button({ size, material, iconOnly: true }),
+    focusRing(),
+    className,
+  ]}
+  {...props}
+>
+  <Icon aria-hidden="true" name={icon} />
+</Tag>
