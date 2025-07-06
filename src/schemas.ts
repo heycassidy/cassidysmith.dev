@@ -4,7 +4,6 @@ export const photoSchema = ({ image }: SchemaContext) =>
   z.object({
     title: z.string(),
     published: z.boolean().default(false),
-    position: z.number(),
     imageAlt: z.string(),
     image: image(),
   })
