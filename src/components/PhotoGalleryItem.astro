@@ -18,21 +18,13 @@ const isPortrait = aspectRatio <= 1
 
 <li
   class={css({
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: 'grid',
     justifyContent: 'stretch',
+    alignContent: 'end',
     alignItems: 'center',
-    gridRow: 1,
     gap: 2,
-
-    sm: {
-      display: 'grid',
-      justifyContent: 'stretch',
-      alignContent: 'end',
-      gridRow: 'auto',
-      aspectRatio: '1 / 1',
-      backgroundColor: 'stark.background',
-    },
+    gridRow: 'auto',
+    aspectRatio: '1 / 1',
   })}
 >
   <a
@@ -44,18 +36,13 @@ const isPortrait = aspectRatio <= 1
       css({
         cursor: 'zoom-in',
         display: 'block',
-
         aspectRatio: 'var(--aspect-ratio)',
-
-        height: '100vw',
         position: 'relative',
         overflow: 'hidden',
-        sm: {
-          width: isPortrait ? 'auto' : '100%',
-          height: isPortrait ? '100%' : 'auto',
-          maxWidth: '100%',
-          maxHeight: '100%',
-        },
+        width: isPortrait ? 'auto' : '100%',
+        height: isPortrait ? '100%' : 'auto',
+        maxWidth: '100%',
+        maxHeight: '100%',
         _focusVisible: {
           '& img': {
             transform: 'scale(1.05)',

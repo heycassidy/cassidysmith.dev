@@ -17,24 +17,14 @@ const { photos } = Astro.props
 >
   <ul
     class={css({
-      maxWidth: '5xl',
-      marginInline: 'auto',
-      marginBlock: 0,
-      display: 'flex',
-      padding: '2',
-      gap: '2',
+      display: 'grid',
+      padding: 'calc({spacing.bento.padding} * 2)',
+      gap: 'calc({spacing.bento.padding} * 2)',
       backgroundColor: 'stark.background',
-      width: '100%',
-      overflowX: 'auto',
-      overflowY: 'hidden',
-      WebkitOverflowScrolling: 'touch',
+      borderRadius: 'bento',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(8rem, 1fr))',
 
       sm: {
-        borderRadius: 'bento',
-        overflow: 'visible',
-        display: 'grid',
-        padding: 'calc({spacing.bento.padding} * 2)',
-        gap: 'calc({spacing.bento.padding} * 2)',
         gridTemplateColumns: 'repeat(auto-fill, minmax(12rem, 1fr))',
       },
     })}
