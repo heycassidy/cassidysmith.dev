@@ -1,7 +1,7 @@
 ---
 import { css } from '@styled-system/css'
 import { render, getCollection, type CollectionEntry } from 'astro:content'
-import LocalImageWithLQIP from '@components/LocalImageWithLQIP.astro'
+import { Image } from 'astro:assets'
 
 import { entryIsPublished, sortByPosition } from '@utils/index'
 import { photoPath, photosPath } from 'astro-path-helpers/generated'
@@ -103,9 +103,7 @@ export async function getStaticPaths() {
           },
         })}
       >
-        <LocalImageWithLQIP
-          lqipImage={photo.data.image}
-          lqipSize={16}
+        <Image
           priority
           quality="medium"
           src={photo.data.image.src}

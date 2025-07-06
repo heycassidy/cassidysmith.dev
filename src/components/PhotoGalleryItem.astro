@@ -3,7 +3,7 @@ import { css } from '@styled-system/css'
 import focusRing from '@recipes/focusRing'
 import type { CollectionEntry } from 'astro:content'
 import { photoPath } from 'astro-path-helpers/generated'
-import LocalImageWithLQIP from '@components/LocalImageWithLQIP.astro'
+import { Image } from 'astro:assets'
 
 interface Props {
   photo: CollectionEntry<'photos'>
@@ -58,11 +58,16 @@ const isPortrait = aspectRatio <= 1
             filter: 'brightness(1.05)',
           },
         },
+        _light: {
+          backgroundColor: 'neutral.50',
+        },
+        _dark: {
+          backgroundColor: 'neutral.875',
+        },
       }),
     ]}
   >
-    <LocalImageWithLQIP
-      lqipImage={photo.data.image}
+    <Image
       src={photo.data.image.src}
       alt={photo.data.image.description}
       quality="medium"
