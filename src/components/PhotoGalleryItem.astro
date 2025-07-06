@@ -37,13 +37,15 @@ const isPortrait = aspectRatio <= 1
 >
   <a
     href={photoPath(photo.id)}
-    style={`aspect-ratio: ${aspectRatio};`}
+    style={`--aspect-ratio: ${aspectRatio};`}
     aria-label="Open image"
     class:list={[
       focusRing(),
       css({
         cursor: 'zoom-in',
         display: 'block',
+
+        aspectRatio: 'var(--aspect-ratio)',
 
         height: '100vw',
         position: 'relative',
@@ -52,7 +54,7 @@ const isPortrait = aspectRatio <= 1
           width: isPortrait ? 'auto' : '100%',
           height: isPortrait ? '100%' : 'auto',
           maxWidth: '100%',
-          maxHeight: 'fit-content',
+          maxHeight: '100%',
         },
         _focusVisible: {
           '& img': {
