@@ -19,15 +19,18 @@ const isPortrait = aspectRatio <= 1
 <li
   class={css({
     display: 'flex',
-    justifyContent: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'stretch',
     alignItems: 'center',
     gridRow: 1,
-    borderRadius: 'bento',
+    gap: 2,
 
     sm: {
+      display: 'grid',
+      justifyContent: 'stretch',
+      alignContent: 'end',
       gridRow: 'auto',
       aspectRatio: '1 / 1',
-      padding: '4',
       backgroundColor: 'stark.background',
     },
   })}
@@ -50,7 +53,6 @@ const isPortrait = aspectRatio <= 1
           height: isPortrait ? '100%' : 'auto',
           maxWidth: '100%',
           maxHeight: 'fit-content',
-          boxShadow: '0 0 0 2px {colors.stark.foreground}',
         },
         _focusVisible: {
           '& img': {
@@ -70,13 +72,13 @@ const isPortrait = aspectRatio <= 1
     <Image
       src={photo.data.image}
       alt={photo.data.imageAlt}
-      quality={40}
+      quality={50}
       priority={priority}
       sizes={`
-        (max-width: 640px) ${isPortrait ? '300px' : '600px'},
-        (max-width: 732px) 330px,
-        (max-width: 1215px) 360px,
-        276px
+        (max-width: 640px) ${isPortrait ? '310px' : '732px'},
+        (max-width: 678px) ${isPortrait ? '207px' : '300px'},
+        (max-width: 1164px) ${isPortrait ? '227px' : '333px'},
+        ${isPortrait ? '180px' : '270px'}
       `}
       class={css({
         position: 'relative',
@@ -94,4 +96,13 @@ const isPortrait = aspectRatio <= 1
     />
     <span class={css({ srOnly: true })}>Open image: {photo.data.title}</span>
   </a>
+  <p
+    class={css({
+      textStyle: 'xs',
+      lineHeight: 'tight',
+      opacity: '0.9',
+    })}
+  >
+    {photo.data.title}
+  </p>
 </li>

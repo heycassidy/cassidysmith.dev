@@ -30,12 +30,12 @@ const { photos } = Astro.props
       WebkitOverflowScrolling: 'touch',
 
       sm: {
-        gap: 'columnRule',
-        backgroundColor: 'columnRule',
+        borderRadius: 'bento',
         overflow: 'visible',
         display: 'grid',
-        padding: 0,
-        gridTemplateColumns: 'repeat(auto-fill, minmax(15rem, 1fr))',
+        padding: 'calc({spacing.bento.padding} * 2)',
+        gap: 'calc({spacing.bento.padding} * 2)',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(12rem, 1fr))',
       },
     })}
   >
