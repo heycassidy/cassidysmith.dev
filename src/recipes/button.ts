@@ -5,6 +5,7 @@ export default cva({
   defaultVariants: {
     size: 'md',
     material: 'solid',
+    iconOnly: false,
   },
   base: {
     colorPalette: 'neutral',
@@ -35,6 +36,11 @@ export default cva({
   },
 
   variants: {
+    // Only used in combination with size
+    iconOnly: {
+      true: {},
+      false: {},
+    },
     size: {
       sm: {
         fontSize: 'sm',
@@ -62,6 +68,35 @@ export default cva({
       adaptive: {
         ...interactiveSurface.raw({ material: 'adaptive' }),
       },
+      ghost: {
+        ...interactiveSurface.raw({ material: 'ghost' }),
+      },
     },
   },
+  compoundVariants: [
+    {
+      size: 'sm',
+      iconOnly: true,
+      css: {
+        paddingBlock: '1.5',
+        paddingInline: '1.5',
+      },
+    },
+    {
+      size: 'md',
+      iconOnly: true,
+      css: {
+        paddingBlock: '2',
+        paddingInline: '2',
+      },
+    },
+    {
+      size: 'lg',
+      iconOnly: true,
+      css: {
+        paddingBlock: '2',
+        paddingInline: '2',
+      },
+    },
+  ],
 })

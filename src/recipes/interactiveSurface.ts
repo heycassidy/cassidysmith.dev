@@ -20,10 +20,10 @@ export default cva({
         _light: {
           color: 'colorPalette.775',
           backgroundColor: 'colorPalette.75',
-          '--hover-bg':
-            'oklch(from {colors.colorPalette.50} calc(l * 0.95) calc(c * 3.5) h)',
 
           _hover: {
+            '--hover-bg':
+              'oklch(from {colors.colorPalette.50} calc(l * 0.95) calc(c * 3.5) h)',
             color: 'colorPalette.875',
             backgroundColor: 'var(--hover-bg)',
             boxShadow: `
@@ -55,6 +55,34 @@ export default cva({
             color: 'active.contrast',
             backgroundColor: 'active.accent',
             boxShadow: 'unset',
+          },
+        },
+      },
+      ghost: {
+        _light: {
+          color: 'colorPalette.525',
+          backgroundColor: 'transparent',
+
+          _hover: {
+            color: 'colorPalette.900',
+            backgroundColor: 'colorPalette.50',
+          },
+          _active: {
+            color: 'active.contrast',
+            backgroundColor: 'active.accent',
+          },
+        },
+        _dark: {
+          color: 'colorPalette.400',
+          backgroundColor: 'transparent',
+
+          _hover: {
+            color: 'colorPalette.50',
+            backgroundColor: 'colorPalette.850',
+          },
+          _active: {
+            color: 'active.contrast',
+            backgroundColor: 'active.accent',
           },
         },
       },

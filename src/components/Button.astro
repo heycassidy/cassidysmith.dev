@@ -8,6 +8,7 @@ import { Icon } from 'astro-icon/components'
 type Props<Tag extends HTMLTag> = Polymorphic<{
   as: Tag
   size?: 'sm' | 'md' | 'lg'
+  material?: 'solid' | 'dark-glass' | 'adaptive' | 'ghost'
   color?: string
   iconLeft?: string
   iconRight?: string
@@ -19,6 +20,7 @@ const {
   class: className,
   color = 'neutral',
   size = 'md',
+  material = 'solid',
   iconLeft,
   iconRight,
   ...props
@@ -30,7 +32,7 @@ const {
     css({
       colorPalette: color,
     }),
-    button({ size }),
+    button({ size, material }),
     focusRing(),
     className,
   ]}
