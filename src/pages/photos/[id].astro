@@ -104,8 +104,9 @@ export async function getStaticPaths() {
         })}
       >
         <LocalImageWithLQIP
-          lqipSrc={photo.data.image.src.src}
+          lqipImage={photo.data.image}
           lqipSize={16}
+          src={photo.data.image.src.src}
           priority
           quality="medium"
           src={photo.data.image.src}

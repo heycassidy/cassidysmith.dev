@@ -12,6 +12,8 @@ interface Props {
 
 const { photo, priority = false } = Astro.props
 
+console.log(photo)
+
 const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
 const isPortrait = aspectRatio <= 1
 ---
@@ -62,7 +64,7 @@ const isPortrait = aspectRatio <= 1
     ]}
   >
     <LocalImageWithLQIP
-      lqipSrc={photo.data.image.src.src}
+      lqipImage={photo.data.image}
       src={photo.data.image.src}
       alt={photo.data.image.description}
       quality="medium"

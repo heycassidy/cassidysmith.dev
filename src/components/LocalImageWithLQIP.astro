@@ -1,16 +1,17 @@
 ---
 import fs from 'node:fs/promises'
-import { Image } from 'astro:assets'
+import { Image, getImage } from 'astro:assets'
 import type { ComponentProps } from 'astro/types'
 import { getPlaiceholder } from 'plaiceholder'
 
-type Props = { lqipSrc: string; lqipSize?: number } & ComponentProps<
-  typeof Image
->
+type Props = { lqipImage; lqipSize?: number } & ComponentProps<typeof Image>
 
-const { lqipSrc, lqipSize = 4, style, ...rest } = Astro.props
+const { lqipImage, lqipSize = 4, style, ...rest } = Astro.props
 
-const cleanImageSrc = lqipSrc.replace('/@fs', '').split('?')[0]
+const image = await getImage(lqipImage)
+
+const cleanImageSrc = image.options.src.src.replace('/@fs', '').split('?')[0]
+
 const file = await fs.readFile(cleanImageSrc)
 
 const { base64 } = await getPlaiceholder(file, { size: lqipSize })
