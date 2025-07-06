@@ -39,7 +39,7 @@ const semanticTokens = {
   },
   spacing: {
     columnRule: {
-      value: '{borderWidths.thick}',
+      value: '{borderWidths.thin}',
     },
     columnHeaderBar: {
       value: '{spacing.2}',
@@ -55,7 +55,7 @@ const semanticTokens = {
   },
   radii: {
     bento: {
-      value: '{spacing.2}',
+      value: '{spacing.1}',
     },
   },
 }
