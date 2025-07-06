@@ -1,15 +1,14 @@
 ---
 import { css } from '@styled-system/css'
-import { render, getCollection, type CollectionEntry } from 'astro:content'
+import { getCollection, type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 
 import { entryIsPublished } from '@utils/index'
 import { photoPath, photosPath } from 'astro-path-helpers/generated'
 
 import AppLayout from '@layouts/AppLayout.astro'
-import Button from '@components/Button.astro'
+import IconButton from '@components/IconButton.astro'
 import SEOTags from '@components/SEOTags.astro'
-import GrainyBackground from '@components/GrainyBackground.astro'
 
 interface Props {
   photo: CollectionEntry<'photos'>
@@ -38,6 +37,22 @@ export async function getStaticPaths() {
 }
 ---
 
+<script>
+  import { navigate } from 'astro:transitions/client'
+
+  const allPhotosElement = document.querySelector('[data-photos-path]')
+
+  if (allPhotosElement instanceof HTMLElement) {
+    const allPhotosPath = allPhotosElement.dataset.photosPath || null
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && allPhotosPath) {
+        navigate(allPhotosPath)
+      }
+    })
+  }
+</script>
+
 <AppLayout>
   <SEOTags
     slot="head"
@@ -47,42 +62,66 @@ export async function getStaticPaths() {
   />
 
   <div
+    data-photos-path={photosPath()}
     class={css({
       display: 'grid',
-      minHeight: '100dvh',
-      gridTemplateRows: 'auto 1fr',
+      padding: '0.5',
+      height: '100dvh',
+      width: '100dvw',
+      gridTemplateAreas: `
+        '. . close'
+        'prev photo next'
+        '. . .'
+      `,
+      gridTemplateColumns: `
+        {spacing.10}
+        minmax(0, 1fr)
+        {spacing.10}
+      `,
+      gridTemplateRows: `
+        {spacing.10}
+        minmax(0, 1fr)
+        {spacing.10}
+      `,
 
-      '@media (min-aspect-ratio: 1)': {
-        alignItems: 'stretch',
-        gridTemplateRows: '1fr',
-        gridTemplateColumns: '1fr 1fr',
-      },
+      background: 'stark.background',
     })}
   >
     <div
+      style={`--aspect-ratio: ${aspectRatio};`}
       class={css({
-        background: 'stark.background',
-        padding: 'bento.padding',
+        gridArea: 'photo',
+        alignSelf: 'center',
+        justifySelf: 'center',
+        aspectRatio: 'var(--aspect-ratio)',
         display: 'flex',
-        alignItems: 'center',
+        placeItems: 'center',
+        placeContent: 'center',
+        maxWidth: '100%',
+        maxHeight: '100%',
+
+        // portrait screen
+        width: isPortrait ? 'auto' : '100%',
+        height: isPortrait ? '100%' : 'auto',
+
+        // landscape screen
         '@media (min-aspect-ratio: 1)': {
-          maxHeight: '100dvh',
-          justifyContent: 'flex-end',
+          width: 'auto',
+          height: '100%',
         },
       })}
     >
-      <div
-        style={`--aspect-ratio: ${aspectRatio};`}
+      <Image
+        priority
+        quality="medium"
+        src={photo.data.image}
+        alt={photo.data.imageAlt}
+        transition:name={`photo-${photo.id}`}
         class={css({
+          display: 'block',
           position: 'relative',
           zIndex: '2', // This puts it above the grain effect
-          width: isPortrait ? 'auto' : '100%',
-          height: isPortrait ? '100%' : 'auto',
-          maxHeight: 'fit-content',
-          overflow: 'hidden',
-          '@media (min-aspect-ratio: 1)': {
-            aspectRatio: 'var(--aspect-ratio)',
-          },
+
           _light: {
             backgroundColor: 'neutral.50',
           },
@@ -90,120 +129,37 @@ export async function getStaticPaths() {
             backgroundColor: 'neutral.875',
           },
         })}
-      >
-        <Image
-          priority
-          quality="medium"
-          src={photo.data.image}
-          alt={photo.data.imageAlt}
-          transition:name={`photo-${photo.id}`}
-        />
-      </div>
+      />
     </div>
-    <div
-      class={css({
-        position: 'relative',
-        display: 'grid',
-        gridTemplateRows: 'auto 1fr',
 
-        // view transition name and background so that photos slide from behind
-        viewTransitionName: 'photo-slide-content',
-        backgroundColor: 'base.background',
-
-        zIndex: 2,
-
-        '@media (min-aspect-ratio: 1)': {
-          boxShadow:
-            'calc(-1 * {spacing.columnRule}) 0 0 0 {colors.columnRule}',
-        },
-      })}
-    >
-      <div
-        class={css({
-          width: '100%',
-          display: 'flex',
-          gap: 'columnRule',
-          backgroundColor: 'columnRule',
-          paddingBlockEnd: 'columnRule',
-          paddingBlockStart: 'columnHeaderBar',
-          flexWrap: 'wrap',
-        })}
-      >
-        <Button
-          class={css({
-            marginRight: 'auto',
-          })}
-          as="a"
-          size="sm"
-          href={photosPath()}
-          iconLeft="ri:grid-fill"
-        >
-          All photos
-        </Button>
-        <!-- filler span -->
-        <span
-          class={css({
-            flexGrow: 1,
-            backgroundColor: 'base.background',
-            borderRadius: 'calc({radii.bento} - {spacing.bento.padding} / 2)',
-          })}></span>
-        {
-          previousPhotoSlug && (
-            <Button
-              as="a"
-              size="sm"
-              href={photoPath(previousPhotoSlug)}
-              data-direction="previous-photo"
-              iconLeft="ri:skip-left-fill"
-            >
-              Previous
-            </Button>
-          )
-        }
-        {
-          nextPhotoSlug && (
-            <Button
-              class="photo-controls-button photo-controls-button--next"
-              as="a"
-              size="sm"
-              href={photoPath(nextPhotoSlug)}
-              data-direction="next-photo"
-              iconRight="ri:skip-right-fill"
-            >
-              Next
-            </Button>
-          )
-        }
-      </div>
-
-      <main
-        class={css({
-          width: '100%',
-          textWrap: 'pretty',
-          padding: 'bento.padding',
-          borderBlockEnd: '{spacing.columnHeaderBar} solid {colors.columnRule}',
-
-          display: 'flex',
-          alignItems: 'center',
-
-          '@media (min-aspect-ratio: 1)': {
-            maxWidth: '3xl',
-          },
-        })}
-      >
-        <div>
-          <h1
-            class={css({
-              textStyle: 'h1',
-              marginBlockStart: 0,
-            })}
-          >
-            {photo.data.title}
-          </h1>
-        </div>
-      </main>
-
-      <GrainyBackground />
-    </div>
+    <IconButton
+      class={css({ gridArea: 'close', placeSelf: 'center' })}
+      as="a"
+      material="ghost"
+      size="lg"
+      href={photosPath()}
+      icon="ri:close-line"
+      ariaLabel="Back to all photos"
+    />
+    <IconButton
+      class={css({ gridArea: 'prev', placeSelf: 'center' })}
+      as="a"
+      material="ghost"
+      size="lg"
+      href={photoPath(previousPhotoSlug)}
+      data-direction="previous-photo"
+      icon="ri:arrow-left-line"
+      ariaLabel="Previous photo"
+    />
+    <IconButton
+      class={css({ gridArea: 'next', placeSelf: 'center' })}
+      as="a"
+      material="ghost"
+      size="lg"
+      href={photoPath(nextPhotoSlug)}
+      data-direction="next-photo"
+      icon="ri:arrow-right-line"
+      ariaLabel="Next photo"
+    />
   </div>
 </AppLayout>
