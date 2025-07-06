@@ -12,7 +12,7 @@ interface Props {
 
 const { photo, priority = false } = Astro.props
 
-const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
+const aspectRatio = photo.data.image.width / photo.data.image.height
 const isPortrait = aspectRatio <= 1
 ---
 
@@ -34,7 +34,7 @@ const isPortrait = aspectRatio <= 1
 >
   <a
     href={photoPath(photo.id)}
-    style={`aspect-ratio: ${photo.data.image.src.width / photo.data.image.src.height};`}
+    style={`aspect-ratio: ${aspectRatio};`}
     aria-label="Open image"
     class:list={[
       focusRing(),
@@ -68,8 +68,8 @@ const isPortrait = aspectRatio <= 1
     ]}
   >
     <Image
-      src={photo.data.image.src}
-      alt={photo.data.image.description}
+      src={photo.data.image}
+      alt={photo.data.imageAlt}
       quality={40}
       priority={priority}
       sizes={`

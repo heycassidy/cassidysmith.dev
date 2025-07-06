@@ -3,7 +3,7 @@ import { blogSchema, tagSchema, photoSchema } from './schemas'
 import { glob, file } from 'astro/loaders'
 
 const photos = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/data/photos' }),
+  loader: file('src/data/photos.json'),
   schema: photoSchema,
 })
 

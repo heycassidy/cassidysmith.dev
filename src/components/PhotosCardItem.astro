@@ -11,8 +11,8 @@ const { photo } = Astro.props
 ---
 
 <Image
-  src={photo.data.image.src}
-  alt={photo.data.image.description}
+  src={photo.data.image}
+  alt={photo.data.imageAlt}
   quality={60}
   height="80"
   densities={[1.5, 2]}

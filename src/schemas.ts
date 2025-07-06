@@ -5,10 +5,8 @@ export const photoSchema = ({ image }: SchemaContext) =>
     title: z.string(),
     published: z.boolean().default(false),
     position: z.number(),
-    image: z.object({
-      src: image(),
-      description: z.string(),
-    }),
+    imageAlt: z.string(),
+    image: image(),
   })
 
 export const blogSchema = () =>

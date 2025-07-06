@@ -5,10 +5,8 @@ import AppLayout from '@layouts/AppLayout.astro'
 import PrimaryLayout from '@layouts/PrimaryLayout.astro'
 import PhotoGallery from '@components/PhotoGallery.astro'
 import SEOTags from '@components/SEOTags.astro'
-import { entryIsPublished, sortByPosition } from '@utils/index'
+import { entryIsPublished } from '@utils/index'
 const photos = await getCollection('photos', entryIsPublished)
-
-let sortedPhotos = photos.sort(sortByPosition)
 ---
 
 <AppLayout>
@@ -64,7 +62,7 @@ let sortedPhotos = photos.sort(sortByPosition)
           </p>
         </div>
       </div>
-      <PhotoGallery photos={sortedPhotos} />
+      <PhotoGallery photos={photos} />
     </main>
   </PrimaryLayout>
 </AppLayout>

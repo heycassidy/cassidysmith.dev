@@ -3,7 +3,7 @@ import { css } from '@styled-system/css'
 import { render, getCollection, type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 
-import { entryIsPublished, sortByPosition } from '@utils/index'
+import { entryIsPublished } from '@utils/index'
 import { photoPath, photosPath } from 'astro-path-helpers/generated'
 
 import AppLayout from '@layouts/AppLayout.astro'
@@ -11,34 +11,22 @@ import Button from '@components/Button.astro'
 import SEOTags from '@components/SEOTags.astro'
 import GrainyBackground from '@components/GrainyBackground.astro'
 
-import A from '@components/mdx/A.astro'
-
 interface Props {
   photo: CollectionEntry<'photos'>
 }
 
-// For this page
 const { photo } = Astro.props
-const { Content } = await render(photo)
-const aspectRatio = photo.data.image.src.width / photo.data.image.src.height
+const aspectRatio = photo.data.image.width / photo.data.image.height
 const isPortrait = aspectRatio <= 1
 
-const components = {
-  a: A,
-}
-
-// For the previous/next/all buttons
 const photos = await getCollection('photos', entryIsPublished)
-const sortedPhotoSlugs = photos.sort(sortByPosition).map((photo) => photo.id)
+const photoSlugs = photos.map((photo) => photo.id)
 const previousPhotoSlug =
-  sortedPhotoSlugs[
-    (sortedPhotoSlugs.indexOf(photo.id) - 1 + sortedPhotoSlugs.length) %
-      sortedPhotoSlugs.length
+  photoSlugs[
+    (photoSlugs.indexOf(photo.id) - 1 + photoSlugs.length) % photoSlugs.length
   ]
 const nextPhotoSlug =
-  sortedPhotoSlugs[
-    (sortedPhotoSlugs.indexOf(photo.id) + 1) % sortedPhotoSlugs.length
-  ]
+  photoSlugs[(photoSlugs.indexOf(photo.id) + 1) % photoSlugs.length]
 
 export async function getStaticPaths() {
   const photos = await getCollection('photos', entryIsPublished)
@@ -106,8 +94,8 @@ export async function getStaticPaths() {
         <Image
           priority
           quality="medium"
-          src={photo.data.image.src}
-          alt={photo.data.image.description}
+          src={photo.data.image}
+          alt={photo.data.imageAlt}
           transition:name={`photo-${photo.id}`}
         />
       </div>
@@ -115,7 +103,6 @@ export async function getStaticPaths() {
     <div
       class={css({
         position: 'relative',
-        // padding: 'bento.padding',
         display: 'grid',
         gridTemplateRows: 'auto 1fr',
 
@@ -213,7 +200,6 @@ export async function getStaticPaths() {
           >
             {photo.data.title}
           </h1>
-          <Content components={components} />
         </div>
       </main>
 

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "sun-and-power",
+    "title": "Sun and Power",
+    "published": true,
+    "position": 0,
+    "image": "./photos/sun-and-power.jpg",
+    "imageAlt": "a typical Chicago apartment building with the wooden staircase in the back is basked in the evening sun. In the foreground a power pole stands with electrical wires running off of it in all directions, crisscrossing across the entire scene except for the top left quadrant"
+  },
+  {
+    "id": "whose-streets",
+    "title": "Whose Streets?",
+    "published": true,
+    "position": 1,
+    "image": "./photos/whose-streets.jpg",
+    "imageAlt": "a person stands in the middle of a crosswalk, back to the camera, feet firmly planted, patiently waiting for a safe opportunity to cross the street as an SUV speeds through the crosswalk a few feet in front of the person"
+  },
+  {
+    "id": "dangerous-plant",
+    "title": "Dangerous Plant",
+    "published": true,
+    "position": 2,
+    "image": "./photos/dangerous-plant.jpg",
+    "imageAlt": "large round planter on a sidewalk in front of a brick building. It's wrapped in bright orange mesh and the sidewalk below appears wet from a recent watering,"
+  },
+  {
+    "id": "kornhausbrucke",
+    "title": "Kornhausbrücke Portal",
+    "published": true,
+    "position": 3,
+    "image": "./photos/kornhausbrucke.jpg",
+    "imageAlt": "a pedestrian tunnel with an arched roof through a large bridge that spans a river on the right. There's a fence on the right between the sidewalk and the river."
+  },
+  {
+    "id": "pick-me-up",
+    "title": "Pick Me Up",
+    "published": true,
+    "position": 4,
+    "image": "./photos/pick-me-up.jpg",
+    "imageAlt": "a construction site lies in front of two elevated Chicago L tracks, one that passes over the other with gentle curve. A row of storefront sits in the right mid-ground and one of the storefront has a sign that reads 'Pick Me Up'."
+  },
+  {
+    "id": "scary-bush",
+    "title": "Scary Bush",
+    "published": true,
+    "position": 5,
+    "image": "./photos/scary-bush.jpg",
+    "imageAlt": "Two large bushes on the side of a road have large textile decals of eyes and mouths with pointy, serrated teeth"
+  },
+  {
+    "id": "big-number-five",
+    "title": "Big Number Five",
+    "published": true,
+    "position": 6,
+    "image": "./photos/big-number-five.jpg",
+    "imageAlt": "a large styrofoam number 5 that is tilted at an angle resting against and behind a metal fence in front of an apartment building,"
+  },
+  {
+    "id": "noguchi-museum",
+    "title": "Noguchi Museum",
+    "published": true,
+    "position": 7,
+    "image": "./photos/noguchi-museum.jpg",
+    "imageAlt": "overlooking a courtyard with a brick wall covered in dead vines on a foggy day. The background contains metal industrial buildings and chain-link fences, and some taller buildings further back that are partly obscured by fog"
+  },
+  {
+    "id": "zollhaus-roof",
+    "title": "Zollhaus Rooftop",
+    "published": true,
+    "position": 8,
+    "image": "./photos/zollhaus-roof.jpg",
+    "imageAlt": "a chair and three small tables are situated on a rooftop in Zurich on an overcast day. The rooftop is bordered by box planters which are overgrown with grasses and other plants."
+  },
+  {
+    "id": "glass-houses",
+    "title": "Glass Houses",
+    "published": true,
+    "position": 100,
+    "image": "./photos/glass-houses.jpg",
+    "imageAlt": "a large multi-story building with a facade made of glass bricks sits nestled between a painted brick seafoam green building and an unpainted yellow brick building. Electrical wires crisscross in the foreground,"
+  },
+  {
+    "id": "n-richmond-st-alley",
+    "title": "N. Richmond St. Alley",
+    "published": true,
+    "position": 100,
+    "image": "./photos/n-richmond-st-alley.jpg",
+    "imageAlt": "a snow-covered Chicago alley with slushy tire tracks. The alley is lined on one side by a wooden fence, and a garage on the other side"
+  },
+  {
+    "id": "white-elephant",
+    "title": "White Elephant",
+    "published": true,
+    "position": 100,
+    "image": "./photos/white-elephant.jpg",
+    "imageAlt": "a white statue of an elephant with its trunk held high. It stands in front of a green hedge in the backyard of a row house with several other houses visible in the background."
+  }
+]

@@ -39,7 +39,7 @@ const semanticTokens = {
   },
   spacing: {
     columnRule: {
-      value: '{borderWidths.extraThick}',
+      value: '{borderWidths.thick}',
     },
     columnHeaderBar: {
       value: '{spacing.2}',
