@@ -23,8 +23,6 @@ const repoDetails = await octokit.rest.repos.get({
   repo: repoName,
 })
 
-console.log(repoDetails)
-
 const {
   name,
   description,
@@ -32,7 +30,6 @@ const {
   language,
   html_url: url,
 } = repoDetails.data
-console.log(name, description, starsCount, language, url)
 ---
 
 <article
