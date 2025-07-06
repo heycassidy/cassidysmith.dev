@@ -70,10 +70,10 @@ const isPortrait = aspectRatio <= 1
     <Image
       src={photo.data.image.src}
       alt={photo.data.image.description}
-      quality="medium"
+      quality={40}
       priority={priority}
       sizes={`
-        (max-width: 640px) 1200px,
+        (max-width: 640px) ${isPortrait ? '300px' : '600px'},
         (max-width: 732px) 330px,
         (max-width: 1215px) 360px,
         276px
