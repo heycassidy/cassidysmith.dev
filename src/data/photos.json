@@ -82,5 +82,61 @@
     "published": false,
     "image": "./photos/ig-selection/white-elephant.jpg",
     "imageAlt": "a white statue of an elephant with its trunk held high. It stands in front of a green hedge in the backyard of a row house with several other houses visible in the background."
+  },
+  {
+    "id": "scratches",
+    "title": "Scratches",
+    "published": true,
+    "image": "./photos/first-film-roll/scratches.jpg",
+    "imageAlt": "A view of the north branch of the Chicago river looking towards the Chicago skyline. An empty barge floats on the right side of the frame. This photo is in black and white."
+  },
+  {
+    "id": "something",
+    "title": "Something",
+    "published": true,
+    "image": "./photos/first-film-roll/something.jpg",
+    "imageAlt": "Industrial structures, dark conveyor belts, a central tower. The conveyor belt on the right extends down from the tower to the right side of the frame. Another cuts across the frame from just below the top of the tower and the other conveyor belt  to the left of the frame. A low building with a garage door sits below the tower. This photo is in black and white."
+  },
+  {
+    "id": "underelevated",
+    "title": "Underelevated",
+    "published": true,
+    "image": "./photos/first-film-roll/underelevated.jpg",
+    "imageAlt": "On the left side of the frame is an elevated Chicago transitway. On the right side is the back of a building with fire escapes on its walls. The center of the frame, in the distance is illuminated by sunlight. The foreground is in shadow. Dumpsters and a car are visible in the alley. This photo is in black and white."
+  },
+  {
+    "id": "wherere-we-going",
+    "title": "Where’re We Going",
+    "published": true,
+    "image": "./photos/first-film-roll/wherere-we-going.jpg",
+    "imageAlt": "A large gnarly tree with lots of burrs and knots stands to the right of a brick wall. The other side of the brick wall is a garage door. To the right of the tree sits a dumpster and a view down an alley. In the distance, the back half of an old sedan is visible. This photo is in black and white."
+  },
+  {
+    "id": "jzvDlPpb",
+    "title": "Untitled",
+    "published": true,
+    "image": "./photos/first-film-roll/untitled.jpg",
+    "imageAlt": "Building with dark burned wooden cladding with a few large panels of light plywood attached to the side. Electrical wires run diagonally across the frame in front of the building. This photo is in black and white."
+  },
+  {
+    "id": "unplugged-textures",
+    "title": "Unplugged Textures",
+    "published": true,
+    "image": "./photos/first-film-roll/unplugged-textures.jpg",
+    "imageAlt": "The corner of an industrial building where it meets the ground. On the ground, in front of the building is an unplugged hose of some type. The left of the building is standing water, possibly flooded. The top half of the visible portion of the building is dark sheet metal, the bottom half is light concrete. This photo is in black and white."
+  },
+  {
+    "id": "wild-mile",
+    "title": "Wild Mile",
+    "published": true,
+    "image": "./photos/first-film-roll/wild-mile.jpg",
+    "imageAlt": "Floating walkway on the Chicago river know as the Wild Mile. The walkway weaves between floating plants. In the center of the frame is a life saver floatation device."
+  },
+  {
+    "id": "double-half",
+    "title": "Double Half",
+    "published": true,
+    "image": "./photos/first-film-roll/double-half.jpg",
+    "imageAlt": "An accidental double exposure. The first exposure covers only the top half of the frame and shows legs of two people standing against a wall outdoors. The second exposure covers the whole frame and shows a stack of plastic chairs against a brick wall in an alley next to a telephone pole. This photo is in black and white."
   }
 ]
