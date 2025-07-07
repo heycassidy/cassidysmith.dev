@@ -5,7 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 
 export const entryIsPublished = (
   entry: CollectionEntry<'blog' | 'photos'>
-): boolean => import.meta.env.DEV || entry.data.published
+): boolean => entry.data.published
 
 export const entryHasTag =
   (tag: CollectionEntry<'tags'>) =>
@@ -13,7 +13,7 @@ export const entryHasTag =
     entry.data.tags.some((entryTag) => entryTag.id === tag.id)
 
 export const tagIsActive = (tag: CollectionEntry<'tags'>): boolean =>
-  import.meta.env.DEV || tag.data.active
+  tag.data.active
 
 export const sortByPosition = (
   entryA: CollectionEntry<CollectionKey>,
