@@ -42,7 +42,7 @@ const semanticTokens = {
       value: '{borderWidths.thin}',
     },
     columnHeaderBar: {
-      value: '{spacing.2}',
+      value: '{spacing.3}',
     },
     bento: {
       padding: {
