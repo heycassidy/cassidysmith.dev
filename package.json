@@ -56,7 +56,7 @@
   },
   "overrides": {
     "@vercel/routing-utils": {
-      "path-to-regexp": "8.2.0"
+      "path-to-regexp": "6.3.0"
     }
   }
 }
