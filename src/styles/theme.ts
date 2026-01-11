@@ -8,7 +8,7 @@ const semanticTokens = {
       background: {
         value: {
           _light: '{colors.neutral.75}',
-          _dark: '{colors.neutral.900}',
+          _dark: '{colors.neutral.850}',
         },
       },
       text: {
@@ -21,7 +21,7 @@ const semanticTokens = {
     columnRule: {
       value: {
         _light: '{colors.neutral.900}',
-        _dark: '{colors.neutral.525}',
+        _dark: '{colors.neutral.900}',
       },
     },
     active: {
@@ -39,7 +39,7 @@ const semanticTokens = {
   },
   spacing: {
     columnRule: {
-      value: '{borderWidths.thin}',
+      value: '{borderWidths.extraThick}',
     },
     columnHeaderBar: {
       value: '{spacing.3}',
