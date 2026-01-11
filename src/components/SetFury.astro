@@ -1,0 +1,74 @@
+---
+import { css } from '@styled-system/css'
+import { linkOverlay } from '@styled-system/patterns'
+import interactiveSurface from '@recipes/interactiveSurface'
+import focusRing from '@recipes/focusRing'
+import { Icon } from 'astro-icon/components'
+
+const name = 'Set Fury'
+const description = 'A daily game of set recognition and high scores.'
+const url = 'https://www.setfury.com'
+---
+
+<article
+  class:list={[
+    css({
+      colorPalette: 'gold',
+      gridArea: 'setfury',
+
+      borderRadius: 'bento',
+      padding: 'bento.padding',
+
+      display: 'flex',
+      flexDirection: 'column',
+      rowGap: '1',
+      justifyContent: 'space-between',
+
+      textDecoration: 'none',
+
+      position: 'relative',
+    }),
+    interactiveSurface(),
+    focusRing({ mode: 'focus-visible-within' }),
+  ]}
+>
+  <div>
+    <a
+      href={url}
+      class:list={[
+        linkOverlay({}),
+        css({
+          _before: {
+            zIndex: 2,
+          },
+          '&:focus': {
+            outline: 'none',
+          },
+        }),
+      ]}
+    >
+      <h2
+        class={css({
+          color: 'currentColor',
+          display: 'flex',
+          gap: '1.5',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          textStyle: '2xl',
+          fontWeight: '710',
+        })}
+      >
+        {name}
+        <Icon aria-hidden="true" name="ri:arrow-right-up-fill" />
+      </h2>
+    </a>
+    <p
+      class={css({
+        opacity: '0.9',
+        textStyle: 'md',
+      })}
+    >
+      {description}
+    </p>
+  </div>
+</article>

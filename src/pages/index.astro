@@ -9,6 +9,7 @@ import SEOTags from '@components/SEOTags.astro'
 import TextLink from '@components/TextLink.astro'
 import LatestPost from '@components/LatestPost.astro'
 import GitHubProject from '@components/GitHubProject.astro'
+import SetFury from '@components/SetFury.astro'
 ---
 
 <AppLayout>
@@ -30,6 +31,7 @@ import GitHubProject from '@components/GitHubProject.astro'
           'contact'
           'cactus'
           'gh-project'
+          'setfury'
           'photos'
         `,
         sm: {
@@ -39,23 +41,24 @@ import GitHubProject from '@components/GitHubProject.astro'
             'intro cactus'
             'intro cactus'
             'contact cactus'
-            'gh-project photos'
+            'gh-project setfury'
+            'photos photos'
           `,
         },
         md: {
-          gridTemplateColumns: '10fr 5fr 5fr 10fr',
+          gridTemplateColumns: '10fr 2fr 8fr 10fr',
           gridTemplateAreas: `
             'intro intro intro cactus'
             'blog blog contact contact'
-            'gh-project gh-project photos photos'
+            'gh-project setfury setfury photos'
           `,
         },
         xl: {
-          gridTemplateColumns: '10fr 5fr 5fr 10fr',
+          gridTemplateColumns: '10fr 8fr 2fr 10fr',
           gridTemplateAreas: `
             'intro intro intro cactus'
             'blog contact contact cactus'
-            'gh-project gh-project photos photos'
+            'gh-project setfury photos photos'
           `,
         },
       })}
@@ -101,6 +104,7 @@ import GitHubProject from '@components/GitHubProject.astro'
       <Contact />
       <PricklyPearContainer />
       <GitHubProject repoName="astro-path-helpers" />
+      <SetFury />
       <PhotosCard />
     </div>
   </PrimaryLayout>
