@@ -60,8 +60,10 @@ const {
       class:list={[
         linkOverlay(),
         css({
-          _before: {
-            zIndex: 2,
+          '&&': {
+            _before: {
+              zIndex: 2,
+            },
           },
           '&:focus': {
             outline: 'none',

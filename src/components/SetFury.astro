@@ -38,8 +38,10 @@ const url = 'https://www.setfury.com'
       class:list={[
         linkOverlay({}),
         css({
-          _before: {
-            zIndex: 2,
+          '&&': {
+            _before: {
+              zIndex: 2,
+            },
           },
           '&:focus': {
             outline: 'none',
