@@ -31,7 +31,7 @@
     "prickly-pear": "github:heycassidy/prickly-pear",
     "reading-time": "^1.5.0",
     "sharp": "^0.34.5",
-    "svelte": "^5.46.1"
+    "svelte": "^5.53.0"
   },
   "//prickly-pear-options": {
     "prickly-pear-local": "file:~/projects/prickly-pear",
