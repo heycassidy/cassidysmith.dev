@@ -15,7 +15,7 @@
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.6.1",
     "@astrojs/svelte": "^7.2.5",
-    "@astrojs/vercel": "^9.0.3",
+    "@astrojs/vercel": "^10.0.2",
     "@fontsource-variable/syne": "^5.2.7",
     "@fontsource/atkinson-hyperlegible": "^5.2.8",
     "@vercel/analytics": "^1.6.1",
