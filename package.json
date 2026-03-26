@@ -19,7 +19,7 @@
     "@fontsource-variable/syne": "^5.2.7",
     "@fontsource/atkinson-hyperlegible": "^5.2.8",
     "@vercel/analytics": "^1.6.1",
-    "astro": "^5.16.8",
+    "astro": "^5.18.1",
     "astro-expressive-code": "^0.41.5",
     "astro-path-helpers": "^0.5.0",
     "astro-seo": "^0.8.4",
